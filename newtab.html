@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新的一页 · Easy Tab</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body data-layout="golden" data-blur="0" data-overlay="15" data-radius="16">
+  <div id="wallpaper" aria-hidden="true"></div><div id="shade" aria-hidden="true"></div>
+  <header class="topbar"><span class="brand">easy<span>tab</span><small>留白，给重要的事。</small></span><div class="tools"><button id="drawer-toggle" aria-label="打开分组" aria-expanded="false">☰</button><button id="settings-open" aria-label="打开设置">设置</button></div></header>
+  <div id="drawer-backdrop" hidden></div>
+  <main class="workspace">
+    <section class="search-section" aria-label="搜索">
+      <p class="eyebrow">A LITTLE SPACE, A FRESH START</p><h1>从这里，开始。</h1>
+      <div class="search-row"><form id="search-form" class="search-box" role="search"><button id="engine" type="button" title="点击切换搜索引擎" aria-label="搜索引擎：Google">G</button><input id="search-input" type="search" aria-label="搜索关键词" placeholder="搜索点什么，或探索新想法" autocomplete="off"><button class="search-submit" aria-label="搜索" type="submit">↗</button><span class="drop-hint" aria-hidden="true">松开以 Google 识图</span></form><button id="minimal-toggle" aria-label="切换极简模式" aria-pressed="false" title="极简模式">◌</button></div>
+      <p class="search-caption">一个想法，就够开始。<span>拖入图片，探索更多</span></p>
+    </section>
+    <section class="collection" aria-label="我的站点"><aside id="sidebar" aria-label="站点分组"><p class="section-label">我的空间</p><nav id="groups"></nav><button id="add-group" class="subtle">＋ 新建分组</button></aside><div class="sites-panel"><div class="section-heading"><h2 id="group-title">常用</h2><button id="add-site" class="subtle">＋ 添加图标</button></div><div id="grid" class="grid"></div></div></section>
+  </main>
+  <footer>少一点纷扰，多一点专注。<span>本地保存 · 自由掌控</span></footer>
+  <div id="context-menu" role="menu" hidden></div>
+  <dialog id="editor-dialog"><form id="editor-form"><div class="dialog-heading"><h2 id="editor-title">添加图标</h2><button type="button" data-close aria-label="关闭">×</button></div><div id="editor-fields"></div><div class="dialog-actions"><button type="button" data-close>取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
+  <dialog id="settings-dialog"><div class="dialog-heading"><h2>让空间更像你</h2><button data-close aria-label="关闭">×</button></div><div class="settings-body">
+    <p class="section-label">外观</p>
+    <label>版心<select data-setting="layout"><option value="golden">黄金重心</option><option value="center">对称居中</option></select></label>
+    <label>图标圆角<select data-setting="radius"><option value="0">直角</option><option value="8">小圆角 · 8px</option><option value="16">Squircle · 16px</option><option value="50">全圆</option></select></label>
+    <label>壁纸模糊<select data-setting="blur"><option value="0">清晰 · 0px</option><option value="4">轻柔 · 4px</option><option value="8">柔和 · 8px</option><option value="16">朦胧 · 16px</option></select></label>
+    <label>壁纸遮罩<select data-setting="overlay"><option value="0">0%</option><option value="15">15%</option><option value="30">30%</option><option value="45">45%</option></select></label>
+    <label class="file-label">本地壁纸<input id="wallpaper-input" type="file" accept="image/*"></label><button id="wallpaper-clear" class="subtle">恢复默认背景</button>
+    <p class="section-label">数据备份</p><label class="checkbox"><input id="include-assets" type="checkbox" checked> 导出时包含壁纸与自定义图标</label><div class="button-row"><button id="export-data">导出 JSON</button><button id="import-open">导入 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
+    <p class="section-label">即将推出</p><label class="unavailable">跨设备同步 <input type="checkbox" disabled></label><label class="unavailable">Bing 每日壁纸 <input type="checkbox" disabled></label><p class="help">图片保存在此设备。备份文件可能包含私人站点与图片，请妥善保管。</p>
+  </div></dialog>
+  <dialog id="import-dialog"><div class="dialog-heading"><h2>导入备份</h2><button data-close aria-label="关闭">×</button></div><p id="import-summary"></p><p class="help">覆盖将替换现有站点与设置；合并保留现有设置，把导入内容加入新分组。</p><div class="dialog-actions"><button id="import-merge">合并</button><button id="import-replace" class="primary">覆盖</button></div></dialog>
+  <dialog id="fallback-dialog"><div class="dialog-heading"><h2>继续图片搜索</h2><button data-close aria-label="关闭">×</button></div><p id="fallback-message">上传接口尚未验证，可以复制图片后到官方页面粘贴。</p><div class="dialog-actions"><button id="fallback-download">保存图片</button><button id="fallback-copy" class="primary">复制图片并打开图搜</button></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

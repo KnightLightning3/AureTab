@@ -1,0 +1,15 @@
+/** @typedef {{id:string,title:string,url:string,size:'1x1'|'2x2',text:string,iconId?:string}} Site */
+/** @typedef {{id:string,name:string,sites:Site[]}} Group */
+/** @typedef {{schemaVersion:1,groups:Group[],settings:{blur:string,overlay:string,radius:string}}} AppData */
+export class DataStore {
+  /** @returns {Promise<AppData>} */
+  async load() { throw new Error('DataStore.load must be implemented'); }
+  /** @param {AppData} data */
+  async save(data) { throw new Error('DataStore.save must be implemented'); }
+  onExternalChange(_callback) { return () => {}; }
+}
+export const DEFAULT_PREFS = { engine: 'google', minimal: false, layout: 'golden' };
+export const DEFAULT_SETTINGS = { blur: '0', overlay: '15', radius: '16' };
+export function createDefaultData() {
+  return { schemaVersion: 1, groups: [{ id: crypto.randomUUID(), name: '常用', sites: [] }], settings: { ...DEFAULT_SETTINGS } };
+}
