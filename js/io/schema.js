@@ -7,7 +7,15 @@ export function safeURL(value) { const url = new URL(value); if (!['https:', 'ht
 export function validatePrefs(value) {
   if (!object(value)) fail('设备设置');
   if (typeof value.minimal !== 'boolean') fail('极简模式');
-  return { engine: choice(value.engine, ['google', 'bing', 'sogou'], '搜索引擎'), minimal: value.minimal, layout: choice(value.layout, ['golden', 'center'], '版心') };
+  const flag = (flagValue, fallback, label) => { if (flagValue === undefined) return fallback; if (typeof flagValue !== 'boolean') fail(label); return flagValue; };
+  const legacyTheme = { taupe: 'glass', midnight: 'aurora' };
+  const theme = value.theme === undefined ? 'glass' : (legacyTheme[value.theme] ?? value.theme);
+  return {
+    engine: choice(value.engine, ['google', 'bing', 'sogou'], '搜索引擎'), minimal: value.minimal, layout: choice(value.layout, ['golden', 'center'], '版心'),
+    clock24: flag(value.clock24, true, '时间制式'), showDate: flag(value.showDate, true, '显示日期'), showLabels: flag(value.showLabels, true, '显示图标名称'),
+    dateFormat: value.dateFormat === undefined ? 'yyyy-mm-dd' : choice(value.dateFormat, ['yyyy-mm-dd', 'mm-dd'], '日期格式'),
+    theme: choice(theme, ['aurora', 'glass', 'frost', 'cyber', 'espresso'], '色彩主题'),
+  };
 }
 export function validateData(value) {
   if (!object(value) || value.schemaVersion !== 1) fail('不支持的 schemaVersion');
@@ -27,8 +35,9 @@ export function validateData(value) {
       if (!object(site)) fail('站点'); const siteId = string(site.id, 100, '站点 ID');
       if (siteIds.has(siteId)) fail('站点 ID 重复'); siteIds.add(siteId);
       const text = string(site.text, 12, '文字图标'); if (Array.from(text).length > 3) fail('文字图标应为 1 至 3 个字符');
-      const item = { id: siteId, title: string(site.title, 120, '站点标题'), url: safeURL(string(site.url, 4096, '站点地址')), size: choice(site.size, ['1x1', '2x2'], '站点尺寸'), text };
+      const item = { id: siteId, title: string(site.title, 120, '站点标题'), url: safeURL(string(site.url, 4096, '站点地址')), size: choice(site.size, ['1x1', '2x1', '1x2', '2x2'], '站点尺寸'), text };
       if (site.iconId !== undefined) item.iconId = string(site.iconId, 100, '图片 ID');
+      if (site.iconStyle !== undefined) item.iconStyle = choice(site.iconStyle, ['color', 'glyph'], '图标样式');
       if (site.useText !== undefined) { if (typeof site.useText !== 'boolean') fail('文字图标开关'); item.useText = site.useText; }
       return item;
     });

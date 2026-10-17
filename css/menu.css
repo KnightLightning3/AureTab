@@ -1,1 +1,8 @@
 #context-menu{position:fixed;z-index:50;min-width:170px;max-width:calc(100vw - 12px);max-height:calc(100vh - 12px);overflow:auto;background:#f9fbf5;border:1px solid #d9e0d5;border-radius:12px;padding:6px;box-shadow:0 12px 36px #17392c25}#context-menu button{display:block;width:100%;background:transparent;border:0;text-align:left;padding:11px 14px;border-radius:7px;font-size:13px}#context-menu button:hover,#context-menu button:focus{background:#e4ecdf}#context-menu .danger{color:#a0473b}
+#engine-menu{position:fixed;z-index:60;display:flex;gap:6px;max-width:calc(100vw - 12px);background:var(--menu-bg,#f9fbf5);border:1px solid var(--line,#d9e0d5);border-radius:12px;padding:7px;box-shadow:0 12px 36px rgba(0,0,0,.18);backdrop-filter:blur(var(--glass-blur,0px));-webkit-backdrop-filter:blur(var(--glass-blur,0px));text-shadow:none}
+#engine-menu button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:76px;padding:9px 10px;background:transparent;border:0;border-radius:8px;color:var(--ink,#273d39);font:inherit;font-size:12px;font-weight:500;cursor:pointer}
+#engine-menu button:hover,#engine-menu button:focus{background:var(--menu-hover,#e4ecdf)}
+#engine-menu button.active{background:var(--menu-hover,#e4ecdf);box-shadow:inset 0 0 0 1px var(--accent,#376453)}
+#engine-menu .engine-icon{width:22px;height:22px}
+#engine-menu .engine-name{line-height:1.2;white-space:nowrap}
+.menu-separator{height:1px;margin:5px 6px;background:var(--line,rgba(43,73,64,.12))}

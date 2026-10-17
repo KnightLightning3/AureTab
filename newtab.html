@@ -9,31 +9,51 @@
   <link rel="stylesheet" href="css/grid.css">
   <link rel="stylesheet" href="css/menu.css">
 </head>
-<body data-layout="golden" data-blur="0" data-overlay="15" data-radius="16">
+<body data-layout="golden" data-blur="0" data-overlay="15" data-radius="16" data-theme="glass">
   <div id="wallpaper" aria-hidden="true"></div><div id="shade" aria-hidden="true"></div>
-  <header class="topbar"><span class="brand">easy<span>tab</span><small>留白，给重要的事。</small></span><div class="tools"><button id="drawer-toggle" aria-label="打开分组" aria-expanded="false">☰</button><button id="settings-open" aria-label="打开设置">设置</button></div></header>
+  <header class="topbar"><div class="tools"><button id="drawer-toggle" aria-label="打开分组" aria-expanded="false">☰</button><button id="settings-open" aria-label="打开设置" title="设置" aria-expanded="false" aria-controls="settings-panel"><svg class="settings-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></div></header>
   <div id="drawer-backdrop" hidden></div>
   <main class="workspace">
     <section class="search-section" aria-label="搜索">
-      <p class="eyebrow">A LITTLE SPACE, A FRESH START</p><h1>从这里，开始。</h1>
-      <div class="search-row"><form id="search-form" class="search-box" role="search"><button id="engine" type="button" title="点击切换搜索引擎" aria-label="搜索引擎：Google">G</button><input id="search-input" type="search" aria-label="搜索关键词" placeholder="搜索点什么，或探索新想法" autocomplete="off"><button class="search-submit" aria-label="搜索" type="submit">↗</button><span class="drop-hint" aria-hidden="true">松开以 Google 识图</span></form><button id="minimal-toggle" aria-label="切换极简模式" aria-pressed="false" title="极简模式">◌</button></div>
-      <p class="search-caption">一个想法，就够开始。<span>拖入图片，探索更多</span></p>
+      <div class="clock" aria-label="当前时间"><time id="clock-time">--:--</time><small id="clock-date" hidden></small></div>
+      <div class="search-row"><form id="search-form" class="search-box" role="search"><button id="engine" type="button" title="选择搜索引擎" aria-label="搜索引擎：Google" aria-haspopup="menu" aria-expanded="false" aria-controls="engine-menu">G</button><input id="search-input" type="search" aria-label="搜索关键词" placeholder="搜索点什么，或探索新想法" autocomplete="off"><button class="search-submit" aria-label="搜索" type="submit">↗</button><span class="drop-hint" aria-hidden="true">松开以 Google 识图</span></form><button id="minimal-toggle" aria-label="切换极简模式" aria-pressed="false" title="极简模式">◌</button></div>
+      <p class="search-caption"><span>拖入图片，探索更多</span></p>
     </section>
-    <section class="collection" aria-label="我的站点"><aside id="sidebar" aria-label="站点分组"><p class="section-label">我的空间</p><nav id="groups"></nav><button id="add-group" class="subtle">＋ 新建分组</button></aside><div class="sites-panel"><div class="section-heading"><h2 id="group-title">常用</h2><button id="add-site" class="subtle">＋ 添加图标</button></div><div id="grid" class="grid"></div></div></section>
+    <section class="collection" aria-label="我的站点">
+      <aside id="sidebar" aria-label="站点分组"><nav id="groups"></nav><button id="add-group" class="subtle">＋ 新建分组</button></aside>
+      <div class="sites-panel"><div id="grid" class="grid"></div><div class="sites-actions"><button id="add-site" class="subtle">＋ 添加图标</button></div></div>
+    </section>
   </main>
-  <footer>少一点纷扰，多一点专注。<span>本地保存 · 自由掌控</span></footer>
   <div id="context-menu" role="menu" hidden></div>
+  <div id="engine-menu" role="menu" aria-label="选择搜索引擎" hidden></div>
   <dialog id="editor-dialog"><form id="editor-form"><div class="dialog-heading"><h2 id="editor-title">添加图标</h2><button type="button" data-close aria-label="关闭">×</button></div><div id="editor-fields"></div><div class="dialog-actions"><button type="button" data-close>取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
-  <dialog id="settings-dialog"><div class="dialog-heading"><h2>让空间更像你</h2><button data-close aria-label="关闭">×</button></div><div class="settings-body">
-    <p class="section-label">外观</p>
-    <label>版心<select data-setting="layout"><option value="golden">黄金重心</option><option value="center">对称居中</option></select></label>
-    <label>图标圆角<select data-setting="radius"><option value="0">直角</option><option value="8">小圆角 · 8px</option><option value="16">Squircle · 16px</option><option value="50">全圆</option></select></label>
-    <label>壁纸模糊<select data-setting="blur"><option value="0">清晰 · 0px</option><option value="4">轻柔 · 4px</option><option value="8">柔和 · 8px</option><option value="16">朦胧 · 16px</option></select></label>
-    <label>壁纸遮罩<select data-setting="overlay"><option value="0">0%</option><option value="15">15%</option><option value="30">30%</option><option value="45">45%</option></select></label>
-    <label class="file-label">本地壁纸<input id="wallpaper-input" type="file" accept="image/*"></label><button id="wallpaper-clear" class="subtle">恢复默认背景</button>
-    <p class="section-label">数据备份</p><label class="checkbox"><input id="include-assets" type="checkbox" checked> 导出时包含壁纸与自定义图标</label><div class="button-row"><button id="export-data">导出 JSON</button><button id="import-open">导入 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
-    <p class="section-label">即将推出</p><label class="unavailable">跨设备同步 <input type="checkbox" disabled></label><label class="unavailable">Bing 每日壁纸 <input type="checkbox" disabled></label><p class="help">图片保存在此设备。备份文件可能包含私人站点与图片，请妥善保管。</p>
-  </div></dialog>
+  <div id="settings-backdrop" aria-hidden="true"></div>
+  <aside id="settings-panel" aria-labelledby="settings-title" aria-hidden="true" inert>
+    <div class="dialog-heading"><h2 id="settings-title">让空间更像你</h2><button id="settings-close" aria-label="关闭设置">×</button></div>
+    <div class="settings-body">
+      <p class="section-label">外观</p>
+      <p class="field-label">色彩主题</p>
+      <div class="theme-picker" role="radiogroup" aria-label="色彩主题">
+        <button type="button" class="theme-swatch swatch-aurora" data-theme-choice="aurora" role="radio" aria-checked="false"><span class="swatch-preview" aria-hidden="true"><span class="swatch-dot"></span><span class="swatch-text">Aa</span><span class="swatch-check">✓</span></span><span class="swatch-label">暗夜极光</span></button>
+        <button type="button" class="theme-swatch swatch-glass" data-theme-choice="glass" role="radio" aria-checked="false"><span class="swatch-preview" aria-hidden="true"><span class="swatch-dot"></span><span class="swatch-text">Aa</span><span class="swatch-check">✓</span></span><span class="swatch-label">纯粹极简白</span></button>
+        <button type="button" class="theme-swatch swatch-frost" data-theme-choice="frost" role="radio" aria-checked="false"><span class="swatch-preview" aria-hidden="true"><span class="swatch-dot"></span><span class="swatch-text">Aa</span><span class="swatch-check">✓</span></span><span class="swatch-label">极简玻璃白</span></button>
+        <button type="button" class="theme-swatch swatch-cyber" data-theme-choice="cyber" role="radio" aria-checked="false"><span class="swatch-preview" aria-hidden="true"><span class="swatch-dot"></span><span class="swatch-text">Aa</span><span class="swatch-check">✓</span></span><span class="swatch-label">深邃蓝</span></button>
+        <button type="button" class="theme-swatch swatch-espresso" data-theme-choice="espresso" role="radio" aria-checked="false"><span class="swatch-preview" aria-hidden="true"><span class="swatch-dot"></span><span class="swatch-text">Aa</span><span class="swatch-check">✓</span></span><span class="swatch-label">温润米咖</span></button>
+      </div>
+      <label>版心<select data-setting="layout"><option value="golden">黄金重心</option><option value="center">对称居中</option></select></label>
+      <label>图标圆角<select data-setting="radius"><option value="0">直角</option><option value="8">小圆角 · 8px</option><option value="16">Squircle · 16px</option><option value="50">全圆</option></select></label>
+      <label class="checkbox"><input data-pref="showLabels" type="checkbox" checked> 显示图标名称</label>
+      <label>壁纸模糊<select data-setting="blur"><option value="0">清晰 · 0px</option><option value="4">轻柔 · 4px</option><option value="8">柔和 · 8px</option><option value="16">朦胧 · 16px</option></select></label>
+      <label>壁纸遮罩<select data-setting="overlay"><option value="0">0%</option><option value="15">15%</option><option value="30">30%</option><option value="45">45%</option></select></label>
+      <p class="section-label">时钟</p>
+      <label class="checkbox"><input data-pref="clock24" type="checkbox" checked> 24 小时制</label>
+      <label class="checkbox"><input data-pref="showDate" type="checkbox" checked> 显示日期</label>
+      <label>日期格式<select data-pref="dateFormat"><option value="yyyy-mm-dd">2026-10-17</option><option value="mm-dd">10-17</option></select></label>
+      <label class="file-label">本地壁纸<input id="wallpaper-input" type="file" accept="image/*"></label><button id="wallpaper-clear" class="subtle">恢复默认背景</button>
+      <p class="section-label">数据备份</p><label class="checkbox"><input id="include-assets" type="checkbox" checked> 导出时包含壁纸与自定义图标</label><div class="button-row"><button id="export-data">导出 JSON</button><button id="import-open">导入 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
+      <p class="section-label">即将推出</p><label class="unavailable">跨设备同步 <input type="checkbox" disabled></label><label class="unavailable">Bing 每日壁纸 <input type="checkbox" disabled></label><p class="help">图片保存在此设备。备份文件可能包含私人站点与图片，请妥善保管。</p>
+    </div>
+  </aside>
   <dialog id="import-dialog"><div class="dialog-heading"><h2>导入备份</h2><button data-close aria-label="关闭">×</button></div><p id="import-summary"></p><p class="help">覆盖将替换现有站点与设置；合并保留现有设置，把导入内容加入新分组。</p><div class="dialog-actions"><button id="import-merge">合并</button><button id="import-replace" class="primary">覆盖</button></div></dialog>
   <dialog id="fallback-dialog"><div class="dialog-heading"><h2>继续图片搜索</h2><button data-close aria-label="关闭">×</button></div><p id="fallback-message">上传接口尚未验证，可以复制图片后到官方页面粘贴。</p><div class="dialog-actions"><button id="fallback-download">保存图片</button><button id="fallback-copy" class="primary">复制图片并打开图搜</button></div></dialog>
   <div id="toast" role="status" aria-live="polite" hidden></div>
