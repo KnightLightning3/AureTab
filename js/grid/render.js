@@ -35,4 +35,7 @@ export function renderGrid(group, store, onAdd) {
       tryNext();
     }
   }
+  if (group.sites.length) {
+    const add = document.createElement('button'); add.type = 'button'; add.className = 'site add-site'; add.textContent = '+'; add.title = '添加图标'; add.setAttribute('aria-label', '添加图标'); add.addEventListener('click', onAdd); grid.append(add);
+  }
 }

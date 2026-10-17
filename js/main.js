@@ -147,7 +147,7 @@ async function start() {
     if (!$('#engine-menu').hidden) { closeEngineMenu(); $('#engine').focus(); return; }
     if (document.body.classList.contains('settings-open')) closeSettings(); else drawer(false);
   });
-  on('#add-site', 'click', () => addSite()); on('#add-group', 'click', () => addGroup()); on('#settings-open', 'click', openSettings);
+  on('#add-group', 'click', () => addGroup()); on('#settings-open', 'click', openSettings);
   on('#settings-close', 'click', closeSettings); on('#settings-backdrop', 'click', closeSettings);
   $('#settings-panel').addEventListener('keydown', event => {
     if (event.key !== 'Tab') return;

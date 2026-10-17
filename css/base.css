@@ -70,3 +70,7 @@ dialog{padding:24px;overflow:auto}
 .engine-icon[data-engine="bing"]{--engine-icon:url('../assets/icons/bing.svg')}
 .engine-icon[data-engine="sogou"]{--engine-icon:url('../assets/icons/sogou.svg')}
 .search-box #engine{display:grid;place-items:center}
+.search-caption{font-size:12px;font-weight:500}
+.search-section{margin-left:183px;margin-right:auto}
+body[data-layout="center"] .search-section{margin-left:auto;margin-right:auto}
+@media(max-width:767px){.search-section{margin-left:0;margin-right:auto}}
