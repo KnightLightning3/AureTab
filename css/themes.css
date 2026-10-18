@@ -3,7 +3,7 @@ body{background:radial-gradient(ellipse at 80% 10%,#e1e9d7 0,transparent 55%),ra
 body[data-blur="0"] #wallpaper{filter:blur(0)}body[data-blur="4"] #wallpaper{filter:blur(4px)}body[data-blur="8"] #wallpaper{filter:blur(8px)}body[data-blur="16"] #wallpaper{filter:blur(16px)}
 body[data-overlay="0"] #shade{opacity:0}body[data-overlay="15"] #shade{opacity:.15}body[data-overlay="30"] #shade{opacity:.3}body[data-overlay="45"] #shade{opacity:.45}
 body[data-radius="0"]{--radius:0px}body[data-radius="8"]{--radius:8px}body[data-radius="16"]{--radius:16px}body[data-radius="50"]{--radius:50%}
-body[data-layout="center"] .search-section{text-align:center;margin-top:70px}body[data-layout="center"] .collection{max-width:960px;margin:auto}
+@media(max-width:767px){body[data-layout="center"] .search-section{text-align:center;margin-top:70px}}
 body.minimal .collection,body.minimal .topbar,body.minimal footer,body.minimal .search-caption{display:none}
 body.minimal .workspace{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0 36px}
 body.minimal .search-section{margin:0;width:100%}

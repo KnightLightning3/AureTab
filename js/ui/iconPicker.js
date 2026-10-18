@@ -1,20 +1,32 @@
 import { faviconSources } from '../grid/favicon.js';
+import { showClassifiedIcon } from '../grid/iconKind.js';
+import { localIconURL } from '../grid/siteIcon.js';
+import { assetStore } from '../storage/idb.js';
+import { report } from './dialogs.js';
 
-const LABELS = { color: '带背景', glyph: '镂空', text: '文字', custom: '保留自定义' };
+const LABELS = { auto: '自动', color: '实心铺满', glyph: '镂空', text: '文字', custom: '保留自定义' };
 
-export function mountIconPicker(container, form, site) {
+export function mountIconPicker(container, form, site, options = {}) {
   const field = document.createElement('div'); field.className = 'icon-picker-field';
   const head = document.createElement('div'); head.className = 'icon-picker-head';
   const title = document.createElement('strong'); title.textContent = '图标';
+  const actions = document.createElement('div'); actions.className = 'icon-picker-actions';
+  const browse = document.createElement('button'); browse.type = 'button'; browse.className = 'icon-browse'; browse.textContent = '从常用站点选择';
   const request = document.createElement('button'); request.type = 'button'; request.className = 'icon-request'; request.textContent = '请求图标';
-  head.append(title, request);
+  if (options.browse !== false) actions.append(browse);
+  actions.append(request); head.append(title, actions);
   const grid = document.createElement('div'); grid.className = 'icon-choices'; grid.setAttribute('role', 'radiogroup'); grid.setAttribute('aria-label', '图标样式');
   const status = document.createElement('p'); status.className = 'icon-picker-status'; status.textContent = '点击“请求图标”，预览并选择带背景、镂空或文字图标。';
   const hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'iconChoice';
-  field.append(head, grid, status, hidden); container.append(field);
+  const localFile = document.createElement('input'); localFile.type = 'hidden'; localFile.name = 'iconLocal';
+  const localDomain = document.createElement('input'); localDomain.type = 'hidden'; localDomain.name = 'iconLocalDomain';
+  field.append(head, grid, status, hidden, localFile, localDomain); container.append(field);
 
-  let selected = site?.useText ? 'text' : site?.iconId ? 'custom' : site?.iconStyle === 'glyph' ? 'glyph' : 'color';
+  let selected = site?.useText ? 'text' : site?.iconId ? 'custom' : site?.iconStyle || 'auto';
+  let localIcon = options.iconFile ?? site?.iconFile ?? '';
+  let localHost = options.domain ?? '';
   hidden.value = selected;
+  localFile.value = localIcon; localDomain.value = localHost;
   const sampleText = () => Array.from(form.elements.text?.value.trim() || form.elements.title?.value.trim() || 'A').slice(0, 2).join('');
   const setChoice = choice => {
     selected = choice; hidden.value = choice;
@@ -23,34 +35,67 @@ export function mountIconPicker(container, form, site) {
   const loadPreview = (preview, sources) => {
     let index = 0;
     const tryNext = () => {
-      if (index >= sources.length) { preview.textContent = '?'; return; }
-      const image = document.createElement('img'); image.alt = '';
-      image.onload = () => { if (image.naturalWidth >= 32 && image.naturalHeight >= 32) preview.replaceChildren(image); else tryNext(); };
-      image.onerror = tryNext; image.src = sources[index++];
+      if (!preview.isConnected) return;
+      if (index >= sources.length) { preview.textContent = sampleText(); return; }
+      showClassifiedIcon(preview, sources[index++], { manual: preview.dataset.manual }).then(shown => { if (!shown) tryNext(); }).catch(tryNext);
     };
     tryNext();
   };
+  const openLocalPreview = (preview, file) => {
+    const url = localIconURL(file); if (!url) return false;
+    showClassifiedIcon(preview, url, { manual: preview.dataset.manual }).catch(() => {}); return true;
+  };
   const build = previews => {
     grid.replaceChildren();
-    const choices = site?.iconId ? ['custom', 'color', 'glyph', 'text'] : ['color', 'glyph', 'text'];
+    const choices = site?.iconId ? ['custom', 'auto', 'color', 'glyph', 'text'] : ['auto', 'color', 'glyph', 'text'];
     for (const choice of choices) {
       const button = document.createElement('button'); button.type = 'button'; button.className = 'icon-choice'; button.dataset.choice = choice; button.setAttribute('role', 'radio');
       const preview = document.createElement('span'); preview.className = `choice-preview ${choice === 'text' ? 'text' : choice === 'glyph' ? 'glyph' : 'color'}`;
+      preview.textContent = sampleText();
+      if (choice === 'color' || choice === 'glyph') preview.dataset.manual = choice;
       if (choice === 'text') preview.textContent = sampleText();
-      else if (choice === 'custom') preview.textContent = '自';
+      else if (site?.iconId && !localIcon) {
+        preview.textContent = '自';
+        assetStore.get(site.iconId).then(blob => blob && showClassifiedIcon(preview, site.iconId, { blob, manual: choice === 'custom' ? site.iconStyle : preview.dataset.manual })).catch(() => {});
+      }
+      else if (['auto', 'color', 'glyph'].includes(choice) && localIcon && openLocalPreview(preview, localIcon)) {}
       else { const sources = previews?.[choice]; if (sources?.length) loadPreview(preview, sources); else preview.textContent = '?'; }
       const label = document.createElement('span'); label.className = 'choice-label'; label.textContent = LABELS[choice];
       button.append(preview, label); button.onclick = () => setChoice(choice); grid.append(button);
     }
     setChoice(selected);
   };
+  const setLocal = (file, domain = localHost) => {
+    localIcon = file || ''; localHost = localIcon ? domain : '';
+    localFile.value = localIcon; localDomain.value = localHost;
+    if (localIcon) { selected = 'auto'; build(); status.textContent = '已使用本地图标；需要其他样式时可点“请求图标”。'; }
+    else build();
+  };
   request.onclick = () => {
     let url;
-    try { const parsed = new URL(form.elements.url.value.trim()); if (!['http:', 'https:'].includes(parsed.protocol)) throw new Error(); url = parsed.href; }
+    try {
+      let raw = form.elements.url.value.trim();
+      if (raw && !/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)) raw = `https://${raw}`;
+      const parsed = new URL(raw); if (!['http:', 'https:'].includes(parsed.protocol)) throw new Error(); url = parsed.href;
+    }
     catch { status.textContent = '请先填写有效的 HTTP(S) 网址。'; return; }
     status.textContent = '正在请求图标…';
-    build({ color: faviconSources(url, 'color'), glyph: faviconSources(url, 'glyph') });
+    localIcon = ''; localHost = ''; localFile.value = ''; localDomain.value = '';
+    build({ auto: faviconSources(url), color: faviconSources(url, 'color'), glyph: faviconSources(url, 'glyph') });
     status.textContent = '选择一种样式，保存后生效。';
   };
+  let selectorOpening = false;
+  browse.onclick = () => {
+    if (selectorOpening) return; selectorOpening = true;
+    import('./siteSelector.js').then(({ openSiteSelector }) => openSiteSelector({
+      onSelect: site => {
+        form.elements.title.value = site.name; form.elements.url.value = `https://${site.domain}/`;
+        if (site.icon) setLocal(site.icon, site.domain);
+        else { setLocal(''); status.textContent = '该站点暂无本地图标；可点“请求图标”或使用文字图标。'; }
+      },
+      onCustom: () => { const input = form.elements.icon; if (input) { input.closest('label')?.scrollIntoView({ block: 'nearest' }); input.focus(); input.click(); } }
+    })).catch(report).finally(() => { selectorOpening = false; });
+  };
   build();
+  return { request: () => request.click(), setLocal };
 }

@@ -23,6 +23,14 @@ test('replace restores all metadata, missing assets use text or favicon fallback
   const plan = planImport({ ...data(), groups: [] }, { ...backup(), assets: [] }, 'replace');
   const expected = data(); delete expected.groups[0].sites[0].iconId; assert.deepEqual(plan.data, expected); assert.equal(plan.prefs.engine, 'bing');
 });
+test('bundled icon references are preserved and path traversal is rejected', () => {
+  const value = data(); value.groups[0].sites[0].iconFile = 'github.com.png';
+  assert.equal(validateData(value).groups[0].sites[0].iconFile, 'github.com.png');
+  for (const bad of ['../github.png', 'avatars/github.png', 'github.svg', '/github.png', '']) {
+    const copy = structuredClone(value); copy.groups[0].sites[0].iconFile = bad;
+    assert.throws(() => validateData(copy), 'iconFile should reject: ' + bad);
+  }
+});
 test('drag reorder and cross-group move persist ordered arrays', () => {
   const value = data(); assert.equal(moveSite(value, 's2', 'a', 's1'), true); assert.deepEqual(value.groups[0].sites.map(site => site.id), ['s2', 's1']);
   moveSite(value, 's2', 'b'); assert.deepEqual(value.groups[0].sites.map(site => site.id), ['s1']); assert.equal(value.groups[1].sites[0].id, 's2'); assert.equal(moveSite(value, 'missing', 'b'), false);

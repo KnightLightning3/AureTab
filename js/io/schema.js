@@ -1,4 +1,5 @@
 import { DEFAULT_PREFS } from '../storage/DataStore.js';
+import { isLocalIconFile } from '../grid/siteIcon.js';
 const fail = message => { throw new Error(`数据校验失败：${message}`); };
 const object = x => x && typeof x === 'object' && !Array.isArray(x);
 const string = (x, length, label) => { if (typeof x !== 'string' || !x.trim() || x.length > length) fail(label); return x; };
@@ -37,6 +38,7 @@ export function validateData(value) {
       const text = string(site.text, 12, '文字图标'); if (Array.from(text).length > 3) fail('文字图标应为 1 至 3 个字符');
       const item = { id: siteId, title: string(site.title, 120, '站点标题'), url: safeURL(string(site.url, 4096, '站点地址')), size: choice(site.size, ['1x1', '2x1', '1x2', '2x2'], '站点尺寸'), text };
       if (site.iconId !== undefined) item.iconId = string(site.iconId, 100, '图片 ID');
+      if (site.iconFile !== undefined) { if (!isLocalIconFile(site.iconFile)) fail('本地图标文件名'); item.iconFile = site.iconFile; }
       if (site.iconStyle !== undefined) item.iconStyle = choice(site.iconStyle, ['color', 'glyph'], '图标样式');
       if (site.useText !== undefined) { if (typeof site.useText !== 'boolean') fail('文字图标开关'); item.useText = site.useText; }
       return item;

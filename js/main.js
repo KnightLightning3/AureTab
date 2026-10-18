@@ -2,8 +2,11 @@ import { LocalDataStore, loadPrefs, savePrefs } from './storage/LocalDataStore.j
 import { assetStore } from './storage/idb.js';
 import { LocalWallpaperProvider, renderWallpaper, compressImage } from './wallpaper/Local.js';
 import { engines, searchURL } from './search/engines.js';
-import { imageSearchAdapters, imageFromDrop, copyImage } from './search/imageSearch.js';
-import { renderGroups, renderGrid } from './grid/render.js';
+import { imageSearchAdapters, imageFromDrop, validateImage, copyAndOpenImage } from './search/imageSearch.js';
+import { renderGroups, renderGrid, pruneGridCache } from './grid/render.js';
+import { loadClassifiedIcon } from './grid/iconKind.js';
+import { localIconURL } from './grid/siteIcon.js';
+import { bindGroupWheel } from './ui/groupNavigation.js';
 import { bindDragSort } from './grid/dragSort.js';
 import { bindContextMenu } from './ui/contextMenu.js';
 import { $, toast, report, bindDialogClose, editDialog } from './ui/dialogs.js';
@@ -28,21 +31,39 @@ function toggleSettings(open) {
 }
 function render() {
   if (!data.groups.some(group => group.id === active)) active = data.groups[0]?.id;
-  renderGroups(data.groups, active, id => { active = id; drawer(false); render(); });
-  renderGrid(data.groups.find(group => group.id === active), assetStore, () => addSite().catch(report));
+  pruneGridCache(data.groups);
+  renderGroups(data.groups, active, selectGroup);
+  renderGrid(data.groups.find(group => group.id === active), assetStore, () => chooseNewSite().catch(report));
   applySettings(data, prefs); updateEngine();
+}
+function selectGroup(id, direction) {
+  if (id === active || !data.groups.some(group => group.id === id)) return;
+  const previousIndex = data.groups.findIndex(group => group.id === active);
+  const nextIndex = data.groups.findIndex(group => group.id === id);
+  const movement = direction ?? (nextIndex > previousIndex ? 1 : -1);
+  active = id; drawer(false); render();
+  const viewport = $('.grid-viewport');
+  viewport.scrollTop = movement < 0 ? viewport.scrollHeight : 0;
+  const grid = $('#grid');
+  for (const animation of grid.getAnimations()) animation.cancel();
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    grid.animate([
+      { transform: `translateY(${movement * 28}px)`, opacity: 0 },
+      { transform: 'translateY(0)', opacity: 1 }
+    ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
+  }
 }
 function updateEngine() {
   const engine = engines[prefs.engine]; const trigger = $('#engine'); let icon = trigger.querySelector('.engine-icon');
-  if (!icon) { trigger.replaceChildren(); icon = document.createElement('span'); icon.className = 'engine-icon'; icon.setAttribute('aria-hidden', 'true'); trigger.append(icon); }
-  icon.dataset.engine = prefs.engine; trigger.setAttribute('aria-label', `搜索引擎：${engine.name}`); $('.drop-hint').textContent = `松开以 ${engine.name} 识图`;
+  if (!icon) { trigger.replaceChildren(); icon = document.createElement('img'); icon.className = 'engine-icon'; icon.alt = ''; icon.setAttribute('aria-hidden', 'true'); trigger.append(icon); }
+  icon.src = engine.icon; trigger.setAttribute('aria-label', `搜索引擎：${engine.name}`); $('.drop-hint').textContent = `松开以 ${engine.name} 识图`;
 }
 function closeEngineMenu() { const menu = $('#engine-menu'); if (menu.hidden) return; menu.hidden = true; $('#engine').setAttribute('aria-expanded', 'false'); }
 function openEngineMenu() {
   const menu = $('#engine-menu'); const trigger = $('#engine'); menu.replaceChildren();
   for (const [id, engine] of Object.entries(engines)) {
     const item = document.createElement('button'); item.type = 'button'; item.setAttribute('role', 'menuitemradio'); item.setAttribute('aria-checked', String(prefs.engine === id));
-    const icon = document.createElement('span'); icon.className = 'engine-icon'; icon.dataset.engine = id; icon.setAttribute('aria-hidden', 'true');
+    const icon = document.createElement('img'); icon.className = 'engine-icon'; icon.alt = ''; icon.src = engine.icon; icon.setAttribute('aria-hidden', 'true');
     const name = document.createElement('span'); name.className = 'engine-name'; name.textContent = engine.name;
     item.append(icon, name); if (prefs.engine === id) item.classList.add('active');
     item.onclick = () => { closeEngineMenu(); changePrefs(next => { next.engine = id; }).catch(report); trigger.focus(); };
@@ -65,36 +86,57 @@ async function addGroup(id) {
   if (!values) return;
   await change(draft => { if (id) { const target = draft.groups.find(item => item.id === id); if (!target) throw new Error('该分组已被删除'); target.name = values.get('name').trim(); } else { const newId = crypto.randomUUID(); draft.groups.push({ id: newId, name: values.get('name').trim(), sites: [] }); active = newId; } });
 }
-async function addSite(id) {
+async function addSite(id, prefill = {}, editor = editDialog) {
   if (!data.groups.length) { await addGroup(); if (!data.groups.length) return; }
   const group = id ? data.groups.find(item => item.sites.some(site => site.id === id)) : data.groups.find(item => item.id === active);
   const site = group?.sites.find(item => item.id === id);
   const fields = [
-    { name: 'title', label: '站点名称', value: site?.title ?? '', required: true, maxLength: 120 },
-    { name: 'url', label: '网址（HTTP / HTTPS）', value: site?.url ?? 'https://', required: true, type: 'url' },
+    { name: 'title', label: '网站名称', value: site?.title ?? prefill.title ?? '', required: true, maxLength: 120 },
+    { name: 'url', label: '网址（HTTP / HTTPS）', value: site?.url ?? prefill.url ?? 'https://', required: true },
     { name: 'text', label: '文字图标（1 至 3 个字符）', value: site?.text ?? '', maxLength: 6 },
     { name: 'size', label: '尺寸', value: site?.size ?? '1x1', options: [['1x1', '1 × 1'], ['2x1', '2 × 1 横向'], ['1x2', '1 × 2 纵向'], ['2x2', '2 × 2']] },
     { name: 'icon', label: '上传自定义图标（可选）', type: 'file', accept: 'image/*' },
   ];
   if (site?.iconId) fields.push({ name: 'removeIcon', label: '已有自定义图片', options: [['keep', '保留'], ['remove', '移除，恢复网站或文字图标']] });
-  const values = await editDialog(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => mountIconPicker(container, form, site));
+  const values = await editor(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => {
+    const originalHost = site ? new URL(site.url).hostname : '';
+    return mountIconPicker(container, form, site, { iconFile: site?.iconFile ?? prefill.iconFile, domain: originalHost || prefill.domain, browse: editor === editDialog });
+  });
   if (!values) return;
-  const title = values.get('title').trim(); const url = safeURL(values.get('url').trim());
+  const title = values.get('title').trim();
+  const rawUrl = values.get('url').trim();
+  const url = safeURL(/^[a-z][a-z0-9+.-]*:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
   const text = values.get('text').trim() || Array.from(title).slice(0, 2).join('');
   if (Array.from(text).length > 3) throw new Error('文字图标最多 3 个字符');
-  const choice = values.get('iconChoice') || (site?.iconId ? 'custom' : site?.useText ? 'text' : 'color');
+  const choice = values.get('iconChoice') || (site?.iconId ? 'custom' : site?.useText ? 'text' : site?.iconStyle || 'auto');
+  const nextHost = new URL(url).hostname;
+  const localFile = values.get('iconLocal') || '';
+  const localDomain = values.get('iconLocalDomain') || '';
+  const localMatches = localFile && localDomain && (nextHost === localDomain || nextHost.endsWith('.' + localDomain));
   const next = { id: site?.id ?? crypto.randomUUID(), title, url, text, size: values.get('size') };
+  if (localMatches) next.iconFile = localFile;
   const file = values.get('icon');
-  if (file?.size) { next.iconId = `icon:${crypto.randomUUID()}`; next.iconStyle = 'color'; await assetStore.put(next.iconId, await compressImage(file, 256)); }
-  else if (choice === 'custom' && site?.iconId && values.get('removeIcon') !== 'remove') { next.iconId = site.iconId; next.iconStyle = site.iconStyle === 'glyph' ? 'glyph' : 'color'; }
+  if (file?.size) { next.iconId = `icon:${crypto.randomUUID()}`; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; await assetStore.put(next.iconId, await compressImage(file, 256, { preserveAlpha: true })); }
+  else if (choice !== 'text' && !localMatches && site?.iconId && values.get('removeIcon') !== 'remove') { next.iconId = site.iconId; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; else if (choice === 'custom' && site.iconStyle) next.iconStyle = site.iconStyle; }
   else if (choice === 'text') next.useText = true;
-  else { next.useText = false; next.iconStyle = choice === 'glyph' ? 'glyph' : 'color'; }
+  else { next.useText = false; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; }
+  // Classify newly acquired artwork before saving; later renders read its kind/v marker.
+  if (!next.useText) {
+    const source = next.iconId || localIconURL(next.iconFile);
+    if (source) {
+      try { await loadClassifiedIcon(source, assetStore, next.iconId ? await assetStore.get(next.iconId) : undefined); } catch {}
+    }
+  }
   await change(draft => { const target = draft.groups.find(item => item.id === group.id); if (!target) throw new Error('分组已被删除，请重试'); if (id) { const index = target.sites.findIndex(item => item.id === id); if (index < 0) throw new Error('图标已被删除'); target.sites[index] = next; } else target.sites.push(next); });
+}
+async function chooseNewSite() {
+  const { openSiteSelector } = await import('./ui/siteSelector.js');
+  await addSite(undefined, {}, (title, fields, customize) => openSiteSelector({ fields, customize }));
 }
 function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
 function openFallback(blob, engine, reason) {
-  fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; $('#fallback-dialog').showModal();
+  fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; if (!$('#fallback-dialog').open) $('#fallback-dialog').showModal();
 }
 async function importBackup(mode) {
   if (!pendingBackup) return;
@@ -187,45 +229,69 @@ async function start() {
   });
   on('#import-merge', 'click', () => importBackup('merge')); on('#import-replace', 'click', () => importBackup('replace'));
   bindContextMenu({
-    addSite, addGroup, editSite: addSite, renameGroup: addGroup,
+    addSite: chooseNewSite, addGroup, editSite: addSite, renameGroup: addGroup,
     deleteSite: id => change(draft => { for (const group of draft.groups) group.sites = group.sites.filter(site => site.id !== id); }),
     resizeSite: (id, size) => change(draft => { const site = draft.groups.flatMap(group => group.sites).find(item => item.id === id); if (site && ['1x1', '2x1', '1x2', '2x2'].includes(size)) site.size = size; }),
     deleteGroup: async id => { const group = data.groups.find(item => item.id === id); if (group?.sites.length && !confirm(`删除“${group.name}”及其中的 ${group.sites.length} 个站点？`)) return; await change(draft => { draft.groups = draft.groups.filter(item => item.id !== id); }); },
     wallpaper: () => { openSettings(); $('#wallpaper-input').click(); }, settings: openSettings, error: report,
   });
   bindDragSort($('#grid'), $('#groups'), () => data, () => active, () => { const snapshot = structuredClone(data); run(async () => { await store.save(snapshot); data = snapshot; render(); }).catch(error => { report(error); store.load().then(value => { data = value; render(); }).catch(report); }); });
-  let wheelLocked = false, wheelIdle;
-  $('#sidebar').addEventListener('wheel', event => {
-    if (event.ctrlKey || data.groups.length < 2 || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-    const direction = Math.sign(event.deltaY);
-    if (!direction) return;
-    event.preventDefault();
-    clearTimeout(wheelIdle); wheelIdle = setTimeout(() => { wheelLocked = false; }, 160);
-    if (wheelLocked) return;
-    wheelLocked = true;
-    const index = data.groups.findIndex(group => group.id === active);
-    const next = data.groups[(index + direction + data.groups.length) % data.groups.length];
-    if (next) { active = next.id; render(); }
-  }, { passive: false });
-  let dragDepth = 0;
-  $('#search-form').addEventListener('dragenter', event => { if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return; event.preventDefault(); dragDepth++; $('#search-form').classList.add('drag-over'); });
-  $('#search-form').addEventListener('dragover', event => { if (!event.dataTransfer.types.includes('application/x-easy-tab-site')) event.preventDefault(); });
-  $('#search-form').addEventListener('dragleave', () => { if (--dragDepth <= 0) { dragDepth = 0; $('#search-form').classList.remove('drag-over'); } });
-  $('#search-form').addEventListener('drop', async event => {
-    if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return;
-    event.preventDefault(); dragDepth = 0; $('#search-form').classList.remove('drag-over'); const engine = prefs.engine;
+  bindGroupWheel($('.collection'), () => data.groups, () => active, selectGroup);
+  let dragDepth = 0, imageRequest = 0;
+  const resetImageDrag = () => { dragDepth = 0; $('#search-form').classList.remove('drag-over'); };
+  const prepareImageSearch = async (load, engine) => {
+    const request = ++imageRequest;
     try {
-      const blob = await imageFromDrop(event.dataTransfer);
-      try { await imageSearchAdapters[engine].submit(blob); openFallback(blob, engine, '已尝试提交。若没有显示结果，可复制图片到官方页面继续。'); }
-      catch { openFallback(blob, engine, '上传接口尚未抓包验证。请复制图片并到官方图搜页面粘贴。'); }
-    } catch (error) { if (error.message === '仅支持图片' || error.message.includes('10MB')) report(error); else { openFallback(null, engine, '网页图片无法下载（可能受跨域或网络限制）。请先将图片保存到本地后拖入。'); } }
+      const blob = await load;
+      if (request !== imageRequest) return;
+      if (imageSearchAdapters[engine].verified) {
+        try {
+          await imageSearchAdapters[engine].submit(blob);
+          openFallback(blob, engine, '已提交图片。若没有出现识图结果，可复制图片到官方页面继续。');
+        } catch { openFallback(blob, engine, '图片未能自动上传。请复制图片，在官方图搜页面粘贴。'); }
+      } else openFallback(blob, engine, `已准备好图片。点击“复制图片并打开图搜”，在 ${engines[engine].name} 页面的相机入口粘贴（⌘V / Ctrl+V）。`);
+    } catch (error) {
+      if (request !== imageRequest) return;
+      if (error.message.startsWith('仅支持') || error.message.includes('10MB') || error.message.includes('为空')) report(error);
+      else openFallback(null, engine, '网页图片无法读取，可能受到跨域或网络限制。请先保存图片，再点击搜索框的相机按钮选择文件；也可打开官方图搜页面上传。');
+    }
+  };
+  on('#image-search-open', 'click', () => $('#image-search-input').click());
+  on('#image-search-input', 'change', event => {
+    const file = event.target.files?.[0]; event.target.value = ''; if (!file) return;
+    return prepareImageSearch(Promise.resolve().then(() => validateImage(file)), prefs.engine);
   });
-  // Keep this listener synchronous up to window.open so the new tab retains a click gesture.
-  $('#fallback-copy').addEventListener('click', () => {
+  $('#search-form').addEventListener('dragenter', event => { if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return; event.preventDefault(); dragDepth++; $('#search-form').classList.add('drag-over'); });
+  $('#search-form').addEventListener('dragover', event => { if (!event.dataTransfer.types.includes('application/x-easy-tab-site')) { event.preventDefault(); event.dataTransfer.dropEffect = 'copy'; } });
+  $('#search-form').addEventListener('dragleave', () => { if (--dragDepth <= 0) resetImageDrag(); });
+  $('#search-form').addEventListener('drop', event => {
+    if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return;
+    event.preventDefault(); resetImageDrag();
+    // Read transfer contents immediately, before the browser protects the dropped data.
+    prepareImageSearch(imageFromDrop(event.dataTransfer), prefs.engine);
+  });
+  window.addEventListener('blur', resetImageDrag);
+  document.addEventListener('dragend', resetImageDrag);
+  const openOfficialImages = () => {
     const tab = window.open(engines[fallbackEngine].images, '_blank'); if (tab) tab.opener = null;
-    copyImage(fallbackBlob).then(() => { $('#fallback-dialog').close(); toast('已复制图片，请在页面中按 Ctrl+V'); }).catch(error => { $('#fallback-message').textContent = `${error.message}。也可保存图片后在官方页面上传。`; });
+    return tab;
+  };
+  on('#fallback-open', 'click', () => { if (!openOfficialImages()) toast('新页面被拦截，请允许此页面打开新标签页后重试'); });
+  on('#fallback-copy', 'click', async () => {
+    const button = $('#fallback-copy'); if (!fallbackBlob || button.disabled) return;
+    button.disabled = true;
+    try {
+      const { opened } = await copyAndOpenImage(fallbackBlob, fallbackEngine, openOfficialImages);
+      if (!opened) $('#fallback-message').textContent = '图片已复制，但新页面被拦截。请点击“打开图搜页面”，在相机入口粘贴（⌘V / Ctrl+V）。';
+      else { $('#fallback-dialog').close(); toast('图片已复制，请在官方图搜页面的相机入口粘贴（⌘V / Ctrl+V）'); }
+    } catch (error) { $('#fallback-message').textContent = `${error.message || '图片复制失败'}。可保存图片后在官方图搜页面上传。`; }
+    finally { button.disabled = !fallbackBlob; }
   });
-  on('#fallback-download', 'click', () => download(fallbackBlob, 'easy-tab-search-image'));
+  on('#fallback-download', 'click', () => {
+    if (!fallbackBlob) return;
+    const ext = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/gif': 'gif' }[fallbackBlob.type] || 'img';
+    download(fallbackBlob, `easy-tab-search-image.${ext}`);
+  });
   store.onExternalChange(next => { data = next; render(); });
   chrome.storage.onChanged.addListener((changes, area) => { if (area === 'local' && changes.devicePrefs) loadPrefs().then(next => { prefs = next; applySettings(data, prefs); updateEngine(); }).catch(report); });
 }

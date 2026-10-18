@@ -6,13 +6,7 @@ export function bindDialogClose() { document.querySelectorAll('dialog [data-clos
 /** DOM-only fields: no imported string is interpreted as HTML. */
 export function editDialog(title, fields, customize) {
   const dialog = $('#editor-dialog'); $('#editor-title').textContent = title; const container = $('#editor-fields'); container.replaceChildren();
-  for (const field of fields) {
-    const label = document.createElement('label'); label.textContent = field.label;
-    const input = document.createElement(field.options ? 'select' : 'input'); input.name = field.name;
-    if (field.options) for (const [value, text] of field.options) { const option = document.createElement('option'); option.value = value; option.textContent = text; input.append(option); }
-    else { input.type = field.type ?? 'text'; if (field.accept) input.accept = field.accept; input.required = Boolean(field.required); if (field.maxLength) input.maxLength = field.maxLength; }
-    if (field.value !== undefined) input.value = field.value; label.append(input); container.append(label);
-  }
+  mountEditorFields(container, fields);
   if (customize) customize({ dialog, form: $('#editor-form'), container });
   dialog.showModal();
   return new Promise(resolve => {
@@ -23,4 +17,14 @@ export function editDialog(title, fields, customize) {
     form.addEventListener('submit', submit);
     dialog.addEventListener('close', onClose);
   });
+}
+
+export function mountEditorFields(container, fields) {
+  for (const field of fields) {
+    const label = document.createElement('label'); label.textContent = field.label;
+    const input = document.createElement(field.options ? 'select' : 'input'); input.name = field.name;
+    if (field.options) for (const [value, text] of field.options) { const option = document.createElement('option'); option.value = value; option.textContent = text; input.append(option); }
+    else { input.type = field.type ?? 'text'; if (field.accept) input.accept = field.accept; input.required = Boolean(field.required); if (field.maxLength) input.maxLength = field.maxLength; }
+    if (field.value !== undefined) input.value = field.value; label.append(input); container.append(label);
+  }
 }
