@@ -28,13 +28,19 @@
 
 ## 首版边界
 
-Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返回 403；Bing、搜狗尚未抓取。因此 `verifiedUploads` 均为 `null`。已实现文件 / URL 输入校验、10MB 限制、multipart / base64 表单提交工具及剪贴板降级；当前拖图进入“复制图片并打开图搜”流程，**不宣称三家真实上传已完成**。请按 `docs/IMAGE_SEARCH.md` 抓包验证后启用。远程图片下载受 CORS 和网络限制；失败时提示先保存本地。剪贴板受浏览器策略影响，失败后提供保存图片上传。
+Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返回 403；Bing、搜狗尚未抓取。因此 `verifiedUploads` 均为 `null`。已实现文件 / URL 输入校验、10MB 限制、multipart / base64 表单提交工具及剪贴板降级；当前拖图进入“复制图片并打开图搜”流程，**不宣称三家真实上传已完成**。该功能已暂缓实现，研究结论与验证边界见 [研究记录](docs/IMAGE_SEARCH.md)。远程图片下载受 CORS 和网络限制；失败时提示先保存本地。剪贴板受浏览器策略影响，失败后提供保存图片上传。
 
 100ms 骨架与网格可用是性能目标，尚未完成真实 Chrome 新标签环境的性能验收。搜索框会调用 `focus()`，地址栏是否交出焦点由 Chrome 决定。
 
 内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。选择器图标来自随包发布的本地文件，当前 154 个站点有图标，8 个缺图站点显示首字。
 
 本地图标取自各站点公开的 favicon；少数站点只提供 16 / 32px 源图，放大到选择器尺寸后可能偏软。需要更高清的版本时，应在发布前替换 `assets/site-icons/` 中对应文件，而不是恢复运行时抓取。
+
+## 第三方图标许可
+
+`assets/icons/group-icons/` 中的分组图标来自 Google [Material Symbols](https://fonts.google.com/icons)，采用 [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE) 许可证。上游源码见 [google/material-design-icons](https://github.com/google/material-design-icons)。
+
+当前包含 `favorite`、`stadia_controller`、`home`、`code_xml` 和 `shopping_cart_checkout`。这些图标的许可独立于项目自身代码，不适用于其他目录中的站点 Logo 或 favicon。再分发时须遵守上游许可证，保留适用的版权及许可声明；若修改图标文件，应注明修改。
 
 ## 数据与开发
 

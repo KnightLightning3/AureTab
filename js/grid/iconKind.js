@@ -28,6 +28,21 @@ export async function classifyBlob(blob) {
   } finally { bitmap.close(); }
 }
 
+/** Loads a cross-origin or _favicon URL as a plain image; fetch() would require
+ * host_permissions (cross-origin) or is unsupported (the _favicon endpoint).
+ * Tiny default placeholders (e.g. a 16px globe) are rejected so callers fall through. */
+function loadImageElement(source) {
+  return new Promise((resolve, reject) => {
+    const image = document.createElement('img'); image.alt = ''; image.draggable = false;
+    image.onload = () => {
+      if (image.naturalWidth >= 32 && image.naturalHeight >= 32) resolve(image);
+      else reject(new Error('图标过小'));
+    };
+    image.onerror = () => reject(new Error('图标加载失败'));
+    image.src = source;
+  });
+}
+
 // Keep both in-flight and completed classifications for this store's session.
 // Store identity matters: previews/tests may use the same source in different stores.
 const classifications = new WeakMap();
@@ -40,11 +55,17 @@ export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
     request = (async () => {
       const cached = await store.get(key).catch(() => null);
       if (cached?.v === ICON_CLASSIFIER.v && ['filled', 'glyph', 'text'].includes(cached.kind) && cached.blob instanceof Blob) return cached;
-      const blob = suppliedBlob ?? cached?.blob ?? await fetch(source).then(response => {
+      const blob = suppliedBlob ?? cached?.blob;
+      if (!blob && (/^https?:\/\//i.test(source) || /\/_favicon\//.test(source))) {
+        // Cross-origin favicon pixels are unreadable (tainted canvas), and the
+        // _favicon endpoint is image-only; load as an image without classifying.
+        return { image: await loadImageElement(source), kind: 'glyph', v: ICON_CLASSIFIER.v };
+      }
+      const fetched = blob ?? await fetch(source).then(response => {
         if (!response.ok) throw new Error('图标加载失败');
         return response.blob();
       });
-      const record = { blob, ...await classifyBlob(blob) };
+      const record = { blob: fetched, ...await classifyBlob(fetched) };
       await store.put(key, record).catch(() => {});
       return record;
     })();
@@ -58,6 +79,7 @@ let decodedImages = new WeakMap();
 const objectURLs = new Set();
 let cleanupRegistered = false;
 function decodedImage(record) {
+  if (record.image) return Promise.resolve(record.image);
   let request = decodedImages.get(record);
   if (!request) {
     if (!cleanupRegistered && typeof window !== 'undefined') {

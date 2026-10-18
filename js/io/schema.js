@@ -1,5 +1,7 @@
 import { DEFAULT_PREFS } from '../storage/DataStore.js';
 import { isLocalIconFile } from '../grid/siteIcon.js';
+import { GROUP_ICON_IDS, DEFAULT_GROUP_ICON } from '../ui/groupIcon.js';
+import { WALLPAPER_CHOICES } from '../wallpaper/builtin.js';
 const fail = message => { throw new Error(`数据校验失败：${message}`); };
 const object = x => x && typeof x === 'object' && !Array.isArray(x);
 const string = (x, length, label) => { if (typeof x !== 'string' || !x.trim() || x.length > length) fail(label); return x; };
@@ -16,6 +18,7 @@ export function validatePrefs(value) {
     clock24: flag(value.clock24, true, '时间制式'), showDate: flag(value.showDate, true, '显示日期'), showLabels: flag(value.showLabels, true, '显示图标名称'),
     dateFormat: value.dateFormat === undefined ? 'yyyy-mm-dd' : choice(value.dateFormat, ['yyyy-mm-dd', 'mm-dd'], '日期格式'),
     theme: choice(theme, ['aurora', 'glass', 'frost', 'cyber', 'espresso'], '色彩主题'),
+    wallpaper: value.wallpaper === undefined ? 'none' : choice(value.wallpaper, WALLPAPER_CHOICES, '壁纸'),
   };
 }
 export function validateData(value) {
@@ -43,7 +46,7 @@ export function validateData(value) {
       if (site.useText !== undefined) { if (typeof site.useText !== 'boolean') fail('文字图标开关'); item.useText = site.useText; }
       return item;
     });
-    return { id, name: string(group.name, 40, '分组名称'), sites };
+    return { id, name: string(group.name, 40, '分组名称'), icon: group.icon === undefined ? DEFAULT_GROUP_ICON : choice(group.icon, GROUP_ICON_IDS, '分组图标'), sites };
   });
   return { schemaVersion: 1, groups, settings };
 }

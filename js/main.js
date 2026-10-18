@@ -2,17 +2,18 @@ import { LocalDataStore, loadPrefs, savePrefs } from './storage/LocalDataStore.j
 import { assetStore } from './storage/idb.js';
 import { LocalWallpaperProvider, renderWallpaper, compressImage } from './wallpaper/Local.js';
 import { engines, searchURL } from './search/engines.js';
-import { imageSearchAdapters, imageFromDrop, validateImage, copyAndOpenImage } from './search/imageSearch.js';
+import { imageSearchAdapters, imageFromDrop, copyAndOpenImage } from './search/imageSearch.js';
 import { renderGroups, renderGrid, pruneGridCache } from './grid/render.js';
 import { loadClassifiedIcon } from './grid/iconKind.js';
 import { localIconURL } from './grid/siteIcon.js';
 import { bindGroupWheel } from './ui/groupNavigation.js';
-import { bindDragSort } from './grid/dragSort.js';
+import { bindDragSort, bindGroupDragSort } from './grid/dragSort.js';
 import { bindContextMenu } from './ui/contextMenu.js';
 import { $, toast, report, bindDialogClose, editDialog } from './ui/dialogs.js';
 import { applySettings } from './ui/settings.js';
 import { startClock } from './ui/clock.js';
 import { mountIconPicker } from './ui/iconPicker.js';
+import { mountGroupIconPicker, DEFAULT_GROUP_ICON } from './ui/groupIcon.js';
 import { buildBackup, download, parseBackup, planImport, dataURLToBlob } from './io/exportImport.js';
 import { safeURL, validateData } from './io/schema.js';
 
@@ -82,9 +83,10 @@ async function changePrefs(action) { return run(async () => { const next = { ...
 function applyPrefs(next) { prefs = next; applySettings(data, prefs); updateEngine(); run(() => savePrefs(next)).catch(report); }
 async function addGroup(id) {
   const group = data.groups.find(item => item.id === id);
-  const values = await editDialog(group ? '重命名分组' : '新建分组', [{ name: 'name', label: '分组名称', value: group?.name ?? '', required: true, maxLength: 40 }]);
+  const values = await editDialog(group ? '重命名分组' : '新建分组', [{ name: 'name', label: '分组名称', value: group?.name ?? '', required: true, maxLength: 40 }], ({ form, container }) => mountGroupIconPicker(container, form, group?.icon));
   if (!values) return;
-  await change(draft => { if (id) { const target = draft.groups.find(item => item.id === id); if (!target) throw new Error('该分组已被删除'); target.name = values.get('name').trim(); } else { const newId = crypto.randomUUID(); draft.groups.push({ id: newId, name: values.get('name').trim(), sites: [] }); active = newId; } });
+  const icon = values.get('groupIcon') || group?.icon || DEFAULT_GROUP_ICON;
+  await change(draft => { if (id) { const target = draft.groups.find(item => item.id === id); if (!target) throw new Error('该分组已被删除'); target.name = values.get('name').trim(); target.icon = icon; } else { const newId = crypto.randomUUID(); draft.groups.push({ id: newId, name: values.get('name').trim(), icon, sites: [] }); active = newId; } });
 }
 async function addSite(id, prefill = {}, editor = editDialog) {
   if (!data.groups.length) { await addGroup(); if (!data.groups.length) return; }
@@ -135,6 +137,17 @@ async function chooseNewSite() {
 }
 function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
+/** Fades the page chrome, swaps the layout, then fades it back in. The fixed
+ * wallpaper sits outside the faded layers, so it is never repainted or moved. */
+function fadeSwitch(apply) {
+  const body = document.body;
+  body.classList.add('minimal-switch');
+  setTimeout(() => {
+    apply();
+    // Two frames: the new layout must be committed before the fade-in starts.
+    requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('minimal-switch')));
+  }, 130);
+}
 function openFallback(blob, engine, reason) {
   fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; if (!$('#fallback-dialog').open) $('#fallback-dialog').showModal();
 }
@@ -152,13 +165,13 @@ async function importBackup(mode) {
       await chrome.storage.local.set(mode === 'replace' ? { appData: plan.data, devicePrefs: plan.prefs } : { appData: plan.data });
     } catch (error) { if (mode === 'replace') { if (oldWallpaper) await assetStore.put('wallpaper', oldWallpaper); else await wallpaper.clear(); } throw error; }
     data = plan.data; if (mode === 'replace') prefs = plan.prefs;
-    pendingBackup = null; $('#import-dialog').close(); render(); await renderWallpaper(wallpaper); toast('导入完成');
+    pendingBackup = null; $('#import-dialog').close(); render(); await renderWallpaper(wallpaper, prefs.wallpaper); toast('导入完成');
   });
 }
 async function start() {
   [data, prefs] = await Promise.all([store.load(), loadPrefs()]); active = data.groups[0]?.id; bindDialogClose(); render();
   // Grid renders without waiting for IDB or the full wallpaper to decode.
-  renderWallpaper(wallpaper).catch(report); startClock(() => prefs); $('#search-input').focus();
+  renderWallpaper(wallpaper, prefs.wallpaper).catch(report); startClock(() => prefs); $('#search-input').focus();
   on('#search-form', 'submit', event => { event.preventDefault(); const query = $('#search-input').value.trim(); if (query) window.open(searchURL(prefs.engine, query), '_blank', 'noopener,noreferrer'); });
   on('#engine', 'click', () => { if ($('#engine-menu').hidden) openEngineMenu(); else closeEngineMenu(); });
   $('#engine-menu').addEventListener('keydown', event => {
@@ -175,12 +188,16 @@ async function start() {
   document.addEventListener('pointerdown', event => { if (!(event.target instanceof Element)) return; if (!event.target.closest('#engine-menu') && !event.target.closest('#engine')) closeEngineMenu(); });
   document.addEventListener('scroll', closeEngineMenu, true); window.addEventListener('resize', closeEngineMenu);
   on('#minimal-toggle', 'click', () => {
+    if (document.body.classList.contains('minimal-switch')) return;
     let applied = false;
     const apply = () => { if (applied) return; applied = true; applyPrefs({ ...prefs, minimal: !prefs.minimal }); };
-    if (document.startViewTransition) {
-      try { document.startViewTransition(apply); } catch { apply(); }
-      setTimeout(apply, 260);
-    } else apply();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
+    // View transitions snapshot the whole page, so a fixed wallpaper is re-rasterized
+    // twice and visibly flickers. Fade only the UI and leave the backdrop untouched.
+    if (prefs.wallpaper !== 'none') { fadeSwitch(apply); return; }
+    if (!document.startViewTransition) { apply(); return; }
+    try { document.startViewTransition(apply); } catch { apply(); }
+    setTimeout(apply, 260);
   });
   on('#drawer-toggle', 'click', () => drawer(!document.body.classList.contains('drawer-open')));
   on('#drawer-backdrop', 'click', () => drawer(false));
@@ -217,8 +234,15 @@ async function start() {
       next.focus(); next.click();
     });
   });
-  on('#wallpaper-input', 'change', async event => { const file = event.target.files[0]; if (!file) return; try { await wallpaper.set(file); await renderWallpaper(wallpaper); toast('壁纸已保存'); } finally { event.target.value = ''; } });
-  on('#wallpaper-clear', 'click', async () => { await wallpaper.clear(); await renderWallpaper(wallpaper); });
+  on('#wallpaper-input', 'change', async event => {
+    const file = event.target.files[0]; if (!file) return;
+    try { await wallpaper.set(file); await changePrefs(next => { next.wallpaper = 'custom'; }); await renderWallpaper(wallpaper, 'custom'); toast('壁纸已保存'); } finally { event.target.value = ''; }
+  });
+  document.querySelectorAll('[data-wallpaper]').forEach(button => button.addEventListener('click', () => {
+    const choice = button.dataset.wallpaper;
+    if (choice === 'custom') { $('#wallpaper-input').click(); return; }
+    changePrefs(next => { next.wallpaper = choice; }).then(() => renderWallpaper(wallpaper, choice)).catch(report);
+  }));
   on('#export-data', 'click', async () => { const backup = await buildBackup(data, prefs, assetStore, $('#include-assets').checked); download(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }), `easy-tab-${new Date().toISOString().slice(0, 10)}.json`); });
   on('#import-open', 'click', () => $('#import-file').click());
   on('#import-file', 'change', async event => {
@@ -236,6 +260,7 @@ async function start() {
     wallpaper: () => { openSettings(); $('#wallpaper-input').click(); }, settings: openSettings, error: report,
   });
   bindDragSort($('#grid'), $('#groups'), () => data, () => active, () => { const snapshot = structuredClone(data); run(async () => { await store.save(snapshot); data = snapshot; render(); }).catch(error => { report(error); store.load().then(value => { data = value; render(); }).catch(report); }); });
+  bindGroupDragSort($('#groups'), () => data, () => { const snapshot = structuredClone(data); run(async () => { await store.save(snapshot); data = snapshot; render(); }).catch(error => { report(error); store.load().then(value => { data = value; render(); }).catch(report); }); });
   bindGroupWheel($('.collection'), () => data.groups, () => active, selectGroup);
   let dragDepth = 0, imageRequest = 0;
   const resetImageDrag = () => { dragDepth = 0; $('#search-form').classList.remove('drag-over'); };
@@ -256,10 +281,9 @@ async function start() {
       else openFallback(null, engine, '网页图片无法读取，可能受到跨域或网络限制。请先保存图片，再点击搜索框的相机按钮选择文件；也可打开官方图搜页面上传。');
     }
   };
-  on('#image-search-open', 'click', () => $('#image-search-input').click());
-  on('#image-search-input', 'change', event => {
-    const file = event.target.files?.[0]; event.target.value = ''; if (!file) return;
-    return prepareImageSearch(Promise.resolve().then(() => validateImage(file)), prefs.engine);
+  on('#image-search-open', 'click', () => {
+    const tab = window.open(engines[prefs.engine].images, '_blank'); if (tab) tab.opener = null;
+    else toast('新页面被拦截，请允许此页面打开新标签页后重试');
   });
   $('#search-form').addEventListener('dragenter', event => { if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return; event.preventDefault(); dragDepth++; $('#search-form').classList.add('drag-over'); });
   $('#search-form').addEventListener('dragover', event => { if (!event.dataTransfer.types.includes('application/x-easy-tab-site')) { event.preventDefault(); event.dataTransfer.dropEffect = 'copy'; } });

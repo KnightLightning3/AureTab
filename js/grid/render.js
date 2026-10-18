@@ -1,6 +1,7 @@
 import { faviconSources } from './favicon.js';
 import { localIconURL } from './siteIcon.js';
 import { showClassifiedIcon } from './iconKind.js';
+import { groupIconElement } from '../ui/groupIcon.js';
 const groupViews = new Map();
 export function pruneGridCache(groups) {
   const ids = new Set(groups.map(group => group.id));
@@ -11,8 +12,12 @@ export function renderGroups(groups, active, onSelect) {
   const existing = new Map([...nav.children].map(button => [button.dataset.group, button]));
   const buttons = groups.map(group => {
     const button = existing.get(group.id) ?? document.createElement('button');
-    button.textContent = group.name; button.className = `group-button${group.id === active ? ' active' : ''}`;
-    button.dataset.group = group.id; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
+    button.className = `group-button${group.id === active ? ' active' : ''}`;
+    button.dataset.group = group.id; button.draggable = true; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
+    button.replaceChildren();
+    const icon = groupIconElement(group.icon); if (icon) button.append(icon);
+    const label = document.createElement('span'); label.className = 'group-name'; label.textContent = group.name;
+    button.append(label);
     button.onclick = () => onSelect(group.id); return button;
   });
   // Preserve focus on group buttons when selection changes.

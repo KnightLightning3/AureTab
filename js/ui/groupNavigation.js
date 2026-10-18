@@ -14,7 +14,7 @@ export function stepGridWheel(previous, input) {
   const gap = input.time - state.lastTime;
   state.lastTime = input.time;
   const result = { state, switchDirection: 0, pull: 0, hintDirection: 0 };
-  if (input.time < state.cooldownUntil || (state.cooldownUntil > -Infinity && !state.origin && gap <= WHEEL_RULES.gestureGap)) return result;
+  if (input.time < state.cooldownUntil) return result;
   const discrete = input.deltaMode === 1 || Math.abs(input.rawDelta ?? input.delta) >= WHEEL_RULES.mouseDelta;
   if (gap > WHEEL_RULES.gestureGap || !state.origin) {
     state.origin = { top: input.top, bottom: input.bottom };

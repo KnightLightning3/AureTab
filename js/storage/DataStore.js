@@ -8,7 +8,7 @@ export class DataStore {
   async save(data) { throw new Error('DataStore.save must be implemented'); }
   onExternalChange(_callback) { return () => {}; }
 }
-export const DEFAULT_PREFS = { engine: 'google', minimal: false, layout: 'golden', clock24: true, showDate: true, dateFormat: 'yyyy-mm-dd', showLabels: true, theme: 'glass' };
+export const DEFAULT_PREFS = { engine: 'google', minimal: false, layout: 'golden', clock24: true, showDate: true, dateFormat: 'yyyy-mm-dd', showLabels: true, theme: 'glass', wallpaper: 'none' };
 export const DEFAULT_SETTINGS = { blur: '0', overlay: '15', radius: '16' };
 export function createDefaultData() {
   return { schemaVersion: 1, groups: [{ id: crypto.randomUUID(), name: '常用', sites: [] }], settings: { ...DEFAULT_SETTINGS } };

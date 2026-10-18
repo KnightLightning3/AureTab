@@ -4,7 +4,7 @@ export class LocalDataStore extends DataStore {
   async load() {
     const { appData } = await chrome.storage.local.get('appData');
     if (appData) return validateData(appData);
-    const data = createDefaultData(); await this.save(data); return data;
+    const data = validateData(createDefaultData()); await this.save(data); return data;
   }
   async save(data) { await chrome.storage.local.set({ appData: validateData(data) }); }
   onExternalChange(callback) {

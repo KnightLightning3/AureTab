@@ -16,9 +16,7 @@
   <main class="workspace">
     <section class="search-section" aria-label="搜索">
       <div class="clock" aria-label="当前时间"><time id="clock-time">--:--</time><small id="clock-date" hidden></small></div>
-      <div class="search-row"><form id="search-form" class="search-box" role="search"><button id="engine" type="button" title="选择搜索引擎" aria-label="搜索引擎：Google" aria-haspopup="menu" aria-expanded="false" aria-controls="engine-menu"><img class="engine-icon" src="assets/icons/google.svg" alt="" aria-hidden="true"></button><input id="search-input" type="search" aria-label="搜索关键词" placeholder="搜索点什么，或探索新想法" autocomplete="off"><button id="image-search-open" class="search-submit" aria-label="上传图片识图" title="上传图片识图，也可直接拖入图片" type="button"><svg class="camera-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/camera.svg#camera"></use></svg></button><span class="drop-hint" aria-hidden="true">松开以 Google 识图</span></form><button id="minimal-toggle" aria-label="切换极简模式" aria-pressed="false" title="极简模式">◌</button></div>
-      <input id="image-search-input" type="file" accept="image/*" hidden>
-      <p class="search-caption"><span>拖入图片，探索更多</span></p>
+      <div class="search-row"><form id="search-form" class="search-box" role="search"><button id="engine" type="button" title="选择搜索引擎" aria-label="搜索引擎：Google" aria-haspopup="menu" aria-expanded="false" aria-controls="engine-menu"><img class="engine-icon" src="assets/icons/google.svg" alt="" aria-hidden="true"></button><input id="search-input" type="search" aria-label="搜索关键词" placeholder="搜索点什么，或探索新想法" autocomplete="off"><button id="image-search-open" class="search-submit" aria-label="打开图片搜索" title="打开图片搜索" type="button"><svg class="camera-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/camera.svg#camera"></use></svg></button><span class="drop-hint" aria-hidden="true">松开以 Google 识图</span></form><button id="minimal-toggle" aria-label="切换极简模式" aria-pressed="false" title="极简模式">◌</button></div>
     </section>
     <section class="collection" aria-label="我的站点">
       <aside id="sidebar" aria-label="站点分组"><nav id="groups"></nav><button id="add-group" class="subtle">＋ 新建分组</button></aside>
@@ -46,11 +44,18 @@
       <label class="checkbox"><input data-pref="showLabels" type="checkbox" checked> 显示图标名称</label>
       <label>壁纸模糊<select data-setting="blur"><option value="0">清晰 · 0px</option><option value="4">轻柔 · 4px</option><option value="8">柔和 · 8px</option><option value="16">朦胧 · 16px</option></select></label>
       <label>壁纸遮罩<select data-setting="overlay"><option value="0">0%</option><option value="15">15%</option><option value="30">30%</option><option value="45">45%</option></select></label>
+      <p class="section-label">壁纸</p>
+      <div class="wallpaper-choices" role="radiogroup" aria-label="壁纸选择">
+        <button type="button" class="wallpaper-choice" data-wallpaper="none" role="radio"><span class="wallpaper-thumb thumb-none"></span><span class="wallpaper-name">无</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="default-1" role="radio"><img class="wallpaper-thumb" src="assets/wallpapers/default-1.svg" alt=""><span class="wallpaper-name">山间晨雾</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="default-2" role="radio"><img class="wallpaper-thumb" src="assets/wallpapers/default-2.svg" alt=""><span class="wallpaper-name">黄昏暖阳</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="custom" role="radio"><span class="wallpaper-thumb thumb-custom">＋</span><span class="wallpaper-name">本地图片</span></button>
+      </div>
+      <input id="wallpaper-input" type="file" accept="image/*" hidden>
       <p class="section-label">时钟</p>
       <label class="checkbox"><input data-pref="clock24" type="checkbox" checked> 24 小时制</label>
       <label class="checkbox"><input data-pref="showDate" type="checkbox" checked> 显示日期</label>
       <label>日期格式<select data-pref="dateFormat"><option value="yyyy-mm-dd">2026-10-17</option><option value="mm-dd">10-17</option></select></label>
-      <label class="file-label">本地壁纸<input id="wallpaper-input" type="file" accept="image/*"></label><button id="wallpaper-clear" class="subtle">恢复默认背景</button>
       <p class="section-label">数据备份</p><label class="checkbox"><input id="include-assets" type="checkbox" checked> 导出时包含壁纸与自定义图标</label><div class="button-row"><button id="export-data">导出 JSON</button><button id="import-open">导入 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
       <p class="section-label">即将推出</p><label class="unavailable">跨设备同步 <input type="checkbox" disabled></label><label class="unavailable">每日壁纸 <input type="checkbox" disabled></label><p class="help">图片保存在此设备。备份文件可能包含私人站点与图片，请妥善保管。</p>
     </div>

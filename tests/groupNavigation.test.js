@@ -42,13 +42,13 @@ test('line-mode wheel detents use the same two-step threshold', () => {
   assert.equal(step(0, 16, { rawDelta: 1, deltaMode: 1 }).switchDirection, 0);
   assert.equal(step(100, 16, { rawDelta: 1, deltaMode: 1 }).switchDirection, 1);
 });
-test('events during 500ms cooldown are ignored; subsequent inertia requires 150ms idle', () => {
+test('events during 500ms cooldown are ignored, then re-arm without a further idle gap', () => {
   const step = gesture(); step(0, 100); assert.equal(step(50, 100).switchDirection, 1);
-  for (let time = 100; time <= 800; time += 100) {
+  for (let time = 100; time <= 500; time += 100) {
     const r = step(time, 100); assert.equal(r.switchDirection, 0); assert.equal(r.pull, 0);
   }
-  assert.equal(step(1000, 100).switchDirection, 0);
-  assert.equal(step(1100, 100).switchDirection, 1);
+  assert.equal(step(600, 100).switchDirection, 0);
+  assert.equal(step(700, 100).switchDirection, 1);
 });
 test('first group upwards and last group downwards bounce without hint or wrapping', () => {
   for (const [index, delta] of [[0, -30], [2, 30]]) {

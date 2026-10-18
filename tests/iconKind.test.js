@@ -171,6 +171,36 @@ test('downloads and classifications deduplicate; failures retry and failed persi
   assert.equal(downloads, 3);
 });
 
+test('cross-origin favicons load as plain images instead of fetch and default to a glyph', async t => {
+  let fetched = 0, classified = 0;
+  mockGlobal(t, 'fetch', async () => { fetched++; throw new Error('must not fetch cross-origin'); });
+  mockGlobal(t, 'createImageBitmap', async () => { classified++; throw new Error('must not classify remote images'); });
+  let width = 128, height = 128;
+  mockGlobal(t, 'document', { createElement(name) {
+    assert.equal(name, 'img');
+    const image = { alt: '', draggable: false, get naturalWidth() { return width; }, get naturalHeight() { return height; }, cloneNode() { return { src: this.src, alt: this.alt, draggable: this.draggable }; } };
+    Object.defineProperty(image, 'src', { get() { return this._src; }, set(value) { this._src = value; queueMicrotask(() => this.onload?.()); } });
+    return image;
+  } });
+  const store = memoryStore();
+  const record = await loadClassifiedIcon('https://example.com/favicon.ico', store);
+  assert.equal(record.kind, 'glyph'); assert.equal(record.image.src, 'https://example.com/favicon.ico');
+  assert.equal(fetched, 0); assert.equal(classified, 0);
+
+  const container = () => ({ dataset: {}, children: [], replaceChildren(child) { this.children = [child]; } });
+  const auto = container(), color = container();
+  assert.deepEqual(await Promise.all([
+    showClassifiedIcon(auto, 'https://example.com/favicon.ico', { store }),
+    showClassifiedIcon(color, 'https://example.com/favicon.ico', { store, manual: 'color' })
+  ]), [true, true]);
+  assert.equal(auto.dataset.kind, 'glyph'); assert.equal(color.dataset.kind, 'filled');
+  assert.notEqual(auto.children[0], color.children[0]);
+
+  // Tiny default placeholders (e.g. a 16px globe) are rejected so the next source is tried.
+  width = height = 16;
+  await assert.rejects(loadClassifiedIcon('https://example.com/small.ico', memoryStore()), /图标过小/);
+});
+
 test('display reuses decoded templates for detached containers, retries decode and releases URLs on page exit', async t => {
   let decodes = 0, created = 0, failDecode = false;
   const revoked = [], handlers = new Map();
