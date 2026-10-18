@@ -14,15 +14,19 @@ export function renderGroups(groups, active, onSelect) {
     const button = existing.get(group.id) ?? document.createElement('button');
     button.className = `group-button${group.id === active ? ' active' : ''}`;
     button.dataset.group = group.id; button.draggable = true; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
-    button.replaceChildren();
-    const icon = groupIconElement(group.icon); if (icon) button.append(icon);
-    const label = document.createElement('span'); label.className = 'group-name'; label.textContent = group.name;
-    button.append(label);
+    // Rebuild only when the icon or label actually changed; a selection change is just a class toggle.
+    if (button.dataset.icon !== (group.icon ?? '') || button.querySelector('.group-name')?.textContent !== group.name) {
+      button.replaceChildren();
+      const icon = groupIconElement(group.icon); if (icon) button.append(icon);
+      const label = document.createElement('span'); label.className = 'group-name'; label.textContent = group.name;
+      button.append(label); button.dataset.icon = group.icon ?? '';
+    }
     button.onclick = () => onSelect(group.id); return button;
   });
   // Preserve focus on group buttons when selection changes.
   for (let i = 0; i < buttons.length; i++) if (nav.children[i] !== buttons[i]) nav.insertBefore(buttons[i], nav.children[i] ?? null);
-  for (const button of [...nav.children]) if (!buttons.includes(button)) button.remove();
+  const live = new Set(buttons);
+  for (const button of [...nav.children]) if (!live.has(button)) button.remove();
 }
 export function renderGrid(group, store, onAdd) {
   const root = document.querySelector('#grid');
@@ -31,12 +35,12 @@ export function renderGrid(group, store, onAdd) {
   const cached = groupViews.get(key);
   if (cached?.signature === signature) {
     if (root.dataset.group !== key || root.firstChild !== cached.nodes[0]) root.replaceChildren(...cached.nodes);
-    root.dataset.group = key; return;
+    if (root.dataset.group !== key) root.dataset.group = key; return;
   }
   const grid = document.createDocumentFragment();
   const commit = () => {
     const nodes = [...grid.childNodes]; groupViews.set(key, { signature, nodes });
-    root.replaceChildren(...nodes); root.dataset.group = key;
+    root.replaceChildren(...nodes); if (root.dataset.group !== key) root.dataset.group = key;
   };
   if (!group?.sites.length) { const empty = document.createElement('div'); empty.className = 'empty-state'; const button = document.createElement('button'); button.textContent = '＋ 添加第一个图标'; button.onclick = onAdd; empty.append(button); grid.append(empty); commit(); return; }
   for (const site of group.sites) {
@@ -48,11 +52,15 @@ export function renderGrid(group, store, onAdd) {
     if (!site.useText) {
       const options = { manual: site.iconStyle, store };
       const load = async () => {
-        if (site.iconId) {
-          const blob = await store.get(site.iconId);
-          if (blob) return showClassifiedIcon(icon, site.iconId, { ...options, blob });
+        // Every source is best-effort: a missing blob, unreadable bundled file or
+        // <32px image must fall through to the next source, not end the chain.
+        try {
+          // The classifier reads icon:<id> from the store and caches the result.
+          if (site.iconId && await showClassifiedIcon(icon, site.iconId, options)) return;
+        } catch {}
+        if (localIcon) {
+          try { if (await showClassifiedIcon(icon, localIcon, options)) return; } catch {}
         }
-        if (localIcon) return showClassifiedIcon(icon, localIcon, options);
         for (const source of faviconSources(site.url, iconStyle)) {
           try { if (await showClassifiedIcon(icon, source, options)) return; } catch {}
         }

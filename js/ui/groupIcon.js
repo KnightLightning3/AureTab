@@ -31,7 +31,11 @@ export function mountGroupIconPicker(container, form, selected = DEFAULT_GROUP_I
   const name = form.elements.name;
   const setChoice = choice => {
     hidden.value = choice;
-    choices.querySelectorAll('.group-icon-choice').forEach(button => { const active = button.dataset.choice === choice; button.classList.toggle('selected', active); button.setAttribute('aria-checked', String(active)); });
+    choices.querySelectorAll('.group-icon-choice').forEach(button => {
+      const active = button.dataset.choice === choice;
+      button.classList.toggle('selected', active); button.setAttribute('aria-checked', String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
   };
   for (const icon of GROUP_ICONS) {
     const button = document.createElement('button'); button.type = 'button'; button.className = 'icon-choice group-icon-choice'; button.dataset.choice = icon.id; button.setAttribute('role', 'radio');
@@ -40,6 +44,15 @@ export function mountGroupIconPicker(container, form, selected = DEFAULT_GROUP_I
     const caption = document.createElement('span'); caption.className = 'choice-label'; caption.textContent = icon.label;
     button.append(caption); button.onclick = () => { setChoice(icon.id); if (name) name.value = icon.label; }; choices.append(button);
   }
+  choices.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+    const buttons = [...choices.querySelectorAll('.group-icon-choice')]; if (!buttons.length) return;
+    const index = buttons.indexOf(document.activeElement); if (index < 0) return;
+    event.preventDefault();
+    const forward = event.key === 'ArrowRight' || event.key === 'ArrowDown';
+    const next = buttons[(index + (forward ? 1 : -1) + buttons.length) % buttons.length];
+    next.focus(); next.click();
+  });
   setChoice(GROUP_ICON_IDS.includes(selected) ? selected : DEFAULT_GROUP_ICON);
   field.append(label, choices, hidden); container.append(field);
   return { setChoice };

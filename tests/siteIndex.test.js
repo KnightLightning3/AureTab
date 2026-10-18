@@ -44,7 +44,10 @@ test('every local site icon exists, is an image, and no bundled icon is orphaned
     const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
     assert.ok(png || jpeg || ico || webp, 'invalid image: ' + site.icon);
   }
-  for (const icon of readdirSync(iconDir)) assert.ok(referenced.has(icon), 'orphaned icon: ' + icon);
+  for (const icon of readdirSync(iconDir)) {
+    if (!/^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico)$/i.test(icon)) continue; // ignore .DS_Store etc.
+    assert.ok(referenced.has(icon), 'orphaned icon: ' + icon);
+  }
 });
 
 test('search matches Chinese aliases, pinyin, and English names case-insensitively', () => {

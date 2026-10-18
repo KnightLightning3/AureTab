@@ -10,7 +10,11 @@ export function applySettings(data, prefs) {
   document.querySelectorAll('[data-setting]').forEach(select => { select.value = select.dataset.setting === 'layout' ? prefs.layout : data.settings[select.dataset.setting]; });
   document.querySelectorAll('[data-pref]').forEach(input => { const key = input.dataset.pref; if (input.type === 'checkbox') input.checked = Boolean(prefs[key]); else input.value = prefs[key]; });
   document.querySelectorAll('[data-theme-choice]').forEach(button => { const active = button.dataset.themeChoice === prefs.theme; button.classList.toggle('active', active); button.setAttribute('aria-checked', String(active)); button.tabIndex = active ? 0 : -1; });
-  document.querySelectorAll('[data-wallpaper]').forEach(button => { const active = button.dataset.wallpaper === prefs.wallpaper; button.classList.toggle('active', active); button.setAttribute('aria-checked', String(active)); });
+  document.querySelectorAll('[data-wallpaper]').forEach(button => {
+    const active = button.dataset.wallpaper === prefs.wallpaper;
+    button.classList.toggle('active', active); button.setAttribute('aria-checked', String(active));
+    button.tabIndex = active ? 0 : -1;
+  });
   const dateFormat = document.querySelector('[data-pref="dateFormat"]'); if (dateFormat) dateFormat.disabled = !prefs.showDate;
   updateClock(prefs);
 }

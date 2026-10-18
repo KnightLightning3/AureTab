@@ -30,7 +30,11 @@ export function mountIconPicker(container, form, site, options = {}) {
   const sampleText = () => Array.from(form.elements.text?.value.trim() || form.elements.title?.value.trim() || 'A').slice(0, 2).join('');
   const setChoice = choice => {
     selected = choice; hidden.value = choice;
-    grid.querySelectorAll('.icon-choice').forEach(button => { const active = button.dataset.choice === choice; button.classList.toggle('selected', active); button.setAttribute('aria-checked', String(active)); });
+    grid.querySelectorAll('.icon-choice').forEach(button => {
+      const active = button.dataset.choice === choice;
+      button.classList.toggle('selected', active); button.setAttribute('aria-checked', String(active));
+      button.tabIndex = active ? 0 : -1;
+    });
   };
   const loadPreview = (preview, sources) => {
     let index = 0;
@@ -48,23 +52,35 @@ export function mountIconPicker(container, form, site, options = {}) {
   const build = previews => {
     grid.replaceChildren();
     const choices = site?.iconId ? ['custom', 'auto', 'color', 'glyph', 'text'] : ['auto', 'color', 'glyph', 'text'];
+    // One IDB read per rebuild, not one per preview style.
+    const customBlob = site?.iconId && !localIcon ? assetStore.get(site.iconId) : null;
     for (const choice of choices) {
       const button = document.createElement('button'); button.type = 'button'; button.className = 'icon-choice'; button.dataset.choice = choice; button.setAttribute('role', 'radio');
       const preview = document.createElement('span'); preview.className = `choice-preview ${choice === 'text' ? 'text' : choice === 'glyph' ? 'glyph' : 'color'}`;
       preview.textContent = sampleText();
       if (choice === 'color' || choice === 'glyph') preview.dataset.manual = choice;
-      if (choice === 'text') preview.textContent = sampleText();
-      else if (site?.iconId && !localIcon) {
-        preview.textContent = '自';
-        assetStore.get(site.iconId).then(blob => blob && showClassifiedIcon(preview, site.iconId, { blob, manual: choice === 'custom' ? site.iconStyle : preview.dataset.manual })).catch(() => {});
+      if (choice !== 'text') {
+        if (customBlob) {
+          preview.textContent = '自';
+          customBlob.then(blob => blob && showClassifiedIcon(preview, site.iconId, { blob, manual: choice === 'custom' ? site.iconStyle : preview.dataset.manual })).catch(() => {});
+        }
+        else if (['auto', 'color', 'glyph'].includes(choice) && localIcon && openLocalPreview(preview, localIcon)) {}
+        else { const sources = previews?.[choice]; if (sources?.length) loadPreview(preview, sources); else preview.textContent = '?'; }
       }
-      else if (['auto', 'color', 'glyph'].includes(choice) && localIcon && openLocalPreview(preview, localIcon)) {}
-      else { const sources = previews?.[choice]; if (sources?.length) loadPreview(preview, sources); else preview.textContent = '?'; }
       const label = document.createElement('span'); label.className = 'choice-label'; label.textContent = LABELS[choice];
       button.append(preview, label); button.onclick = () => setChoice(choice); grid.append(button);
     }
     setChoice(selected);
   };
+  grid.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+    const buttons = [...grid.querySelectorAll('.icon-choice')]; if (!buttons.length) return;
+    const index = buttons.indexOf(document.activeElement); if (index < 0) return;
+    event.preventDefault();
+    const forward = event.key === 'ArrowRight' || event.key === 'ArrowDown';
+    const next = buttons[(index + (forward ? 1 : -1) + buttons.length) % buttons.length];
+    next.focus(); next.click();
+  });
   const setLocal = (file, domain = localHost) => {
     localIcon = file || ''; localHost = localIcon ? domain : '';
     localFile.value = localIcon; localDomain.value = localHost;

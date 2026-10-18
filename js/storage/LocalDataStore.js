@@ -9,9 +9,13 @@ export class LocalDataStore extends DataStore {
   async save(data) { await chrome.storage.local.set({ appData: validateData(data) }); }
   onExternalChange(callback) {
     const listener = (changes, area) => {
-      if (area === 'local' && changes.appData?.newValue) {
-        try { callback(validateData(changes.appData.newValue)); } catch (error) { console.error(error); }
+      if (area !== 'local' || !changes.appData) return;
+      if (changes.appData.newValue === undefined) {
+        // Storage was cleared: reload defaults instead of showing stale data.
+        this.load().then(callback).catch(console.error);
+        return;
       }
+      try { callback(validateData(changes.appData.newValue)); } catch (error) { console.error(error); }
     };
     chrome.storage.onChanged.addListener(listener);
     return () => chrome.storage.onChanged.removeListener(listener);

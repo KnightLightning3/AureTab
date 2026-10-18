@@ -35,6 +35,24 @@ test('URI comments and plain image URLs are supported; invalid sources are rejec
   }
   assert.throws(() => validateImage(new Blob([], { type: 'image/png' })), /为空/);
 });
+test('a malformed uri-list never rejects an otherwise resolvable image source', t => {
+  globalMock(t, 'DOMParser', class {
+    parseFromString() { return { querySelector: () => ({ getAttribute: () => 'https://cdn.example.com/photo.png' }) }; }
+  });
+  assert.equal(captureImageDrop(drop({ 'text/html': '<img>', 'text/uri-list': 'not a url' })).url, 'https://cdn.example.com/photo.png');
+  globalMock(t, 'DOMParser', class {
+    parseFromString() { return { querySelector: () => ({ getAttribute: () => '/photo.png' }) }; }
+  });
+  assert.equal(captureImageDrop(drop({ 'text/html': '<img>', 'text/uri-list': 'https://example.com/page' })).url, 'https://example.com/photo.png');
+});
+test('private, credential-bearing and non-raster image sources are rejected', async () => {
+  for (const url of ['http://127.0.0.1/a.png', 'http://10.0.0.2/a.png', 'http://169.254.1.1/a.png',
+    'http://192.168.1.10/a.png', 'http://172.20.0.1/a.png', 'http://[::1]/a.png', 'http://localhost/a.png']) {
+    await assert.rejects(imageFromURL(url), /内网/);
+  }
+  await assert.rejects(imageFromURL('http://user:pass@example.com/a.png'), /账号/);
+  assert.throws(() => validateImage(new Blob(['x'], { type: 'image/svg+xml' })), /仅支持图片/);
+});
 test('URL input reads image streams and normalizes MIME, without sending credentials', async t => {
   t.mock.method(globalThis, 'fetch', async (url, options) => {
     assert.equal(url, 'https://example.com/image'); assert.equal(options.credentials, 'omit'); assert.ok(options.signal);

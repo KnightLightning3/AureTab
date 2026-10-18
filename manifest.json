@@ -3,6 +3,7 @@
   "name": "极简新标签页 · Easy Tab",
   "version": "0.1.0",
   "description": "轻量、离线优先的新标签页：搜索、分组站点、本地壁纸与数据备份。",
+  "minimum_chrome_version": "103",
   "permissions": ["storage", "favicon"],
   "chrome_url_overrides": { "newtab": "newtab.html" },
   "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'" }

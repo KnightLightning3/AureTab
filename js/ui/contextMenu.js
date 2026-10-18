@@ -1,8 +1,10 @@
 export function bindContextMenu(actions) {
   const menu = document.querySelector('#context-menu'); const close = () => { menu.hidden = true; };
+  let returnFocus;
   document.addEventListener('contextmenu', event => {
     if (event.target.closest('input,textarea,[contenteditable="true"]')) { close(); return; }
     event.preventDefault(); close();
+    returnFocus = event.target instanceof Element ? event.target.closest('a[href],button,[data-site],[data-group],#grid,.sites-panel') : null;
     const site = event.target.closest('[data-site]'); const group = event.target.closest('[data-group]');
     const sizes = [['1x1', '1 × 1'], ['2x1', '2 × 1 横向'], ['1x2', '1 × 2 纵向'], ['2x2', '2 × 2']];
     const options = site ? [
@@ -26,7 +28,11 @@ export function bindContextMenu(actions) {
   });
   document.addEventListener('pointerdown', event => { if (!menu.contains(event.target)) close(); });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') close();
+    if (event.key === 'Escape' && !menu.hidden) {
+      event.stopPropagation(); close();
+      if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
+      return;
+    }
     if (!menu.hidden && ['ArrowDown', 'ArrowUp'].includes(event.key)) { event.preventDefault(); const buttons = [...menu.querySelectorAll('button')]; const offset = event.key === 'ArrowDown' ? 1 : -1; buttons[(buttons.indexOf(document.activeElement) + offset + buttons.length) % buttons.length].focus(); }
   });
   document.addEventListener('scroll', close, true); window.addEventListener('resize', close);

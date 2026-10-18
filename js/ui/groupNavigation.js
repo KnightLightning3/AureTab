@@ -61,16 +61,23 @@ export function bindGroupWheel(container, getGroups, getActive, select) {
   const resetFeedback = () => {
     grid.style.transform = ''; grid.classList.remove('wheel-pulling'); hint.hidden = true;
   };
-  const measure = () => {
+  let measureFrame = 0;
+  const applyMeasure = () => {
+    measureFrame = 0;
     const available = Math.max(0, Math.min(426, innerHeight - viewport.getBoundingClientRect().top - 24));
     const style = getComputedStyle(grid);
     const row = parseFloat(style.gridAutoRows) + parseFloat(style.rowGap);
     const height = row > 0 && available >= row * 1.5
       ? Math.floor((available - row / 2) / row) * row + row / 2 : available;
-    viewport.style.maxHeight = `${height}px`;
-    viewport.style.height = `${height}px`;
-    sidebar.style.maxHeight = `${height}px`;
+    const value = `${height}px`;
+    if (viewport.style.maxHeight === value) return;
+    viewport.style.maxHeight = value; viewport.style.height = value; sidebar.style.maxHeight = value;
   };
+  // Coalesce resize/observer bursts into one layout read+write per frame.
+  const schedule = typeof globalThis.requestAnimationFrame === 'function'
+    ? callback => globalThis.requestAnimationFrame(callback)
+    : callback => setTimeout(callback, 0);
+  const measure = () => { if (!measureFrame) measureFrame = schedule(applyMeasure) || 1; };
   window.addEventListener('resize', measure);
   const observer = new ResizeObserver(measure);
   observer.observe(container); observer.observe(document.querySelector('.search-section'));
@@ -89,8 +96,20 @@ export function bindGroupWheel(container, getGroups, getActive, select) {
     const rect = container.getBoundingClientRect();
     if (!inSidebar && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < Math.max(0, rect.top) || event.clientY > viewport.getBoundingClientRect().bottom)) return;
     const time = performance.now();
-    if (inSidebar || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
-      const delta = event.shiftKey ? event.deltaY || event.deltaX : Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (inSidebar) {
+      const delta = event.deltaY || event.deltaX;
+      if (!delta) return;
+      const range = (sidebar.scrollHeight || 0) - (sidebar.clientHeight || 0);
+      const atEdge = delta > 0
+        ? range - (sidebar.scrollTop || 0) <= WHEEL_RULES.edgeTolerance
+        : (sidebar.scrollTop || 0) <= WHEEL_RULES.edgeTolerance;
+      // Long group lists scroll natively; only edge overscroll switches groups.
+      if (range > WHEEL_RULES.edgeTolerance && !atEdge) return;
+      event.preventDefault(); directSwitch(Math.sign(delta), time);
+      return;
+    }
+    if (event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+      const delta = event.shiftKey ? event.deltaY || event.deltaX : event.deltaX;
       if (delta) { event.preventDefault(); directSwitch(Math.sign(delta), time); }
       return;
     }
@@ -115,11 +134,14 @@ export function bindGroupWheel(container, getGroups, getActive, select) {
     grid.classList.toggle('wheel-pulling', Boolean(result.pull));
     grid.style.transform = result.pull && !reducedMotion() ? `translateY(${result.pull}px)` : '';
     const next = groups[index + result.hintDirection];
-    hint.hidden = !result.hintDirection || !next;
-    if (!hint.hidden) {
-      hint.dataset.edge = result.hintDirection > 0 ? 'bottom' : 'top';
-      hint.textContent = `继续滚动切换到「${next.name}」`;
+    const showHint = Boolean(result.hintDirection) && Boolean(next);
+    if (showHint) {
+      const edge = result.hintDirection > 0 ? 'bottom' : 'top';
+      const text = `继续滚动切换到「${next.name}」`;
+      if (hint.dataset.edge !== edge) hint.dataset.edge = edge;
+      if (hint.textContent !== text) hint.textContent = text;
     }
+    if (hint.hidden !== !showHint) hint.hidden = !showHint;
   }, { passive: false, capture: true });
   // Clicks, import and group edits can also replace the active view.
   const changes = new MutationObserver(() => { resetFeedback(); state = { ...state, origin: null }; measure(); });

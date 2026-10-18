@@ -1,11 +1,11 @@
 body{background:radial-gradient(ellipse at 80% 10%,#e1e9d7 0,transparent 55%),radial-gradient(ellipse at 8% 85%,#e5e8db 0,transparent 50%),#f2f4ed}
-#wallpaper,#shade{position:fixed;inset:0;pointer-events:none;z-index:-1}#wallpaper{background-size:cover;background-position:center;opacity:0;transition:opacity .5s}#wallpaper.loaded{opacity:1}#shade{background:#fff;opacity:0}
+#wallpaper,#shade{position:fixed;inset:0;pointer-events:none;z-index:-1}#wallpaper{inset:-32px;background-size:cover;background-position:center;opacity:0;transition:opacity .5s}#wallpaper.loaded{opacity:1}#shade{background:#fff;opacity:0}
 body[data-blur="0"] #wallpaper{filter:blur(0)}body[data-blur="4"] #wallpaper{filter:blur(4px)}body[data-blur="8"] #wallpaper{filter:blur(8px)}body[data-blur="16"] #wallpaper{filter:blur(16px)}
 body[data-overlay="0"] #shade{opacity:0}body[data-overlay="15"] #shade{opacity:.15}body[data-overlay="30"] #shade{opacity:.3}body[data-overlay="45"] #shade{opacity:.45}
 body[data-radius="0"]{--radius:0px}body[data-radius="8"]{--radius:8px}body[data-radius="16"]{--radius:16px}body[data-radius="50"]{--radius:50%}
 @media(max-width:767px){body[data-layout="center"] .search-section{text-align:center;margin-top:70px}}
 body.minimal .collection,body.minimal .topbar,body.minimal footer,body.minimal .search-caption{display:none}
-body.minimal .workspace{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0 36px}
+body.minimal .workspace{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:0 36px}
 body.minimal .search-section{margin:0;width:100%}
 @media(max-width:767px){body.minimal .workspace{padding:0 22px}}
 @keyframes fade-in{from{opacity:0}to{opacity:1}}.collection{animation:fade-in .2s}

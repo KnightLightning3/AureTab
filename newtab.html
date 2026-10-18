@@ -25,9 +25,9 @@
   </main>
   <div id="context-menu" role="menu" hidden></div>
   <div id="engine-menu" role="menu" aria-label="选择搜索引擎" hidden></div>
-  <dialog id="editor-dialog"><form id="editor-form"><div class="dialog-heading"><h2 id="editor-title">添加图标</h2><button type="button" data-close aria-label="关闭">×</button></div><div id="editor-fields"></div><div class="dialog-actions"><button type="button" data-close>取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
+  <dialog id="editor-dialog" aria-labelledby="editor-title"><form id="editor-form"><div class="dialog-heading"><h2 id="editor-title">添加图标</h2><button type="button" data-close aria-label="关闭">×</button></div><div id="editor-fields"></div><div class="dialog-actions"><button type="button" data-close>取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
   <div id="settings-backdrop" aria-hidden="true"></div>
-  <aside id="settings-panel" aria-labelledby="settings-title" aria-hidden="true" inert>
+  <aside id="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title" aria-hidden="true" inert>
     <div class="dialog-heading"><h2 id="settings-title">让空间更像你</h2><button id="settings-close" aria-label="关闭设置">×</button></div>
     <div class="settings-body">
       <p class="section-label">外观</p>
@@ -46,10 +46,10 @@
       <label>壁纸遮罩<select data-setting="overlay"><option value="0">0%</option><option value="15">15%</option><option value="30">30%</option><option value="45">45%</option></select></label>
       <p class="section-label">壁纸</p>
       <div class="wallpaper-choices" role="radiogroup" aria-label="壁纸选择">
-        <button type="button" class="wallpaper-choice" data-wallpaper="none" role="radio"><span class="wallpaper-thumb thumb-none"></span><span class="wallpaper-name">无</span></button>
-        <button type="button" class="wallpaper-choice" data-wallpaper="default-1" role="radio"><img class="wallpaper-thumb" src="assets/wallpapers/default-1.svg" alt=""><span class="wallpaper-name">山间晨雾</span></button>
-        <button type="button" class="wallpaper-choice" data-wallpaper="default-2" role="radio"><img class="wallpaper-thumb" src="assets/wallpapers/default-2.svg" alt=""><span class="wallpaper-name">黄昏暖阳</span></button>
-        <button type="button" class="wallpaper-choice" data-wallpaper="custom" role="radio"><span class="wallpaper-thumb thumb-custom">＋</span><span class="wallpaper-name">本地图片</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="none" role="radio" aria-checked="false"><span class="wallpaper-thumb thumb-none"></span><span class="wallpaper-name">无</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="default-1" role="radio" aria-checked="false"><img class="wallpaper-thumb" src="assets/wallpapers/default-1.svg" alt=""><span class="wallpaper-name">山间晨雾</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="default-2" role="radio" aria-checked="false"><img class="wallpaper-thumb" src="assets/wallpapers/default-2.svg" alt=""><span class="wallpaper-name">黄昏暖阳</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="custom" role="radio" aria-checked="false"><span class="wallpaper-thumb thumb-custom">＋</span><span class="wallpaper-name">本地图片</span></button>
       </div>
       <input id="wallpaper-input" type="file" accept="image/*" hidden>
       <p class="section-label">时钟</p>
@@ -60,8 +60,8 @@
       <p class="section-label">即将推出</p><label class="unavailable">跨设备同步 <input type="checkbox" disabled></label><label class="unavailable">每日壁纸 <input type="checkbox" disabled></label><p class="help">图片保存在此设备。备份文件可能包含私人站点与图片，请妥善保管。</p>
     </div>
   </aside>
-  <dialog id="import-dialog"><div class="dialog-heading"><h2>导入备份</h2><button data-close aria-label="关闭">×</button></div><p id="import-summary"></p><p class="help">覆盖将替换现有站点与设置；合并保留现有设置，把导入内容加入新分组。</p><div class="dialog-actions"><button id="import-merge">合并</button><button id="import-replace" class="primary">覆盖</button></div></dialog>
-  <dialog id="fallback-dialog"><div class="dialog-heading"><h2>继续图片搜索</h2><button data-close aria-label="关闭">×</button></div><p id="fallback-message">复制图片后，在打开的官方图搜页面粘贴；也可以保存图片后手动上传。</p><div class="dialog-actions"><button id="fallback-open">打开图搜页面</button><button id="fallback-download">保存图片</button><button id="fallback-copy" class="primary">复制图片并打开图搜</button></div></dialog>
+  <dialog id="import-dialog" aria-labelledby="import-title"><div class="dialog-heading"><h2 id="import-title">导入备份</h2><button data-close aria-label="关闭">×</button></div><p id="import-summary"></p><p class="help">覆盖将替换现有站点与设置；合并保留现有设置，把导入内容加入新分组。</p><div class="dialog-actions"><button id="import-merge">合并</button><button id="import-replace" class="primary">覆盖</button></div></dialog>
+  <dialog id="fallback-dialog" aria-labelledby="fallback-title"><div class="dialog-heading"><h2 id="fallback-title">继续图片搜索</h2><button data-close aria-label="关闭">×</button></div><p id="fallback-message">复制图片后，在打开的官方图搜页面粘贴；也可以保存图片后手动上传。</p><div class="dialog-actions"><button id="fallback-open">打开图搜页面</button><button id="fallback-download">保存图片</button><button id="fallback-copy" class="primary">复制图片并打开图搜</button></div></dialog>
   <div id="toast" role="status" aria-live="polite" hidden></div>
   <script type="module" src="js/main.js"></script>
 </body>

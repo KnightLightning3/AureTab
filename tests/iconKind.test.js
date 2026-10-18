@@ -201,6 +201,20 @@ test('cross-origin favicons load as plain images instead of fetch and default to
   await assert.rejects(loadClassifiedIcon('https://example.com/small.ico', memoryStore()), /图标过小/);
 });
 
+test('icon: sources read the asset store once instead of fetching', async t => {
+  const blob = new Blob(['custom']);
+  const store = { async get(key) { return key === 'icon:abc' ? blob : null; }, async put() {} };
+  mockGlobal(t, 'fetch', () => { throw new Error('must not fetch icon sources'); });
+  mockGlobal(t, 'createImageBitmap', async () => ({ width: 64, height: 64, close() {} }));
+  mockGlobal(t, 'document', { createElement(name) {
+    assert.equal(name, 'canvas');
+    return { getContext() { return { drawImage() {}, getImageData() { return { data: image(255) }; } }; } };
+  } });
+  const record = await loadClassifiedIcon('icon:abc', store);
+  assert.equal(record.kind, 'filled');
+  assert.equal(record.blob, blob);
+});
+
 test('display reuses decoded templates for detached containers, retries decode and releases URLs on page exit', async t => {
   let decodes = 0, created = 0, failDecode = false;
   const revoked = [], handlers = new Map();

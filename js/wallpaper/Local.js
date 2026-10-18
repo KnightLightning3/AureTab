@@ -19,7 +19,12 @@ export class LocalWallpaperProvider extends WallpaperProvider {
   async set(file) {
     const compressed = await compressImage(file);
     try { await assetStore.put('wallpaper', compressed, 4000); }
-    catch { await assetStore.put('wallpaper', file); }
+    catch (error) {
+      // Only a timed-out scaled write is worth retrying; quota errors would fail
+      // again with the larger original file.
+      if (error?.message !== '图片存储超时') throw error;
+      await assetStore.put('wallpaper', file);
+    }
   }
   async clear() { await assetStore.delete('wallpaper'); }
 }

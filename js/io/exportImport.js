@@ -5,15 +5,30 @@ export function dataURLToBlob(data) { const [header, encoded] = data.split(',');
 export function download(blob, filename) {
   const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = filename; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000);
 }
+/** Bounded concurrency keeps large exports from opening hundreds of transactions at once. */
+async function mapLimit(items, limit, task) {
+  const results = new Array(items.length); let index = 0;
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (index < items.length) { const current = index++; results[current] = await task(items[current]); }
+  }));
+  return results;
+}
 export async function buildBackup(data, prefs, store, includeAssets) {
   const copy = structuredClone(data); const assets = [];
-  const ids = new Set(copy.groups.flatMap(group => group.sites.map(site => site.iconId).filter(Boolean)));
+  const ids = new Set(copy.groups.flatMap(group => group.sites.map(site => site.iconId).filter(id => id && id !== 'wallpaper')));
   if (includeAssets) {
-    for (const id of ['wallpaper', ...ids]) { const blob = await store.get(id); if (blob) assets.push({ id, data: await blobToDataURL(blob) }); }
+    const read = await mapLimit(['wallpaper', ...ids], 4, async id => {
+      const blob = await store.get(id);
+      return blob ? { id, data: await blobToDataURL(blob) } : null;
+    });
+    for (const asset of read) if (asset) assets.push(asset);
   }
   const included = new Set(assets.map(asset => asset.id));
   for (const group of copy.groups) for (const site of group.sites) if (!included.has(site.iconId)) delete site.iconId;
-  return { version: 1, exportedAt: new Date().toISOString(), data: validateData(copy), prefs: structuredClone(prefs), assets };
+  const exportedPrefs = structuredClone(prefs);
+  // Without the blob, a "custom" wallpaper selection would import as a blank background.
+  if (!includeAssets && exportedPrefs.wallpaper === 'custom') exportedPrefs.wallpaper = 'none';
+  return { version: 1, exportedAt: new Date().toISOString(), data: validateData(copy), prefs: exportedPrefs, assets };
 }
 /** Renames every imported image/site/group ID, preventing collisions with existing data.
  * Asset IDs on replacement are also new: a failed metadata write cannot corrupt current images.
@@ -21,8 +36,11 @@ export async function buildBackup(data, prefs, store, includeAssets) {
 export function planImport(current, raw, mode) {
   if (!['merge', 'replace'].includes(mode)) throw new Error('未知导入方式');
   const backup = parseBackup(raw); const assets = []; const mapping = new Map();
+  // Never write asset payloads that no site in the backup references.
+  const referenced = new Set(backup.data.groups.flatMap(group => group.sites.map(site => site.iconId).filter(Boolean)));
   for (const asset of backup.assets) {
     if (asset.id === 'wallpaper') { if (mode === 'replace') assets.push(asset); continue; }
+    if (!referenced.has(asset.id)) continue;
     const id = `icon:${crypto.randomUUID()}`; mapping.set(asset.id, id); assets.push({ id, data: asset.data });
   }
   for (const group of backup.data.groups) {
@@ -30,5 +48,8 @@ export function planImport(current, raw, mode) {
     for (const site of group.sites) { if (mode === 'merge') site.id = crypto.randomUUID(); if (site.iconId) { if (mapping.has(site.iconId)) site.iconId = mapping.get(site.iconId); else delete site.iconId; } }
   }
   const data = mode === 'merge' ? { ...structuredClone(current), groups: [...structuredClone(current.groups), ...backup.data.groups] } : backup.data;
-  return { data: validateData(data), prefs: backup.prefs, assets };
+  const prefs = { ...backup.prefs };
+  // Legacy backups can select a custom wallpaper whose blob was not exported.
+  if (mode === 'replace' && prefs.wallpaper === 'custom' && !backup.assets.some(asset => asset.id === 'wallpaper')) prefs.wallpaper = 'none';
+  return { data: validateData(data), prefs, assets };
 }

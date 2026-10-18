@@ -45,21 +45,32 @@ function loadImageElement(source) {
 
 // Keep both in-flight and completed classifications for this store's session.
 // Store identity matters: previews/tests may use the same source in different stores.
+const CACHE_LIMIT = 500;
 const classifications = new WeakMap();
 export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
   let entries = classifications.get(store);
   if (!entries) classifications.set(store, entries = new Map());
   const key = `icon-cache:${source}`;
   let request = entries.get(key);
+  if (!request && entries.size >= CACHE_LIMIT) {
+    // Bound long-lived new-tab pages; an evicted promise stays valid for its caller.
+    entries.delete(entries.keys().next().value);
+  }
   if (!request) {
     request = (async () => {
       const cached = await store.get(key).catch(() => null);
       if (cached?.v === ICON_CLASSIFIER.v && ['filled', 'glyph', 'text'].includes(cached.kind) && cached.blob instanceof Blob) return cached;
-      const blob = suppliedBlob ?? cached?.blob;
+      let blob = suppliedBlob ?? cached?.blob;
       if (!blob && (/^https?:\/\//i.test(source) || /\/_favicon\//.test(source))) {
         // Cross-origin favicon pixels are unreadable (tainted canvas), and the
         // _favicon endpoint is image-only; load as an image without classifying.
         return { image: await loadImageElement(source), kind: 'glyph', v: ICON_CLASSIFIER.v };
+      }
+      // Custom uploads live in the asset store; read them directly instead of
+      // making every renderer fetch the blob first.
+      if (!blob && source.startsWith('icon:')) {
+        blob = await store.get(source).catch(() => null);
+        if (!blob) throw new Error('图标加载失败');
       }
       const fetched = blob ?? await fetch(source).then(response => {
         if (!response.ok) throw new Error('图标加载失败');

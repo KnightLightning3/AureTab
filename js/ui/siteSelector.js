@@ -83,7 +83,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize } = {})
     if (!dataLoaded) { hint.hidden = false; hint.textContent = '正在加载站点清单…'; return; }
     const query = search.value.trim();
     const list = query ? searchSites(sites, query, 24) : sites.filter(site => site.cat === activeCategory);
-    syncCategories(); grid.replaceChildren();
+    grid.replaceChildren();
     if (!list.length) { hint.hidden = false; hint.textContent = query ? '未找到，可直接输入网址' : '暂无站点'; }
     else hint.hidden = true;
     for (const site of list) {
@@ -105,8 +105,12 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize } = {})
   let searchTimer;
   search.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(render, 150); });
   search.addEventListener('keydown', event => {
-    if (event.key === 'Enter') { const first = grid.querySelector('.site-selector-tile'); if (first) { event.preventDefault(); first.click(); } }
-    else if (event.key === 'ArrowDown') { const first = grid.querySelector('.site-selector-tile'); if (first) { event.preventDefault(); first.focus(); } }
+    if (!['Enter', 'ArrowDown'].includes(event.key) || grid.hidden) return;
+    // Flush the 150ms debounce so Enter never selects a stale result.
+    clearTimeout(searchTimer); render();
+    const first = grid.querySelector('.site-selector-tile'); if (!first) return;
+    event.preventDefault();
+    if (event.key === 'Enter') first.click(); else first.focus();
   });
   nav.addEventListener('keydown', event => {
     if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;
@@ -135,6 +139,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize } = {})
   closeButton.onclick = close;
 
   loadData().then(data => {
+    if (closed) return;
     categories = Array.isArray(data.categories) ? data.categories : [];
     sites = Array.isArray(data.sites) ? data.sites : [];
     activeCategory = activeCategory || categories[0]?.id || sites[0]?.cat || '';
