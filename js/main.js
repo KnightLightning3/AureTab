@@ -156,18 +156,41 @@ async function chooseNewSite() {
 }
 function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
-/** Fades the page chrome, swaps the layout, then fades it back in. The fixed
- * wallpaper sits outside the faded layers, so it is never repainted or moved. */
-function fadeSwitch(apply) {
+const MINIMAL_FADE = 140, MINIMAL_MOVE = 280;
+let minimalSwitching = false;
+/** Minimal mode keeps the search content at its normal size. Its new position is
+ * reached with a FLIP translate; only the chrome that actually disappears fades. */
+function switchMinimal() {
+  if (minimalSwitching) return;
+  const toggle = () => applyPrefs(next => { next.minimal = !next.minimal; });
+  const content = $('.search-content');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!content || reduced) { toggle().catch(report); return; }
+  minimalSwitching = true;
   const body = document.body;
+  const entering = !prefs.minimal;
+  const before = content.getBoundingClientRect();
   body.classList.add('minimal-switch');
-  setTimeout(() => {
-    // apply() resolves after the new prefs are persisted and applied to the DOM.
-    Promise.resolve(apply()).catch(report).finally(() => {
-      // Two frames: the new layout must be committed before the fade-in starts.
-      requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('minimal-switch')));
-    });
-  }, 130);
+  const finish = () => toggle().then(() => {
+    const after = content.getBoundingClientRect();
+    const dx = before.left - after.left, dy = before.top - after.top;
+    let animation;
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+      animation = content.animate([
+        { transform: `translate(${dx}px, ${dy}px)` },
+        { transform: 'translate(0, 0)' }
+      ], { duration: MINIMAL_MOVE, easing: 'cubic-bezier(.22,.8,.2,1)' });
+    }
+    // Reveal returning chrome while the content is still moving.
+    requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('minimal-switch')));
+    return animation?.finished ?? Promise.resolve();
+  }).catch(error => {
+    body.classList.remove('minimal-switch'); throw error;
+  }).finally(() => { minimalSwitching = false; });
+  // Entering: let the chrome fade out before the layout swaps. Leaving: the chrome
+  // is already hidden, so the content can start moving immediately.
+  if (entering) setTimeout(() => finish().catch(report), MINIMAL_FADE);
+  else finish().catch(report);
 }
 function openFallback(blob, engine, reason) {
   fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; if (!$('#fallback-dialog').open) $('#fallback-dialog').showModal();
@@ -215,18 +238,7 @@ async function start() {
   $('#engine-menu').addEventListener('focusout', event => { const next = event.relatedTarget; if (!(next instanceof Element) || (!next.closest('#engine-menu') && next !== $('#engine'))) closeEngineMenu(); });
   document.addEventListener('pointerdown', event => { if (!(event.target instanceof Element)) return; if (!event.target.closest('#engine-menu') && !event.target.closest('#engine')) closeEngineMenu(); });
   document.addEventListener('scroll', closeEngineMenu, true); window.addEventListener('resize', closeEngineMenu);
-  on('#minimal-toggle', 'click', () => {
-    if (document.body.classList.contains('minimal-switch')) return;
-    let applied = false;
-    const apply = () => { if (applied) return Promise.resolve(); applied = true; return applyPrefs(next => { next.minimal = !next.minimal; }); };
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
-    // View transitions snapshot the whole page, so a fixed wallpaper is re-rasterized
-    // twice and visibly flickers. Fade only the UI and leave the backdrop untouched.
-    if (prefs.wallpaper !== 'none') { fadeSwitch(apply); return; }
-    if (!document.startViewTransition) { apply(); return; }
-    try { document.startViewTransition(apply); } catch { apply(); }
-    setTimeout(apply, 260);
-  });
+  on('#minimal-toggle', 'click', () => switchMinimal());
   on('#drawer-toggle', 'click', () => drawer(!document.body.classList.contains('drawer-open')));
   on('#drawer-backdrop', 'click', () => drawer(false));
   document.addEventListener('keydown', event => {

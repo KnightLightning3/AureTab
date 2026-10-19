@@ -74,8 +74,7 @@ body{height:100dvh;overflow:hidden}
     display:grid;grid-template-columns:var(--layout-columns);column-gap:var(--column-gap);
     width:100%;max-width:none;margin-inline:0;margin-top:0;text-align:left;
   }
-  .search-section>.clock,.search-section>.search-row,.search-section>.search-caption{grid-column:2;min-width:0}
-  .search-section>.search-caption{margin-bottom:0}
+  .search-content{grid-column:2;min-width:0}
   body[data-layout=center] .clock{justify-content:flex-start}
   .collection,body[data-layout=center] .collection{
     grid-template-columns:var(--layout-columns);column-gap:var(--column-gap);
@@ -84,7 +83,8 @@ body{height:100dvh;overflow:hidden}
   .sites-panel{grid-column:2;width:auto;max-width:none}
   .grid-viewport{scrollbar-width:none}
   .grid-viewport::-webkit-scrollbar{display:none}
-  /* Minimal mode has no sidebar, so the search row must span the full width. */
+  /* Minimal mode keeps the search content at its normal size; only its position changes. */
+  body.minimal .workspace{margin-inline:auto;padding-inline:0}
   body.minimal .search-section{grid-template-columns:minmax(0,1fr)}
-  body.minimal .search-section>.clock,body.minimal .search-section>.search-row,body.minimal .search-section>.search-caption{grid-column:1}
+  body.minimal .search-content{grid-column:1;width:calc(100% - var(--sidebar-width) - var(--column-gap));margin-inline:auto}
 }

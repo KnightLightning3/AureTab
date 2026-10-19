@@ -4,7 +4,7 @@ body[data-blur="0"] #wallpaper{filter:blur(0)}body[data-blur="4"] #wallpaper{fil
 body[data-overlay="0"] #shade{opacity:0}body[data-overlay="15"] #shade{opacity:.15}body[data-overlay="30"] #shade{opacity:.3}body[data-overlay="45"] #shade{opacity:.45}
 body[data-radius="0"]{--radius:0px}body[data-radius="8"]{--radius:8px}body[data-radius="16"]{--radius:16px}body[data-radius="50"]{--radius:50%}
 @media(max-width:767px){body[data-layout="center"] .search-section{text-align:center;margin-top:70px}}
-body.minimal .collection,body.minimal .topbar,body.minimal footer,body.minimal .search-caption{display:none}
+body.minimal .collection,body.minimal .topbar,body.minimal footer{display:none}
 body.minimal .workspace{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:0 36px}
 body.minimal .search-section{margin:0;width:100%}
 @media(max-width:767px){body.minimal .workspace{padding:0 22px}}
@@ -99,7 +99,7 @@ body[data-theme] input[type=checkbox]{background:none;accent-color:var(--accent)
 body[data-theme] .site-icon{background:var(--icon-bg);color:var(--icon-ink);border:1px solid var(--icon-border);box-shadow:var(--icon-shadow);backdrop-filter:blur(var(--icon-blur));-webkit-backdrop-filter:blur(var(--icon-blur))}
 body[data-theme] .site-title{font-weight:500;color:var(--ink)}
 body[data-theme] .clock time{font-weight:500}
-body[data-theme] .clock small,body[data-theme] .eyebrow,body[data-theme] .search-caption,body[data-theme] footer,body[data-theme] .help{font-weight:400;color:var(--muted)}
+body[data-theme] .clock small,body[data-theme] .eyebrow,body[data-theme] footer,body[data-theme] .help{font-weight:400;color:var(--muted)}
 body[data-theme] .empty-state{border-color:var(--empty-border);background:var(--empty-bg)}
 body[data-theme] .empty-state button{background:transparent;border:0;color:var(--muted)}
 body[data-theme] #context-menu{background:var(--menu-bg);border-color:var(--line);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));text-shadow:none}
