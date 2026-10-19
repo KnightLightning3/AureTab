@@ -2,13 +2,23 @@ name: Release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to publish or repair
+        required: true
+        default: v0.1
 permissions:
   contents: write
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -19,7 +29,7 @@ jobs:
           import assert from 'node:assert/strict';
           const manifest = JSON.parse(fs.readFileSync('manifest.json'));
           const pkg = JSON.parse(fs.readFileSync('package.json'));
-          assert.equal(`v${manifest.version}`, process.env.GITHUB_REF_NAME);
+          assert.equal(`v${manifest.version}`, process.env.RELEASE_TAG);
           assert.equal(pkg.version, manifest.version);
           JS
       - name: Check syntax and run tests
@@ -27,8 +37,14 @@ jobs:
           find js -name '*.js' -exec node --check {} \;
           npm test
       - name: Package extension
-        run: python3 scripts/package-extension.py --output "${RUNNER_TEMP}/AureTab-${GITHUB_REF_NAME}.zip"
+        run: python3 scripts/package-extension.py --output "${RUNNER_TEMP}/AureTab-${RELEASE_TAG}.zip"
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" "${RUNNER_TEMP}/AureTab-${GITHUB_REF_NAME}.zip" --verify-tag --title "AureTab · 简约标签页 ${GITHUB_REF_NAME}" --notes-file docs/releases/v0.1.md
+        run: |
+          notes="docs/releases/${RELEASE_TAG}.md"
+          title="AureTab · 简约标签页 ${RELEASE_TAG}"
+          gh release view "$RELEASE_TAG" >/dev/null 2>&1 ||
+            gh release create "$RELEASE_TAG" --verify-tag --title "$title" --notes-file "$notes"
+          gh release edit "$RELEASE_TAG" --title "$title" --notes-file "$notes"
+          gh release upload "$RELEASE_TAG" "${RUNNER_TEMP}/AureTab-${RELEASE_TAG}.zip" --clobber
