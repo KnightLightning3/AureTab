@@ -13,7 +13,8 @@ body.settings-open{overflow:hidden}
 body.settings-open #settings-panel{transform:none;visibility:visible;transition:transform .3s cubic-bezier(.32,.72,0,1),visibility 0s}
 body.settings-open #settings-backdrop{opacity:1;pointer-events:auto}
 /* Minimal switch: only the disappearing chrome fades; the search content moves. */
-body.minimal-switch .topbar,body.minimal-switch .collection{opacity:0;transition:opacity .14s ease}
+.topbar,.collection{transition:opacity var(--minimal-fade,60ms) ease}
+body.minimal-switch .topbar,body.minimal-switch .collection{opacity:0}
 .clock{--clock-size:64px;display:flex;align-items:baseline;gap:12px;margin:20px 0 32px}
 .clock small{font-size:max(12px,calc(var(--clock-size) / 4.236));font-weight:400;line-height:1.2;letter-spacing:2.5px;color:var(--muted);white-space:nowrap}
 .clock time{font-size:var(--clock-size);font-weight:500;line-height:1.06;letter-spacing:2px;font-variant-numeric:tabular-nums;white-space:nowrap}

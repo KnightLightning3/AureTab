@@ -156,10 +156,10 @@ async function chooseNewSite() {
 }
 function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
-const MINIMAL_FADE = 140, MINIMAL_MOVE = 280;
+const MINIMAL_FADE = 60, MINIMAL_MOVE = 280;
 let minimalSwitching = false;
 /** Minimal mode keeps the search content at its normal size. Its new position is
- * reached with a FLIP translate; only the chrome that actually disappears fades. */
+ * reached with a FLIP translate at the same time as the disappearing chrome fades. */
 function switchMinimal() {
   if (minimalSwitching) return;
   const toggle = () => applyPrefs(next => { next.minimal = !next.minimal; });
@@ -168,10 +168,32 @@ function switchMinimal() {
   if (!content || reduced) { toggle().catch(report); return; }
   minimalSwitching = true;
   const body = document.body;
+  body.style.setProperty('--minimal-fade', `${MINIMAL_FADE}ms`);
   const entering = !prefs.minimal;
   const before = content.getBoundingClientRect();
-  body.classList.add('minimal-switch');
+  // Capture the chrome before the layout swap so an entering fade can keep it
+  // visually in place after the minimal layout removes it from flow.
+  const chrome = [document.querySelector('.topbar'), document.querySelector('.collection')]
+    .filter(Boolean)
+    .map(element => ({ element, rect: element.getBoundingClientRect(), display: getComputedStyle(element).display, style: element.getAttribute('style') }));
+  const restore = () => {
+    for (const item of chrome) {
+      if (item.style === null) item.element.removeAttribute('style'); else item.element.setAttribute('style', item.style);
+    }
+  };
+  // Leaving: mark the returning chrome transparent before it becomes visible.
+  if (!entering) body.classList.add('minimal-switch');
   const finish = () => toggle().then(() => {
+    if (entering) {
+      // Keep the old chrome as a fading, out-of-flow overlay; the centered layout
+      // is already active, so both the fade and the move can start right now.
+      for (const { element, rect, display } of chrome) {
+        const current = element.getAttribute('style');
+        element.style.cssText = `${current ? current + ';' : ''}position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;display:${display};pointer-events:none;z-index:-1;`;
+      }
+      void body.offsetWidth; // Commit opacity 1 before the fade class is added.
+      body.classList.add('minimal-switch');
+    }
     const after = content.getBoundingClientRect();
     const dx = before.left - after.left, dy = before.top - after.top;
     let animation;
@@ -181,16 +203,15 @@ function switchMinimal() {
         { transform: 'translate(0, 0)' }
       ], { duration: MINIMAL_MOVE, easing: 'cubic-bezier(.22,.8,.2,1)' });
     }
-    // Reveal returning chrome while the content is still moving.
-    requestAnimationFrame(() => requestAnimationFrame(() => body.classList.remove('minimal-switch')));
+    const cleanup = () => { body.classList.remove('minimal-switch'); restore(); };
+    // Entering: keep the overlay until the fade-out finishes. Leaving: fade in now.
+    if (entering) setTimeout(cleanup, MINIMAL_FADE);
+    else requestAnimationFrame(cleanup);
     return animation?.finished ?? Promise.resolve();
   }).catch(error => {
-    body.classList.remove('minimal-switch'); throw error;
+    body.classList.remove('minimal-switch'); restore(); throw error;
   }).finally(() => { minimalSwitching = false; });
-  // Entering: let the chrome fade out before the layout swaps. Leaving: the chrome
-  // is already hidden, so the content can start moving immediately.
-  if (entering) setTimeout(() => finish().catch(report), MINIMAL_FADE);
-  else finish().catch(report);
+  finish().catch(report);
 }
 function openFallback(blob, engine, reason) {
   fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; if (!$('#fallback-dialog').open) $('#fallback-dialog').showModal();
