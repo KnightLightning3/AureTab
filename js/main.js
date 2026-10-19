@@ -160,7 +160,7 @@ async function addSite(id, prefill = {}, editor = editDialog) {
   };
   const values = await editor(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => {
     const originalHost = site ? new URL(site.url).hostname : '';
-    return mountIconPicker(container, form, site, { iconFile: site?.iconFile ?? prefill.iconFile, domain: originalHost || prefill.domain, browse: editor === editDialog });
+    return mountIconPicker(container, form, site, { iconFile: site?.iconFile ?? prefill.iconFile, iconWide: site?.iconWide ?? prefill.iconWide, domain: originalHost || prefill.domain, browse: editor === editDialog });
   }, validateSite);
   if (!values) return;
   const title = values.get('title').trim();
@@ -174,7 +174,7 @@ async function addSite(id, prefill = {}, editor = editDialog) {
   const localDomain = values.get('iconLocalDomain') || '';
   const localMatches = localFile && localDomain && (nextHost === localDomain || nextHost.endsWith('.' + localDomain));
   const next = { id: site?.id ?? crypto.randomUUID(), title, url, text, size: values.get('size') };
-  if (localMatches) next.iconFile = localFile;
+  if (localMatches) { next.iconFile = localFile; const localWide = values.get('iconWide') || ''; if (localWide) next.iconWide = localWide; }
   const file = values.get('icon'); let uploadedBlob;
   if (file?.size) { next.iconId = `icon:${crypto.randomUUID()}`; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; uploadedBlob = await compressImage(file, 256, { preserveAlpha: true }); await assetStore.put(next.iconId, uploadedBlob); }
   else if (choice !== 'text' && !localMatches && site?.iconId && values.get('removeIcon') !== 'remove') { next.iconId = site.iconId; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; else if (choice === 'custom' && site.iconStyle) next.iconStyle = site.iconStyle; }

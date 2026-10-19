@@ -1,5 +1,5 @@
 import { faviconSources } from './favicon.js';
-import { localIconURL } from './siteIcon.js';
+import { localIconURL, wideIconURL, isMonoIconFile } from './siteIcon.js';
 import { showClassifiedIcon } from './iconKind.js';
 import { groupIconElement } from '../ui/groupIcon.js';
 
@@ -152,8 +152,13 @@ export function renderGrid(group, store, onAdd) {
   for (const site of group.sites) {
     const link = document.createElement('a'); link.href = site.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.draggable = true; link.dataset.site = site.id; link.dataset.size = site.size; link.className = `site${{ '2x1': ' wide', '1x2': ' tall', '2x2': ' large' }[site.size] ?? ''}`; link.title = `${site.title}\n${site.url}`;
     const iconStyle = site.iconStyle === 'glyph' ? 'glyph' : 'color';
+    // A wide tile shows the wordmark when the site explicitly provides one.
+    const wideIcon = !site.useText && !site.iconId && site.size === '2x1'
+      ? (site.iconWide ? localIconURL(site.iconWide) : wideIconURL(site.iconFile)) : null;
     const localIcon = !site.useText ? localIconURL(site.iconFile) : null;
     const icon = document.createElement('span'); icon.className = `site-icon ${site.iconId || !site.useText ? iconStyle : 'text'}`; icon.textContent = site.text;
+    if (wideIcon) { icon.dataset.wide = 'true'; icon.dataset.mono = 'true'; }
+    else if (isMonoIconFile(site.iconFile)) icon.dataset.mono = 'true';
     const title = document.createElement('span'); title.className = 'site-title'; title.textContent = site.title; link.append(icon, title); grid.append(link);
     if (!site.useText) {
       const options = { manual: site.iconStyle, store };
@@ -165,6 +170,11 @@ export function renderGrid(group, store, onAdd) {
           // The classifier reads icon:<id> from the store and caches the result.
           if (site.iconId && await showClassifiedIcon(icon, site.iconId, options)) return;
         } catch {}
+        if (wideIcon) {
+          try { if (await showClassifiedIcon(icon, wideIcon, { manual: 'glyph', store })) return; } catch {}
+          delete icon.dataset.wide;
+          if (isMonoIconFile(site.iconFile)) icon.dataset.mono = 'true'; else delete icon.dataset.mono;
+        }
         if (localIcon) {
           try { if (await showClassifiedIcon(icon, localIcon, options)) return; } catch {}
         }

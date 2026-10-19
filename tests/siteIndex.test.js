@@ -31,23 +31,26 @@ test('site index is local, categorized, valid, and small enough', () => {
 test('every local site icon exists, is an image, and no bundled icon is orphaned', () => {
   const referenced = new Set();
   for (const site of data.sites) {
-    if (!site.icon) continue;
-    assert.match(site.icon, /^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico)$/i, site.domain);
-    assert.equal(referenced.has(site.icon), false, 'duplicate icon reference: ' + site.icon);
-    referenced.add(site.icon);
-    const iconFile = new URL(site.icon, iconDir);
-    // Bundled icons are packaged separately and may be absent from a source checkout.
-    if (!existsSync(iconFile)) continue;
-    const bytes = readFileSync(iconFile);
-    const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
-    const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
-    const ico = bytes.subarray(0, 4).equals(Buffer.from([0, 0, 1, 0]));
-    const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
-    assert.ok(png || jpeg || ico || webp, 'invalid image: ' + site.icon);
+    for (const icon of [site.icon, site.iconWide]) {
+      if (!icon) continue;
+      assert.match(icon, /^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico|svg)$/i, site.domain);
+      assert.equal(referenced.has(icon), false, 'duplicate icon reference: ' + icon);
+      referenced.add(icon);
+      const iconFile = new URL(icon, iconDir);
+      // Bundled icons are packaged separately and may be absent from a source checkout.
+      if (!existsSync(iconFile)) continue;
+      const bytes = readFileSync(iconFile);
+      const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
+      const ico = bytes.subarray(0, 4).equals(Buffer.from([0, 0, 1, 0]));
+      const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
+      const svg = /\.svg$/i.test(icon) && /<svg[\s>]/i.test(bytes.subarray(0, 512).toString());
+      assert.ok(png || jpeg || ico || webp || svg, 'invalid image: ' + icon);
+    }
   }
   if (!existsSync(iconDir)) return;
   for (const icon of readdirSync(iconDir)) {
-    if (!/^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico)$/i.test(icon)) continue; // ignore .DS_Store etc.
+    if (!/^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico|svg)$/i.test(icon)) continue; // ignore .DS_Store etc.
     assert.ok(referenced.has(icon), 'orphaned icon: ' + icon);
   }
 });

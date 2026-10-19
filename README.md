@@ -18,8 +18,9 @@
 - 自定义或清单外站点使用高清 favicon 链（Google 128 / DuckDuckGo / Chrome 本地接口），低于 32px 或全部失败时自动回退文字图标；清单内站点优先读随包图标。
 - 添加 / 编辑图标时可请求预览，直接选择带背景、镂空或文字图标；带背景模式填满圆角，镂空模式保留玻璃底板。
 - 点击“添加图标”直接打开“从常用站点选择”：左侧顶部固定“自定义图标”，可选择站点或进入手动 / 自定义上传流程；10 类、162 条本地站点，顶部搜索最多 24 条，窄窗分类变为横向标签。
-- 选择器图标直接读取 assets/site-icons 下的本地文件（发布包中 154/162 有本地图标，其余名称首字占位；源码检出未包含该目录），不请求远程 favicon，也不打开网页；选中的站点会把本地图标文件名写入站点数据，网格同样优先读取它。
-- sites.json 的 icon 字段保存本地文件名；首次打开选择器才加载清单与选择器模块，新标签页首屏不加载。只有用户主动点“请求图标”时才发起远程预览。
+- 选择器图标直接读取 assets/site-icons 下的本地文件（发布包中 155/162 有本地图标，其中 30 个品牌为已入库的 LobeHub SVG，其余为单独打包的 favicon；未入库文件缺失时显示名称首字），不请求远程 favicon，也不打开网页；选中的站点会把本地图标文件名写入站点数据，网格同样优先读取它。
+- sites.json 的 icon 字段保存本地文件名；带横版文字标识的品牌另有 iconWide。首次打开选择器才加载清单与选择器模块，新标签页首屏不加载。只有用户主动点“请求图标”时才发起远程预览。
+- 横向（2×1）图标优先显示 iconWide 的横版文字标识（如 GitHub、Bing、Claude、Gemini）；没有文字标识的品牌在横向时仍显示原图标。现有旧数据通过本地文件名映射自动获得新 SVG 与横版标识。
 - 自定义右键菜单与边缘防溢出；输入框保留原生菜单。
 - 本地壁纸按原图存入 IndexedDB，不做缩放或重编码；设置面板建议选择小于 20MB 的图片。先呈现默认背景再淡入大图。
 - 固定模糊、遮罩、圆角、两种版心预设、五套可点选全局色彩主题（暗夜极光 / 纯粹极简白 / 极简玻璃白 / 深邃蓝 / 温润米咖）；窄窗分组抽屉。
@@ -33,15 +34,35 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 100ms 骨架与网格可用是性能目标，尚未完成真实 Chrome 新标签环境的性能验收。搜索框会调用 `focus()`，地址栏是否交出焦点由 Chrome 决定。
 
-内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。别名必须唯一；当前已移除 `tb`、`db`、`so`、`dd` 等歧义短别名。选择器图标来自随包发布的本地文件，发布包中 154 个站点有图标；`assets/site-icons/` 未纳入 Git，干净检出时图标回退为名称首字。
+内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。别名必须唯一；当前已移除 `tb`、`db`、`so`、`dd` 等歧义短别名。选择器图标来自随包发布的本地文件，发布包中 155 个站点有图标（7 个缺图站点显示名称首字）；其中 30 个品牌改用 LobeHub SVG（已入库），其余 favicon PNG/JPG 仍单独打包、未纳入 Git。
 
-本地图标取自各站点公开的 favicon；少数站点只提供 16 / 32px 源图，放大到选择器尺寸后可能偏软。需要更高清的版本时，应在发布前替换 `assets/site-icons/` 中对应文件，而不是恢复运行时抓取。
+未替换的本地图标取自各站点公开的 favicon；少数站点只提供 16 / 32px 源图，放大到选择器尺寸后可能偏软。需要更高清的版本时，应在发布前替换 `assets/site-icons/` 中对应文件，而不是恢复运行时抓取。30 个品牌使用 `assets/icons/lobe-icons/` 的矢量图标，暗色主题下单色标识会自动反转为浅色。
 
 ## 第三方图标许可
 
 `assets/icons/group-icons/` 中的分组图标来自 Google [Material Symbols](https://fonts.google.com/icons)，采用 [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE) 许可证。上游源码见 [google/material-design-icons](https://github.com/google/material-design-icons)。
 
 界面使用 `favorite`、`stadia_controller`、`home`、`code_xml` 和 `shopping_cart_checkout`；目录另含 `design_services`、`diversity_3`、`smart_display` 三个预留图标。这些图标的许可独立于项目自身代码，不适用于其他目录中的站点 Logo 或 favicon。再分发时须遵守上游许可证，保留适用的版权及许可声明；若修改图标文件，应注明修改。
+
+`assets/icons/lobe-icons/` 来自 [LobeHub Icons](https://github.com/lobehub/lobe-icons) 的 npm 包 `@lobehub/icons-static-svg` 1.95.1，采用 MIT 许可；来源、版本与完整性信息见该目录的 `SOURCE.json`，许可见 `LICENSE`。`assets/site-icons/` 中 30 个受替换品牌的 SVG 由这些文件复制而来。品牌 Logo 的商标权属于对应权利人，MIT 许可不等同于品牌授权。
+
+### Lobe Icons
+
+`assets/icons/lobe-icons/` 中的 AI / LLM 品牌 SVG 图标来自 [Lobe Icons](https://github.com/lobehub/lobe-icons)，使用官方静态包 `@lobehub/icons-static-svg` 1.95.1，采用 MIT 许可证，版权归属 `Copyright (c) 2023 LobeHub`。
+
+完整版权及许可声明保存在 [LICENSE](assets/icons/lobe-icons/LICENSE)，来源、版本和下载完整性信息见 [SOURCE.json](assets/icons/lobe-icons/SOURCE.json)。素材未经修改；复制或再分发时须保留版权及许可声明。品牌 Logo 的商标权属于对应权利人，MIT 许可不等同于品牌授权。
+
+### Dashboard Icons
+
+`assets/icons/dashboard-icons/` 来自 [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons)，项目采用 Apache License 2.0，版权声明为 `Copyright (c) 2024 Bjorn Lammers, Meier Lukas, Thomas Camlong and Homarr Labs`。通过官方仓库固定提交的归档下载，未逐图请求网站；素材保持原样。完整许可、上游说明和元数据随目录保存，固定提交及校验值见 `SOURCE.json`。
+
+再分发须提供许可证、保留适用声明；修改文件须注明修改，并保留上游适用的 NOTICE（如有）。[网站条款](https://dashboardicons.com/terms) 明确第三方图标可能有独立版权、许可、署名及品牌要求，仓库 Apache 2.0 不覆盖或替代这些要求，也不授予品牌商标权。
+
+### Simple Icons
+
+`assets/icons/simple-icons/` 来自 [Simple Icons](https://github.com/simple-icons/simple-icons) 官方 npm 包 `simple-icons` 16.35.0，采用单个发布包下载，SVG 未修改。集合采用 CC0 1.0，但**并非所有单个品牌图标均为 CC0**。完整集合许可见 `LICENSE.md`，上游免责声明见 `DISCLAIMER.md`，每个图标已知的许可、品牌规范及来源见 `data/simple-icons.json`；版本与完整性信息见 `SOURCE.json`。
+
+使用和再分发具体图标时须核对其独立许可、署名与品牌规范。缺少单图许可字段不表示不存在限制；CC0 不授予商标权。本次仅归档素材及已知许可信息，尚未逐一核验各品牌外部条款，也未接入界面。
 
 ## 数据与开发
 

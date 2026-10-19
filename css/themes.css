@@ -97,6 +97,9 @@ body[data-theme] input,body[data-theme] select{background:var(--field-bg);color:
 body[data-theme] input::placeholder{color:var(--muted)}
 body[data-theme] input[type=checkbox]{background:none;accent-color:var(--accent)}
 body[data-theme] .site-icon{background:var(--icon-bg);color:var(--icon-ink);border:1px solid var(--icon-border);box-shadow:var(--icon-shadow)}
+/* Monochrome SVG marks are black; invert them on dark themes. */
+body[data-theme="aurora"] [data-mono] img,body[data-theme="frost"] [data-mono] img,
+body[data-theme="cyber"] [data-mono] img,body[data-theme="espresso"] [data-mono] img{filter:invert(1)}
 body[data-theme] .site-title{font-weight:500;color:var(--ink)}
 body[data-theme] .clock time{font-weight:500}
 body[data-theme] .clock small,body[data-theme] .eyebrow,body[data-theme] footer,body[data-theme] .help{font-weight:400;color:var(--muted)}

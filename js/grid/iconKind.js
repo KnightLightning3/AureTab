@@ -31,11 +31,12 @@ export async function classifyBlob(blob) {
 /** Loads a cross-origin or _favicon URL as a plain image; fetch() would require
  * host_permissions (cross-origin) or is unsupported (the _favicon endpoint).
  * Tiny default placeholders (e.g. a 16px globe) are rejected so callers fall through. */
-function loadImageElement(source) {
+function loadImageElement(source, minSize = 32) {
   return new Promise((resolve, reject) => {
     const image = document.createElement('img'); image.alt = ''; image.draggable = false;
     image.onload = () => {
-      if (image.naturalWidth >= 32 && image.naturalHeight >= 32) resolve(image);
+      // Vector icons declare a nominal 1em size; their intrinsic pixel size is irrelevant.
+      if (!minSize || (image.naturalWidth >= minSize && image.naturalHeight >= minSize)) resolve(image);
       else reject(new Error('图标过小'));
     };
     image.onerror = () => reject(new Error('图标加载失败'));
@@ -64,10 +65,11 @@ export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
       const cached = await store.get(key).catch(() => null);
       if (cached?.v === ICON_CLASSIFIER.v && ['filled', 'glyph', 'text'].includes(cached.kind) && cached.blob instanceof Blob) return cached;
       let blob = suppliedBlob ?? cached?.blob;
-      if (!blob && (/^https?:\/\//i.test(source) || /\/_favicon\//.test(source))) {
-        // Cross-origin favicon pixels are unreadable (tainted canvas), and the
-        // _favicon endpoint is image-only; load as an image without classifying.
-        return { image: await loadImageElement(source), kind: 'glyph', v: ICON_CLASSIFIER.v };
+      const vector = /\.svg(?:[?#]|$)/i.test(source);
+      if (!blob && (vector || /^https?:\/\//i.test(source) || /\/_favicon\//.test(source))) {
+        // Cross-origin favicon pixels are unreadable (tainted canvas), the
+        // _favicon endpoint is image-only, and SVG has no raster alpha to sample.
+        return { image: await loadImageElement(source, vector ? 0 : 32), kind: 'glyph', v: ICON_CLASSIFIER.v };
       }
       // Custom uploads live in the asset store; read them directly instead of
       // making every renderer fetch the blob first.

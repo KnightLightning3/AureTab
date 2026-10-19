@@ -1,6 +1,6 @@
 import { faviconSources } from '../grid/favicon.js';
 import { showClassifiedIcon } from '../grid/iconKind.js';
-import { localIconURL } from '../grid/siteIcon.js';
+import { localIconURL, isMonoIconFile } from '../grid/siteIcon.js';
 import { assetStore } from '../storage/idb.js';
 import { report } from './dialogs.js';
 
@@ -20,13 +20,15 @@ export function mountIconPicker(container, form, site, options = {}) {
   const hidden = document.createElement('input'); hidden.type = 'hidden'; hidden.name = 'iconChoice';
   const localFile = document.createElement('input'); localFile.type = 'hidden'; localFile.name = 'iconLocal';
   const localDomain = document.createElement('input'); localDomain.type = 'hidden'; localDomain.name = 'iconLocalDomain';
-  field.append(head, grid, status, hidden, localFile, localDomain); container.append(field);
+  const localWide = document.createElement('input'); localWide.type = 'hidden'; localWide.name = 'iconWide';
+  field.append(head, grid, status, hidden, localFile, localDomain, localWide); container.append(field);
 
   let selected = site?.useText ? 'text' : site?.iconId ? 'custom' : site?.iconStyle || 'auto';
   let localIcon = options.iconFile ?? site?.iconFile ?? '';
   let localHost = options.domain ?? '';
+  let localIconWide = options.iconWide ?? site?.iconWide ?? '';
   hidden.value = selected;
-  localFile.value = localIcon; localDomain.value = localHost;
+  localFile.value = localIcon; localDomain.value = localHost; localWide.value = localIconWide;
   const sampleText = () => Array.from(form.elements.text?.value.trim() || form.elements.title?.value.trim() || 'A').slice(0, 2).join('');
   const setChoice = choice => {
     selected = choice; hidden.value = choice;
@@ -47,6 +49,7 @@ export function mountIconPicker(container, form, site, options = {}) {
   };
   const openLocalPreview = (preview, file) => {
     const url = localIconURL(file); if (!url) return false;
+    if (isMonoIconFile(file)) preview.dataset.mono = 'true'; else delete preview.dataset.mono;
     showClassifiedIcon(preview, url, { manual: preview.dataset.manual }).catch(() => {}); return true;
   };
   const build = previews => {
@@ -81,9 +84,10 @@ export function mountIconPicker(container, form, site, options = {}) {
     const next = buttons[(index + (forward ? 1 : -1) + buttons.length) % buttons.length];
     next.focus(); next.click();
   });
-  const setLocal = (file, domain = localHost) => {
+  const setLocal = (file, domain = localHost, wide = '') => {
     localIcon = file || ''; localHost = localIcon ? domain : '';
-    localFile.value = localIcon; localDomain.value = localHost;
+    localIconWide = localIcon ? (wide || '') : '';
+    localFile.value = localIcon; localDomain.value = localHost; localWide.value = localIconWide;
     if (localIcon) { selected = 'auto'; build(); status.textContent = '已使用本地图标；需要其他样式时可点“请求图标”。'; }
     else build();
   };
@@ -96,7 +100,7 @@ export function mountIconPicker(container, form, site, options = {}) {
     }
     catch { status.textContent = '请先填写有效的 HTTP(S) 网址。'; return; }
     status.textContent = '正在请求图标…';
-    localIcon = ''; localHost = ''; localFile.value = ''; localDomain.value = '';
+    localIcon = ''; localHost = ''; localIconWide = ''; localFile.value = ''; localDomain.value = ''; localWide.value = '';
     build({ auto: faviconSources(url), color: faviconSources(url, 'color'), glyph: faviconSources(url, 'glyph') });
     status.textContent = '选择一种样式，保存后生效。';
   };
@@ -106,7 +110,7 @@ export function mountIconPicker(container, form, site, options = {}) {
     import('./siteSelector.js').then(({ openSiteSelector }) => openSiteSelector({
       onSelect: site => {
         form.elements.title.value = site.name; form.elements.url.value = `https://${site.domain}/`;
-        if (site.icon) setLocal(site.icon, site.domain);
+        if (site.icon) setLocal(site.icon, site.domain, site.iconWide);
         else { setLocal(''); status.textContent = '该站点暂无本地图标；可点“请求图标”或使用文字图标。'; }
       },
       onCustom: () => { const input = form.elements.icon; if (input) { input.closest('label')?.scrollIntoView({ block: 'nearest' }); input.focus(); input.click(); } }

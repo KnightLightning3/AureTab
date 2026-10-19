@@ -1,7 +1,7 @@
 import { searchSites } from '../search/siteIndex.js';
 import { mountEditorFields } from './dialogs.js';
 import { showClassifiedIcon } from '../grid/iconKind.js';
-import { localIconURL } from '../grid/siteIcon.js';
+import { localIconURL, isMonoIconFile } from '../grid/siteIcon.js';
 
 let dataPromise;
 function loadData() {
@@ -64,7 +64,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
     if (customForm) {
       customForm.elements.title.value = site.name; customForm.elements.url.value = `https://${site.domain}/`;
       customForm.elements.text.value = ''; customForm.elements.icon.value = '';
-      picker?.setLocal(site.icon || '', site.domain); showCustom(); return;
+      picker?.setLocal(site.icon || '', site.domain, site.iconWide || ''); showCustom(); return;
     }
     close(); try { onSelect?.(site); } catch (error) { console.error(error); } };
   custom.onclick = showCustom;
@@ -99,6 +99,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
       const tile = document.createElement('button'); tile.type = 'button'; tile.className = 'site-selector-tile'; tile.dataset.domain = site.domain; tile.dataset.name = site.name;
       tile.title = site.name + '\n' + site.domain; tile.setAttribute('aria-label', site.name + '，' + site.domain);
       const icon = document.createElement('span'); icon.className = 'site-icon'; icon.textContent = Array.from(site.name)[0] || '?';
+      if (site.icon && isMonoIconFile(site.icon)) icon.dataset.mono = 'true';
       const label = document.createElement('span'); label.className = 'site-title'; label.textContent = site.name;
       tile.append(icon, label); tile.onclick = () => choose(site); grid.append(tile);
       if (site.icon) {

@@ -201,6 +201,19 @@ test('cross-origin favicons load as plain images instead of fetch and default to
   await assert.rejects(loadClassifiedIcon('https://example.com/small.ico', memoryStore()), /图标过小/);
 });
 
+test('local SVG icons load as vectors without raster classification', async t => {
+  mockGlobal(t, 'fetch', () => { throw new Error('must not fetch bundled vectors'); });
+  mockGlobal(t, 'createImageBitmap', () => { throw new Error('must not classify vectors'); });
+  mockGlobal(t, 'document', { createElement(name) {
+    assert.equal(name, 'img');
+    const image = { alt: '', draggable: false, naturalWidth: 16, naturalHeight: 16 };
+    Object.defineProperty(image, 'src', { set(value) { this._src = value; queueMicrotask(() => this.onload?.()); } });
+    return image;
+  } });
+  const record = await loadClassifiedIcon('chrome-extension://x/assets/site-icons/github.com.svg', memoryStore());
+  assert.equal(record.kind, 'glyph');
+  assert.equal(record.image.naturalWidth, 16);
+});
 test('icon: sources read the asset store once instead of fetching', async t => {
   const blob = new Blob(['custom']);
   const store = { async get(key) { return key === 'icon:abc' ? blob : null; }, async put() {} };

@@ -1,0 +1,10 @@
+{
+  "package": "@lobehub/icons-static-svg",
+  "version": "1.95.1",
+  "license": "MIT",
+  "repository": "https://github.com/lobehub/lobe-icons",
+  "tarball": "https://registry.npmjs.org/@lobehub/icons-static-svg/-/icons-static-svg-1.95.1.tgz",
+  "integrity": "sha512-Hw7EPPgVnC4NZLXBfTNJG6hyQgqECfUPC11VVXodPSr1aebKcFxDZlSpxhWwYNdCc6bhxps/x5TtXoPmfKH2ag==",
+  "downloadedAt": "2026-10-19",
+  "svgCount": 950
+}

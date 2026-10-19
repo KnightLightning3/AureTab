@@ -25,11 +25,15 @@ test('replace restores all metadata, missing assets use text or favicon fallback
   const expected = data(); delete expected.groups[0].sites[0].iconId; assert.deepEqual(plan.data, expected); assert.equal(plan.prefs.engine, 'bing');
 });
 test('bundled icon references are preserved and path traversal is rejected', () => {
-  const value = data(); value.groups[0].sites[0].iconFile = 'github.com.png';
-  assert.equal(validateData(value).groups[0].sites[0].iconFile, 'github.com.png');
-  for (const bad of ['../github.png', 'avatars/github.png', 'github.svg', '/github.png', '']) {
+  const value = data(); value.groups[0].sites[0].iconFile = 'github.com.svg';
+  assert.equal(validateData(value).groups[0].sites[0].iconFile, 'github.com.svg');
+  const wide = structuredClone(value); wide.groups[0].sites[0].iconWide = 'github.com-text.svg';
+  assert.equal(validateData(wide).groups[0].sites[0].iconWide, 'github.com-text.svg');
+  for (const bad of ['../github.png', 'avatars/github.png', '/github.png', '', 'github.svg/../x']) {
     const copy = structuredClone(value); copy.groups[0].sites[0].iconFile = bad;
     assert.throws(() => validateData(copy), 'iconFile should reject: ' + bad);
+    const wideCopy = structuredClone(value); wideCopy.groups[0].sites[0].iconWide = bad;
+    assert.throws(() => validateData(wideCopy), 'iconWide should reject: ' + bad);
   }
 });
 test('drag reorder and cross-group move persist ordered arrays', () => {

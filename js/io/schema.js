@@ -50,6 +50,7 @@ export function validateData(value) {
         item.iconId = iconId;
       }
       if (site.iconFile !== undefined) { if (!isLocalIconFile(site.iconFile)) fail('本地图标文件名'); item.iconFile = site.iconFile; }
+      if (site.iconWide !== undefined) { if (!isLocalIconFile(site.iconWide)) fail('本地图标文件名'); item.iconWide = site.iconWide; }
       if (site.iconStyle !== undefined) item.iconStyle = choice(site.iconStyle, ['color', 'glyph'], '图标样式');
       if (site.useText !== undefined) { if (typeof site.useText !== 'boolean') fail('文字图标开关'); item.useText = site.useText; }
       return item;

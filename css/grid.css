@@ -37,6 +37,9 @@ body.hide-labels .site.add-site{width:76px;height:76px;font-size:30px}
 .site.add-site svg{display:block;width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
 /* Filled artwork reaches the tile edge; glyph artwork retains the existing inset. */
 .site-icon[data-kind=filled] img{width:100%!important;height:100%!important;object-fit:cover}
+/* Wordmarks keep their horizontal aspect in a wide tile. */
+.site-icon[data-wide] img{width:calc(100% - 28px)!important;height:auto!important;max-height:46px;object-fit:contain!important}
+body.hide-labels .site-icon[data-wide] img{max-height:50px}
 .grid,body.hide-labels .grid{grid-template-columns:repeat(auto-fill,minmax(var(--cell),1fr))}
 /* Match the two-cell artwork to its actual grid span when columns stretch. */
 .site.wide .site-icon,.site.large .site-icon{width:calc(100% - 8px)}
