@@ -156,7 +156,7 @@ async function chooseNewSite() {
 }
 function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
-const MINIMAL_FADE = 60, MINIMAL_MOVE = 280;
+const MINIMAL_FADE = 60, MINIMAL_MOVE = 380;
 let minimalSwitching = false;
 /** Minimal mode keeps the search content at its normal size. Its new position is
  * reached with a FLIP translate at the same time as the disappearing chrome fades. */
