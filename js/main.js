@@ -50,15 +50,11 @@ function selectGroup(id, direction) {
   viewport.scrollTop = movement < 0 ? viewport.scrollHeight : 0;
   const grid = $('#grid');
   for (const animation of grid.getAnimations()) animation.cancel();
-  grid.classList.remove('grid-animating');
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Pause the plate's backdrop sampling while the grid is moving.
-    grid.classList.add('grid-animating');
     grid.animate([
       { transform: `translateY(${movement * 28}px)`, opacity: 0 },
       { transform: 'translateY(0)', opacity: 1 }
-    ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' })
-      .finished.finally(() => grid.classList.remove('grid-animating'));
+    ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
   }
 }
 function updateEngine() {

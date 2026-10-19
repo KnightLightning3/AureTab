@@ -87,6 +87,12 @@ function observeGlass(root) {
     glassSettingsObserver.observe(document.body, { attributes: true, attributeFilter: ['data-radius', 'class'] });
   }
 }
+/** Swap only the tiles; keeping the plate in place avoids rebuilding its filter. */
+function replaceGridNodes(root, plate, nodes) {
+  for (const child of [...root.childNodes]) if (child !== plate) child.remove();
+  if (plate.parentNode !== root) root.prepend(plate);
+  root.append(...nodes);
+}
 
 const groupViews = new Map();
 /** A cached group that is gone (or replaced) must not keep loading or observing. */
@@ -127,8 +133,9 @@ export function renderGrid(group, store, onAdd) {
   const cached = groupViews.get(key);
   if (cached?.signature === signature) {
     const plate = plateFor(root);
-    if (root.dataset.group !== key || root.children[1] !== cached.nodes[0]) root.replaceChildren(plate, ...cached.nodes);
-    if (root.dataset.group !== key) root.dataset.group = key; observeGlass(root); return;
+    if (root.dataset.group !== key || root.children[1] !== cached.nodes[0]) replaceGridNodes(root, plate, cached.nodes);
+    if (root.dataset.group !== key) root.dataset.group = key;
+    observeGlass(root); applyGlassMask(); return;
   }
   if (cached) retire(cached);
   const grid = document.createDocumentFragment();
@@ -136,8 +143,10 @@ export function renderGrid(group, store, onAdd) {
   const commit = () => {
     view.nodes = [...grid.childNodes]; groupViews.set(key, view);
     const plate = plateFor(root);
-    root.replaceChildren(plate, ...view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
+    replaceGridNodes(root, plate, view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
     observeGlass(root);
+    // Measure the new tiles now so the glass is correct on the very next paint.
+    applyGlassMask();
   };
   if (!group?.sites.length) { const empty = document.createElement('div'); empty.className = 'empty-state'; const button = document.createElement('button'); button.textContent = '＋ 添加第一个图标'; button.onclick = onAdd; empty.append(button); grid.append(empty); commit(); return; }
   for (const site of group.sites) {

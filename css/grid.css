@@ -4,7 +4,6 @@
 .grid{--cell:80px;--gap:6px;grid-template-columns:repeat(auto-fill,var(--cell));grid-auto-rows:90px;gap:var(--gap);justify-content:start;position:relative;isolation:isolate}
 /* One blurred layer, masked to the icon rectangles by JS. */
 .grid-glass{position:absolute;inset:0;z-index:-1;pointer-events:none;backdrop-filter:blur(calc(var(--glass-blur,16px) * .6));-webkit-backdrop-filter:blur(calc(var(--glass-blur,16px) * .6));-webkit-mask-image:var(--grid-glass-mask,linear-gradient(transparent,transparent));mask-image:var(--grid-glass-mask,linear-gradient(transparent,transparent));-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.grid.grid-animating .grid-glass{backdrop-filter:none;-webkit-backdrop-filter:none}
 .site{gap:2px;background:none;justify-content:flex-start}
 .site:hover{background:none}
 .site.large,.site.wide,.site.tall{background:none}
