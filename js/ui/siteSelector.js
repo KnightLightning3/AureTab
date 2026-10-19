@@ -1,7 +1,9 @@
 import { searchSites } from '../search/siteIndex.js';
 import { mountEditorFields } from './dialogs.js';
 import { showClassifiedIcon } from '../grid/iconKind.js';
-import { localIconURL, isMonoIconFile } from '../grid/siteIcon.js';
+// Namespace import keeps this dynamically loaded module usable in a tab that
+// still holds an older siteIcon.js instance (e.g. before the extension reload).
+import * as siteIcon from '../grid/siteIcon.js';
 
 let dataPromise;
 function loadData() {
@@ -99,11 +101,11 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
       const tile = document.createElement('button'); tile.type = 'button'; tile.className = 'site-selector-tile'; tile.dataset.domain = site.domain; tile.dataset.name = site.name;
       tile.title = site.name + '\n' + site.domain; tile.setAttribute('aria-label', site.name + '，' + site.domain);
       const icon = document.createElement('span'); icon.className = 'site-icon'; icon.textContent = Array.from(site.name)[0] || '?';
-      if (site.icon && isMonoIconFile(site.icon)) icon.dataset.mono = 'true';
+      if (site.icon && siteIcon.isMonoIconFile?.(site.icon)) icon.dataset.mono = 'true';
       const label = document.createElement('span'); label.className = 'site-title'; label.textContent = site.name;
       tile.append(icon, label); tile.onclick = () => choose(site); grid.append(tile);
       if (site.icon) {
-        const src = localIconURL(site.icon);
+        const src = siteIcon.localIconURL(site.icon);
         if (src) {
           showClassifiedIcon(icon, src).catch(() => {});
         }
