@@ -14,7 +14,7 @@ function loadData() {
   return dataPromise;
 }
 
-export function openSiteSelector({ onSelect, onCustom, fields, customize } = {}) {
+export function openSiteSelector({ onSelect, onCustom, fields, customize, validate } = {}) {
   const returnFocus = document.activeElement;
   const dialog = document.createElement('dialog'); dialog.className = 'site-selector-dialog'; dialog.setAttribute('aria-label', '添加标签');
   const heading = document.createElement('div'); heading.className = 'dialog-heading';
@@ -40,9 +40,18 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize } = {})
     const actions = document.createElement('div'); actions.className = 'dialog-actions';
     const cancel = document.createElement('button'); cancel.type = 'button'; cancel.textContent = '取消'; cancel.onclick = () => close();
     const save = document.createElement('button'); save.type = 'submit'; save.className = 'primary'; save.textContent = '保存';
-    actions.append(cancel, save); customForm.append(actions); panel.append(customForm);
+    const error = document.createElement('p'); error.className = 'dialog-error'; error.hidden = true;
+    actions.append(cancel, save); customForm.append(error, actions); panel.append(customForm);
     picker = customize?.({ dialog, form: customForm, container: editorFields });
-    customForm.addEventListener('submit', event => { event.preventDefault(); result = new FormData(customForm); close(); });
+    customForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const values = new FormData(customForm);
+      if (validate) {
+        try { validate(values); }
+        catch (failure) { error.textContent = failure.message || '请检查输入'; error.hidden = false; return; }
+      }
+      result = values; close();
+    });
   }
   const showCustom = () => {
     if (!customForm) { close(); onCustom?.(); return; }

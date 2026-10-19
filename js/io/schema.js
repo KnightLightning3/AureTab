@@ -9,6 +9,7 @@ const choice = (x, choices, label) => { if (!choices.includes(x)) fail(label); r
 // Preferences are device-local and must never brick the new-tab page: unknown or
 // missing enum values fall back instead of failing the whole load.
 const pick = (x, choices, fallback) => (x !== undefined && choices.includes(x) ? x : fallback);
+const VALIDATED = Symbol('validated');
 export function safeURL(value) { const url = new URL(value); if (!['https:', 'http:'].includes(url.protocol)) fail('站点仅支持 HTTP(S) 地址'); return url.href; }
 export function validatePrefs(value) {
   if (!object(value)) fail('设备设置');
@@ -55,7 +56,8 @@ export function validateData(value) {
     });
     return { id, name: string(group.name, 40, '分组名称'), icon: pick(group.icon, GROUP_ICON_IDS, DEFAULT_GROUP_ICON), sites };
   });
-  return { schemaVersion: 1, groups, settings };
+  const revision = Number.isSafeInteger(value.revision) && value.revision >= 0 ? value.revision : 0;
+  return { schemaVersion: 1, revision, groups, settings };
 }
 export function parseBackup(value) {
   if (!object(value) || value.version !== 1) fail('不支持的备份 version');
@@ -72,5 +74,9 @@ export function parseBackup(value) {
     if (bytes > 100 * 1024 * 1024) fail('图片格式或备份图片总量无效');
     return { id, data: encoded };
   });
-  return { version: 1, data, prefs, assets: cleanAssets };
+  const result = { version: 1, data, prefs, assets: cleanAssets };
+  // Mark the result so planImport does not re-scan every base64 payload.
+  Object.defineProperty(result, VALIDATED, { value: true });
+  return result;
 }
+export function isParsedBackup(value) { return Boolean(value?.[VALIDATED]); }

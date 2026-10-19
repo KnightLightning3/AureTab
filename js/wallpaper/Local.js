@@ -17,14 +17,10 @@ export class LocalWallpaperProvider extends WallpaperProvider {
   id = 'local';
   async getCurrent() { return (await assetStore.get('wallpaper')) ?? null; }
   async set(file) {
-    const compressed = await compressImage(file);
-    try { await assetStore.put('wallpaper', compressed, 4000); }
-    catch (error) {
-      // Only a timed-out scaled write is worth retrying; quota errors would fail
-      // again with the larger original file.
-      if (error?.message !== '图片存储超时') throw error;
-      await assetStore.put('wallpaper', file);
-    }
+    // Wallpapers are static backgrounds: keep the original so a high-resolution
+    // upload is not downscaled. The UI recommends a reasonable size instead.
+    if (!file?.type?.startsWith('image/')) throw new Error('仅支持图片');
+    await assetStore.put('wallpaper', file, 15000);
   }
   async clear() { await assetStore.delete('wallpaper'); }
 }

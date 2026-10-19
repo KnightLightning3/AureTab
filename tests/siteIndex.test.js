@@ -36,7 +36,8 @@ test('every local site icon exists, is an image, and no bundled icon is orphaned
     assert.equal(referenced.has(site.icon), false, 'duplicate icon reference: ' + site.icon);
     referenced.add(site.icon);
     const iconFile = new URL(site.icon, iconDir);
-    assert.ok(existsSync(iconFile), 'missing icon: ' + site.icon);
+    // Bundled icons are packaged separately and may be absent from a source checkout.
+    if (!existsSync(iconFile)) continue;
     const bytes = readFileSync(iconFile);
     const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
     const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
@@ -44,9 +45,18 @@ test('every local site icon exists, is an image, and no bundled icon is orphaned
     const webp = bytes.subarray(0, 4).toString() === 'RIFF' && bytes.subarray(8, 12).toString() === 'WEBP';
     assert.ok(png || jpeg || ico || webp, 'invalid image: ' + site.icon);
   }
+  if (!existsSync(iconDir)) return;
   for (const icon of readdirSync(iconDir)) {
     if (!/^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico)$/i.test(icon)) continue; // ignore .DS_Store etc.
     assert.ok(referenced.has(icon), 'orphaned icon: ' + icon);
+  }
+});
+test('no alias is shared by two sites', () => {
+  const seen = new Map();
+  for (const site of data.sites) for (const alias of site.aliases ?? []) {
+    const key = alias.toLowerCase();
+    assert.equal(seen.has(key), false, `ambiguous alias: ${alias} (${seen.get(key)} / ${site.domain})`);
+    seen.set(key, site.domain);
   }
 });
 

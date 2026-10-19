@@ -21,7 +21,7 @@ body[data-theme="aurora"]{
   --icon-bg:rgba(18,18,20,.75);--icon-ink:#fff;--icon-border:rgba(255,255,255,.18);--icon-shadow:none;
   --empty-border:rgba(255,255,255,.2);--empty-bg:rgba(255,255,255,.04);--backdrop:rgba(0,0,0,.55);--shade-color:#000;
   --toast-bg:#f2f2f2;--toast-ink:#121214;--danger:#ff9b90;--focus:#9ef5df;--focus-soft:#7fe0c9;
-  --glass-blur:20px;--icon-blur:12px;--text-shadow:0 1px 3px rgba(0,0,0,.65);
+  --glass-blur:20px;--sites-glass:rgba(18,18,20,.32);--text-shadow:0 1px 3px rgba(0,0,0,.65);
   --drag-bg:rgba(255,255,255,.08);--drop-bg:rgba(18,18,20,.95);--sidebar-mobile:rgba(14,14,16,.96);
 }
 body[data-theme="glass"]{
@@ -34,7 +34,7 @@ body[data-theme="glass"]{
   --icon-bg:rgba(255,255,255,.82);--icon-ink:#111;--icon-border:rgba(17,17,17,.14);--icon-shadow:0 3px 14px rgba(30,45,60,.08);
   --empty-border:rgba(17,17,17,.16);--empty-bg:rgba(255,255,255,.4);--backdrop:rgba(30,45,60,.28);--shade-color:#fff;
   --toast-bg:#111;--toast-ink:#fff;--danger:#b42318;--focus:#38546a;--focus-soft:#6d8496;
-  --glass-blur:16px;--icon-blur:8px;--text-shadow:0 1px 2px rgba(255,255,255,.5);
+  --glass-blur:16px;--sites-glass:rgba(255,255,255,.28);--text-shadow:0 1px 2px rgba(255,255,255,.5);
   --drag-bg:rgba(255,255,255,.7);--drop-bg:rgba(255,255,255,.85);--sidebar-mobile:rgba(245,248,250,.96);
 }
 body[data-theme="frost"]{
@@ -47,7 +47,7 @@ body[data-theme="frost"]{
   --icon-bg:rgba(255,255,255,.15);--icon-ink:#fff;--icon-border:rgba(255,255,255,.3);--icon-shadow:none;
   --empty-border:rgba(255,255,255,.3);--empty-bg:rgba(255,255,255,.08);--backdrop:rgba(10,18,26,.45);--shade-color:#fff;
   --toast-bg:rgba(255,255,255,.9);--toast-ink:#1f2b35;--danger:#ffb4a8;--focus:#fff;--focus-soft:rgba(255,255,255,.85);
-  --glass-blur:16px;--icon-blur:10px;--text-shadow:0 1px 3px rgba(0,0,0,.6);
+  --glass-blur:16px;--sites-glass:rgba(255,255,255,.1);--text-shadow:0 1px 3px rgba(0,0,0,.6);
   --drag-bg:rgba(255,255,255,.25);--drop-bg:rgba(255,255,255,.18);--sidebar-mobile:rgba(30,42,52,.9);
 }
 body[data-theme="cyber"]{
@@ -60,7 +60,7 @@ body[data-theme="cyber"]{
   --icon-bg:rgba(15,23,42,.75);--icon-ink:#fff;--icon-border:rgba(148,197,255,.3);--icon-shadow:none;
   --empty-border:rgba(148,197,255,.28);--empty-bg:rgba(148,197,255,.06);--backdrop:rgba(2,6,14,.6);--shade-color:#000;
   --toast-bg:#dbeafe;--toast-ink:#0f172a;--danger:#ff9b90;--focus:#bfdbfe;--focus-soft:#93c5fd;
-  --glass-blur:20px;--icon-blur:12px;--text-shadow:0 1px 3px rgba(0,0,0,.65);
+  --glass-blur:20px;--sites-glass:rgba(15,23,42,.34);--text-shadow:0 1px 3px rgba(0,0,0,.65);
   --drag-bg:rgba(148,197,255,.12);--drop-bg:rgba(15,23,42,.95);--sidebar-mobile:rgba(10,16,28,.96);
 }
 body[data-theme="espresso"]{
@@ -73,7 +73,7 @@ body[data-theme="espresso"]{
   --icon-bg:rgba(44,40,37,.78);--icon-ink:#f3f0ea;--icon-border:rgba(243,240,234,.24);--icon-shadow:none;
   --empty-border:rgba(243,240,234,.22);--empty-bg:rgba(243,240,234,.05);--backdrop:rgba(10,8,6,.55);--shade-color:#000;
   --toast-bg:#f3f0ea;--toast-ink:#2c2825;--danger:#ffb4a2;--focus:#e3c9a3;--focus-soft:#d6b98e;
-  --glass-blur:20px;--icon-blur:12px;--text-shadow:0 1px 3px rgba(0,0,0,.6);
+  --glass-blur:20px;--sites-glass:rgba(44,40,37,.34);--text-shadow:0 1px 3px rgba(0,0,0,.6);
   --drag-bg:rgba(243,240,234,.08);--drop-bg:rgba(44,40,37,.95);--sidebar-mobile:rgba(26,22,19,.96);
 }
 body[data-theme]{background:var(--page-bg);color:var(--ink);text-shadow:var(--text-shadow)}
@@ -96,7 +96,9 @@ body[data-theme] .drop-hint{background:var(--drop-bg);color:var(--ink)}
 body[data-theme] input,body[data-theme] select{background:var(--field-bg);color:var(--ink);border-color:var(--line)}
 body[data-theme] input::placeholder{color:var(--muted)}
 body[data-theme] input[type=checkbox]{background:none;accent-color:var(--accent)}
-body[data-theme] .site-icon{background:var(--icon-bg);color:var(--icon-ink);border:1px solid var(--icon-border);box-shadow:var(--icon-shadow);backdrop-filter:blur(var(--icon-blur));-webkit-backdrop-filter:blur(var(--icon-blur))}
+body[data-theme] .site-icon{background:var(--icon-bg);color:var(--icon-ink);border:1px solid var(--icon-border);box-shadow:var(--icon-shadow)}
+/* One glass plate behind the grid instead of one backdrop filter per icon. */
+body[data-theme] .sites-panel::before{content:"";position:absolute;inset:-6px;border-radius:18px;background:var(--sites-glass);border:1px solid var(--line);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));z-index:-1;pointer-events:none}
 body[data-theme] .site-title{font-weight:500;color:var(--ink)}
 body[data-theme] .clock time{font-weight:500}
 body[data-theme] .clock small,body[data-theme] .eyebrow,body[data-theme] footer,body[data-theme] .help{font-weight:400;color:var(--muted)}

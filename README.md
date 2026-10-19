@@ -18,11 +18,12 @@
 - 自定义或清单外站点使用高清 favicon 链（Google 128 / DuckDuckGo / Chrome 本地接口），低于 32px 或全部失败时自动回退文字图标；清单内站点优先读随包图标。
 - 添加 / 编辑图标时可请求预览，直接选择带背景、镂空或文字图标；带背景模式填满圆角，镂空模式保留玻璃底板。
 - 点击“添加图标”直接打开“从常用站点选择”：左侧顶部固定“自定义图标”，可选择站点或进入手动 / 自定义上传流程；10 类、162 条本地站点，顶部搜索最多 24 条，窄窗分类变为横向标签。
-- 选择器图标直接读取 assets/site-icons 下的本地文件（154/162 有本地图标，其余名称首字占位），不请求远程 favicon，也不打开网页；选中的站点会把本地图标文件名写入站点数据，网格同样优先读取它。
+- 选择器图标直接读取 assets/site-icons 下的本地文件（发布包中 154/162 有本地图标，其余名称首字占位；源码检出未包含该目录），不请求远程 favicon，也不打开网页；选中的站点会把本地图标文件名写入站点数据，网格同样优先读取它。
 - sites.json 的 icon 字段保存本地文件名；首次打开选择器才加载清单与选择器模块，新标签页首屏不加载。只有用户主动点“请求图标”时才发起远程预览。
 - 自定义右键菜单与边缘防溢出；输入框保留原生菜单。
-- 本地壁纸存 IndexedDB，最长边 1920px、JPEG 0.85；先呈现默认背景再淡入大图。
-- 固定模糊、遮罩、圆角、两种版心预设、五套可点选全局色彩主题（暗夜极光 / 纯粹极简白 / 极简玻璃白 / 深邃蓝 / 温润米咖）；窄窗分组抽屉；极简模式。
+- 本地壁纸按原图存入 IndexedDB，不做缩放或重编码；设置面板建议选择小于 20MB 的图片。先呈现默认背景再淡入大图。
+- 固定模糊、遮罩、圆角、两种版心预设、五套可点选全局色彩主题（暗夜极光 / 纯粹极简白 / 极简玻璃白 / 深邃蓝 / 温润米咖）；窄窗分组抽屉。
+- 极简模式只淡出顶栏与站点区，搜索内容保持原尺寸平滑移到视口中心；分组标签长按约 300ms 后可拖动排序，分组列表获得焦点时用 ↑ / ↓ 切换分组。
 - JSON 导出可选内嵌图片，导入先校验再覆盖或合并；合并重新分配 ID，保留当前设置和壁纸。
 - DataStore、WallpaperProvider 接口，BingWallpaperProvider 空壳；同步 / 每日壁纸选项禁用且可见。
 
@@ -32,7 +33,7 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 100ms 骨架与网格可用是性能目标，尚未完成真实 Chrome 新标签环境的性能验收。搜索框会调用 `focus()`，地址栏是否交出焦点由 Chrome 决定。
 
-内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。选择器图标来自随包发布的本地文件，当前 154 个站点有图标，8 个缺图站点显示首字。
+内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。别名必须唯一；当前已移除 `tb`、`db`、`so`、`dd` 等歧义短别名。选择器图标来自随包发布的本地文件，发布包中 154 个站点有图标；`assets/site-icons/` 未纳入 Git，干净检出时图标回退为名称首字。
 
 本地图标取自各站点公开的 favicon；少数站点只提供 16 / 32px 源图，放大到选择器尺寸后可能偏软。需要更高清的版本时，应在发布前替换 `assets/site-icons/` 中对应文件，而不是恢复运行时抓取。
 
@@ -40,11 +41,11 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 `assets/icons/group-icons/` 中的分组图标来自 Google [Material Symbols](https://fonts.google.com/icons)，采用 [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE) 许可证。上游源码见 [google/material-design-icons](https://github.com/google/material-design-icons)。
 
-当前包含 `favorite`、`stadia_controller`、`home`、`code_xml` 和 `shopping_cart_checkout`。这些图标的许可独立于项目自身代码，不适用于其他目录中的站点 Logo 或 favicon。再分发时须遵守上游许可证，保留适用的版权及许可声明；若修改图标文件，应注明修改。
+界面使用 `favorite`、`stadia_controller`、`home`、`code_xml` 和 `shopping_cart_checkout`；目录另含 `design_services`、`diversity_3`、`smart_display` 三个预留图标。这些图标的许可独立于项目自身代码，不适用于其他目录中的站点 Logo 或 favicon。再分发时须遵守上游许可证，保留适用的版权及许可声明；若修改图标文件，应注明修改。
 
 ## 数据与开发
 
-- `chrome.storage.local`: `appData` 存 `schemaVersion: 1`、分组、有序站点、外观；`devicePrefs` 存引擎、极简、版心。
+- `chrome.storage.local`: `appData` 存 `schemaVersion: 1`、`revision`（多标签冲突检测）、分组、有序站点、外观；`devicePrefs` 存引擎、极简、版心。
 - IndexedDB easy-tab-assets / blobs：保存 wallpaper 与 icon:<uuid> Blob；选择器图标改为本地文件，不再使用 icon-cache。壁纸压缩写入超时会回退保存原始文件。
 - 站点选择器清单 data/sites.json：纯文本 categories + sites，不含任何 Logo、图片或 base64；分类 id 唯一，每类 12–20 条，总数不超过 200。
 - 备份封装 `version: 1`、`data`、`prefs`、`assets`。导入禁止非 HTTP(S) 站点地址，禁用 SVG 资产，解码图片后才写入；上限 200 组、10000 站点、120MB JSON。
@@ -53,7 +54,7 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 - 图片删除后暂不主动清理未引用 Blob，避免多标签和失败写入误删；后续可增加安全垃圾回收。
 - 未来 Sync 按 `group:<id>` 分片、独立组序 key、500ms 防抖，不能把 Blob 放进 sync；当前未接入 sync。
 
-运行 `npm test`（Node.js 20+，不需要 npm install）。手动验收清单见 `docs/ACCEPTANCE.md`。目录中不含构建产物。
+运行 `npm test`（Node.js 20+，不需要 npm install）。GitHub Actions [test.yml](.github/workflows/test.yml) 会执行语法检查与全部测试。手动验收清单见 `docs/ACCEPTANCE.md`。目录中不含构建产物。
 
 ### 图标分类与铺满
 

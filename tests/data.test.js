@@ -6,7 +6,7 @@ import { DEFAULT_PREFS } from '../js/storage/DataStore.js';
 import { moveSite, moveGroup } from '../js/grid/dragSort.js';
 import { searchURL } from '../js/search/engines.js';
 import { validateImage, MAX_IMAGE_BYTES } from '../js/search/imageSearch.js';
-const data = () => ({ schemaVersion: 1, settings: { blur: '0', overlay: '15', radius: '16' }, groups: [{ id: 'a', name: '工作', icon: 'favorite', sites: [{ id: 's1', title: 'Example', url: 'https://example.com/', text: 'E', size: '1x1', iconId: 'icon:1' }, { id: 's2', title: '中文', url: 'https://example.org/', text: '中', size: '2x2' }] }, { id: 'b', name: '学习', icon: 'favorite', sites: [] }] });
+const data = () => ({ schemaVersion: 1, revision: 0, settings: { blur: '0', overlay: '15', radius: '16' }, groups: [{ id: 'a', name: '工作', icon: 'favorite', sites: [{ id: 's1', title: 'Example', url: 'https://example.com/', text: 'E', size: '1x1', iconId: 'icon:1' }, { id: 's2', title: '中文', url: 'https://example.org/', text: '中', size: '2x2' }] }, { id: 'b', name: '学习', icon: 'favorite', sites: [] }] });
 const backup = () => ({ version: 1, data: data(), prefs: { engine: 'bing', minimal: false, layout: 'center' }, assets: [{ id: 'icon:1', data: 'data:image/png;base64,AAAA' }] });
 test('valid backup and empty state preserve shape', () => { assert.deepEqual(parseBackup(backup()).data, data()); assert.equal(validateData({ ...data(), groups: [] }).groups.length, 0); });
 test('reject unsupported versions, script URLs, duplicate IDs, invalid presets', () => {
@@ -62,6 +62,17 @@ test('backup prefs merge defaults and tolerate removed enum values', () => {
   const stale = backup(); stale.prefs = { ...backup().prefs, wallpaper: 'gone', theme: 'gone' };
   assert.equal(parseBackup(stale).prefs.wallpaper, 'none');
   assert.equal(parseBackup(stale).prefs.theme, 'glass');
+});
+test('importing an already-validated backup leaves it untouched for retries', () => {
+  const parsed = parseBackup(backup());
+  const before = JSON.stringify(parsed);
+  planImport(data(), parsed, 'merge');
+  assert.equal(JSON.stringify(parsed), before);
+});
+test('revision round-trips and defaults for legacy data', () => {
+  assert.equal(validateData({ ...data(), revision: 7 }).revision, 7);
+  const legacy = data(); delete legacy.revision;
+  assert.equal(validateData(legacy).revision, 0);
 });
 test('reserved image ids are rejected', () => {
   for (const iconId of ['wallpaper', 'icon-cache:x']) {

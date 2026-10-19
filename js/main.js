@@ -18,7 +18,7 @@ import { buildBackup, download, parseBackup, planImport, dataURLToBlob } from '.
 import { safeURL, validateData } from './io/schema.js';
 
 const store = new LocalDataStore(); const wallpaper = new LocalWallpaperProvider();
-let data, prefs, active, pendingBackup, fallbackBlob, fallbackEngine, settingsReturnFocus;
+let data, prefs, active, pendingBackup, fallbackBlob, fallbackEngine, settingsReturnFocus, customThumbURL;
 let queue = Promise.resolve();
 const run = action => { const result = queue.then(action); queue = result.catch(() => {}); return result; };
 const on = (selector, event, action) => $(selector).addEventListener(event, e => { try { Promise.resolve(action(e)).catch(report); } catch (error) { report(error); } });
@@ -79,15 +79,43 @@ function openEngineMenu() {
   menu.style.left = `${Math.max(6, Math.min(rect.left, innerWidth - box.width - 6))}px`; menu.style.top = `${top}px`;
   (menu.querySelector('[aria-checked="true"]') ?? menu.firstElementChild)?.focus({ preventScroll: true });
 }
-async function change(action) {
+/** Read-modify-write with a revision check, so another tab's save is never
+ * silently overwritten. Returns without saving when the mutation is a no-op. */
+async function commitData(mutate) {
   return run(async () => {
-    // Read-modify-write: another new-tab page may have saved since we last loaded.
-    const base = await store.load().catch(() => data);
-    const draft = structuredClone(base);
-    await action(draft);
-    const valid = validateData(draft);
-    await store.save(valid); data = valid; render();
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const base = await store.load().catch(() => data);
+      const draft = structuredClone(base);
+      if (await mutate(draft) === false) return;
+      draft.revision = (base.revision ?? 0) + 1;
+      const valid = validateData(draft);
+      const latest = await store.load().catch(() => null);
+      if (latest && (latest.revision ?? 0) !== (base.revision ?? 0)) continue;
+      await store.save(valid); data = valid; render(); scheduleAssetGC(); return;
+    }
+    throw new Error('数据正在被其他标签页修改，请重试');
   });
+}
+async function change(action) { return commitData(async draft => { await action(draft); return true; }); }
+const ASSET_GC_DELAY = 10 * 60 * 1000;
+let assetGCTimer;
+/** Delete uploaded icons no longer referenced by the saved data, but only after
+ * ten quiet minutes and only if the data did not change during the scan. */
+function scheduleAssetGC() {
+  clearTimeout(assetGCTimer);
+  assetGCTimer = setTimeout(() => {
+    run(async () => {
+      const snapshot = await store.load().catch(() => null);
+      if (!snapshot) return;
+      const live = new Set(snapshot.groups.flatMap(group => group.sites.map(site => site.iconId).filter(Boolean)));
+      const keys = await assetStore.keys();
+      const orphans = keys.filter(key => typeof key === 'string' && key.startsWith('icon:') && !live.has(key));
+      if (!orphans.length) return;
+      const latest = await store.load().catch(() => null);
+      if (!latest || JSON.stringify(latest) !== JSON.stringify(snapshot)) return;
+      for (const key of orphans) await assetStore.delete(key).catch(() => {});
+    }).catch(() => {});
+  }, ASSET_GC_DELAY);
 }
 function changePrefs(action) {
   return run(async () => {
@@ -119,10 +147,19 @@ async function addSite(id, prefill = {}, editor = editDialog) {
     { name: 'icon', label: '上传自定义图标（可选）', type: 'file', accept: 'image/*' },
   ];
   if (site?.iconId) fields.push({ name: 'removeIcon', label: '已有自定义图片', options: [['keep', '保留'], ['remove', '移除，恢复网站或文字图标']] });
+  // Validate before the dialog closes so a typo never discards the user's input.
+  const validateSite = values => {
+    const title = values.get('title').trim();
+    if (!title) throw new Error('请填写网站名称');
+    const rawUrl = values.get('url').trim();
+    safeURL(/^[a-z][a-z0-9+.-]*:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
+    const text = values.get('text').trim() || Array.from(title).slice(0, 2).join('');
+    if (Array.from(text).length > 3) throw new Error('文字图标最多 3 个字符');
+  };
   const values = await editor(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => {
     const originalHost = site ? new URL(site.url).hostname : '';
     return mountIconPicker(container, form, site, { iconFile: site?.iconFile ?? prefill.iconFile, domain: originalHost || prefill.domain, browse: editor === editDialog });
-  });
+  }, validateSite);
   if (!values) return;
   const title = values.get('title').trim();
   const rawUrl = values.get('url').trim();
@@ -152,9 +189,23 @@ async function addSite(id, prefill = {}, editor = editDialog) {
 }
 async function chooseNewSite() {
   const { openSiteSelector } = await import('./ui/siteSelector.js');
-  await addSite(undefined, {}, (title, fields, customize) => openSiteSelector({ fields, customize }));
+  await addSite(undefined, {}, (_title, fields, customize, validate) => openSiteSelector({ fields, customize, validate }));
 }
-function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); $('#settings-close').focus(); }
+/** Show the stored custom wallpaper in its settings thumbnail, not a fixed “＋”. */
+async function updateWallpaperThumb() {
+  const image = $('#wallpaper-custom-thumb'), placeholder = $('[data-thumb-placeholder]');
+  const blob = await wallpaper.getCurrent().catch(() => null);
+  if (customThumbURL) { URL.revokeObjectURL(customThumbURL); customThumbURL = undefined; }
+  if (blob) {
+    customThumbURL = URL.createObjectURL(blob);
+    if (image) { image.src = customThumbURL; image.hidden = false; }
+    if (placeholder) placeholder.hidden = true;
+  } else {
+    if (image) { image.removeAttribute('src'); image.hidden = true; }
+    if (placeholder) placeholder.hidden = false;
+  }
+}
+function openSettings() { closeEngineMenu(); applySettings(data, prefs); toggleSettings(true); updateWallpaperThumb().catch(() => {}); $('#settings-close').focus(); }
 function closeSettings() { if (document.body.classList.contains('settings-open')) toggleSettings(false); }
 const MINIMAL_FADE = 60, MINIMAL_MOVE = 380;
 let minimalSwitching = false;
@@ -224,6 +275,7 @@ async function importBackup(mode) {
     await run(async () => {
       if (!pendingBackup) return; // A double click queued a second (now empty) import.
       const plan = planImport(data, pendingBackup, mode);
+      const imported = validateData({ ...plan.data, revision: (data.revision ?? 0) + 1 });
       const oldWallpaper = await wallpaper.getCurrent();
       const decoded = plan.assets.map(asset => [asset.id, dataURLToBlob(asset.data)]);
       // Decode before any writes. Imported SVG/HTML and malformed image data never render.
@@ -231,10 +283,10 @@ async function importBackup(mode) {
       await assetStore.putMany(decoded);
       try {
         if (mode === 'replace' && !plan.assets.some(asset => asset.id === 'wallpaper')) await wallpaper.clear();
-        await chrome.storage.local.set(mode === 'replace' ? { appData: plan.data, devicePrefs: plan.prefs } : { appData: plan.data });
+        await chrome.storage.local.set(mode === 'replace' ? { appData: imported, devicePrefs: plan.prefs } : { appData: imported });
       } catch (error) { if (mode === 'replace') { if (oldWallpaper) await assetStore.put('wallpaper', oldWallpaper); else await wallpaper.clear(); } throw error; }
-      data = plan.data; if (mode === 'replace') prefs = plan.prefs;
-      pendingBackup = null; $('#import-dialog').close(); render(); await renderWallpaper(wallpaper, prefs.wallpaper); toast('导入完成');
+      data = imported; if (mode === 'replace') prefs = plan.prefs;
+      pendingBackup = null; $('#import-dialog').close(); render(); await renderWallpaper(wallpaper, prefs.wallpaper); updateWallpaperThumb().catch(() => {}); scheduleAssetGC(); toast('导入完成');
     });
   } finally {
     for (const button of buttons) button.disabled = false;
@@ -243,7 +295,7 @@ async function importBackup(mode) {
 async function start() {
   [data, prefs] = await Promise.all([store.load(), loadPrefs()]); active = data.groups[0]?.id; bindDialogClose(); render();
   // Grid renders without waiting for IDB or the full wallpaper to decode.
-  renderWallpaper(wallpaper, prefs.wallpaper).catch(report); startClock(() => prefs); $('#search-input').focus();
+  renderWallpaper(wallpaper, prefs.wallpaper).catch(report); startClock(() => prefs); scheduleAssetGC(); $('#search-input').focus();
   on('#search-form', 'submit', event => { event.preventDefault(); const query = $('#search-input').value.trim(); if (query) window.open(searchURL(prefs.engine, query), '_blank', 'noopener,noreferrer'); });
   on('#engine', 'click', () => { if ($('#engine-menu').hidden) openEngineMenu(); else closeEngineMenu(); });
   $('#engine-menu').addEventListener('keydown', event => {
@@ -300,7 +352,7 @@ async function start() {
   });
   on('#wallpaper-input', 'change', async event => {
     const file = event.target.files[0]; if (!file) return;
-    try { await wallpaper.set(file); await changePrefs(next => { next.wallpaper = 'custom'; }); await renderWallpaper(wallpaper, 'custom'); toast('壁纸已保存'); } finally { event.target.value = ''; }
+    try { await wallpaper.set(file); await changePrefs(next => { next.wallpaper = 'custom'; }); await renderWallpaper(wallpaper, 'custom'); await updateWallpaperThumb(); toast('壁纸已保存'); } finally { event.target.value = ''; }
   });
   const wallpaperChoices = [...document.querySelectorAll('[data-wallpaper]')];
   wallpaperChoices.forEach((button, index) => {
@@ -333,22 +385,25 @@ async function start() {
     deleteGroup: async id => { const group = data.groups.find(item => item.id === id); if (group?.sites.length && !confirm(`删除“${group.name}”及其中的 ${group.sites.length} 个站点？`)) return; await change(draft => { draft.groups = draft.groups.filter(item => item.id !== id); }); },
     wallpaper: () => { openSettings(); $('#wallpaper-input').click(); }, settings: openSettings, error: report,
   });
-  // Apply the move to a fresh clone inside the queue, so an in-flight edit is not reverted.
-  const saveDrag = mutate => run(async () => {
-    const base = await store.load().catch(() => data);
-    const draft = structuredClone(base);
-    if (!mutate(draft)) return;
-    const valid = validateData(draft);
-    await store.save(valid); data = valid; render();
-  });
   bindDragSort($('#grid'), $('#groups'), (siteId, groupId, before) => {
     const target = groupId ?? active;
-    saveDrag(draft => moveSite(draft, siteId, target, before)).catch(report);
+    commitData(draft => moveSite(draft, siteId, target, before)).catch(report);
   });
   bindGroupDragSort($('#groups'), (groupId, before) => {
-    saveDrag(draft => moveGroup(draft, groupId, before)).catch(report);
+    commitData(draft => moveGroup(draft, groupId, before)).catch(report);
   });
   bindGroupWheel($('.collection'), () => data.groups, () => active, selectGroup);
+  // Arrow keys walk the group list; group drag stays pointer-only.
+  $('#groups').addEventListener('keydown', event => {
+    if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+    const index = data.groups.findIndex(group => group.id === active);
+    const direction = event.key === 'ArrowDown' ? 1 : -1;
+    const next = data.groups[index + direction];
+    if (!next) return;
+    event.preventDefault();
+    selectGroup(next.id, direction);
+    requestAnimationFrame(() => document.querySelector(`.group-button[data-group="${CSS.escape(next.id)}"]`)?.focus());
+  });
   let dragDepth = 0, imageRequest = 0;
   const resetImageDrag = () => { dragDepth = 0; $('#search-form').classList.remove('drag-over'); };
   const prepareImageSearch = async (load, engine) => {

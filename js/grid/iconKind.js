@@ -46,11 +46,14 @@ function loadImageElement(source) {
 // Keep both in-flight and completed classifications for this store's session.
 // Store identity matters: previews/tests may use the same source in different stores.
 const CACHE_LIMIT = 500;
+// Bundled artwork changes with the extension; favicons are left alone (they rarely change).
+const EXTENSION_VERSION = (() => { try { return chrome.runtime.getManifest().version; } catch { return ''; } })();
 const classifications = new WeakMap();
 export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
   let entries = classifications.get(store);
   if (!entries) classifications.set(store, entries = new Map());
-  const key = `icon-cache:${source}`;
+  const key = source.startsWith('chrome-extension://')
+    ? `icon-cache:${EXTENSION_VERSION}:${source}` : `icon-cache:${source}`;
   let request = entries.get(key);
   if (!request && entries.size >= CACHE_LIMIT) {
     // Bound long-lived new-tab pages; an evicted promise stays valid for its caller.

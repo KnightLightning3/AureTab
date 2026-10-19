@@ -1,4 +1,4 @@
-import { validateData, parseBackup } from './schema.js';
+import { validateData, parseBackup, isParsedBackup } from './schema.js';
 export { parseBackup } from './schema.js';
 export const blobToDataURL = blob => new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = () => reject(reader.error); reader.readAsDataURL(blob); });
 export function dataURLToBlob(data) { const [header, encoded] = data.split(','); const binary = atob(encoded); return new Blob([Uint8Array.from(binary, ch => ch.charCodeAt(0))], { type: header.slice(5, header.indexOf(';')) }); }
@@ -35,7 +35,9 @@ export async function buildBackup(data, prefs, store, includeAssets) {
  */
 export function planImport(current, raw, mode) {
   if (!['merge', 'replace'].includes(mode)) throw new Error('未知导入方式');
-  const backup = parseBackup(raw); const assets = []; const mapping = new Map();
+  // An already-validated backup skips the (expensive) base64 re-scan.
+  const backup = isParsedBackup(raw) ? raw : parseBackup(raw);
+  const assets = []; const mapping = new Map();
   // Never write asset payloads that no site in the backup references.
   const referenced = new Set(backup.data.groups.flatMap(group => group.sites.map(site => site.iconId).filter(Boolean)));
   for (const asset of backup.assets) {
@@ -43,11 +45,13 @@ export function planImport(current, raw, mode) {
     if (!referenced.has(asset.id)) continue;
     const id = `icon:${crypto.randomUUID()}`; mapping.set(asset.id, id); assets.push({ id, data: asset.data });
   }
-  for (const group of backup.data.groups) {
+  // Copy only the metadata so a retry never sees mutated IDs or references.
+  const groups = structuredClone(backup.data.groups);
+  for (const group of groups) {
     if (mode === 'merge') group.id = crypto.randomUUID();
     for (const site of group.sites) { if (mode === 'merge') site.id = crypto.randomUUID(); if (site.iconId) { if (mapping.has(site.iconId)) site.iconId = mapping.get(site.iconId); else delete site.iconId; } }
   }
-  const data = mode === 'merge' ? { ...structuredClone(current), groups: [...structuredClone(current.groups), ...backup.data.groups] } : backup.data;
+  const data = mode === 'merge' ? { ...structuredClone(current), groups: [...structuredClone(current.groups), ...groups] } : { ...backup.data, groups };
   const prefs = { ...backup.prefs };
   // Legacy backups can select a custom wallpaper whose blob was not exported.
   if (mode === 'replace' && prefs.wallpaper === 'custom' && !backup.assets.some(asset => asset.id === 'wallpaper')) prefs.wallpaper = 'none';

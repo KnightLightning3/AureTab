@@ -2,10 +2,50 @@ import { faviconSources } from './favicon.js';
 import { localIconURL } from './siteIcon.js';
 import { showClassifiedIcon } from './iconKind.js';
 import { groupIconElement } from '../ui/groupIcon.js';
+
+// Limit concurrent icon decodes/downloads; the queue drains across group switches.
+const ICON_CONCURRENCY = 4;
+let activeLoads = 0;
+const loadQueue = [];
+function enqueue(task) {
+  const run = () => {
+    activeLoads++;
+    Promise.resolve().then(task).catch(() => {}).finally(() => {
+      activeLoads--;
+      loadQueue.shift()?.();
+    });
+  };
+  if (activeLoads < ICON_CONCURRENCY) run(); else loadQueue.push(run);
+}
+
+const starters = new WeakMap();
+let iconObserver;
+function observer() {
+  if (typeof IntersectionObserver !== 'function') return null;
+  if (!iconObserver) {
+    iconObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const start = starters.get(entry.target);
+        starters.delete(entry.target);
+        iconObserver.unobserve(entry.target);
+        start?.();
+      }
+    }, { root: document.querySelector('.grid-viewport') ?? null, rootMargin: '200px' });
+  }
+  return iconObserver;
+}
+
 const groupViews = new Map();
+/** A cached group that is gone (or replaced) must not keep loading or observing. */
+function retire(view) {
+  if (!view) return;
+  view.active = false;
+  for (const node of view.nodes) { starters.delete(node); iconObserver?.unobserve(node); }
+}
 export function pruneGridCache(groups) {
   const ids = new Set(groups.map(group => group.id));
-  for (const id of groupViews.keys()) if (!ids.has(id)) groupViews.delete(id);
+  for (const [id, view] of groupViews) if (!ids.has(id)) { retire(view); groupViews.delete(id); }
 }
 export function renderGroups(groups, active, onSelect) {
   const nav = document.querySelector('#groups');
@@ -13,7 +53,7 @@ export function renderGroups(groups, active, onSelect) {
   const buttons = groups.map(group => {
     const button = existing.get(group.id) ?? document.createElement('button');
     button.className = `group-button${group.id === active ? ' active' : ''}`;
-    button.dataset.group = group.id; button.draggable = true; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
+    button.dataset.group = group.id; button.draggable = false; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
     // Rebuild only when the icon or label actually changed; a selection change is just a class toggle.
     if (button.dataset.icon !== (group.icon ?? '') || button.querySelector('.group-name')?.textContent !== group.name) {
       button.replaceChildren();
@@ -37,10 +77,12 @@ export function renderGrid(group, store, onAdd) {
     if (root.dataset.group !== key || root.firstChild !== cached.nodes[0]) root.replaceChildren(...cached.nodes);
     if (root.dataset.group !== key) root.dataset.group = key; return;
   }
+  if (cached) retire(cached);
   const grid = document.createDocumentFragment();
+  const view = { signature, nodes: [], active: true };
   const commit = () => {
-    const nodes = [...grid.childNodes]; groupViews.set(key, { signature, nodes });
-    root.replaceChildren(...nodes); if (root.dataset.group !== key) root.dataset.group = key;
+    view.nodes = [...grid.childNodes]; groupViews.set(key, view);
+    root.replaceChildren(...view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
   };
   if (!group?.sites.length) { const empty = document.createElement('div'); empty.className = 'empty-state'; const button = document.createElement('button'); button.textContent = '＋ 添加第一个图标'; button.onclick = onAdd; empty.append(button); grid.append(empty); commit(); return; }
   for (const site of group.sites) {
@@ -52,6 +94,7 @@ export function renderGrid(group, store, onAdd) {
     if (!site.useText) {
       const options = { manual: site.iconStyle, store };
       const load = async () => {
+        if (!view.active) return;
         // Every source is best-effort: a missing blob, unreadable bundled file or
         // <32px image must fall through to the next source, not end the chain.
         try {
@@ -65,7 +108,12 @@ export function renderGrid(group, store, onAdd) {
           try { if (await showClassifiedIcon(icon, source, options)) return; } catch {}
         }
       };
-      load().catch(() => { /* Keep the text placeholder when decoding or loading fails. */ });
+      // Only visible (or nearly visible) tiles request icons. A successful load is
+      // cached by iconKind, so returning to this group does not request it again.
+      const start = () => enqueue(load);
+      const observed = observer();
+      if (observed) { starters.set(link, start); observed.observe(link); }
+      else start();
     }
   }
   if (group.sites.length) {

@@ -51,8 +51,9 @@
         <button type="button" class="wallpaper-choice" data-wallpaper="none" role="radio" aria-checked="false"><span class="wallpaper-thumb thumb-none"></span><span class="wallpaper-name">无</span></button>
         <button type="button" class="wallpaper-choice" data-wallpaper="default-1" role="radio" aria-checked="false"><img class="wallpaper-thumb" src="assets/wallpapers/default-1.svg" alt=""><span class="wallpaper-name">山间晨雾</span></button>
         <button type="button" class="wallpaper-choice" data-wallpaper="default-2" role="radio" aria-checked="false"><img class="wallpaper-thumb" src="assets/wallpapers/default-2.svg" alt=""><span class="wallpaper-name">黄昏暖阳</span></button>
-        <button type="button" class="wallpaper-choice" data-wallpaper="custom" role="radio" aria-checked="false"><span class="wallpaper-thumb thumb-custom">＋</span><span class="wallpaper-name">本地图片</span></button>
+        <button type="button" class="wallpaper-choice" data-wallpaper="custom" role="radio" aria-checked="false"><img class="wallpaper-thumb" id="wallpaper-custom-thumb" alt="" hidden><span class="wallpaper-thumb thumb-custom" data-thumb-placeholder>＋</span><span class="wallpaper-name">本地图片</span></button>
       </div>
+      <p class="help" id="wallpaper-hint">本地图片建议小于 20MB。</p>
       <input id="wallpaper-input" type="file" accept="image/*" hidden>
       <p class="section-label">时钟</p>
       <label class="checkbox"><input data-pref="clock24" type="checkbox" checked> 24 小时制</label>

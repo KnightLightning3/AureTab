@@ -46,6 +46,7 @@ async function transaction(storeName, mode, action, timeout = 0) {
 }
 export const assetStore = {
   get: key => transaction('blobs', 'readonly', store => store.get(key)),
+  keys: () => transaction('blobs', 'readonly', store => store.getAllKeys()),
   put: (key, blob, timeout = 8000) => transaction('blobs', 'readwrite', store => store.put(blob, key), timeout),
   delete: key => transaction('blobs', 'readwrite', store => store.delete(key), 8000),
   putMany: entries => transaction('blobs', 'readwrite', store => { for (const [key, blob] of entries) store.put(blob, key); }, 15000),

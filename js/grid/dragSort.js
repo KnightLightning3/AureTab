@@ -44,18 +44,46 @@ export function moveGroup(data, groupId, beforeGroupId) {
   return true;
 }
 
-/** Long-press style drag: reorder sidebar group labels with the native DnD contract. */
+/** Long-press then drag: reorder sidebar group labels without hijacking a tap. */
 export function bindGroupDragSort(container, onDrop) {
-  let dragged;
+  const LONG_PRESS = 300, MOVE_TOLERANCE = 6;
+  let dragged, press = null, dragging = false;
+  const cancelPress = () => {
+    if (!press) return;
+    clearTimeout(press.timer);
+    if (!dragging) { press.element.draggable = false; press.element.classList.remove('long-press'); }
+    press = null;
+  };
+  container.addEventListener('pointerdown', event => {
+    if (event.button > 0) return;
+    const element = event.target.closest('[data-group]');
+    if (!element) return;
+    cancelPress();
+    const state = { element, x: event.clientX, y: event.clientY, timer: 0 };
+    state.timer = setTimeout(() => { element.draggable = true; element.classList.add('long-press'); }, LONG_PRESS);
+    press = state;
+  });
+  container.addEventListener('pointermove', event => {
+    if (!press || press.element.draggable) return;
+    if (Math.hypot(event.clientX - press.x, event.clientY - press.y) > MOVE_TOLERANCE) cancelPress();
+  });
+  container.addEventListener('pointerup', cancelPress);
+  container.addEventListener('pointercancel', cancelPress);
+  container.addEventListener('pointerleave', cancelPress);
   container.addEventListener('dragstart', event => {
     const group = event.target.closest('[data-group]');
     if (!group) return;
+    dragging = true;
+    if (press) { clearTimeout(press.timer); press.element.classList.remove('long-press'); press = null; }
     dragged = group.dataset.group;
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('application/x-easy-tab-group', dragged);
   });
   const clear = () => container.querySelectorAll('.drag-target').forEach(element => element.classList.remove('drag-target'));
-  document.addEventListener('dragend', () => { dragged = null; clear(); });
+  document.addEventListener('dragend', () => {
+    dragged = null; clear(); dragging = false;
+    container.querySelectorAll('[data-group]').forEach(button => { button.draggable = false; button.classList.remove('long-press'); });
+  });
   container.addEventListener('dragover', event => {
     if (!dragged) return;
     event.preventDefault(); event.dataTransfer.dropEffect = 'move'; clear();
