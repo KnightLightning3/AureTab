@@ -1,7 +1,10 @@
 .collection{display:grid;grid-template-columns:145px minmax(0,1fr);gap:38px}#sidebar{border-right:1px solid var(--line);padding-right:18px}#groups{display:grid;gap:8px;margin-bottom:20px}.group-button{width:100%;display:flex;align-items:center;gap:10px;text-align:left;border:0;background:transparent;padding:12px 14px;overflow-wrap:anywhere;cursor:grab}.group-button .group-icon{width:18px;height:18px;flex:none;fill:currentColor}.group-button .group-name{min-width:0;overflow-wrap:anywhere}.group-button.active{background:var(--active-bg,#dfe8dc);color:var(--active-ink,#254e3d);font-weight:700}.group-button.drag-target{outline:2px dashed var(--accent)}.group-button.long-press{cursor:grabbing}.sites-panel{min-width:0}.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:112px;grid-auto-flow:dense;gap:18px}.site{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0;border-radius:14px;background:#ffffff32;position:relative;cursor:grab;content-visibility:auto;contain-intrinsic-size:auto 90px}.site:hover{background:#ffffff90}.site.large{grid-column:span 2;grid-row:span 2;background:#ffffff70}.site-icon{height:52px;width:52px;border-radius:var(--radius);display:grid;place-items:center;background:var(--icon-bg,#fff9);color:var(--icon-ink,#386453);font-weight:700;font-size:19px;overflow:hidden;flex:none;box-shadow:var(--icon-shadow,0 3px 12px #183c3006)}.site.large .site-icon{height:80px;width:80px;font-size:27px}.site-icon img{width:32px;height:32px;object-fit:contain}.site-icon img.custom{width:100%;height:100%;object-fit:cover}.site-title{font-size:11px;max-width:95%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 4px}.site.large .site-title{font-size:14px}.site.drag-target{outline:2px dashed var(--accent)}.empty-state{grid-column:1/-1;min-height:170px;display:grid;place-items:center;border:1px dashed #8da39466;background:#ffffff22;border-radius:16px}.empty-state button{border:0;background:transparent;color:var(--muted)}
 @media(min-width:1600px){.workspace{padding-top:95px}.search-section{margin-bottom:90px}}
 @media(max-width:767px){.collection{display:block}#sidebar{position:fixed;z-index:20;inset:0 auto 0 0;width:230px;background:#f1f5eb;padding:30px 20px;display:none}body.drawer-open #sidebar{display:block}#drawer-backdrop{position:fixed;inset:0;background:#18342b55;z-index:19}}
-.grid{--cell:80px;--gap:6px;grid-template-columns:repeat(auto-fill,var(--cell));grid-auto-rows:90px;gap:var(--gap);justify-content:start}
+.grid{--cell:80px;--gap:6px;grid-template-columns:repeat(auto-fill,var(--cell));grid-auto-rows:90px;gap:var(--gap);justify-content:start;position:relative;isolation:isolate}
+/* One blurred layer, masked to the icon rectangles by JS. */
+.grid-glass{position:absolute;inset:0;z-index:-1;pointer-events:none;backdrop-filter:blur(calc(var(--glass-blur,16px) * .6));-webkit-backdrop-filter:blur(calc(var(--glass-blur,16px) * .6));-webkit-mask-image:var(--grid-glass-mask,linear-gradient(transparent,transparent));mask-image:var(--grid-glass-mask,linear-gradient(transparent,transparent));-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.grid.grid-animating .grid-glass{backdrop-filter:none;-webkit-backdrop-filter:none}
 .site{gap:2px;background:none;justify-content:flex-start}
 .site:hover{background:none}
 .site.large,.site.wide,.site.tall{background:none}
@@ -50,14 +53,8 @@ body{height:100dvh;overflow:hidden}
 .grid-viewport:hover{scrollbar-color:var(--line) transparent}
 .grid-viewport:hover::-webkit-scrollbar-thumb{background:var(--line)}
 #sidebar{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:6px 18px 6px 6px}
-#grid{transition:transform var(--motion-fast) ease-out}
-#grid.wheel-pulling{transition:none}
-.group-wheel-hint{position:absolute;left:0;right:0;z-index:1;pointer-events:none;text-align:center;font-size:11px;color:var(--muted);opacity:.7;padding:6px;background:var(--panel-bg);border-radius:8px;animation:fade-in var(--motion-fast)}
-.group-wheel-hint[data-edge=bottom]{bottom:4px}
-.group-wheel-hint[data-edge=top]{top:4px}
 @media(max-width:767px){#sidebar{max-height:100dvh!important}}
 @media(max-height:650px){.topbar{height:56px;padding-top:12px;padding-bottom:12px}.workspace{padding-top:12px}.search-section{margin-bottom:24px}body[data-layout=center] .search-section{margin-top:0}}
-@media(prefers-reduced-motion:reduce){#grid{transition:none}.group-wheel-hint{animation:none}}
 
 /* Desktop presets share one width and one column definition; only margins differ. */
 @media(min-width:768px){

@@ -36,6 +36,58 @@ function observer() {
   return iconObserver;
 }
 
+// One blurred layer behind the grid, masked to the icon rectangles. This keeps
+// the glass look without one backdrop filter per icon.
+let glassPlate, glassMaskFrame = 0, glassResizeObserver, glassSettingsObserver;
+function plateFor(root) {
+  if (!glassPlate) {
+    glassPlate = document.createElement('div');
+    glassPlate.className = 'grid-glass';
+    glassPlate.setAttribute('aria-hidden', 'true');
+  }
+  if (glassPlate.parentNode !== root) root.prepend(glassPlate);
+  return glassPlate;
+}
+function applyGlassMask() {
+  const root = document.querySelector('#grid');
+  if (!glassPlate?.isConnected || !root) return;
+  const width = root.clientWidth, height = root.clientHeight;
+  if (!width || !height) return;
+  const radius = getComputedStyle(document.body).getPropertyValue('--radius').trim();
+  const circular = radius.endsWith('%');
+  const fixedRadius = circular ? 0 : parseFloat(radius) || 0;
+  const rootRect = root.getBoundingClientRect();
+  const rects = [];
+  for (const icon of root.querySelectorAll('.site-icon')) {
+    const rect = icon.getBoundingClientRect();
+    if (!rect.width || !rect.height) continue;
+    const x = rect.left - rootRect.left, y = rect.top - rootRect.top;
+    const rx = circular ? rect.width / 2 : Math.min(fixedRadius, rect.width / 2);
+    const ry = circular ? rect.height / 2 : Math.min(fixedRadius, rect.height / 2);
+    rects.push(`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${rect.width.toFixed(1)}" height="${rect.height.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="#fff"/>`);
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">${rects.join('')}</svg>`;
+  glassPlate.style.setProperty('--grid-glass-mask', `url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+}
+export function scheduleGlassMask() {
+  if (glassMaskFrame) return;
+  const frame = typeof globalThis.requestAnimationFrame === 'function'
+    ? callback => globalThis.requestAnimationFrame(callback)
+    : callback => setTimeout(callback, 0);
+  glassMaskFrame = frame(() => { glassMaskFrame = 0; applyGlassMask(); }) || 1;
+}
+function observeGlass(root) {
+  plateFor(root); scheduleGlassMask();
+  if (!glassResizeObserver && typeof ResizeObserver === 'function') {
+    glassResizeObserver = new ResizeObserver(scheduleGlassMask);
+    glassResizeObserver.observe(root);
+  }
+  if (!glassSettingsObserver && typeof MutationObserver === 'function') {
+    glassSettingsObserver = new MutationObserver(scheduleGlassMask);
+    glassSettingsObserver.observe(document.body, { attributes: true, attributeFilter: ['data-radius', 'class'] });
+  }
+}
+
 const groupViews = new Map();
 /** A cached group that is gone (or replaced) must not keep loading or observing. */
 function retire(view) {
@@ -74,15 +126,18 @@ export function renderGrid(group, store, onAdd) {
   const signature = JSON.stringify(group?.sites ?? []);
   const cached = groupViews.get(key);
   if (cached?.signature === signature) {
-    if (root.dataset.group !== key || root.firstChild !== cached.nodes[0]) root.replaceChildren(...cached.nodes);
-    if (root.dataset.group !== key) root.dataset.group = key; return;
+    const plate = plateFor(root);
+    if (root.dataset.group !== key || root.children[1] !== cached.nodes[0]) root.replaceChildren(plate, ...cached.nodes);
+    if (root.dataset.group !== key) root.dataset.group = key; observeGlass(root); return;
   }
   if (cached) retire(cached);
   const grid = document.createDocumentFragment();
   const view = { signature, nodes: [], active: true };
   const commit = () => {
     view.nodes = [...grid.childNodes]; groupViews.set(key, view);
-    root.replaceChildren(...view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
+    const plate = plateFor(root);
+    root.replaceChildren(plate, ...view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
+    observeGlass(root);
   };
   if (!group?.sites.length) { const empty = document.createElement('div'); empty.className = 'empty-state'; const button = document.createElement('button'); button.textContent = '＋ 添加第一个图标'; button.onclick = onAdd; empty.append(button); grid.append(empty); commit(); return; }
   for (const site of group.sites) {

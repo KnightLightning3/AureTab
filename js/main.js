@@ -6,7 +6,7 @@ import { imageSearchAdapters, imageFromDrop, copyAndOpenImage } from './search/i
 import { renderGroups, renderGrid, pruneGridCache } from './grid/render.js';
 import { loadClassifiedIcon } from './grid/iconKind.js';
 import { localIconURL } from './grid/siteIcon.js';
-import { bindGroupWheel } from './ui/groupNavigation.js';
+import { bindGridLayout } from './ui/groupNavigation.js';
 import { bindDragSort, bindGroupDragSort, moveSite, moveGroup } from './grid/dragSort.js';
 import { bindContextMenu } from './ui/contextMenu.js';
 import { $, toast, report, bindDialogClose, editDialog } from './ui/dialogs.js';
@@ -50,11 +50,15 @@ function selectGroup(id, direction) {
   viewport.scrollTop = movement < 0 ? viewport.scrollHeight : 0;
   const grid = $('#grid');
   for (const animation of grid.getAnimations()) animation.cancel();
+  grid.classList.remove('grid-animating');
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Pause the plate's backdrop sampling while the grid is moving.
+    grid.classList.add('grid-animating');
     grid.animate([
       { transform: `translateY(${movement * 28}px)`, opacity: 0 },
       { transform: 'translateY(0)', opacity: 1 }
-    ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' })
+      .finished.finally(() => grid.classList.remove('grid-animating'));
   }
 }
 function updateEngine() {
@@ -392,17 +396,21 @@ async function start() {
   bindGroupDragSort($('#groups'), (groupId, before) => {
     commitData(draft => moveGroup(draft, groupId, before)).catch(report);
   });
-  bindGroupWheel($('.collection'), () => data.groups, () => active, selectGroup);
-  // Arrow keys walk the group list; group drag stays pointer-only.
-  $('#groups').addEventListener('keydown', event => {
+  bindGridLayout($('.collection'));
+  // Global group shortcut: Up/Down anywhere except while typing or in another surface.
+  document.addEventListener('keydown', event => {
     if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const target = event.target;
+    if (target instanceof Element && target.closest('input,textarea,select,[contenteditable="true"],dialog,#settings-panel,#engine-menu,#context-menu')) return;
+    if (document.querySelector('dialog[open]') || document.body.classList.contains('settings-open')) return;
+    if (!$('#engine-menu').hidden || !$('#context-menu').hidden) return;
     const index = data.groups.findIndex(group => group.id === active);
     const direction = event.key === 'ArrowDown' ? 1 : -1;
     const next = data.groups[index + direction];
     if (!next) return;
     event.preventDefault();
     selectGroup(next.id, direction);
-    requestAnimationFrame(() => document.querySelector(`.group-button[data-group="${CSS.escape(next.id)}"]`)?.focus());
   });
   let dragDepth = 0, imageRequest = 0;
   const resetImageDrag = () => { dragDepth = 0; $('#search-form').classList.remove('drag-over'); };
