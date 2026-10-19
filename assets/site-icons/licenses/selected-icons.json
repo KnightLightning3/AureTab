@@ -1,0 +1,3249 @@
+[
+  {
+    "domain": "mail.google.com",
+    "name": "Gmail",
+    "icons": [
+      {
+        "role": "main",
+        "file": "mail.google.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/gmail.svg",
+        "sha256": "deb93af828d913122be262cdc07c5cab6b5609a8e82c885b7d841b735fae167e",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1.3333,
+        "bytes": 535,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "google.com",
+    "name": "Google",
+    "icons": [
+      {
+        "role": "main",
+        "file": "google.com.svg",
+        "source": "assets/icons/lobe-icons/google-color.svg",
+        "sha256": "4e6aa8892ef15a6b431f40f2c9045979bf7e2357524e7bbb89b353cf4f32a5ac",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 920,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "google.com-text.svg",
+        "source": "assets/icons/lobe-icons/google-brand-color.svg",
+        "sha256": "c574277a16a36b5d4ad5b6bec87c1198c3e8e2417ace81eb29eaf3b5647c405a",
+        "format": "svg",
+        "width": 77.0,
+        "height": 24.0,
+        "aspect": 3.2083,
+        "inkAspect": 3.05,
+        "bytes": 1968,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "bing.com",
+    "name": "Bing",
+    "icons": [
+      {
+        "role": "main",
+        "file": "bing.com.svg",
+        "source": "assets/icons/lobe-icons/bing-color.svg",
+        "sha256": "0690e17df0de27573b4a5aab62a7d1fa35bc2210577147c2553b1a8c041b4fd9",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.6719,
+        "bytes": 2857,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "bing.com-text.svg",
+        "source": "assets/icons/lobe-icons/bing-text.svg",
+        "sha256": "0101d968fbb823afefd1619dc529330511392aa94a4b207f3009de465f82361f",
+        "format": "svg",
+        "width": 44.0,
+        "height": 24.0,
+        "aspect": 1.8333,
+        "inkAspect": 1.8125,
+        "bytes": 1879,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "baidu.com",
+    "name": "百度",
+    "icons": [
+      {
+        "role": "main",
+        "file": "baidu.com.svg",
+        "source": "assets/icons/lobe-icons/baidu-color.svg",
+        "sha256": "1059750a2069aec6080ff48732931e87a99bd3d22db3e8471cebe255b6014b75",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.9,
+        "bytes": 1384,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "baidu.com-text.svg",
+        "source": "assets/icons/lobe-icons/baidu-brand-color.svg",
+        "sha256": "b12bf6d7396391952356dc5cf064cd0a3a7440dfc3f5a4d2f751bbaaba3ec945",
+        "format": "svg",
+        "width": 72.0,
+        "height": 24.0,
+        "aspect": 3.0,
+        "inkAspect": 3,
+        "bytes": 2873,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "sogou.com",
+    "name": "搜狗",
+    "icons": [
+      {
+        "role": "main",
+        "file": "sogou.com.svg",
+        "source": "assets/icons/simple-icons/icons/sogou.svg",
+        "sha256": "8d1c96e06e6a90e4e38816d0f796298abaaace118dd593d69fd348432fd43ac1",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 937,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "duckduckgo.com",
+    "name": "DuckDuckGo",
+    "icons": [
+      {
+        "role": "main",
+        "file": "duckduckgo.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/duckduckgo.svg",
+        "sha256": "b5a96c9159f0b6cfb80ac78ae9b37d05b5e3d48c128a278fe7baccd668910cc8",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 5171,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "quark.cn",
+    "name": "夸克",
+    "icons": [
+      {
+        "role": "main",
+        "file": "quark.cn.png",
+        "source": "assets/site-icons/quark.cn.png",
+        "sha256": "8a0c508bd18deb1f30a86b80e8940e82bcba976524cdfeb4b46b7fbb7814535f",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1571,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "bilibili.com",
+    "name": "哔哩哔哩",
+    "icons": [
+      {
+        "role": "main",
+        "file": "bilibili.com.svg",
+        "source": "assets/icons/lobe-icons/bilibili-color.svg",
+        "sha256": "daab1fb9ba8466de6178020db2ee7ef9fd6a01895ce383fa1c79269cc97288ff",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1034,
+        "bytes": 850,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "bilibili.com-text.svg",
+        "source": "assets/icons/lobe-icons/bilibili-text.svg",
+        "sha256": "e74a8d3affe55ad07901b2cdfbaa33a0a7f26f643ef21fae514ea7ee337bc9bb",
+        "format": "svg",
+        "width": 52.0,
+        "height": 24.0,
+        "aspect": 2.1667,
+        "inkAspect": 2.1786,
+        "bytes": 7826,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "iqiyi.com",
+    "name": "爱奇艺",
+    "icons": [
+      {
+        "role": "main",
+        "file": "iqiyi.com.png",
+        "source": "assets/site-icons/iqiyi.com.png",
+        "sha256": "d2bbdae35d26e7d37a8a3d645e1e5ffe68617660cb1c996df1a793124b00a011",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 20119,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "v.qq.com",
+    "name": "腾讯视频",
+    "icons": [
+      {
+        "role": "main",
+        "file": "v.qq.com.jpg",
+        "source": "assets/site-icons/v.qq.com.jpg",
+        "sha256": "9e340b47050db8f00d604ec19fbb78ddcd4e9834ee39583228f263997fea8ef5",
+        "format": "jpeg",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3025,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "youku.com",
+    "name": "优酷",
+    "icons": [
+      {
+        "role": "main",
+        "file": "youku.com.png",
+        "source": "assets/site-icons/youku.com.png",
+        "sha256": "1f91311fbe921f7f9719d0da9808adca25da7f6af509a24f93bd3c94803f2bbc",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 0.8478,
+        "bytes": 1460,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "mgtv.com",
+    "name": "芒果TV",
+    "icons": [
+      {
+        "role": "main",
+        "file": "mgtv.com.png",
+        "source": "assets/site-icons/mgtv.com.png",
+        "sha256": "fa516e0edc18795c9a61d234e6ba289c5fdf6a3d5017718f57d4deac4328eedf",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1688,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "ixigua.com",
+    "name": "西瓜视频",
+    "icons": [
+      {
+        "role": "main",
+        "file": "ixigua.com.png",
+        "source": "assets/site-icons/ixigua.com.png",
+        "sha256": "d93d105775064bbfbc927c56316c60aebfe945d03c0173b052ee43c0d0c089d8",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1546,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "youtube.com",
+    "name": "YouTube",
+    "icons": [
+      {
+        "role": "main",
+        "file": "youtube.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/youtube.svg",
+        "sha256": "320ae220c53a6126da81aaf6803d8c813837bcaa95f39dcf5f75932335746673",
+        "format": "svg",
+        "width": 512.0,
+        "height": 358.4,
+        "aspect": 1.4286,
+        "inkAspect": 1.4222,
+        "bytes": 479,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "netflix.com",
+    "name": "Netflix",
+    "icons": [
+      {
+        "role": "main",
+        "file": "netflix.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/netflix.svg",
+        "sha256": "2c1202dc7f5af0a3ae191185cc5724de1053bb6a5e7a96f2f492c03828ee265f",
+        "format": "svg",
+        "width": 282.24,
+        "height": 512.28,
+        "aspect": 0.5509,
+        "inkAspect": 0.5469,
+        "bytes": 3354,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "twitch.tv",
+    "name": "Twitch",
+    "icons": [
+      {
+        "role": "main",
+        "file": "twitch.tv.svg",
+        "source": "assets/icons/dashboard-icons/svg/twitch.svg",
+        "sha256": "a8eb365147d606ec498ea6e655e1e1397ee5c0bdbc096464d496e6f2f31a1c69",
+        "format": "svg",
+        "width": 449.33,
+        "height": 512.0,
+        "aspect": 0.8776,
+        "inkAspect": 0.875,
+        "bytes": 599,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "douyin.com",
+    "name": "抖音",
+    "icons": [
+      {
+        "role": "main",
+        "file": "douyin.com.png",
+        "source": "assets/site-icons/douyin.com.png",
+        "sha256": "00577471ebd506d56320452666214e7cabac1c66c7a4686ffa95197c8d562076",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1601,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "kuaishou.com",
+    "name": "快手",
+    "icons": [
+      {
+        "role": "main",
+        "file": "kuaishou.com.svg",
+        "source": "assets/icons/simple-icons/icons/kuaishou.svg",
+        "sha256": "6fd3afc958574cf6aafafa5a4085d7903dec61d20e0ee737f632b0c815da764e",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.875,
+        "bytes": 1165,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "yangshipin.cn",
+    "name": "央视频",
+    "icons": [
+      {
+        "role": "main",
+        "file": "yangshipin.cn.png",
+        "source": "assets/site-icons/yangshipin.cn.png",
+        "sha256": "19c5c9641d4fc6ae7d135884b74728fee7dfc84da55bcd9ec14ed3be82a5ee21",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1638,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "weibo.com",
+    "name": "微博",
+    "icons": [
+      {
+        "role": "main",
+        "file": "weibo.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/weibo.svg",
+        "sha256": "2e693dca0511b36fa4a0b20a099d4c7c4b5b4fd2f2991e3bfbcc49d09d8ca796",
+        "format": "svg",
+        "width": 1080.0,
+        "height": 1080.0,
+        "aspect": 1.0,
+        "inkAspect": 1.2308,
+        "bytes": 2877,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "zhihu.com",
+    "name": "知乎",
+    "icons": [
+      {
+        "role": "main",
+        "file": "zhihu.com.png",
+        "source": "assets/site-icons/zhihu.com.png",
+        "sha256": "05db6dd8dbf6acd2f30aa779a5e912acb103952ca0b7ba13d8fad45d5198f320",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2943,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "douban.com",
+    "name": "豆瓣",
+    "icons": [
+      {
+        "role": "main",
+        "file": "douban.com.png",
+        "source": "assets/site-icons/douban.com.png",
+        "sha256": "636e2ea75243a10595c281081c1955620b645f1497c0cd0c24f1c2ee9a94ae24",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 443,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "xiaohongshu.com",
+    "name": "小红书",
+    "icons": [
+      {
+        "role": "main",
+        "file": "xiaohongshu.com.svg",
+        "source": "assets/icons/simple-icons/icons/xiaohongshu.svg",
+        "sha256": "847cacc807f5c236031a7477381daa67fd829d89f3f80c16a547ff2efe050794",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 2.6667,
+        "bytes": 3584,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "weixin.qq.com",
+    "name": "微信",
+    "icons": [
+      {
+        "role": "main",
+        "file": "weixin.qq.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/wechat.svg",
+        "sha256": "439de170dff232935f08357fbfb852bb302545d6125861ed6074fe6237b3f912",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.2075,
+        "bytes": 1345,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "x.com",
+    "name": "X",
+    "icons": [
+      {
+        "role": "main",
+        "file": "x.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/x.svg",
+        "sha256": "eef86bcbbd5cf2b889be343261c64561c7514e19b7c0dc32c937f0c43d477998",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 231,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "facebook.com",
+    "name": "Facebook",
+    "icons": [
+      {
+        "role": "main",
+        "file": "facebook.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/facebook.svg",
+        "sha256": "d2963ecd06de4e61d9cdae95b464d5055a289122c9726793f5a7485386f7fe66",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 758,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "instagram.com",
+    "name": "Instagram",
+    "icons": [
+      {
+        "role": "main",
+        "file": "instagram.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/instagram.svg",
+        "sha256": "2c1ad008f5d7f2abd8f7aa1b7f1c7c87859efb0204aee8f5bc88d12567179550",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3285,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "reddit.com",
+    "name": "Reddit",
+    "icons": [
+      {
+        "role": "main",
+        "file": "reddit.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/reddit.svg",
+        "sha256": "6af5a5941885fbe62ea15eca389b608ce06ea89d42ec43d1de827cfe82ef6880",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 973,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "discord.com",
+    "name": "Discord",
+    "icons": [
+      {
+        "role": "main",
+        "file": "discord.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/discord.svg",
+        "sha256": "c04059c1d13d99239ebd0b7df807e8c3d2f46439bd18a70c5fd3a0631bd7b310",
+        "format": "svg",
+        "width": 511.92,
+        "height": 396.3,
+        "aspect": 1.2917,
+        "inkAspect": 1.28,
+        "bytes": 779,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "telegram.org",
+    "name": "Telegram",
+    "icons": [
+      {
+        "role": "main",
+        "file": "telegram.org.svg",
+        "source": "assets/icons/dashboard-icons/svg/telegram.svg",
+        "sha256": "29edf9cfe2d4c80eb0acd087312eaabba8f7b4c14a4651ccaab51c35b3bb608c",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1007,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "linkedin.com",
+    "name": "LinkedIn",
+    "icons": [
+      {
+        "role": "main",
+        "file": "linkedin.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/linkedin.svg",
+        "sha256": "67f08e714e9a8a06288f1d7adc7e9840c450c11f8af6fb1847425fc7f186ca1b",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 627,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "pinterest.com",
+    "name": "Pinterest",
+    "icons": [
+      {
+        "role": "main",
+        "file": "pinterest.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/pinterest.svg",
+        "sha256": "e3f1783f07a0add791adcbc86eabd009717691e0c541b97c23364e2b11b19dd8",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 992,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "tieba.baidu.com",
+    "name": "百度贴吧",
+    "icons": [
+      {
+        "role": "main",
+        "file": "tieba.baidu.com.png",
+        "source": "assets/site-icons/tieba.baidu.com.png",
+        "sha256": "7222909a812169521ecd36e724ef74d015961f7b8ac8dac8efc83f0e2338f9a4",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1097,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "thepaper.cn",
+    "name": "澎湃新闻",
+    "icons": [
+      {
+        "role": "main",
+        "file": "thepaper.cn.png",
+        "source": "assets/site-icons/thepaper.cn.png",
+        "sha256": "3fdb53521822c2247f96e766f2eca3c052cba90c341c4bbc5f9de50578dade94",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 0.8906,
+        "bytes": 1232,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "news.cn",
+    "name": "新华网",
+    "icons": [
+      {
+        "role": "main",
+        "file": "news.cn.png",
+        "source": "assets/site-icons/news.cn.png",
+        "sha256": "1158b69b90fcef34fd79827926f6352cc58083148545c65f01164ce22e23f4b1",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 14305,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "cctv.com",
+    "name": "央视网",
+    "icons": [
+      {
+        "role": "main",
+        "file": "cctv.com.png",
+        "source": "assets/site-icons/cctv.com.png",
+        "sha256": "51ca646e16c8377b4862d2500ee4514727fb06f5f5cd4598216cf8bc8e33ae4f",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1546,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "sspai.com",
+    "name": "少数派",
+    "icons": [
+      {
+        "role": "main",
+        "file": "sspai.com.png",
+        "source": "assets/site-icons/sspai.com.png",
+        "sha256": "db247f67adcbb1532f36e4cd60912305b1bfa0696fba52db390bb4368a5a9402",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1980,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "huxiu.com",
+    "name": "虎嗅",
+    "icons": [
+      {
+        "role": "main",
+        "file": "huxiu.com.png",
+        "source": "assets/site-icons/huxiu.com.png",
+        "sha256": "36eb0c2fbbccc04a84b969e47713cedfb999dd778aa8278f88d59d4be8a56682",
+        "format": "png",
+        "width": 100,
+        "height": 100,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3348,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "bbc.com",
+    "name": "BBC",
+    "icons": [
+      {
+        "role": "main",
+        "file": "bbc.com.png",
+        "source": "assets/site-icons/bbc.com.png",
+        "sha256": "c96cc12df8388e1a4b59a707806b0fd36298e3f6a1c3c1f70d4ef87b5c1eec76",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 252,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "nytimes.com",
+    "name": "纽约时报",
+    "icons": [
+      {
+        "role": "main",
+        "file": "nytimes.com.png",
+        "source": "assets/site-icons/nytimes.com.png",
+        "sha256": "5b9b82759b22278cfc162ddce410f092d21b08001626924b4e37d685a617cb3d",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2177,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "taobao.com",
+    "name": "淘宝",
+    "icons": [
+      {
+        "role": "main",
+        "file": "taobao.com.jpg",
+        "source": "assets/site-icons/taobao.com.jpg",
+        "sha256": "c5946950d4355ee95b5c3ae7e466919a82789e8dace3e407cd432c5331c2364a",
+        "format": "jpeg",
+        "width": 114,
+        "height": 114,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3550,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "jd.com",
+    "name": "京东",
+    "icons": [
+      {
+        "role": "main",
+        "file": "jd.com.ico",
+        "source": "assets/site-icons/jd.com.ico",
+        "sha256": "d71bcae7214e3401d42af8b8f4a288da25fdc72601e7592586e5596e45f481ba",
+        "format": "ico",
+        "width": 96,
+        "height": 96,
+        "aspect": 1.0,
+        "inkAspect": 1.0,
+        "bytes": 2817,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "pinduoduo.com",
+    "name": "拼多多",
+    "icons": [
+      {
+        "role": "main",
+        "file": "pinduoduo.com.png",
+        "source": "assets/site-icons/pinduoduo.com.png",
+        "sha256": "91be3aa1dc3193bc5c48e29152c7918d6f5bf3abd2108df24b62e6ccc925583d",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 932,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "amazon.com",
+    "name": "Amazon",
+    "icons": [
+      {
+        "role": "main",
+        "file": "amazon.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/amazon.svg",
+        "sha256": "326fd7c65f787c62b7c509392b07f58e132cd1de75f349f97337f4df668077aa",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 0.9688,
+        "bytes": 2235,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "ebay.com",
+    "name": "eBay",
+    "icons": [
+      {
+        "role": "main",
+        "file": "ebay.com.svg",
+        "source": "assets/icons/simple-icons/icons/ebay.svg",
+        "sha256": "846e8d8ac6cea49766e7c62e095e739d115ed355f9b63bf46067f14c9343c745",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 2.4615,
+        "bytes": 1268,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "goofish.com",
+    "name": "闲鱼",
+    "icons": [
+      {
+        "role": "main",
+        "file": "goofish.com.png",
+        "source": "assets/site-icons/goofish.com.png",
+        "sha256": "1ed1dcd9b343f062974747fc1907e4fd299f375410f7977f5704c0e7e62d22ca",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1489,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "1688.com",
+    "name": "1688",
+    "icons": [
+      {
+        "role": "main",
+        "file": "1688.com.png",
+        "source": "assets/site-icons/1688.com.png",
+        "sha256": "7dd3c9fda4ce7ec036dec69098383788f46644e8c1b4db66e8bd05a07f7c8812",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3286,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "github.com",
+    "name": "GitHub",
+    "icons": [
+      {
+        "role": "main",
+        "file": "github.com.svg",
+        "source": "assets/icons/lobe-icons/github.svg",
+        "sha256": "1bd763b5d53ab1618e0afce72aacffc7e93d1249c395f713b3b055c087526625",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.0323,
+        "bytes": 907,
+        "mono": true
+      },
+      {
+        "role": "wide",
+        "file": "github.com-text.svg",
+        "source": "assets/icons/lobe-icons/github-text.svg",
+        "sha256": "60de0adc890a4349210269226c5d032922bb9fbf7c108941cf96931a9e819102",
+        "format": "svg",
+        "width": 78.0,
+        "height": 24.0,
+        "aspect": 3.25,
+        "inkAspect": 3.4444,
+        "bytes": 2278,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "gitlab.com",
+    "name": "GitLab",
+    "icons": [
+      {
+        "role": "main",
+        "file": "gitlab.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/gitlab.svg",
+        "sha256": "f7142d76fac3c23b08ae67b9994a06fa7df9e776781df6b5fb1ba030f9a12111",
+        "format": "svg",
+        "width": 192.05,
+        "height": 184.99,
+        "aspect": 1.0382,
+        "inkAspect": 1.0323,
+        "bytes": 1020,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "gitee.com",
+    "name": "Gitee",
+    "icons": [
+      {
+        "role": "main",
+        "file": "gitee.com.png",
+        "source": "assets/site-icons/gitee.com.png",
+        "sha256": "76ddd0d82b9c9bf50581a2bfc8959fd7321050298d36e83c4bc933b0a802115e",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1769,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "stackoverflow.com",
+    "name": "Stack Overflow",
+    "icons": [
+      {
+        "role": "main",
+        "file": "stackoverflow.com.png",
+        "source": "assets/site-icons/stackoverflow.com.png",
+        "sha256": "5c2167125a567da7c6af1a14d3fb4e5cbdd3dd2001ff952a27274112044e5f9b",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1265,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "developer.mozilla.org",
+    "name": "MDN",
+    "icons": [
+      {
+        "role": "main",
+        "file": "developer.mozilla.org.png",
+        "source": "assets/site-icons/developer.mozilla.org.png",
+        "sha256": "0d41ba0645fc988fbd46ae5cfa7507d62a0c171a676909a10a58586b713284eb",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1107,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "npmjs.com",
+    "name": "npm",
+    "icons": [
+      {
+        "role": "main",
+        "file": "npmjs.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/npm.svg",
+        "sha256": "ee8d7b405c0ac7a20f2cca12ede7820d9f3f494baa1764a33986b9295d962e3b",
+        "format": "svg",
+        "width": 18.0,
+        "height": 7.0,
+        "aspect": 2.5714,
+        "inkAspect": 2.56,
+        "bytes": 455,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "npmjs.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/npm.svg",
+        "sha256": "ee8d7b405c0ac7a20f2cca12ede7820d9f3f494baa1764a33986b9295d962e3b",
+        "format": "svg",
+        "width": 18.0,
+        "height": 7.0,
+        "aspect": 2.5714,
+        "inkAspect": 2.56,
+        "bytes": 455,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "pypi.org",
+    "name": "PyPI",
+    "icons": [
+      {
+        "role": "main",
+        "file": "pypi.org.svg",
+        "source": "assets/icons/simple-icons/icons/pypi.svg",
+        "sha256": "d4069a4a013461e1d433114d0bece715c979afe502996cc5770c9ee05c24fae6",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1429,
+        "bytes": 1952,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "hub.docker.com",
+    "name": "Docker Hub",
+    "icons": [
+      {
+        "role": "main",
+        "file": "hub.docker.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/docker.svg",
+        "sha256": "7de45e1ea203da32a040c257f47cd39a5711b3a200d27ec72dbccbc5efb1590b",
+        "format": "svg",
+        "width": 511.97,
+        "height": 369.5,
+        "aspect": 1.3856,
+        "inkAspect": 1.3913,
+        "bytes": 608,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "huggingface.co",
+    "name": "Hugging Face",
+    "icons": [
+      {
+        "role": "main",
+        "file": "huggingface.co.svg",
+        "source": "assets/icons/lobe-icons/huggingface-color.svg",
+        "sha256": "5d39d66bb6c9b026d3cb5de7bd9978dad3906570df2aca8f00078a6f8a3d0f5e",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1111,
+        "bytes": 3768,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "huggingface.co-text.svg",
+        "source": "assets/icons/lobe-icons/huggingface-text.svg",
+        "sha256": "e29e296dfc795040fc567abf8893c7b0c5be1cc18055eab2691298b265211814",
+        "format": "svg",
+        "width": 153.0,
+        "height": 24.0,
+        "aspect": 6.375,
+        "inkAspect": 6.2,
+        "bytes": 7782,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "vercel.com",
+    "name": "Vercel",
+    "icons": [
+      {
+        "role": "main",
+        "file": "vercel.com.svg",
+        "source": "assets/icons/lobe-icons/vercel.svg",
+        "sha256": "4874d52d8b2ce7c309cbd10c424fee123b2c9483e76d76ad0dca41794483eb24",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1429,
+        "bytes": 225,
+        "mono": true
+      },
+      {
+        "role": "wide",
+        "file": "vercel.com-text.svg",
+        "source": "assets/icons/lobe-icons/vercel-text.svg",
+        "sha256": "25b2e7e9a38afa7577be75daea09dcc6d395edd30f68d5d9e7569c0b1f6c399c",
+        "format": "svg",
+        "width": 94.0,
+        "height": 24.0,
+        "aspect": 3.9167,
+        "inkAspect": 4.0667,
+        "bytes": 2432,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "netlify.com",
+    "name": "Netlify",
+    "icons": [
+      {
+        "role": "main",
+        "file": "netlify.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/netlify.svg",
+        "sha256": "10a676a736853356f9cbd8f2be26bab69615e91fabd1bb6f6b9d3a69d80ab7ea",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2953,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "cloudflare.com",
+    "name": "Cloudflare",
+    "icons": [
+      {
+        "role": "main",
+        "file": "cloudflare.com.svg",
+        "source": "assets/icons/lobe-icons/cloudflare-color.svg",
+        "sha256": "cee35d3f0ecb7925ce0a89aeaff8b907cadae7c3fe44a23e4001cc8d5ee57502",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 2.1333,
+        "bytes": 1073,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "cloudflare.com-text.svg",
+        "source": "assets/icons/lobe-icons/cloudflare-text.svg",
+        "sha256": "ee927e7bdcb819fb14af41e4a64e192d40b76b470bc34809132fa5d6e97867e6",
+        "format": "svg",
+        "width": 242.0,
+        "height": 24.0,
+        "aspect": 10.0833,
+        "inkAspect": 10,
+        "bytes": 1748,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "juejin.cn",
+    "name": "掘金",
+    "icons": [
+      {
+        "role": "main",
+        "file": "juejin.cn.png",
+        "source": "assets/site-icons/juejin.cn.png",
+        "sha256": "5621ea0d0bd515f7d007f4873df352bd81f17927a877cda0e901c4636036f2a4",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1.2308,
+        "bytes": 1026,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "csdn.net",
+    "name": "CSDN",
+    "icons": [
+      {
+        "role": "main",
+        "file": "csdn.net.svg",
+        "source": "assets/icons/simple-icons/icons/csdn.svg",
+        "sha256": "4c8f0e95f0770fe938af267e6a72beef3f74dae81913682e34ba5aeb58981504",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 3.5556,
+        "bytes": 2324,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "v2ex.com",
+    "name": "V2EX",
+    "icons": [
+      {
+        "role": "main",
+        "file": "v2ex.com.jpg",
+        "source": "assets/site-icons/v2ex.com.jpg",
+        "sha256": "ce653d7c3347e42fd7fe3df85fbf02de559e20fd2cfa628b2f43e2623bb4d608",
+        "format": "jpeg",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1241,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "news.ycombinator.com",
+    "name": "Hacker News",
+    "icons": [
+      {
+        "role": "main",
+        "file": "news.ycombinator.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/hacker-news.svg",
+        "sha256": "4f7c4ad9e1840497c1a44e0b07cb34b3712ae4cf225705ad39d8d04f8b19a353",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 325,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "leetcode.com",
+    "name": "LeetCode",
+    "icons": [
+      {
+        "role": "main",
+        "file": "leetcode.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/leetcode.svg",
+        "sha256": "8f1f363bdaabbeb167fe4861b16c4a6ade6d85010452ba5dd317f1d202379046",
+        "format": "svg",
+        "width": 94.0,
+        "height": 110.92,
+        "aspect": 0.8475,
+        "inkAspect": 0.8438,
+        "bytes": 2574,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "codesandbox.io",
+    "name": "CodeSandbox",
+    "icons": [
+      {
+        "role": "main",
+        "file": "codesandbox.io.svg",
+        "source": "assets/icons/simple-icons/icons/codesandbox.svg",
+        "sha256": "a34ee761ffb6305b37793831b0b6f760e5793a69cacee25edce139a1aea13232",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 164,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "figma.com",
+    "name": "Figma",
+    "icons": [
+      {
+        "role": "main",
+        "file": "figma.com.svg",
+        "source": "assets/icons/lobe-icons/figma-color.svg",
+        "sha256": "526eea0bdd16f60ca9251fd371a09a3211762a8c41e15ef085d351c2b0078c3b",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.6875,
+        "bytes": 476,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "figma.com-text.svg",
+        "source": "assets/icons/lobe-icons/figma-text.svg",
+        "sha256": "deefb3aac49b4f5ed506c022634e1d5048979d8c1dda4cf0e76b0bfd201ab7e1",
+        "format": "svg",
+        "width": 70.0,
+        "height": 24.0,
+        "aspect": 2.9167,
+        "inkAspect": 2.8182,
+        "bytes": 2537,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "dribbble.com",
+    "name": "Dribbble",
+    "icons": [
+      {
+        "role": "main",
+        "file": "dribbble.com.png",
+        "source": "assets/site-icons/dribbble.com.png",
+        "sha256": "219981964293259f474033b807b2c00bfebd5d7bb977eeba1e4a17e982f82304",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1761,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "behance.net",
+    "name": "Behance",
+    "icons": [
+      {
+        "role": "main",
+        "file": "behance.net.svg",
+        "source": "assets/icons/dashboard-icons/svg/behance.svg",
+        "sha256": "ec789225ffe42ff1aa11b7bbf15a1dc08fa2507c142271babcf40ad34c59c64e",
+        "format": "svg",
+        "width": 1080.0,
+        "height": 1080.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2395,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "canva.com",
+    "name": "Canva",
+    "icons": [
+      {
+        "role": "main",
+        "file": "canva.com.jpg",
+        "source": "assets/site-icons/canva.com.jpg",
+        "sha256": "89e47d33adbb2f53253cfba659ef6d444bee1c49753fc63f13a33afa8ebfb089",
+        "format": "jpeg",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2801,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "zcool.com.cn",
+    "name": "站酷",
+    "icons": [
+      {
+        "role": "main",
+        "file": "zcool.com.cn.png",
+        "source": "assets/site-icons/zcool.com.cn.png",
+        "sha256": "ea65f63073e6a50169aa46a4e443b31f8d3bbf78a3a99d37ec134c3b06487d9d",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 4678,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "huaban.com",
+    "name": "花瓣",
+    "icons": [
+      {
+        "role": "main",
+        "file": "huaban.com.png",
+        "source": "assets/site-icons/huaban.com.png",
+        "sha256": "851188e4b5f1afbaa09c004258310b348ddba6a06cbee9803e3d624fa21fb6e3",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1009,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "unsplash.com",
+    "name": "Unsplash",
+    "icons": [
+      {
+        "role": "main",
+        "file": "unsplash.com.png",
+        "source": "assets/site-icons/unsplash.com.png",
+        "sha256": "34de5ef99f635c29545e1f3481e98374317d5e2bfa3d258459b115ef0ad89143",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 202,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "pexels.com",
+    "name": "Pexels",
+    "icons": [
+      {
+        "role": "main",
+        "file": "pexels.com.png",
+        "source": "assets/site-icons/pexels.com.png",
+        "sha256": "583ba5a403c2f763eb5ec7bdbdb7a18b3769a884f128db21830df0a99d36becb",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1284,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "notion.so",
+    "name": "Notion",
+    "icons": [
+      {
+        "role": "main",
+        "file": "notion.so.svg",
+        "source": "assets/icons/lobe-icons/notion.svg",
+        "sha256": "8ada8628489d6e2900ebf21d3643fe5d4566d0e59aba95a3df15b710caa00743",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.9688,
+        "bytes": 1139,
+        "mono": true
+      },
+      {
+        "role": "wide",
+        "file": "notion.so-text.svg",
+        "source": "assets/icons/lobe-icons/notion-text.svg",
+        "sha256": "ebd43437a06e3ce2d916707d935f8a645b4f30a950d9a5bc2be1baa30055beec",
+        "format": "svg",
+        "width": 87.0,
+        "height": 24.0,
+        "aspect": 3.625,
+        "inkAspect": 3.6471,
+        "bytes": 2690,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "feishu.cn",
+    "name": "飞书",
+    "icons": [
+      {
+        "role": "main",
+        "file": "feishu.cn.png",
+        "source": "assets/site-icons/feishu.cn.png",
+        "sha256": "1f4253a963b6649eaaecfbd8173c08c68ca89e572ef9adbeb280dbec9d79adf1",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1420,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "dingtalk.com",
+    "name": "钉钉",
+    "icons": [
+      {
+        "role": "main",
+        "file": "dingtalk.com.png",
+        "source": "assets/site-icons/dingtalk.com.png",
+        "sha256": "b9e1ad5a65f484baf388b9a017f20bb231cb905cc85fa7bc2fe36b7d4700b3ba",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1506,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "work.weixin.qq.com",
+    "name": "企业微信",
+    "icons": [
+      {
+        "role": "main",
+        "file": "work.weixin.qq.com.png",
+        "source": "assets/site-icons/work.weixin.qq.com.png",
+        "sha256": "69025ba6b79e2aed0d8e36ed73dadadb9daeaa170b4240ee5e841f399f80c2d4",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1.1034,
+        "bytes": 1991,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "docs.qq.com",
+    "name": "腾讯文档",
+    "icons": [
+      {
+        "role": "main",
+        "file": "docs.qq.com.png",
+        "source": "assets/site-icons/docs.qq.com.png",
+        "sha256": "7df90d110b8b81580533acb9b9df56f86dabfbe8a06b6da3aa5535505631cfee",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1.1887,
+        "bytes": 1433,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "shimo.im",
+    "name": "石墨文档",
+    "icons": [
+      {
+        "role": "main",
+        "file": "shimo.im.png",
+        "source": "assets/site-icons/shimo.im.png",
+        "sha256": "a6e084d670254a1169a87b7ae6a7de85faf0783b4db9d07c186f31f9dd2c0c5a",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 950,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "yuque.com",
+    "name": "语雀",
+    "icons": [
+      {
+        "role": "main",
+        "file": "yuque.com.png",
+        "source": "assets/site-icons/yuque.com.png",
+        "sha256": "cb1822fdf416a9893e7d35cdf4a689bbf765b71b220bfd01c586b154b76db2a4",
+        "format": "png",
+        "width": 200,
+        "height": 200,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 6834,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "trello.com",
+    "name": "Trello",
+    "icons": [
+      {
+        "role": "main",
+        "file": "trello.com.png",
+        "source": "assets/site-icons/trello.com.png",
+        "sha256": "4cc02e0fce58acbf0f3266ace10ecc12bd0efa3e1db277faf7b73179af2bce25",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 596,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "slack.com",
+    "name": "Slack",
+    "icons": [
+      {
+        "role": "main",
+        "file": "slack.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/slack.svg",
+        "sha256": "62e556a75b94516fd8dcfa9c8ee4eae76268b4087ee927d91a5f2d3115d54118",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 968,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "zoom.us",
+    "name": "Zoom",
+    "icons": [
+      {
+        "role": "main",
+        "file": "zoom.us.svg",
+        "source": "assets/icons/dashboard-icons/svg/zoom.svg",
+        "sha256": "02a7a0b2028eb5ab7a9259ec0f9e59e8293244691b535aefdeb2b106023f760c",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 393,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "chat.deepseek.com",
+    "name": "DeepSeek",
+    "icons": [
+      {
+        "role": "main",
+        "file": "chat.deepseek.com.svg",
+        "source": "assets/icons/lobe-icons/deepseek-color.svg",
+        "sha256": "deba5f98a5c1796e20fcac3149bcd7eb8a32f0bdd04d048819400b1f28bd1439",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.3617,
+        "bytes": 2164,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "chat.deepseek.com-text.svg",
+        "source": "assets/icons/lobe-icons/deepseek-text.svg",
+        "sha256": "75756b7b6c6bc4f18ecfe82be78db6ead93b15474a89dabf1cfdbaef5bc6523b",
+        "format": "svg",
+        "width": 131.0,
+        "height": 24.0,
+        "aspect": 5.4583,
+        "inkAspect": 5.1667,
+        "bytes": 3993,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "chatgpt.com",
+    "name": "ChatGPT",
+    "icons": [
+      {
+        "role": "main",
+        "file": "chatgpt.com.svg",
+        "source": "assets/icons/lobe-icons/openai.svg",
+        "sha256": "a595df6b423920c67a7f8f73c063e4bfb72d415948097b6cac063a2366bb5186",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1687,
+        "mono": true
+      },
+      {
+        "role": "wide",
+        "file": "chatgpt.com-text.svg",
+        "source": "assets/icons/lobe-icons/openai-text.svg",
+        "sha256": "fd61627c78d160b6391aaf72f29cf51547327d05ed19366c511d07578fc0099e",
+        "format": "svg",
+        "width": 86.0,
+        "height": 24.0,
+        "aspect": 3.5833,
+        "inkAspect": 3.6471,
+        "bytes": 1389,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "claude.ai",
+    "name": "Claude",
+    "icons": [
+      {
+        "role": "main",
+        "file": "claude.ai.svg",
+        "source": "assets/icons/lobe-icons/claude-color.svg",
+        "sha256": "a3101f3047a119aa11825ad9369510f0c472428c8c52d420e31bc62db44a8364",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1696,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "claude.ai-text.svg",
+        "source": "assets/icons/lobe-icons/claude-text.svg",
+        "sha256": "f882c1f1c9e735e1ebcb3bef76a622da4cb0e25738649d8b0deccbeaad069afa",
+        "format": "svg",
+        "width": 97.0,
+        "height": 24.0,
+        "aspect": 4.0417,
+        "inkAspect": 4.1333,
+        "bytes": 2488,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "gemini.google.com",
+    "name": "Gemini",
+    "icons": [
+      {
+        "role": "main",
+        "file": "gemini.google.com.svg",
+        "source": "assets/icons/lobe-icons/gemini-color.svg",
+        "sha256": "8ab0a9bafec11f7e69bcb9fc4ffd8f1bc927d1ddcbbb6ff36dee5ae8b5a9d602",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2836,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "gemini.google.com-text.svg",
+        "source": "assets/icons/lobe-icons/gemini-text.svg",
+        "sha256": "d0d96b1c6def6990cab126243b11429b93598de1bd50576bba1b53f2ff496247",
+        "format": "svg",
+        "width": 98.0,
+        "height": 24.0,
+        "aspect": 4.0833,
+        "inkAspect": 3.7143,
+        "bytes": 2569,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "copilot.microsoft.com",
+    "name": "Microsoft Copilot",
+    "icons": [
+      {
+        "role": "main",
+        "file": "copilot.microsoft.com.svg",
+        "source": "assets/icons/lobe-icons/copilot-color.svg",
+        "sha256": "04f15d0556fbac10a4e0f82d1560610db8b33cd04780a4f24ad3b91c4abd278d",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.0667,
+        "bytes": 3569,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "copilot.microsoft.com-text.svg",
+        "source": "assets/icons/lobe-icons/copilot-text.svg",
+        "sha256": "f42dcff6f2df06f16ef43e86ad804d7f77827f43a9ec7f0bdbcf637caf0700c1",
+        "format": "svg",
+        "width": 73.0,
+        "height": 24.0,
+        "aspect": 3.0417,
+        "inkAspect": 3.1,
+        "bytes": 2683,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "midjourney.com",
+    "name": "Midjourney",
+    "icons": [
+      {
+        "role": "main",
+        "file": "midjourney.com.svg",
+        "source": "assets/icons/lobe-icons/midjourney.svg",
+        "sha256": "e09640ccbf6f643b4624e540f198cd704a6bf3d75dc43b0938628caf4e98c30b",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1852,
+        "bytes": 4012,
+        "mono": true
+      },
+      {
+        "role": "wide",
+        "file": "midjourney.com-text.svg",
+        "source": "assets/icons/lobe-icons/midjourney-text.svg",
+        "sha256": "352f89078f90a7df48fa8f5967568fc0fdd2dd1abc3bb7b91880620de8f4b91e",
+        "format": "svg",
+        "width": 134.0,
+        "height": 24.0,
+        "aspect": 5.5833,
+        "inkAspect": 5.6364,
+        "bytes": 3816,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "perplexity.ai",
+    "name": "Perplexity",
+    "icons": [
+      {
+        "role": "main",
+        "file": "perplexity.ai.svg",
+        "source": "assets/icons/lobe-icons/perplexity-color.svg",
+        "sha256": "8353f3ab20822f1a933224b0ea32cc39f0c32d5740f4af8c254b0f418e0a3a70",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.875,
+        "bytes": 603,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "perplexity.ai-text.svg",
+        "source": "assets/icons/lobe-icons/perplexity-text.svg",
+        "sha256": "1df8f4f2bdfc04823822b7274e83b06be159d882fe8bfbdf82e11a39f8c0a76f",
+        "format": "svg",
+        "width": 117.0,
+        "height": 24.0,
+        "aspect": 4.875,
+        "inkAspect": 4.7692,
+        "bytes": 3975,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "tongyi.aliyun.com",
+    "name": "通义千问",
+    "icons": [
+      {
+        "role": "main",
+        "file": "tongyi.aliyun.com.svg",
+        "source": "assets/icons/lobe-icons/qwen-color.svg",
+        "sha256": "77f5768c66d08ce1d3d14e73373975c1bc0454be88c81523ddd0ffd7e2974029",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2044,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "tongyi.aliyun.com-text.svg",
+        "source": "assets/icons/lobe-icons/qwen-text.svg",
+        "sha256": "f9aea2d7db247d1ea51b686a1d9267fdfb3ded08f883bee95152c2a878336a1a",
+        "format": "svg",
+        "width": 75.0,
+        "height": 24.0,
+        "aspect": 3.125,
+        "inkAspect": 3.1579,
+        "bytes": 2393,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "yiyan.baidu.com",
+    "name": "文心一言",
+    "icons": [
+      {
+        "role": "main",
+        "file": "yiyan.baidu.com.svg",
+        "source": "assets/icons/lobe-icons/wenxin-color.svg",
+        "sha256": "9fb88d8b6f7be470ddb07f0574ec276b08a35ba96d73ec5f2f3b6fc338da5cb6",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.9,
+        "bytes": 1509,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "yiyan.baidu.com-text.svg",
+        "source": "assets/icons/lobe-icons/wenxin-text.svg",
+        "sha256": "cb6c590285161ed4d5c1508d82ac0b8753b9114f4a7dc56f7055c48dd1afddc1",
+        "format": "svg",
+        "width": 47.0,
+        "height": 24.0,
+        "aspect": 1.9583,
+        "inkAspect": 2.0714,
+        "bytes": 1011,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "kimi.moonshot.cn",
+    "name": "Kimi",
+    "icons": [
+      {
+        "role": "main",
+        "file": "kimi.moonshot.cn.svg",
+        "source": "assets/icons/dashboard-icons/svg/kimi-ai.svg",
+        "sha256": "f94d6fd341757bf310346f52818b1ed995162c20f325e79625c5e48528a0ca47",
+        "format": "svg",
+        "width": 4225.03,
+        "height": 4225.03,
+        "aspect": 1.0,
+        "inkAspect": 1.0,
+        "bytes": 1956,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "kimi.moonshot.cn-text.svg",
+        "source": "assets/icons/lobe-icons/kimi-text.svg",
+        "sha256": "d5233dbde7cd3c9ae92ced85d6bf028b3c8f555609b47521b8bd7a075900348d",
+        "format": "svg",
+        "width": 64.0,
+        "height": 24.0,
+        "aspect": 2.6667,
+        "inkAspect": 3,
+        "bytes": 1270,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "doubao.com",
+    "name": "豆包",
+    "icons": [
+      {
+        "role": "main",
+        "file": "doubao.com.svg",
+        "source": "assets/icons/lobe-icons/doubao-color.svg",
+        "sha256": "3cd31ba03ae44b8c29561597a3b863809efecb13fcdfd08407a086df86a69b55",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.8906,
+        "bytes": 1153,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "doubao.com-text.svg",
+        "source": "assets/icons/lobe-icons/doubao-text.svg",
+        "sha256": "7d6894436d903ac572aa725798c49d42eff650aa32f1439532e5f5e6a9139d8f",
+        "format": "svg",
+        "width": 105.0,
+        "height": 24.0,
+        "aspect": 4.375,
+        "inkAspect": 4.7692,
+        "bytes": 2766,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "icourse163.org",
+    "name": "中国大学MOOC",
+    "icons": [
+      {
+        "role": "main",
+        "file": "icourse163.org.png",
+        "source": "assets/site-icons/icourse163.org.png",
+        "sha256": "dd1e1d78398cf21f28b1271da089c556e71ee20e23bcf8431e4a2bc0d85d574b",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1.2308,
+        "bytes": 1108,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "open.163.com",
+    "name": "网易公开课",
+    "icons": [
+      {
+        "role": "main",
+        "file": "open.163.com.png",
+        "source": "assets/site-icons/open.163.com.png",
+        "sha256": "0310ba431deba9ac8607a72584e0c9e3db71a36ecab2b4e98d6207675c674eb8",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1970,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "coursera.org",
+    "name": "Coursera",
+    "icons": [
+      {
+        "role": "main",
+        "file": "coursera.org.png",
+        "source": "assets/site-icons/coursera.org.png",
+        "sha256": "dbf38707899973debd8ae7084c4f123c496e92d2aeea05c96f03cb7365fb6bb0",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1465,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "edx.org",
+    "name": "edX",
+    "icons": [
+      {
+        "role": "main",
+        "file": "edx.org.png",
+        "source": "assets/site-icons/edx.org.png",
+        "sha256": "ec8c3fdbe92093c2b3ad619aaacad409611b147337e95b9f301b8a2e3d6eca7b",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1.7778,
+        "bytes": 1417,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "khanacademy.org",
+    "name": "Khan Academy",
+    "icons": [
+      {
+        "role": "main",
+        "file": "khanacademy.org.png",
+        "source": "assets/site-icons/khanacademy.org.png",
+        "sha256": "82ba7b5f478316f53c459aca3a353c8d730a09e84e222027a927c40f1f956d5f",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1342,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "dedao.cn",
+    "name": "得到",
+    "icons": [
+      {
+        "role": "main",
+        "file": "dedao.cn.png",
+        "source": "assets/site-icons/dedao.cn.png",
+        "sha256": "16284c1542a140bb470c26247ecc8b20c3c6fc29d37bc82300d3c44d80dc45c4",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 15483,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "xuetangx.com",
+    "name": "学堂在线",
+    "icons": [
+      {
+        "role": "main",
+        "file": "xuetangx.com.png",
+        "source": "assets/site-icons/xuetangx.com.png",
+        "sha256": "db0093e829ffed188de63dd9aaead7ea986e9fa399887eb51ed8eac087592834",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1335,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "duolingo.com",
+    "name": "Duolingo",
+    "icons": [
+      {
+        "role": "main",
+        "file": "duolingo.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/duolingo.svg",
+        "sha256": "0d0ff645903fac97ef79d0fab4bc34798c29101bb9fd3a072c68075534fdfd9e",
+        "format": "svg",
+        "width": 250.0,
+        "height": 250.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 4164,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "quizlet.com",
+    "name": "Quizlet",
+    "icons": [
+      {
+        "role": "main",
+        "file": "quizlet.com.png",
+        "source": "assets/site-icons/quizlet.com.png",
+        "sha256": "f3b8f7022c0f42dd4619652c25a52571eb8eaa81c523e8daf9b783377a578d61",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1394,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "quizlet.com-text.svg",
+        "source": "assets/icons/dashboard-icons/svg/quizlet.svg",
+        "sha256": "772b784979beac3c78be3e84a4cc654d19a17ec0380a1226e16e2452561e2ed4",
+        "format": "svg",
+        "width": 244.0,
+        "height": 53.0,
+        "aspect": 4.6038,
+        "inkAspect": 4.5714,
+        "bytes": 2530,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "pan.baidu.com",
+    "name": "百度网盘",
+    "icons": [
+      {
+        "role": "main",
+        "file": "pan.baidu.com.png",
+        "source": "assets/site-icons/pan.baidu.com.png",
+        "sha256": "c70ccf065250305fbe1ef990a304a987cd4a9dcba2ba242b03ef7db0681b7edf",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1658,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "alipan.com",
+    "name": "阿里云盘",
+    "icons": [
+      {
+        "role": "main",
+        "file": "alipan.com.jpg",
+        "source": "assets/site-icons/alipan.com.jpg",
+        "sha256": "2aee8cc3422df38a67c8bb8759cbc3f7cb03ac7c83b6a7dcd051c94263dba0ad",
+        "format": "jpeg",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2867,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "amap.com",
+    "name": "高德地图",
+    "icons": [
+      {
+        "role": "main",
+        "file": "amap.com.png",
+        "source": "assets/site-icons/amap.com.png",
+        "sha256": "8571cf6c9490cd7476fc2bc328a355a24182d50b76bf54b13727de8634fafaf4",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1970,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "map.baidu.com",
+    "name": "百度地图",
+    "icons": [
+      {
+        "role": "main",
+        "file": "map.baidu.com.png",
+        "source": "assets/site-icons/map.baidu.com.png",
+        "sha256": "f7166e3974a289153136e89213a54cbc994b1ab4c6ca736c04ae11bad7f34ec2",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2766,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "12306.cn",
+    "name": "12306",
+    "icons": [
+      {
+        "role": "main",
+        "file": "12306.cn.png",
+        "source": "assets/site-icons/12306.cn.png",
+        "sha256": "6edd9eac0e7bbd00003a3ffb76c872007ca5f6d6468f76cb5c0e86c00f775e73",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1.0185,
+        "bytes": 4111,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "meituan.com",
+    "name": "美团",
+    "icons": [
+      {
+        "role": "main",
+        "file": "meituan.com.svg",
+        "source": "assets/icons/simple-icons/icons/meituan.svg",
+        "sha256": "851a1b8c8c050a609766cc7b64d3fd233b5838cecf638cecf30113f9e846817a",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1200,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "dianping.com",
+    "name": "大众点评",
+    "icons": [
+      {
+        "role": "main",
+        "file": "dianping.com.png",
+        "source": "assets/site-icons/dianping.com.png",
+        "sha256": "04449939ed46b6680b58cb7e918720fb2ef264f2852b221456b7fd0d84634a4f",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2294,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "music.163.com",
+    "name": "网易云音乐",
+    "icons": [
+      {
+        "role": "main",
+        "file": "music.163.com.png",
+        "source": "assets/site-icons/music.163.com.png",
+        "sha256": "d4c406cff6b61654b6aaf9c7ebb52b774d816a793429744a16db9f64d6b02592",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2004,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "spotify.com",
+    "name": "Spotify",
+    "icons": [
+      {
+        "role": "main",
+        "file": "spotify.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/spotify.svg",
+        "sha256": "686990a9a97c36746eebfc7cfd1100ef29e07d8f9ada229ab00e34d4298a3dcb",
+        "format": "svg",
+        "width": 226.733,
+        "height": 226.733,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1231,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "movie.douban.com",
+    "name": "豆瓣电影",
+    "icons": [
+      {
+        "role": "main",
+        "file": "movie.douban.com.png",
+        "source": "assets/site-icons/movie.douban.com.png",
+        "sha256": "a60fa33c3b4fc8389d49a303b37eac010ecf572ce3b7568bcf3ec83fc9d21f7b",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2358,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "maoyan.com",
+    "name": "猫眼",
+    "icons": [
+      {
+        "role": "main",
+        "file": "maoyan.com.png",
+        "source": "assets/site-icons/maoyan.com.png",
+        "sha256": "9bdbf8eba5cf85546d8773b86ce75e395143aec13369166fccb1f6ebcea6e721",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 11985,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "so.com",
+    "name": "360搜索",
+    "icons": [
+      {
+        "role": "main",
+        "file": "so.com.png",
+        "source": "assets/site-icons/so.com.png",
+        "sha256": "6c2b0a95db99260e8f1376e20f831cc2d957a3a5460a565a14d1999061a76139",
+        "format": "png",
+        "width": 116,
+        "height": 116,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1389,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "sm.cn",
+    "name": "神马搜索",
+    "icons": [
+      {
+        "role": "main",
+        "file": "sm.cn.png",
+        "source": "assets/site-icons/sm.cn.png",
+        "sha256": "97e9c53befc0e27591051549ff25bc85f375c2d95dbc80cb1bd2fae62be24268",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1401,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "microsoft.com",
+    "name": "微软",
+    "icons": [
+      {
+        "role": "main",
+        "file": "microsoft.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/microsoft.svg",
+        "sha256": "2e3fc3da6302a899939c1154f7f82d69266d6e55348163e8121129b07f46cd5c",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 387,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "microsoft.com-text.svg",
+        "source": "assets/icons/lobe-icons/microsoft-text.svg",
+        "sha256": "b748f7d258a441a4cd133bfd3d6b84c61e6d8a824b55e1dbfbd613c110c9895e",
+        "format": "svg",
+        "width": 108.0,
+        "height": 24.0,
+        "aspect": 4.5,
+        "inkAspect": 5.1667,
+        "bytes": 3681,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "apple.com",
+    "name": "Apple",
+    "icons": [
+      {
+        "role": "main",
+        "file": "apple.com.svg",
+        "source": "assets/icons/lobe-icons/apple.svg",
+        "sha256": "100637681febc38512bf8d43f7d5f79f2aa8caead15b256cd28b378b053fca69",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.8281,
+        "bytes": 729,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "huawei.com",
+    "name": "华为",
+    "icons": [
+      {
+        "role": "main",
+        "file": "huawei.com.svg",
+        "source": "assets/icons/lobe-icons/huawei-color.svg",
+        "sha256": "ca9af4229ba3d538811cad7939b5f3f9edc87ec9448eae579506c659cd133d4a",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.3333,
+        "bytes": 1481,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "huawei.com-text.svg",
+        "source": "assets/icons/lobe-icons/huawei-text.svg",
+        "sha256": "27085f7e2706ce50b360549c65810e0b970bfde4f2056c539545d53c34c787af",
+        "format": "svg",
+        "width": 120.0,
+        "height": 24.0,
+        "aspect": 5.0,
+        "inkAspect": 5.6364,
+        "bytes": 863,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "mi.com",
+    "name": "小米",
+    "icons": [
+      {
+        "role": "main",
+        "file": "mi.com.svg",
+        "source": "assets/icons/dashboard-icons/svg/xiaomi-global.svg",
+        "sha256": "9fb3df7fd72f7fa925cc6b10da843dc473a9f2074ffa39f0e98d0082512d270c",
+        "format": "svg",
+        "width": 512.0,
+        "height": 512.0,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1881,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "tencent.com",
+    "name": "腾讯",
+    "icons": [
+      {
+        "role": "main",
+        "file": "tencent.com.svg",
+        "source": "assets/icons/lobe-icons/tencent-color.svg",
+        "sha256": "7c370ad4b75e3f30d0fa7da71f90466a0ee95a887189479aa9df414079b50eb6",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.0339,
+        "bytes": 277,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "tencent.com-text.svg",
+        "source": "assets/icons/lobe-icons/tencent-brand-color.svg",
+        "sha256": "ea21e022f7f17d160595f55499854ee527c803edc69a9542973fef95477c7796",
+        "format": "svg",
+        "width": 153.0,
+        "height": 24.0,
+        "aspect": 6.375,
+        "inkAspect": 6.8889,
+        "bytes": 3748,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "sina.com.cn",
+    "name": "新浪",
+    "icons": [
+      {
+        "role": "main",
+        "file": "sina.com.cn.png",
+        "source": "assets/site-icons/sina.com.cn.png",
+        "sha256": "cb401b2a40ebaedaf48db979b3bbba6dd5498fdece043d2571a37d1dd3e06c19",
+        "format": "png",
+        "width": 114,
+        "height": 114,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 9077,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "sohu.com",
+    "name": "搜狐",
+    "icons": [
+      {
+        "role": "main",
+        "file": "sohu.com.png",
+        "source": "assets/site-icons/sohu.com.png",
+        "sha256": "174b657ecc92cb6734074b19bd0cf346fe729d65cf8191e7d59ece6412d58f22",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2113,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "caixin.com",
+    "name": "财新",
+    "icons": [
+      {
+        "role": "main",
+        "file": "caixin.com.png",
+        "source": "assets/site-icons/caixin.com.png",
+        "sha256": "1017f2d495ff3ee46d54025c79b91cd4dd4d20b69d385f1fc415d756b34abc33",
+        "format": "png",
+        "width": 120,
+        "height": 120,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 3679,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "guancha.cn",
+    "name": "观察者网",
+    "icons": [
+      {
+        "role": "main",
+        "file": "guancha.cn.png",
+        "source": "assets/site-icons/guancha.cn.png",
+        "sha256": "af83fd418aa0156f42e0992e515b753765a27d5235b22c16cc44b01226c599b8",
+        "format": "png",
+        "width": 114,
+        "height": 114,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 5329,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "zaobao.com.sg",
+    "name": "联合早报",
+    "icons": [
+      {
+        "role": "main",
+        "file": "zaobao.com.sg.png",
+        "source": "assets/site-icons/zaobao.com.sg.png",
+        "sha256": "c3f8f1cf113e5400e6d922af2b34f1a2a3c40394b1e010c1b86c7d2a880dafab",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2327,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "y.qq.com",
+    "name": "QQ音乐",
+    "icons": [
+      {
+        "role": "main",
+        "file": "y.qq.com.png",
+        "source": "assets/site-icons/y.qq.com.png",
+        "sha256": "36abf999b856fd5166be6d8df6bfedd5c0e0ec39df4c2d550b995f303161f2c9",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1512,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "ximalaya.com",
+    "name": "喜马拉雅",
+    "icons": [
+      {
+        "role": "main",
+        "file": "ximalaya.com.png",
+        "source": "assets/site-icons/ximalaya.com.png",
+        "sha256": "0fd7a429c3c8d65185b19de09d39cd69d7b9a2080ba8b7e67b3965f74bd8e5a9",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 985,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "xiaoyuzhoufm.com",
+    "name": "小宇宙",
+    "icons": [
+      {
+        "role": "main",
+        "file": "xiaoyuzhoufm.com.png",
+        "source": "assets/site-icons/xiaoyuzhoufm.com.png",
+        "sha256": "cad095b3a9a8bc7a0b609e82a490cf403dff65eb030712f5e7f37d7ea8a7881e",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1.1875,
+        "bytes": 1859,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "vimeo.com",
+    "name": "Vimeo",
+    "icons": [
+      {
+        "role": "main",
+        "file": "vimeo.com.png",
+        "source": "assets/site-icons/vimeo.com.png",
+        "sha256": "3699f4104367f1589ff36506d39e3e1c1ee4ad8749cf6ca75fcef026783cf101",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1584,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "threads.net",
+    "name": "Threads",
+    "icons": [
+      {
+        "role": "main",
+        "file": "threads.net.svg",
+        "source": "assets/icons/dashboard-icons/svg/threads.svg",
+        "sha256": "619c277e7e5487bb45c22e6d4563fed6478db45ffe35b524d01d740e45de1f3f",
+        "format": "svg",
+        "width": 440.4,
+        "height": 512.0,
+        "aspect": 0.8602,
+        "inkAspect": 0.8594,
+        "bytes": 1143,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "suning.com",
+    "name": "苏宁",
+    "icons": [
+      {
+        "role": "main",
+        "file": "suning.com.png",
+        "source": "assets/site-icons/suning.com.png",
+        "sha256": "144e83024a4e385747c0776cf894fe350ad5e0fe5709b05da5c175c61fd42676",
+        "format": "png",
+        "width": 40,
+        "height": 40,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2469,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "you.163.com",
+    "name": "网易严选",
+    "icons": [
+      {
+        "role": "main",
+        "file": "you.163.com.png",
+        "source": "assets/site-icons/you.163.com.png",
+        "sha256": "35fd22fac8c06adb28a670cb78e95af98fc6813724af9874e47a4adf28a140cb",
+        "format": "png",
+        "width": 114,
+        "height": 114,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 6927,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "dewu.com",
+    "name": "得物",
+    "icons": [
+      {
+        "role": "main",
+        "file": "dewu.com.png",
+        "source": "assets/site-icons/dewu.com.png",
+        "sha256": "38323ca67798f33c3f20598a4575e7873230c28f3db7c40bbbc8415763d2c7b4",
+        "format": "png",
+        "width": 64,
+        "height": 64,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2280,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "codepen.io",
+    "name": "CodePen",
+    "icons": [
+      {
+        "role": "main",
+        "file": "codepen.io.png",
+        "source": "assets/site-icons/codepen.io.png",
+        "sha256": "a6e04aa3d94bdc424075de6f5b9cd736b29ea0f31d20832556081995fc2c7d6b",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1511,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "cnblogs.com",
+    "name": "博客园",
+    "icons": [
+      {
+        "role": "main",
+        "file": "cnblogs.com.png",
+        "source": "assets/site-icons/cnblogs.com.png",
+        "sha256": "e0b772bcda7e490d20491874989e9036092c0fbee59446f482ddac62812d6936",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2423,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "iconify.design",
+    "name": "Iconify",
+    "icons": [
+      {
+        "role": "main",
+        "file": "iconify.design.svg",
+        "source": "assets/icons/simple-icons/icons/iconify.svg",
+        "sha256": "dec5fadcccbbcf529fd25843ef1168bed3a863d006a19e97be56b170bb32aa3f",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.9062,
+        "bytes": 1284,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "gaoding.com",
+    "name": "稿定设计",
+    "icons": [
+      {
+        "role": "main",
+        "file": "gaoding.com.png",
+        "source": "assets/site-icons/gaoding.com.png",
+        "sha256": "5e3d16db1952e3d749d3c40c03d33fd5f9461126a35ac7e51976468251bc640d",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 1387,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "chuangkit.com",
+    "name": "创客贴",
+    "icons": [
+      {
+        "role": "main",
+        "file": "chuangkit.com.png",
+        "source": "assets/site-icons/chuangkit.com.png",
+        "sha256": "cf79aa88c8790e85ff0a416f64906bf4ea35e527396654d626e471026f13f138",
+        "format": "png",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 0.9531,
+        "bytes": 1674,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "uisdc.com",
+    "name": "优设",
+    "icons": [
+      {
+        "role": "main",
+        "file": "uisdc.com.jpg",
+        "source": "assets/site-icons/uisdc.com.jpg",
+        "sha256": "03e93ac37d94c976cb0de9ca37be08a5c6a5a1b0ab4fc951d59f4fb7db9e1f2f",
+        "format": "jpeg",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2667,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "lanhuapp.com",
+    "name": "蓝湖",
+    "icons": [
+      {
+        "role": "main",
+        "file": "lanhuapp.com.ico",
+        "source": "assets/site-icons/lanhuapp.com.ico",
+        "sha256": "d362b2ffd69ac23a6f4dd34a39d8d585bc6564a79814d1294ea4a22e974e05bc",
+        "format": "ico",
+        "width": 32,
+        "height": 32,
+        "aspect": 1.0,
+        "inkAspect": 1.0,
+        "bytes": 4286,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "js.design",
+    "name": "即时设计",
+    "icons": [
+      {
+        "role": "main",
+        "file": "js.design.png",
+        "source": "assets/site-icons/js.design.png",
+        "sha256": "938c457550d2616151a27c8acbd858926bd6e0db06a6c13948458c0a47b60975",
+        "format": "png",
+        "width": 128,
+        "height": 128,
+        "aspect": 1.0,
+        "inkAspect": 1,
+        "bytes": 2810,
+        "mono": false
+      }
+    ]
+  },
+  {
+    "domain": "chatglm.cn",
+    "name": "智谱清言",
+    "icons": [
+      {
+        "role": "main",
+        "file": "chatglm.cn.svg",
+        "source": "assets/icons/lobe-icons/qingyan-color.svg",
+        "sha256": "fc4c9dc628acbfdc18626fd04ae3192f049faf894ad2e342c84338f6ecfe7741",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.1111,
+        "bytes": 1379,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "chatglm.cn-text.svg",
+        "source": "assets/icons/lobe-icons/qingyan-text.svg",
+        "sha256": "a7227344bb85be1fbb09f11c3e3533f0b7e7801e847e638bd5fdce1b2a3a9c04",
+        "format": "svg",
+        "width": 86.0,
+        "height": 24.0,
+        "aspect": 3.5833,
+        "inkAspect": 3.875,
+        "bytes": 2790,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "yuanbao.tencent.com",
+    "name": "腾讯元宝",
+    "icons": [
+      {
+        "role": "main",
+        "file": "yuanbao.tencent.com.svg",
+        "source": "assets/icons/lobe-icons/yuanbao-color.svg",
+        "sha256": "522b9c3ee6f4136b3dd2f5e844a2273b6d599ae614329dbcaf96c74375b0fdd5",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.0323,
+        "bytes": 1110,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "yuanbao.tencent.com-text.svg",
+        "source": "assets/icons/lobe-icons/yuanbao-text.svg",
+        "sha256": "348b6e833a2606e29c5ece9ec49638fdef26997e2fe7692172e9930ed7e7610f",
+        "format": "svg",
+        "width": 92.0,
+        "height": 24.0,
+        "aspect": 3.8333,
+        "inkAspect": 4.1333,
+        "bytes": 3143,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "xinghuo.xfyun.cn",
+    "name": "讯飞星火",
+    "icons": [
+      {
+        "role": "main",
+        "file": "xinghuo.xfyun.cn.svg",
+        "source": "assets/icons/lobe-icons/spark-color.svg",
+        "sha256": "4068581452b808e4d9f8c5b43b42d324512d6801de26e57cf848125c28db85bc",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 0.8226,
+        "bytes": 882,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "xinghuo.xfyun.cn-text.svg",
+        "source": "assets/icons/lobe-icons/spark-text.svg",
+        "sha256": "8a4ce07f632b9c62d1a524776b45163119564240a0996ef5bc54aaaf63ec36d3",
+        "format": "svg",
+        "width": 93.0,
+        "height": 24.0,
+        "aspect": 3.875,
+        "inkAspect": 4.0667,
+        "bytes": 1375,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "mistral.ai",
+    "name": "Mistral",
+    "icons": [
+      {
+        "role": "main",
+        "file": "mistral.ai.svg",
+        "source": "assets/icons/lobe-icons/mistral-color.svg",
+        "sha256": "722f74b289d95486b43662fe24fa883b333701296f618406cd0ed502299170b6",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.3913,
+        "bytes": 655,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "mistral.ai-text.svg",
+        "source": "assets/icons/lobe-icons/mistral-text.svg",
+        "sha256": "062ae336243badd51ca21763b30b722092cd265b7eefcb39df6b8641d883d60c",
+        "format": "svg",
+        "width": 134.0,
+        "height": 24.0,
+        "aspect": 5.5833,
+        "inkAspect": 5.1667,
+        "bytes": 2093,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "aliyun.com",
+    "name": "阿里云",
+    "icons": [
+      {
+        "role": "main",
+        "file": "aliyun.com.svg",
+        "source": "assets/icons/lobe-icons/alibabacloud-color.svg",
+        "sha256": "73ea97baf919edb3d888a77cd45b21574e190a80124a59e199ea6953a28a959c",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.561,
+        "bytes": 656,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "aliyun.com-text.svg",
+        "source": "assets/icons/lobe-icons/alibabacloud-text-cn.svg",
+        "sha256": "333ab2c84661351bb6b8eaac7a218b9f5ca8629fe88ddf8c17c2538a2cc7dcf1",
+        "format": "svg",
+        "width": 60.0,
+        "height": 24.0,
+        "aspect": 2.5,
+        "inkAspect": 2.7727,
+        "bytes": 1144,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "cloud.tencent.com",
+    "name": "腾讯云",
+    "icons": [
+      {
+        "role": "main",
+        "file": "cloud.tencent.com.svg",
+        "source": "assets/icons/lobe-icons/tencentcloud-color.svg",
+        "sha256": "f860dae064a3afd24970efd2bc5892f39438526bf52c3a9748f61fc05c1cfd58",
+        "format": "svg",
+        "width": 24.0,
+        "height": 24.0,
+        "aspect": 1.0,
+        "inkAspect": 1.3953,
+        "bytes": 2124,
+        "mono": false
+      },
+      {
+        "role": "wide",
+        "file": "cloud.tencent.com-text.svg",
+        "source": "assets/icons/lobe-icons/tencentcloud-text.svg",
+        "sha256": "ffa31b6d53d05957ff8145b07086c6b1a59f4b489a707adbc06628bcea74b503",
+        "format": "svg",
+        "width": 64.0,
+        "height": 24.0,
+        "aspect": 2.6667,
+        "inkAspect": 3.05,
+        "bytes": 3257,
+        "mono": true
+      }
+    ]
+  },
+  {
+    "domain": "youdao.com",
+    "name": "有道翻译",
+    "icons": [
+      {
+        "role": "main",
+        "file": "youdao.com.png",
+        "source": "assets/site-icons/youdao.com.png",
+        "sha256": "d34e94099aabc1d90fba5167a7718e6ab4fb866108f6149600c411290555f111",
+        "format": "png",
+        "width": 48,
+        "height": 48,
+        "aspect": 1.0,
+        "inkAspect": 0.7544,
+        "bytes": 1297,
+        "mono": false
+      }
+    ]
+  }
+]

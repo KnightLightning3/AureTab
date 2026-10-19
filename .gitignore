@@ -1,2 +1,8 @@
 .DS_Store
 node_modules/
+assets/icons/dashboard-icons/
+assets/icons/lobe-icons/
+assets/icons/simple-icons/
+
+# Local wallpaper experiments and machine-specific render parameters
+output/

@@ -1,8 +1,15 @@
 {
-  "name": "easy-tab",
-  "version": "0.1.0",
+  "name": "auretab",
+  "version": "0.1",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test tests/*.test.js" },
-  "engines": { "node": ">=20" }
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "icons:audit": "python3 scripts/curate-icons.py analyze",
+    "icons:refresh": "python3 scripts/build-icon-variants.py",
+    "package": "python3 scripts/package-extension.py"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

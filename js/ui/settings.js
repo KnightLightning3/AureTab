@@ -5,7 +5,10 @@ export function applySettings(data, prefs) {
   document.body.dataset.layout = prefs.layout; document.body.classList.toggle('minimal', prefs.minimal);
   document.body.dataset.theme = prefs.theme;
   document.body.classList.toggle('hide-labels', !prefs.showLabels);
-  $('#minimal-toggle').setAttribute('aria-pressed', String(prefs.minimal));
+  const minimalToggle = $('#minimal-toggle');
+  minimalToggle.setAttribute('aria-pressed', String(prefs.minimal));
+  minimalToggle.setAttribute('aria-label', prefs.minimal ? '退出极简模式' : '进入极简模式');
+  minimalToggle.title = prefs.minimal ? '退出极简模式' : '进入极简模式';
   if (prefs.minimal) { document.body.classList.remove('drawer-open'); $('#drawer-backdrop').hidden = true; $('#drawer-toggle').setAttribute('aria-expanded', 'false'); }
   document.querySelectorAll('[data-setting]').forEach(select => { select.value = select.dataset.setting === 'layout' ? prefs.layout : data.settings[select.dataset.setting]; });
   document.querySelectorAll('[data-pref]').forEach(input => { const key = input.dataset.pref; if (input.type === 'checkbox') input.checked = Boolean(prefs[key]); else input.value = prefs[key]; });

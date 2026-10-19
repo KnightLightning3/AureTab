@@ -1,0 +1,70 @@
+[
+  {
+    "title": "Sogou",
+    "slug": "sogou",
+    "hex": "FB6022",
+    "source": "https://www.sogou.com"
+  },
+  {
+    "title": "Kuaishou",
+    "slug": "kuaishou",
+    "hex": "FF4906",
+    "source": "https://www.kuaishou.com/official/material-lib",
+    "guidelines": "https://www.kuaishou.com/official/material-lib"
+  },
+  {
+    "title": "Xiaohongshu",
+    "slug": "xiaohongshu",
+    "hex": "FF2442",
+    "source": "https://pro.xiaohongshu.com",
+    "aliases": {
+      "loc": {
+        "zh-CN": "小红书"
+      }
+    }
+  },
+  {
+    "title": "eBay",
+    "slug": "ebay",
+    "hex": "E53238",
+    "source": "https://go.developer.ebay.com/logos"
+  },
+  {
+    "title": "PyPI",
+    "slug": "pypi",
+    "hex": "3775A9",
+    "source": "https://pypi.org"
+  },
+  {
+    "title": "CSDN",
+    "slug": "csdn",
+    "hex": "FC5531",
+    "source": "https://www.csdn.net/company/index.html"
+  },
+  {
+    "title": "CodeSandbox",
+    "slug": "codesandbox",
+    "hex": "151515",
+    "source": "https://codesandbox.io/CodeSandbox-Press-Kit.zip"
+  },
+  {
+    "title": "Meituan",
+    "slug": "meituan",
+    "hex": "FFD100",
+    "source": "https://www.meituan.com/media",
+    "aliases": {
+      "loc": {
+        "zh-CN": "美团"
+      }
+    }
+  },
+  {
+    "title": "Iconify",
+    "slug": "iconify",
+    "hex": "026C9C",
+    "source": "https://iconify.design",
+    "license": {
+      "type": "MIT"
+    }
+  }
+]

@@ -31,7 +31,7 @@ export function isPrivateHost(hostname) {
 // Google official flow: POST https://lens.google.com/v3/upload (2026-10-18).
 // Cross-site multipart reproduction returned 403, even with public query parameters.
 // Keep direct uploads disabled until a cross-site submission reaches actual results.
-const verifiedUploads = { google: null, bing: null, sogou: null };
+const verifiedUploads = { google: null, baidu: null, bing: null, sogou: null };
 export async function submitMultipart(blob, config) {
   validateImage(blob);
   if (!config?.capturedAt || new URL(config.action).protocol !== 'https:') throw new Error('上传接口尚未验证');

@@ -1,0 +1,208 @@
+{
+  "recommendations": [
+    {
+      "domain": "chat.deepseek.com",
+      "main": "assets/icons/lobe-icons/deepseek-color.svg",
+      "wide": "assets/icons/lobe-icons/deepseek-text.svg",
+      "reason": "蓝色鲸鱼 #4D6BFE，匹配 DeepSeek。"
+    },
+    {
+      "domain": "chatgpt.com",
+      "main": "assets/icons/lobe-icons/openai.svg",
+      "reason": "按用户明确指定：主图使用 openai.svg，横版使用 openai-text.svg，保留原始字节。",
+      "wide": "assets/icons/lobe-icons/openai-text.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "main": "assets/icons/lobe-icons/claude-color.svg",
+      "wide": "assets/icons/lobe-icons/claude-text.svg",
+      "reason": "经典陶土橙 #D97757 星芒，匹配 Claude。"
+    },
+    {
+      "domain": "gemini.google.com",
+      "main": "assets/icons/lobe-icons/gemini-color.svg",
+      "wide": "assets/icons/lobe-icons/gemini-text.svg",
+      "reason": "四色渐变星芒，匹配 Gemini；不使用 Gemma 或 Gemini CLI。"
+    },
+    {
+      "domain": "copilot.microsoft.com",
+      "main": "assets/icons/lobe-icons/copilot-color.svg",
+      "wide": "assets/icons/lobe-icons/copilot-text.svg",
+      "reason": "微软 Copilot 彩色渐变丝带；不使用 GitHub Copilot。"
+    },
+    {
+      "domain": "midjourney.com",
+      "main": "assets/icons/lobe-icons/midjourney.svg",
+      "wide": "assets/icons/lobe-icons/midjourney-text.svg",
+      "reason": "帆船产品标，经典黑色单色本身即品牌表现。"
+    },
+    {
+      "domain": "perplexity.ai",
+      "main": "assets/icons/lobe-icons/perplexity-color.svg",
+      "wide": "assets/icons/lobe-icons/perplexity-text.svg",
+      "reason": "青色 #22B8CD 线形产品标。"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "main": "assets/icons/lobe-icons/qwen-color.svg",
+      "wide": "assets/icons/lobe-icons/qwen-text.svg",
+      "reason": "按白名单名称“通义千问”及 qwen 别名采用紫色 Qwen；不代表泛通义门户、百炼或阿里云。"
+    },
+    {
+      "domain": "yiyan.baidu.com",
+      "main": "assets/icons/lobe-icons/wenxin-color.svg",
+      "wide": "assets/icons/lobe-icons/wenxin-text.svg",
+      "reason": "蓝色 Wenxin 文心产品图形，避开百度公司/百度云图标。"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "main": "assets/icons/dashboard-icons/svg/kimi-ai.svg",
+      "wide": "assets/icons/lobe-icons/kimi-text.svg",
+      "reason": "经典黑底白 K 与蓝色圆点；Lobe 彩色版白字在浅色玻璃背景上不可读，改用自带深色底的精确 Kimi 图标。"
+    },
+    {
+      "domain": "doubao.com",
+      "main": "assets/icons/lobe-icons/doubao-color.svg",
+      "wide": "assets/icons/lobe-icons/doubao-text.svg",
+      "reason": "豆包专属彩色图形，避开 ByteDance/Coze。"
+    },
+    {
+      "domain": "chatglm.cn",
+      "main": "assets/icons/lobe-icons/qingyan-color.svg",
+      "wide": "assets/icons/lobe-icons/qingyan-text.svg",
+      "reason": "采用 Qingyan 清言专属蓝色产品标；现有站点图标对应 ChatGLM 模型品牌，建议替换。"
+    },
+    {
+      "domain": "yuanbao.tencent.com",
+      "main": "assets/icons/lobe-icons/yuanbao-color.svg",
+      "wide": "assets/icons/lobe-icons/yuanbao-text.svg",
+      "reason": "元宝专属绿色图形，避开腾讯、混元及腾讯云。"
+    },
+    {
+      "domain": "xinghuo.xfyun.cn",
+      "main": "assets/icons/lobe-icons/spark-color.svg",
+      "wide": "assets/icons/lobe-icons/spark-text.svg",
+      "reason": "讯飞星火专属蓝红产品图形；避开 iFlytek Cloud 和 Apache Spark。"
+    },
+    {
+      "domain": "mistral.ai",
+      "main": "assets/icons/lobe-icons/mistral-color.svg",
+      "wide": "assets/icons/lobe-icons/mistral-text.svg",
+      "reason": "经典橙红像素 M 产品/品牌标。"
+    },
+    {
+      "domain": "aliyun.com",
+      "main": "assets/icons/lobe-icons/alibabacloud-color.svg",
+      "wide": "assets/icons/lobe-icons/alibabacloud-text-cn.svg",
+      "reason": "经典阿里云橙色 #FF6A00 云括号；不使用 Alibaba 电商或阿里云盘。"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "main": "assets/icons/lobe-icons/tencentcloud-color.svg",
+      "wide": "assets/icons/lobe-icons/tencentcloud-text.svg",
+      "reason": "腾讯云专属蓝色云标，避开腾讯公司及混元。"
+    },
+    {
+      "domain": "huggingface.co",
+      "main": "assets/icons/lobe-icons/huggingface-color.svg",
+      "wide": "assets/icons/lobe-icons/huggingface-text.svg",
+      "reason": "经典黄色拥抱表情彩色矢量，保留表情细节。"
+    },
+    {
+      "domain": "cloudflare.com",
+      "main": "assets/icons/lobe-icons/cloudflare-color.svg",
+      "wide": "assets/icons/lobe-icons/cloudflare-text.svg",
+      "reason": "经典橙黄云图形，避开 Workers AI、Pages、cloudflared 等子产品。"
+    },
+    {
+      "domain": "vercel.com",
+      "main": "assets/icons/lobe-icons/vercel.svg",
+      "wide": "assets/icons/lobe-icons/vercel-text.svg",
+      "reason": "经典黑三角矢量，单色是品牌原貌；不使用 v0。"
+    },
+    {
+      "domain": "netlify.com",
+      "main": "assets/icons/dashboard-icons/svg/netlify.svg",
+      "reason": "Dashboard 经典青色 Netlify 矢量；本地没有确认匹配的横版文字源。"
+    }
+  ],
+  "exclusions": [
+    {
+      "domain": "chatglm.cn",
+      "sources": [
+        "assets/icons/lobe-icons/chatglm-color.svg",
+        "assets/icons/lobe-icons/chatglm-text.svg",
+        "assets/site-icons/chatglm.cn.svg",
+        "assets/site-icons/chatglm.cn-text.svg",
+        "assets/icons/lobe-icons/zhipu-color.svg"
+      ],
+      "reason": "ChatGLM 模型/智谱公司与清言产品不同，优先 Qingyan。"
+    },
+    {
+      "domain": "claude.ai",
+      "sources": [
+        "assets/icons/dashboard-icons/svg/claude-ai-light.svg",
+        "assets/icons/dashboard-icons/svg/claude-ai-dark.svg"
+      ],
+      "reason": "文件头 89504e470d0a1a0a，实为 PNG，扩展名伪 SVG；且不保留深浅重复版本。"
+    },
+    {
+      "domain": "copilot.microsoft.com",
+      "sources": [
+        "assets/icons/lobe-icons/githubcopilot.svg",
+        "assets/icons/simple-icons/icons/githubcopilot.svg"
+      ],
+      "reason": "GitHub Copilot 是另一产品。"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "sources": [
+        "assets/icons/lobe-icons/moonshot.svg",
+        "assets/icons/lobe-icons/moonshot-text.svg"
+      ],
+      "reason": "Moonshot 公司品牌，不能替代 Kimi 产品标。"
+    },
+    {
+      "domain": "yuanbao.tencent.com",
+      "sources": [
+        "assets/icons/lobe-icons/hunyuan-color.svg",
+        "assets/icons/lobe-icons/tencent-color.svg"
+      ],
+      "reason": "混元模型、腾讯公司不等于元宝。"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "sources": [
+        "assets/icons/lobe-icons/bailian-color.svg",
+        "assets/icons/lobe-icons/alibabacloud-color.svg"
+      ],
+      "reason": "百炼/阿里云不是通义千问；Qwen 选择以白名单产品定义为依据。"
+    },
+    {
+      "domain": "xinghuo.xfyun.cn",
+      "sources": [
+        "assets/icons/lobe-icons/iflytekcloud-color.svg",
+        "assets/icons/simple-icons/icons/apachespark.svg",
+        "assets/icons/dashboard-icons/svg/spark.svg"
+      ],
+      "reason": "讯飞云、Apache Spark、同名 Spark 均不能仅因名称相近选作星火。"
+    },
+    {
+      "domain": "aliyun.com",
+      "sources": [
+        "assets/icons/lobe-icons/alibaba-color.svg",
+        "assets/icons/simple-icons/icons/alibabadotcom.svg",
+        "assets/site-icons/alipan.com.jpg"
+      ],
+      "reason": "阿里巴巴电商/阿里云盘不是阿里云。"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "sources": [
+        "assets/icons/lobe-icons/tencent-color.svg",
+        "assets/icons/lobe-icons/hunyuan-color.svg"
+      ],
+      "reason": "腾讯母品牌/混元不是腾讯云。"
+    }
+  ]
+}

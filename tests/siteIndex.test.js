@@ -25,7 +25,7 @@ test('site index is local, categorized, valid, and small enough', () => {
     domains.add(site.domain);
     counts[site.cat] += 1;
   }
-  for (const id of categoryIds) assert.ok(counts[id] >= 12 && counts[id] <= 20, id);
+  for (const id of categoryIds) assert.ok(counts[id] >= 12 && counts[id] <= 24, id);
 });
 
 test('every local site icon exists, is an image, and no bundled icon is orphaned', () => {
@@ -34,11 +34,10 @@ test('every local site icon exists, is an image, and no bundled icon is orphaned
     for (const icon of [site.icon, site.iconWide]) {
       if (!icon) continue;
       assert.match(icon, /^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico|svg)$/i, site.domain);
-      assert.equal(referenced.has(icon), false, 'duplicate icon reference: ' + icon);
+      // A genuinely wide main logo may serve both sizes using one physical file.
       referenced.add(icon);
       const iconFile = new URL(icon, iconDir);
-      // Bundled icons are packaged separately and may be absent from a source checkout.
-      if (!existsSync(iconFile)) continue;
+      assert.ok(existsSync(iconFile), 'missing packaged icon: ' + icon);
       const bytes = readFileSync(iconFile);
       const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
       const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
@@ -74,4 +73,17 @@ test('prefix matches rank first and results default to a maximum of 24', () => {
   assert.equal(searchSites(fake, 'site').length, 24);
   assert.equal(searchSites(data.sites, '   ').length, 0);
   assert.equal(searchSites(data.sites, 'definitely-no-match').length, 0);
+});
+
+test('mail and DeepSeek additions resolve to their intended destinations', () => {
+  const additions = [
+    ['chat.deepseek.com', 'ai', ['deepseek', '深度求索']],
+    ['mail.google.com', 'common', ['gmail', '谷歌邮箱']],
+    ['mail.qq.com', 'common', ['qqmail', 'qqyouxiang']],
+    ['mail.163.com', 'common', ['163mail', 'wangyiyouxiang']],
+  ];
+  for (const [domain, cat, queries] of additions) {
+    assert.equal(data.sites.find(site => site.domain === domain)?.cat, cat);
+    for (const query of queries) assert.equal(searchSites(data.sites, query)[0]?.domain, domain);
+  }
 });

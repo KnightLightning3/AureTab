@@ -40,16 +40,20 @@ body.hide-labels .site.add-site{width:76px;height:76px;font-size:30px}
 /* Wordmarks keep their horizontal aspect in a wide tile. */
 .site-icon[data-wide] img{width:calc(100% - 28px)!important;height:auto!important;max-height:46px;object-fit:contain!important}
 body.hide-labels .site-icon[data-wide] img{max-height:50px}
-.grid,body.hide-labels .grid{grid-template-columns:repeat(auto-fill,minmax(var(--cell),1fr))}
-/* Match the two-cell artwork to its actual grid span when columns stretch. */
-.site.wide .site-icon,.site.large .site-icon{width:calc(100% - 8px)}
-body.hide-labels .site.wide .site-icon,body.hide-labels .site.large .site-icon{width:calc(100% - 4px)}
+/* Fixed square columns distribute their spare space between tiles, never at
+   the outer edges. The search content shares the viewport's 6px inset. */
+.grid,body.hide-labels .grid{--cell:72px;grid-template-columns:repeat(auto-fill,var(--cell));column-gap:14px;row-gap:6px;justify-content:space-between}
+body.hide-labels .grid{--cell:76px}
+.search-content{padding-inline:6px}
+.search-row,.search-box{width:100%}
+.site.wide .site-icon,.site.large .site-icon{width:100%}
+body.hide-labels .site.wide .site-icon,body.hide-labels .site.large .site-icon{width:100%}
 @media(max-width:767px){.collection,body[data-layout=center] .collection{margin:0}}
 /* Bookmarks scroll inside a stable viewport; page overscroll never changes the group. */
 body{height:100dvh;overflow:hidden}
 .workspace{padding-bottom:24px}
 .sites-panel{position:relative;align-self:start;min-height:0}
-.grid-viewport{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:transparent transparent;scrollbar-gutter:stable;contain:layout;padding:6px}
+.grid-viewport{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:transparent transparent;scrollbar-gutter:auto;contain:layout;padding:6px}
 .grid-viewport::-webkit-scrollbar{width:3px}
 .grid-viewport::-webkit-scrollbar-thumb{background:transparent}
 .grid-viewport:hover{scrollbar-color:var(--line) transparent}
@@ -58,32 +62,52 @@ body{height:100dvh;overflow:hidden}
 @media(max-width:767px){#sidebar{max-height:100dvh!important}}
 @media(max-height:650px){.topbar{height:56px;padding-top:12px;padding-bottom:12px}.workspace{padding-top:12px}.search-section{margin-bottom:24px}body[data-layout=center] .search-section{margin-top:0}}
 
-/* Desktop presets share one width and one column definition; only margins differ. */
+/* The primary content determines the composition; groups sit in its left margin.
+   Reserve enough room for the rail at compact desktop sizes. */
 @media(min-width:768px){
   .workspace{
-    --layout-width:min(61.8vw,1200px);
-    --sidebar-width:145px;
-    --column-gap:38px;
-    --layout-columns:var(--sidebar-width) minmax(0,1fr);
-    width:var(--layout-width);max-width:1200px;padding-inline:0;
+    --sidebar-width:112px;
+    --column-gap:24px;
+    --rail-reserve:152px;
+    --layout-width:min(61.803398875vw,1000px,calc(100vw - 304px));
+    width:var(--layout-width);max-width:1000px;padding-inline:0;
     margin-inline:auto;
   }
-  body[data-layout=golden] .workspace{margin-left:calc((100vw - var(--layout-width)) * .382);margin-right:auto}
+  body[data-layout=golden] .workspace{margin-left:max(var(--rail-reserve),calc((100vw - var(--layout-width)) * .38196601125));margin-right:auto}
   .search-section,body[data-layout=center] .search-section{
-    display:grid;grid-template-columns:var(--layout-columns);column-gap:var(--column-gap);
-    width:100%;max-width:none;margin-inline:0;margin-top:0;text-align:left;
+    display:block;width:100%;max-width:none;margin-inline:0;margin-top:0;text-align:left;
   }
-  .search-content{grid-column:2;min-width:0}
+  .search-content{min-width:0}
   body[data-layout=center] .clock{justify-content:flex-start}
   .collection,body[data-layout=center] .collection{
-    grid-template-columns:var(--layout-columns);column-gap:var(--column-gap);
-    width:100%;max-width:none;margin:0;
+    position:relative;display:block;width:100%;max-width:none;margin:0;
   }
-  .sites-panel{grid-column:2;width:auto;max-width:none}
+  #sidebar{
+    position:absolute;top:0;right:calc(100% + var(--column-gap));
+    width:var(--sidebar-width);padding:6px 0;border-right:0;
+  }
+  .group-button{gap:8px;padding:10px 9px;font-size:13px;font-weight:400}
+  .group-button .group-icon{width:16px;height:16px}
+  .group-button.active{font-weight:600}
+  #add-group{padding:10px 9px;font-size:12px}
+  .sites-panel{width:100%;max-width:none}
   .grid-viewport{scrollbar-width:none}
   .grid-viewport::-webkit-scrollbar{display:none}
-  /* Minimal mode keeps the search content at its normal size; only its position changes. */
   body.minimal .workspace{margin-inline:auto;padding-inline:0}
-  body.minimal .search-section{grid-template-columns:minmax(0,1fr)}
-  body.minimal .search-content{grid-column:1;width:calc(100% - var(--sidebar-width) - var(--column-gap));margin-inline:auto}
+  body.minimal .search-content{width:100%;margin-inline:auto}
 }
+@media(min-width:1200px){.workspace{--sidebar-width:128px}}
+
+@media(max-width:767px){
+  .search-section,body[data-layout=center] .search-section{margin-top:0;text-align:left}
+  body[data-layout=center] .clock{justify-content:flex-start}
+}
+
+/* Keep group names legible over photographs without shadowing their icons. */
+.group-button .group-name,#add-group{text-shadow:var(--group-text-shadow,0 1px 2px #0009,0 2px 8px #0006)}
+
+/* Text sources retain full input; horizontal tiles have room for longer labels. */
+.site-icon.text{font-size:20px;white-space:nowrap}
+.site.wide .site-icon.text{display:block;padding:0 10px;line-height:72px;font-size:18px;text-align:center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+body.hide-labels .site.wide .site-icon.text{line-height:76px}
+.site.large .site-icon.text{font-size:32px}

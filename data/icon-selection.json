@@ -1,0 +1,5458 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "scope": "Existing site market; no automatic inclusion from source libraries",
+    "mainPerProduct": 1,
+    "widePerProduct": 1,
+    "wideMinAspect": 1.8,
+    "preferred": "True vector, classic official colors, exact product identity",
+    "excludedExamples": [
+      "7-zip.org"
+    ]
+  },
+  "stats": {
+    "whitelist": 166,
+    "productsWithMain": 149,
+    "productsWithWide": 32,
+    "packagedFiles": 180,
+    "packagedBytes": 418164,
+    "candidateFiles": 451,
+    "rawScanned": 8255,
+    "invalidSourceFiles": 38,
+    "sourceCounts": {
+      "dashboard": 33,
+      "lobe": 59,
+      "simple": 9,
+      "existing-favicon": 80
+    },
+    "removedSupersededFiles": [
+      "163.com.png",
+      "amazon.com.png",
+      "apple.com-text.svg",
+      "behance.net.png",
+      "csdn.net.png",
+      "ctrip.com.png",
+      "dangdang.com.png",
+      "discord.com.png",
+      "duckduckgo.com.png",
+      "duolingo.com.png",
+      "ebay.com.png",
+      "facebook.com.png",
+      "gitlab.com.png",
+      "hub.docker.com.png",
+      "iconify.design.png",
+      "instagram.com.png",
+      "jiemian.com.png",
+      "kuaishou.com.png",
+      "kugou.com.png",
+      "linkedin.com.png",
+      "mail.qq.com.svg",
+      "meituan.com.png",
+      "mi.com.png",
+      "netflix.com.png",
+      "netlify.com.png",
+      "news.ycombinator.com.png",
+      "npmjs.com.png",
+      "pinterest.com.png",
+      "pypi.org.png",
+      "reddit.com.png",
+      "slack.com.png",
+      "sogou.com.png",
+      "spotify.com.png",
+      "telegram.org.png",
+      "threads.net.png",
+      "tmall.com.jpg",
+      "twitch.tv.png",
+      "vip.com.png",
+      "weibo.com.png",
+      "weixin.qq.com.png",
+      "wps.cn.png",
+      "x.com.png",
+      "xiaohongshu.com.ico",
+      "xuexi.cn.png",
+      "yicai.com.png",
+      "youtube.com.png",
+      "zoom.us.png"
+    ],
+    "missingExactProducts": [
+      "mail.qq.com",
+      "mail.163.com",
+      "miguvideo.com",
+      "people.com.cn",
+      "36kr.com",
+      "jiemian.com",
+      "tmall.com",
+      "wps.cn",
+      "xuexi.cn",
+      "ctrip.com",
+      "163.com",
+      "yicai.com",
+      "kugou.com",
+      "maimai.cn",
+      "vip.com",
+      "dangdang.com",
+      "freshippo.com"
+    ]
+  },
+  "sites": [
+    {
+      "domain": "mail.google.com",
+      "name": "Gmail",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "mail.google.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/gmail.svg",
+          "sha256": "deb93af828d913122be262cdc07c5cab6b5609a8e82c885b7d841b735fae167e",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1.3333,
+          "bytes": 535,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/gmail.svg": "mail.google.com.svg",
+        "simple-icons/icons/gmail.svg": "mail.google.com.svg",
+        "mail.google.com.svg": "mail.google.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "mail.qq.com",
+      "name": "QQ邮箱",
+      "cat": "common",
+      "reason": "未找到精确 QQ 邮箱图标；现有 mail.qq.com.svg 与 dashboard qq.svg 是 QQ 企鹅，属于另一产品，不替代。",
+      "icons": [],
+      "aliases": {
+        "dashboard-icons/svg/qq.svg": null,
+        "simple-icons/icons/qq.svg": null,
+        "mail.qq.com.svg": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "mail.163.com",
+      "name": "网易163邮箱",
+      "cat": "common",
+      "reason": "三个库及现有资源均无精确网易163邮箱图标；不以网易门户或网易云音乐代替。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "google.com",
+      "name": "Google",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 77 24，比例 3.208。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "google.com.svg",
+          "source": "assets/icons/lobe-icons/google-color.svg",
+          "sha256": "4e6aa8892ef15a6b431f40f2c9045979bf7e2357524e7bbb89b353cf4f32a5ac",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 920,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "google.com-text.svg",
+          "source": "assets/icons/lobe-icons/google-brand-color.svg",
+          "sha256": "c574277a16a36b5d4ad5b6bec87c1198c3e8e2417ace81eb29eaf3b5647c405a",
+          "format": "svg",
+          "width": 77.0,
+          "height": 24.0,
+          "aspect": 3.2083,
+          "inkAspect": 3.05,
+          "bytes": 1968,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "lobe-icons/google-brand-color.svg": "google.com-text.svg",
+        "lobe-icons/google-brand.svg": "google.com-text.svg",
+        "lobe-icons/google-color.svg": "google.com.svg",
+        "lobe-icons/google.svg": "google.com.svg",
+        "dashboard-icons/svg/google.svg": "google.com.svg",
+        "simple-icons/icons/google.svg": "google.com.svg",
+        "google.com.svg": "google.com.svg",
+        "google.com-text.svg": "google.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "bing.com",
+      "name": "Bing",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 44 24，比例 1.833。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "bing.com.svg",
+          "source": "assets/icons/lobe-icons/bing-color.svg",
+          "sha256": "0690e17df0de27573b4a5aab62a7d1fa35bc2210577147c2553b1a8c041b4fd9",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.6719,
+          "bytes": 2857,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "bing.com-text.svg",
+          "source": "assets/icons/lobe-icons/bing-text.svg",
+          "sha256": "0101d968fbb823afefd1619dc529330511392aa94a4b207f3009de465f82361f",
+          "format": "svg",
+          "width": 44.0,
+          "height": 24.0,
+          "aspect": 1.8333,
+          "inkAspect": 1.8125,
+          "bytes": 1879,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/bing-color.svg": "bing.com.svg",
+        "lobe-icons/bing-text.svg": "bing.com-text.svg",
+        "lobe-icons/bing.svg": "bing.com.svg",
+        "dashboard-icons/svg/bing.svg": "bing.com.svg",
+        "bing.com.svg": "bing.com.svg",
+        "bing.com-text.svg": "bing.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "baidu.com",
+      "name": "百度",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 72 24，比例 3.000。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "baidu.com.svg",
+          "source": "assets/icons/lobe-icons/baidu-color.svg",
+          "sha256": "1059750a2069aec6080ff48732931e87a99bd3d22db3e8471cebe255b6014b75",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.9,
+          "bytes": 1384,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "baidu.com-text.svg",
+          "source": "assets/icons/lobe-icons/baidu-brand-color.svg",
+          "sha256": "b12bf6d7396391952356dc5cf064cd0a3a7440dfc3f5a4d2f751bbaaba3ec945",
+          "format": "svg",
+          "width": 72.0,
+          "height": 24.0,
+          "aspect": 3.0,
+          "inkAspect": 3,
+          "bytes": 2873,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "lobe-icons/baidu-brand-color.svg": "baidu.com-text.svg",
+        "lobe-icons/baidu-brand.svg": "baidu.com-text.svg",
+        "lobe-icons/baidu-color.svg": "baidu.com.svg",
+        "lobe-icons/baidu-text-cn.svg": "baidu.com-text.svg",
+        "lobe-icons/baidu-text.svg": "baidu.com-text.svg",
+        "lobe-icons/baidu.svg": "baidu.com.svg",
+        "dashboard-icons/svg/baidu-dark.svg": "baidu.com.svg",
+        "dashboard-icons/svg/baidu-light.svg": "baidu.com.svg",
+        "dashboard-icons/svg/baidu.svg": "baidu.com.svg",
+        "simple-icons/icons/baidu.svg": "baidu.com.svg",
+        "baidu.com.svg": "baidu.com.svg",
+        "baidu.com-text.svg": "baidu.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "sogou.com",
+      "name": "搜狗",
+      "cat": "common",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "sogou.com.svg",
+          "source": "assets/icons/simple-icons/icons/sogou.svg",
+          "sha256": "8d1c96e06e6a90e4e38816d0f796298abaaace118dd593d69fd348432fd43ac1",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 937,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/sogou.svg": "sogou.com.svg",
+        "sogou.com.png": "sogou.com.svg",
+        "sogou.com.svg": "sogou.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "duckduckgo.com",
+      "name": "DuckDuckGo",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "duckduckgo.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/duckduckgo.svg",
+          "sha256": "b5a96c9159f0b6cfb80ac78ae9b37d05b5e3d48c128a278fe7baccd668910cc8",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 5171,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/duckduckgo.svg": "duckduckgo.com.svg",
+        "simple-icons/icons/duckduckgo.svg": "duckduckgo.com.svg",
+        "duckduckgo.com.png": "duckduckgo.com.svg",
+        "duckduckgo.com.svg": "duckduckgo.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "quark.cn",
+      "name": "夸克",
+      "cat": "common",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "quark.cn.png",
+          "source": "assets/site-icons/quark.cn.png",
+          "sha256": "8a0c508bd18deb1f30a86b80e8940e82bcba976524cdfeb4b46b7fbb7814535f",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1571,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "quark.cn.png": "quark.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "bilibili.com",
+      "name": "哔哩哔哩",
+      "cat": "media",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 52 24，比例 2.167。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "bilibili.com.svg",
+          "source": "assets/icons/lobe-icons/bilibili-color.svg",
+          "sha256": "daab1fb9ba8466de6178020db2ee7ef9fd6a01895ce383fa1c79269cc97288ff",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1034,
+          "bytes": 850,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "bilibili.com-text.svg",
+          "source": "assets/icons/lobe-icons/bilibili-text.svg",
+          "sha256": "e74a8d3affe55ad07901b2cdfbaa33a0a7f26f643ef21fae514ea7ee337bc9bb",
+          "format": "svg",
+          "width": 52.0,
+          "height": 24.0,
+          "aspect": 2.1667,
+          "inkAspect": 2.1786,
+          "bytes": 7826,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/bilibili-color.svg": "bilibili.com.svg",
+        "lobe-icons/bilibili-text.svg": "bilibili.com-text.svg",
+        "lobe-icons/bilibili.svg": "bilibili.com.svg",
+        "dashboard-icons/svg/bilibili.svg": "bilibili.com.svg",
+        "simple-icons/icons/bilibili.svg": "bilibili.com.svg",
+        "bilibili.com.svg": "bilibili.com.svg",
+        "bilibili.com-text.svg": "bilibili.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "iqiyi.com",
+      "name": "爱奇艺",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "iqiyi.com.png",
+          "source": "assets/site-icons/iqiyi.com.png",
+          "sha256": "d2bbdae35d26e7d37a8a3d645e1e5ffe68617660cb1c996df1a793124b00a011",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 20119,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "iqiyi.com.png": "iqiyi.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "v.qq.com",
+      "name": "腾讯视频",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "v.qq.com.jpg",
+          "source": "assets/site-icons/v.qq.com.jpg",
+          "sha256": "9e340b47050db8f00d604ec19fbb78ddcd4e9834ee39583228f263997fea8ef5",
+          "format": "jpeg",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3025,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/v.svg": "v.qq.com.jpg",
+        "v.qq.com.jpg": "v.qq.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "youku.com",
+      "name": "优酷",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "youku.com.png",
+          "source": "assets/site-icons/youku.com.png",
+          "sha256": "1f91311fbe921f7f9719d0da9808adca25da7f6af509a24f93bd3c94803f2bbc",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 0.8478,
+          "bytes": 1460,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "youku.com.png": "youku.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "mgtv.com",
+      "name": "芒果TV",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "mgtv.com.png",
+          "source": "assets/site-icons/mgtv.com.png",
+          "sha256": "fa516e0edc18795c9a61d234e6ba289c5fdf6a3d5017718f57d4deac4328eedf",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1688,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "mgtv.com.png": "mgtv.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "ixigua.com",
+      "name": "西瓜视频",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "ixigua.com.png",
+          "source": "assets/site-icons/ixigua.com.png",
+          "sha256": "d93d105775064bbfbc927c56316c60aebfe945d03c0173b052ee43c0d0c089d8",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1546,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "ixigua.com.png": "ixigua.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "youtube.com",
+      "name": "YouTube",
+      "cat": "media",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 76.8 512 358.4。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "youtube.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/youtube.svg",
+          "sha256": "320ae220c53a6126da81aaf6803d8c813837bcaa95f39dcf5f75932335746673",
+          "format": "svg",
+          "width": 512.0,
+          "height": 358.4,
+          "aspect": 1.4286,
+          "inkAspect": 1.4222,
+          "bytes": 479,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/youtube.svg": "youtube.com.svg",
+        "simple-icons/icons/youtube.svg": "youtube.com.svg",
+        "youtube.com.png": "youtube.com.svg",
+        "youtube.com.svg": "youtube.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "netflix.com",
+      "name": "Netflix",
+      "cat": "media",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=114.86 -0.13 282.24 512.28。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "netflix.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/netflix.svg",
+          "sha256": "2c1202dc7f5af0a3ae191185cc5724de1053bb6a5e7a96f2f492c03828ee265f",
+          "format": "svg",
+          "width": 282.24,
+          "height": 512.28,
+          "aspect": 0.5509,
+          "inkAspect": 0.5469,
+          "bytes": 3354,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/netflix.svg": "netflix.com.svg",
+        "simple-icons/icons/netflix.svg": "netflix.com.svg",
+        "netflix.com.png": "netflix.com.svg",
+        "netflix.com.svg": "netflix.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "twitch.tv",
+      "name": "Twitch",
+      "cat": "media",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=31.28 -0.01 449.33 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "twitch.tv.svg",
+          "source": "assets/icons/dashboard-icons/svg/twitch.svg",
+          "sha256": "a8eb365147d606ec498ea6e655e1e1397ee5c0bdbc096464d496e6f2f31a1c69",
+          "format": "svg",
+          "width": 449.33,
+          "height": 512.0,
+          "aspect": 0.8776,
+          "inkAspect": 0.875,
+          "bytes": 599,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/twitch.svg": "twitch.tv.svg",
+        "simple-icons/icons/twitch.svg": "twitch.tv.svg",
+        "twitch.tv.png": "twitch.tv.svg",
+        "twitch.tv.svg": "twitch.tv.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "douyin.com",
+      "name": "抖音",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "douyin.com.png",
+          "source": "assets/site-icons/douyin.com.png",
+          "sha256": "00577471ebd506d56320452666214e7cabac1c66c7a4686ffa95197c8d562076",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1601,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "douyin.com.png": "douyin.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "kuaishou.com",
+      "name": "快手",
+      "cat": "media",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "kuaishou.com.svg",
+          "source": "assets/icons/simple-icons/icons/kuaishou.svg",
+          "sha256": "6fd3afc958574cf6aafafa5a4085d7903dec61d20e0ee737f632b0c815da764e",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.875,
+          "bytes": 1165,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/kuaishou.svg": "kuaishou.com.svg",
+        "kuaishou.com.png": "kuaishou.com.svg",
+        "kuaishou.com.svg": "kuaishou.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "miguvideo.com",
+      "name": "咪咕视频",
+      "cat": "media",
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "yangshipin.cn",
+      "name": "央视频",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "yangshipin.cn.png",
+          "source": "assets/site-icons/yangshipin.cn.png",
+          "sha256": "19c5c9641d4fc6ae7d135884b74728fee7dfc84da55bcd9ec14ed3be82a5ee21",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1638,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "yangshipin.cn.png": "yangshipin.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "weibo.com",
+      "name": "微博",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 1080 1080。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "weibo.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/weibo.svg",
+          "sha256": "2e693dca0511b36fa4a0b20a099d4c7c4b5b4fd2f2991e3bfbcc49d09d8ca796",
+          "format": "svg",
+          "width": 1080.0,
+          "height": 1080.0,
+          "aspect": 1.0,
+          "inkAspect": 1.2308,
+          "bytes": 2877,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/weibo.svg": "weibo.com.svg",
+        "weibo.com.png": "weibo.com.svg",
+        "weibo.com.svg": "weibo.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "zhihu.com",
+      "name": "知乎",
+      "cat": "social",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "zhihu.com.png",
+          "source": "assets/site-icons/zhihu.com.png",
+          "sha256": "05db6dd8dbf6acd2f30aa779a5e912acb103952ca0b7ba13d8fad45d5198f320",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2943,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/zhihu.svg": "zhihu.com.png",
+        "zhihu.com.png": "zhihu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "douban.com",
+      "name": "豆瓣",
+      "cat": "social",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "douban.com.png",
+          "source": "assets/site-icons/douban.com.png",
+          "sha256": "636e2ea75243a10595c281081c1955620b645f1497c0cd0c24f1c2ee9a94ae24",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 443,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/douban.svg": "douban.com.png",
+        "douban.com.png": "douban.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "xiaohongshu.com",
+      "name": "小红书",
+      "cat": "social",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "xiaohongshu.com.svg",
+          "source": "assets/icons/simple-icons/icons/xiaohongshu.svg",
+          "sha256": "847cacc807f5c236031a7477381daa67fd829d89f3f80c16a547ff2efe050794",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 2.6667,
+          "bytes": 3584,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/xiaohongshu.svg": "xiaohongshu.com.svg",
+        "xiaohongshu.com.ico": "xiaohongshu.com.svg",
+        "xiaohongshu.com.svg": "xiaohongshu.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "name": "微信",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "weixin.qq.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/wechat.svg",
+          "sha256": "439de170dff232935f08357fbfb852bb302545d6125861ed6074fe6237b3f912",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.2075,
+          "bytes": 1345,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/wechat-dark.svg": "weixin.qq.com.svg",
+        "dashboard-icons/svg/wechat-light.svg": "weixin.qq.com.svg",
+        "dashboard-icons/svg/wechat.svg": "weixin.qq.com.svg",
+        "simple-icons/icons/wechat.svg": "weixin.qq.com.svg",
+        "weixin.qq.com.png": "weixin.qq.com.svg",
+        "weixin.qq.com.svg": "weixin.qq.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "x.com",
+      "name": "X",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "x.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/x.svg",
+          "sha256": "eef86bcbbd5cf2b889be343261c64561c7514e19b7c0dc32c937f0c43d477998",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 231,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/x-light.svg": "x.com.svg",
+        "dashboard-icons/svg/x.svg": "x.com.svg",
+        "simple-icons/icons/x.svg": "x.com.svg",
+        "dashboard-icons/svg/twitter.svg": "x.com.svg",
+        "x.com.png": "x.com.svg",
+        "x.com.svg": "x.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "facebook.com",
+      "name": "Facebook",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "facebook.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/facebook.svg",
+          "sha256": "d2963ecd06de4e61d9cdae95b464d5055a289122c9726793f5a7485386f7fe66",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 758,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/facebook.svg": "facebook.com.svg",
+        "simple-icons/icons/facebook.svg": "facebook.com.svg",
+        "lobe-icons/meta-brand-color.svg": "facebook.com.svg",
+        "lobe-icons/meta-brand.svg": "facebook.com.svg",
+        "lobe-icons/meta-color.svg": "facebook.com.svg",
+        "lobe-icons/meta-text.svg": "facebook.com.svg",
+        "lobe-icons/meta.svg": "facebook.com.svg",
+        "dashboard-icons/svg/meta.svg": "facebook.com.svg",
+        "simple-icons/icons/meta.svg": "facebook.com.svg",
+        "facebook.com.png": "facebook.com.svg",
+        "facebook.com.svg": "facebook.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "instagram.com",
+      "name": "Instagram",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "instagram.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/instagram.svg",
+          "sha256": "2c1ad008f5d7f2abd8f7aa1b7f1c7c87859efb0204aee8f5bc88d12567179550",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3285,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/instagram.svg": "instagram.com.svg",
+        "simple-icons/icons/instagram.svg": "instagram.com.svg",
+        "instagram.com.png": "instagram.com.svg",
+        "instagram.com.svg": "instagram.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "reddit.com",
+      "name": "Reddit",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "reddit.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/reddit.svg",
+          "sha256": "6af5a5941885fbe62ea15eca389b608ce06ea89d42ec43d1de827cfe82ef6880",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 973,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/reddit.svg": "reddit.com.svg",
+        "simple-icons/icons/reddit.svg": "reddit.com.svg",
+        "reddit.com.png": "reddit.com.svg",
+        "reddit.com.svg": "reddit.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "discord.com",
+      "name": "Discord",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0.02 57.8 511.92 396.3。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "discord.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/discord.svg",
+          "sha256": "c04059c1d13d99239ebd0b7df807e8c3d2f46439bd18a70c5fd3a0631bd7b310",
+          "format": "svg",
+          "width": 511.92,
+          "height": 396.3,
+          "aspect": 1.2917,
+          "inkAspect": 1.28,
+          "bytes": 779,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/discord.svg": "discord.com.svg",
+        "simple-icons/icons/discord.svg": "discord.com.svg",
+        "discord.com.png": "discord.com.svg",
+        "discord.com.svg": "discord.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "telegram.org",
+      "name": "Telegram",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "telegram.org.svg",
+          "source": "assets/icons/dashboard-icons/svg/telegram.svg",
+          "sha256": "29edf9cfe2d4c80eb0acd087312eaabba8f7b4c14a4651ccaab51c35b3bb608c",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1007,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/telegram.svg": "telegram.org.svg",
+        "simple-icons/icons/telegram.svg": "telegram.org.svg",
+        "telegram.org.png": "telegram.org.svg",
+        "telegram.org.svg": "telegram.org.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "linkedin.com",
+      "name": "LinkedIn",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "linkedin.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/linkedin.svg",
+          "sha256": "67f08e714e9a8a06288f1d7adc7e9840c450c11f8af6fb1847425fc7f186ca1b",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 627,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/linkedin.svg": "linkedin.com.svg",
+        "linkedin.com.png": "linkedin.com.svg",
+        "linkedin.com.svg": "linkedin.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "pinterest.com",
+      "name": "Pinterest",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "pinterest.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/pinterest.svg",
+          "sha256": "e3f1783f07a0add791adcbc86eabd009717691e0c541b97c23364e2b11b19dd8",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 992,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/pinterest.svg": "pinterest.com.svg",
+        "simple-icons/icons/pinterest.svg": "pinterest.com.svg",
+        "pinterest.com.png": "pinterest.com.svg",
+        "pinterest.com.svg": "pinterest.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "tieba.baidu.com",
+      "name": "百度贴吧",
+      "cat": "social",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "tieba.baidu.com.png",
+          "source": "assets/site-icons/tieba.baidu.com.png",
+          "sha256": "7222909a812169521ecd36e724ef74d015961f7b8ac8dac8efc83f0e2338f9a4",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1097,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "tieba.baidu.com.png": "tieba.baidu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "thepaper.cn",
+      "name": "澎湃新闻",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "thepaper.cn.png",
+          "source": "assets/site-icons/thepaper.cn.png",
+          "sha256": "3fdb53521822c2247f96e766f2eca3c052cba90c341c4bbc5f9de50578dade94",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 0.8906,
+          "bytes": 1232,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "thepaper.cn.png": "thepaper.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "news.cn",
+      "name": "新华网",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "news.cn.png",
+          "source": "assets/site-icons/news.cn.png",
+          "sha256": "1158b69b90fcef34fd79827926f6352cc58083148545c65f01164ce22e23f4b1",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 14305,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "news.cn.png": "news.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "people.com.cn",
+      "name": "人民网",
+      "cat": "news",
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "cctv.com",
+      "name": "央视网",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "cctv.com.png",
+          "source": "assets/site-icons/cctv.com.png",
+          "sha256": "51ca646e16c8377b4862d2500ee4514727fb06f5f5cd4598216cf8bc8e33ae4f",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1546,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "cctv.com.png": "cctv.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "36kr.com",
+      "name": "36氪",
+      "cat": "news",
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "sspai.com",
+      "name": "少数派",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "sspai.com.png",
+          "source": "assets/site-icons/sspai.com.png",
+          "sha256": "db247f67adcbb1532f36e4cd60912305b1bfa0696fba52db390bb4368a5a9402",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1980,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "sspai.com.png": "sspai.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "huxiu.com",
+      "name": "虎嗅",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 100×100；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "huxiu.com.png",
+          "source": "assets/site-icons/huxiu.com.png",
+          "sha256": "36eb0c2fbbccc04a84b969e47713cedfb999dd778aa8278f88d59d4be8a56682",
+          "format": "png",
+          "width": 100,
+          "height": 100,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3348,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "huxiu.com.png": "huxiu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "jiemian.com",
+      "name": "界面新闻",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "jiemian.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "bbc.com",
+      "name": "BBC",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "bbc.com.png",
+          "source": "assets/site-icons/bbc.com.png",
+          "sha256": "c96cc12df8388e1a4b59a707806b0fd36298e3f6a1c3c1f70d4ef87b5c1eec76",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 252,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "bbc.com.png": "bbc.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "nytimes.com",
+      "name": "纽约时报",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "nytimes.com.png",
+          "source": "assets/site-icons/nytimes.com.png",
+          "sha256": "5b9b82759b22278cfc162ddce410f092d21b08001626924b4e37d685a617cb3d",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2177,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "nytimes.com.png": "nytimes.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "taobao.com",
+      "name": "淘宝",
+      "cat": "shopping",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "taobao.com.jpg",
+          "source": "assets/site-icons/taobao.com.jpg",
+          "sha256": "c5946950d4355ee95b5c3ae7e466919a82789e8dace3e407cd432c5331c2364a",
+          "format": "jpeg",
+          "width": 114,
+          "height": 114,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3550,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/taobao.svg": "taobao.com.jpg",
+        "taobao.com.jpg": "taobao.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "tmall.com",
+      "name": "天猫",
+      "cat": "shopping",
+      "reason": "现有 tmall.com.jpg 实际为橙色“淘”字淘宝图标；未找到精确天猫候选。",
+      "icons": [],
+      "aliases": {
+        "tmall.com.jpg": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "jd.com",
+      "name": "京东",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 96×96；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "jd.com.ico",
+          "source": "assets/site-icons/jd.com.ico",
+          "sha256": "d71bcae7214e3401d42af8b8f4a288da25fdc72601e7592586e5596e45f481ba",
+          "format": "ico",
+          "width": 96,
+          "height": 96,
+          "aspect": 1.0,
+          "inkAspect": 1.0,
+          "bytes": 2817,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "jd.com.ico": "jd.com.ico"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "pinduoduo.com",
+      "name": "拼多多",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "pinduoduo.com.png",
+          "source": "assets/site-icons/pinduoduo.com.png",
+          "sha256": "91be3aa1dc3193bc5c48e29152c7918d6f5bf3abd2108df24b62e6ccc925583d",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 932,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "pinduoduo.com.png": "pinduoduo.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "amazon.com",
+      "name": "Amazon",
+      "cat": "shopping",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "amazon.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/amazon.svg",
+          "sha256": "326fd7c65f787c62b7c509392b07f58e132cd1de75f349f97337f4df668077aa",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 0.9688,
+          "bytes": 2235,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/amazon-light.svg": "amazon.com.svg",
+        "dashboard-icons/svg/amazon.svg": "amazon.com.svg",
+        "amazon.com.png": "amazon.com.svg",
+        "amazon.com.svg": "amazon.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "ebay.com",
+      "name": "eBay",
+      "cat": "shopping",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "ebay.com.svg",
+          "source": "assets/icons/simple-icons/icons/ebay.svg",
+          "sha256": "846e8d8ac6cea49766e7c62e095e739d115ed355f9b63bf46067f14c9343c745",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 2.4615,
+          "bytes": 1268,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/ebay.svg": "ebay.com.svg",
+        "simple-icons/icons/ebay.svg": "ebay.com.svg",
+        "ebay.com.png": "ebay.com.svg",
+        "ebay.com.svg": "ebay.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "goofish.com",
+      "name": "闲鱼",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "goofish.com.png",
+          "source": "assets/site-icons/goofish.com.png",
+          "sha256": "1ed1dcd9b343f062974747fc1907e4fd299f375410f7977f5704c0e7e62d22ca",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1489,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "goofish.com.png": "goofish.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "1688.com",
+      "name": "1688",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "1688.com.png",
+          "source": "assets/site-icons/1688.com.png",
+          "sha256": "7dd3c9fda4ce7ec036dec69098383788f46644e8c1b4db66e8bd05a07f7c8812",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3286,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "lobe-icons/alibaba-brand-color.svg": "1688.com.png",
+        "lobe-icons/alibaba-brand.svg": "1688.com.png",
+        "lobe-icons/alibaba-color.svg": "1688.com.png",
+        "lobe-icons/alibaba-text-cn.svg": "1688.com.png",
+        "lobe-icons/alibaba-text.svg": "1688.com.png",
+        "lobe-icons/alibaba.svg": "1688.com.png",
+        "1688.com.png": "1688.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "github.com",
+      "name": "GitHub",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 78 24，比例 3.250。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "github.com.svg",
+          "source": "assets/icons/lobe-icons/github.svg",
+          "sha256": "1bd763b5d53ab1618e0afce72aacffc7e93d1249c395f713b3b055c087526625",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.0323,
+          "bytes": 907,
+          "mono": true
+        },
+        {
+          "role": "wide",
+          "file": "github.com-text.svg",
+          "source": "assets/icons/lobe-icons/github-text.svg",
+          "sha256": "60de0adc890a4349210269226c5d032922bb9fbf7c108941cf96931a9e819102",
+          "format": "svg",
+          "width": 78.0,
+          "height": 24.0,
+          "aspect": 3.25,
+          "inkAspect": 3.4444,
+          "bytes": 2278,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/github-text.svg": "github.com-text.svg",
+        "lobe-icons/github.svg": "github.com.svg",
+        "dashboard-icons/svg/github-light.svg": "github.com.svg",
+        "dashboard-icons/svg/github.svg": "github.com.svg",
+        "simple-icons/icons/github.svg": "github.com.svg",
+        "github.com.svg": "github.com.svg",
+        "github.com-text.svg": "github.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "gitlab.com",
+      "name": "GitLab",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=93.97 97.52 192.05 184.99。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "gitlab.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/gitlab.svg",
+          "sha256": "f7142d76fac3c23b08ae67b9994a06fa7df9e776781df6b5fb1ba030f9a12111",
+          "format": "svg",
+          "width": 192.05,
+          "height": 184.99,
+          "aspect": 1.0382,
+          "inkAspect": 1.0323,
+          "bytes": 1020,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/gitlab.svg": "gitlab.com.svg",
+        "simple-icons/icons/gitlab.svg": "gitlab.com.svg",
+        "gitlab.com.png": "gitlab.com.svg",
+        "gitlab.com.svg": "gitlab.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "gitee.com",
+      "name": "Gitee",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "gitee.com.png",
+          "source": "assets/site-icons/gitee.com.png",
+          "sha256": "76ddd0d82b9c9bf50581a2bfc8959fd7321050298d36e83c4bc933b0a802115e",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1769,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/gitee.svg": "gitee.com.png",
+        "simple-icons/icons/gitee.svg": "gitee.com.png",
+        "gitee.com.png": "gitee.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "stackoverflow.com.png",
+          "source": "assets/site-icons/stackoverflow.com.png",
+          "sha256": "5c2167125a567da7c6af1a14d3fb4e5cbdd3dd2001ff952a27274112044e5f9b",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1265,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/stackoverflow.svg": "stackoverflow.com.png",
+        "stackoverflow.com.png": "stackoverflow.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "developer.mozilla.org",
+      "name": "MDN",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "developer.mozilla.org.png",
+          "source": "assets/site-icons/developer.mozilla.org.png",
+          "sha256": "0d41ba0645fc988fbd46ae5cfa7507d62a0c171a676909a10a58586b713284eb",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1107,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/mozilla.svg": "developer.mozilla.org.png",
+        "developer.mozilla.org.png": "developer.mozilla.org.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "npmjs.com",
+      "name": "npm",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 18 7。 可选横版 viewBox=0 0 18 7，比例 2.571。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "npmjs.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/npm.svg",
+          "sha256": "ee8d7b405c0ac7a20f2cca12ede7820d9f3f494baa1764a33986b9295d962e3b",
+          "format": "svg",
+          "width": 18.0,
+          "height": 7.0,
+          "aspect": 2.5714,
+          "inkAspect": 2.56,
+          "bytes": 455,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "npmjs.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/npm.svg",
+          "sha256": "ee8d7b405c0ac7a20f2cca12ede7820d9f3f494baa1764a33986b9295d962e3b",
+          "format": "svg",
+          "width": 18.0,
+          "height": 7.0,
+          "aspect": 2.5714,
+          "inkAspect": 2.56,
+          "bytes": 455,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/npm.svg": "npmjs.com.svg",
+        "simple-icons/icons/npm.svg": "npmjs.com.svg",
+        "npmjs.com.png": "npmjs.com.svg",
+        "npmjs.com.svg": "npmjs.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "pypi.org",
+      "name": "PyPI",
+      "cat": "dev",
+      "reason": "优先选择精确 PyPI 可缩放矢量；不因立方体外形认定原 favicon 品牌错误。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "pypi.org.svg",
+          "source": "assets/icons/simple-icons/icons/pypi.svg",
+          "sha256": "d4069a4a013461e1d433114d0bece715c979afe502996cc5770c9ee05c24fae6",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1429,
+          "bytes": 1952,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/pypi-wordmark-light.svg": "pypi.org.svg",
+        "dashboard-icons/svg/pypi.svg": "pypi.org.svg",
+        "simple-icons/icons/pypi.svg": "pypi.org.svg",
+        "dashboard-icons/svg/python.svg": "pypi.org.svg",
+        "simple-icons/icons/python.svg": "pypi.org.svg",
+        "pypi.org.png": "pypi.org.svg",
+        "pypi.org.svg": "pypi.org.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "hub.docker.com",
+      "name": "Docker Hub",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=-0.07 71.3 511.97 369.5。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "hub.docker.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/docker.svg",
+          "sha256": "7de45e1ea203da32a040c257f47cd39a5711b3a200d27ec72dbccbc5efb1590b",
+          "format": "svg",
+          "width": 511.97,
+          "height": 369.5,
+          "aspect": 1.3856,
+          "inkAspect": 1.3913,
+          "bytes": 608,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/docker.svg": "hub.docker.com.svg",
+        "simple-icons/icons/docker.svg": "hub.docker.com.svg",
+        "hub.docker.com.png": "hub.docker.com.svg",
+        "hub.docker.com.svg": "hub.docker.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "huggingface.co",
+      "name": "Hugging Face",
+      "cat": "dev",
+      "reason": "经典黄色拥抱表情彩色矢量，保留表情细节。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "huggingface.co.svg",
+          "source": "assets/icons/lobe-icons/huggingface-color.svg",
+          "sha256": "5d39d66bb6c9b026d3cb5de7bd9978dad3906570df2aca8f00078a6f8a3d0f5e",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1111,
+          "bytes": 3768,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "huggingface.co-text.svg",
+          "source": "assets/icons/lobe-icons/huggingface-text.svg",
+          "sha256": "e29e296dfc795040fc567abf8893c7b0c5be1cc18055eab2691298b265211814",
+          "format": "svg",
+          "width": 153.0,
+          "height": 24.0,
+          "aspect": 6.375,
+          "inkAspect": 6.2,
+          "bytes": 7782,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/huggingface-color.svg": "huggingface.co.svg",
+        "lobe-icons/huggingface-text.svg": "huggingface.co-text.svg",
+        "lobe-icons/huggingface.svg": "huggingface.co.svg",
+        "dashboard-icons/svg/hugging-face.svg": "huggingface.co.svg",
+        "simple-icons/icons/huggingface.svg": "huggingface.co.svg",
+        "huggingface.co.svg": "huggingface.co.svg",
+        "huggingface.co-text.svg": "huggingface.co-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "vercel.com",
+      "name": "Vercel",
+      "cat": "dev",
+      "reason": "经典黑三角矢量，单色是品牌原貌；不使用 v0。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "vercel.com.svg",
+          "source": "assets/icons/lobe-icons/vercel.svg",
+          "sha256": "4874d52d8b2ce7c309cbd10c424fee123b2c9483e76d76ad0dca41794483eb24",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1429,
+          "bytes": 225,
+          "mono": true
+        },
+        {
+          "role": "wide",
+          "file": "vercel.com-text.svg",
+          "source": "assets/icons/lobe-icons/vercel-text.svg",
+          "sha256": "25b2e7e9a38afa7577be75daea09dcc6d395edd30f68d5d9e7569c0b1f6c399c",
+          "format": "svg",
+          "width": 94.0,
+          "height": 24.0,
+          "aspect": 3.9167,
+          "inkAspect": 4.0667,
+          "bytes": 2432,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/vercel-text.svg": "vercel.com-text.svg",
+        "lobe-icons/vercel.svg": "vercel.com.svg",
+        "dashboard-icons/svg/vercel-light.svg": "vercel.com.svg",
+        "dashboard-icons/svg/vercel.svg": "vercel.com.svg",
+        "simple-icons/icons/vercel.svg": "vercel.com.svg",
+        "vercel.com.svg": "vercel.com.svg",
+        "vercel.com-text.svg": "vercel.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "netlify.com",
+      "name": "Netlify",
+      "cat": "dev",
+      "reason": "Dashboard 经典青色 Netlify 矢量；本地没有确认匹配的横版文字源。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "netlify.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/netlify.svg",
+          "sha256": "10a676a736853356f9cbd8f2be26bab69615e91fabd1bb6f6b9d3a69d80ab7ea",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2953,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/netlify.svg": "netlify.com.svg",
+        "simple-icons/icons/netlify.svg": "netlify.com.svg",
+        "netlify.com.png": "netlify.com.svg",
+        "netlify.com.svg": "netlify.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "cloudflare.com",
+      "name": "Cloudflare",
+      "cat": "dev",
+      "reason": "经典橙黄云图形，避开 Workers AI、Pages、cloudflared 等子产品。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "cloudflare.com.svg",
+          "source": "assets/icons/lobe-icons/cloudflare-color.svg",
+          "sha256": "cee35d3f0ecb7925ce0a89aeaff8b907cadae7c3fe44a23e4001cc8d5ee57502",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 2.1333,
+          "bytes": 1073,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "cloudflare.com-text.svg",
+          "source": "assets/icons/lobe-icons/cloudflare-text.svg",
+          "sha256": "ee927e7bdcb819fb14af41e4a64e192d40b76b470bc34809132fa5d6e97867e6",
+          "format": "svg",
+          "width": 242.0,
+          "height": 24.0,
+          "aspect": 10.0833,
+          "inkAspect": 10,
+          "bytes": 1748,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/cloudflare-color.svg": "cloudflare.com.svg",
+        "lobe-icons/cloudflare-text.svg": "cloudflare.com-text.svg",
+        "lobe-icons/cloudflare.svg": "cloudflare.com.svg",
+        "dashboard-icons/svg/cloudflare.svg": "cloudflare.com-text.svg",
+        "simple-icons/icons/cloudflare.svg": "cloudflare.com.svg",
+        "cloudflare.com.svg": "cloudflare.com.svg",
+        "cloudflare.com-text.svg": "cloudflare.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "juejin.cn",
+      "name": "掘金",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "juejin.cn.png",
+          "source": "assets/site-icons/juejin.cn.png",
+          "sha256": "5621ea0d0bd515f7d007f4873df352bd81f17927a877cda0e901c4636036f2a4",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1.2308,
+          "bytes": 1026,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/juejin.svg": "juejin.cn.png",
+        "juejin.cn.png": "juejin.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "csdn.net",
+      "name": "CSDN",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "csdn.net.svg",
+          "source": "assets/icons/simple-icons/icons/csdn.svg",
+          "sha256": "4c8f0e95f0770fe938af267e6a72beef3f74dae81913682e34ba5aeb58981504",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 3.5556,
+          "bytes": 2324,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/csdn.svg": "csdn.net.svg",
+        "csdn.net.png": "csdn.net.svg",
+        "csdn.net.svg": "csdn.net.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "v2ex.com",
+      "name": "V2EX",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "v2ex.com.jpg",
+          "source": "assets/site-icons/v2ex.com.jpg",
+          "sha256": "ce653d7c3347e42fd7fe3df85fbf02de559e20fd2cfa628b2f43e2623bb4d608",
+          "format": "jpeg",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1241,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/v2ex.svg": "v2ex.com.jpg",
+        "v2ex.com.jpg": "v2ex.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "news.ycombinator.com",
+      "name": "Hacker News",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "news.ycombinator.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/hacker-news.svg",
+          "sha256": "4f7c4ad9e1840497c1a44e0b07cb34b3712ae4cf225705ad39d8d04f8b19a353",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 325,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/hacker-news.svg": "news.ycombinator.com.svg",
+        "news.ycombinator.com.png": "news.ycombinator.com.svg",
+        "news.ycombinator.com.svg": "news.ycombinator.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "leetcode.com",
+      "name": "LeetCode",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 94 110.92。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "leetcode.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/leetcode.svg",
+          "sha256": "8f1f363bdaabbeb167fe4861b16c4a6ade6d85010452ba5dd317f1d202379046",
+          "format": "svg",
+          "width": 94.0,
+          "height": 110.92,
+          "aspect": 0.8475,
+          "inkAspect": 0.8438,
+          "bytes": 2574,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/leetcode-dark.svg": "leetcode.com.svg",
+        "dashboard-icons/svg/leetcode.svg": "leetcode.com.svg",
+        "simple-icons/icons/leetcode.svg": "leetcode.com.svg",
+        "leetcode.com.svg": "leetcode.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "codesandbox.io",
+      "name": "CodeSandbox",
+      "cat": "dev",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "codesandbox.io.svg",
+          "source": "assets/icons/simple-icons/icons/codesandbox.svg",
+          "sha256": "a34ee761ffb6305b37793831b0b6f760e5793a69cacee25edce139a1aea13232",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 164,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/codesandbox.svg": "codesandbox.io.svg",
+        "codesandbox.io.svg": "codesandbox.io.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "figma.com",
+      "name": "Figma",
+      "cat": "design",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 70 24，比例 2.917。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "figma.com.svg",
+          "source": "assets/icons/lobe-icons/figma-color.svg",
+          "sha256": "526eea0bdd16f60ca9251fd371a09a3211762a8c41e15ef085d351c2b0078c3b",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.6875,
+          "bytes": 476,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "figma.com-text.svg",
+          "source": "assets/icons/lobe-icons/figma-text.svg",
+          "sha256": "deefb3aac49b4f5ed506c022634e1d5048979d8c1dda4cf0e76b0bfd201ab7e1",
+          "format": "svg",
+          "width": 70.0,
+          "height": 24.0,
+          "aspect": 2.9167,
+          "inkAspect": 2.8182,
+          "bytes": 2537,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/figma-color.svg": "figma.com.svg",
+        "lobe-icons/figma-text.svg": "figma.com-text.svg",
+        "lobe-icons/figma.svg": "figma.com.svg",
+        "dashboard-icons/svg/figma.svg": "figma.com.svg",
+        "simple-icons/icons/figma.svg": "figma.com.svg",
+        "figma.com.svg": "figma.com.svg",
+        "figma.com-text.svg": "figma.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "dribbble.com",
+      "name": "Dribbble",
+      "cat": "design",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "dribbble.com.png",
+          "source": "assets/site-icons/dribbble.com.png",
+          "sha256": "219981964293259f474033b807b2c00bfebd5d7bb977eeba1e4a17e982f82304",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1761,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/dribbble.svg": "dribbble.com.png",
+        "dribbble.com.png": "dribbble.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "behance.net",
+      "name": "Behance",
+      "cat": "design",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 1080 1080。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "behance.net.svg",
+          "source": "assets/icons/dashboard-icons/svg/behance.svg",
+          "sha256": "ec789225ffe42ff1aa11b7bbf15a1dc08fa2507c142271babcf40ad34c59c64e",
+          "format": "svg",
+          "width": 1080.0,
+          "height": 1080.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2395,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/behance.svg": "behance.net.svg",
+        "simple-icons/icons/behance.svg": "behance.net.svg",
+        "behance.net.png": "behance.net.svg",
+        "behance.net.svg": "behance.net.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "canva.com",
+      "name": "Canva",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "canva.com.jpg",
+          "source": "assets/site-icons/canva.com.jpg",
+          "sha256": "89e47d33adbb2f53253cfba659ef6d444bee1c49753fc63f13a33afa8ebfb089",
+          "format": "jpeg",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2801,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "canva.com.jpg": "canva.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "zcool.com.cn",
+      "name": "站酷",
+      "cat": "design",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "zcool.com.cn.png",
+          "source": "assets/site-icons/zcool.com.cn.png",
+          "sha256": "ea65f63073e6a50169aa46a4e443b31f8d3bbf78a3a99d37ec134c3b06487d9d",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 4678,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/zcool.svg": "zcool.com.cn.png",
+        "zcool.com.cn.png": "zcool.com.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "huaban.com",
+      "name": "花瓣",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "huaban.com.png",
+          "source": "assets/site-icons/huaban.com.png",
+          "sha256": "851188e4b5f1afbaa09c004258310b348ddba6a06cbee9803e3d624fa21fb6e3",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1009,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "huaban.com.png": "huaban.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "unsplash.com",
+      "name": "Unsplash",
+      "cat": "design",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "unsplash.com.png",
+          "source": "assets/site-icons/unsplash.com.png",
+          "sha256": "34de5ef99f635c29545e1f3481e98374317d5e2bfa3d258459b115ef0ad89143",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 202,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/unsplash.svg": "unsplash.com.png",
+        "unsplash.com.png": "unsplash.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "pexels.com",
+      "name": "Pexels",
+      "cat": "design",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "pexels.com.png",
+          "source": "assets/site-icons/pexels.com.png",
+          "sha256": "583ba5a403c2f763eb5ec7bdbdb7a18b3769a884f128db21830df0a99d36becb",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1284,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/pexels.svg": "pexels.com.png",
+        "pexels.com.png": "pexels.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "notion.so",
+      "name": "Notion",
+      "cat": "study",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 87 24，比例 3.625。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "notion.so.svg",
+          "source": "assets/icons/lobe-icons/notion.svg",
+          "sha256": "8ada8628489d6e2900ebf21d3643fe5d4566d0e59aba95a3df15b710caa00743",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.9688,
+          "bytes": 1139,
+          "mono": true
+        },
+        {
+          "role": "wide",
+          "file": "notion.so-text.svg",
+          "source": "assets/icons/lobe-icons/notion-text.svg",
+          "sha256": "ebd43437a06e3ce2d916707d935f8a645b4f30a950d9a5bc2be1baa30055beec",
+          "format": "svg",
+          "width": 87.0,
+          "height": 24.0,
+          "aspect": 3.625,
+          "inkAspect": 3.6471,
+          "bytes": 2690,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/notion-text.svg": "notion.so-text.svg",
+        "lobe-icons/notion.svg": "notion.so.svg",
+        "dashboard-icons/svg/notion-light.svg": "notion.so.svg",
+        "dashboard-icons/svg/notion.svg": "notion.so.svg",
+        "simple-icons/icons/notion.svg": "notion.so.svg",
+        "notion.so.svg": "notion.so.svg",
+        "notion.so-text.svg": "notion.so-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "feishu.cn",
+      "name": "飞书",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "feishu.cn.png",
+          "source": "assets/site-icons/feishu.cn.png",
+          "sha256": "1f4253a963b6649eaaecfbd8173c08c68ca89e572ef9adbeb280dbec9d79adf1",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1420,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/lark.svg": "feishu.cn.png",
+        "feishu.cn.png": "feishu.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "dingtalk.com",
+      "name": "钉钉",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "dingtalk.com.png",
+          "source": "assets/site-icons/dingtalk.com.png",
+          "sha256": "b9e1ad5a65f484baf388b9a017f20bb231cb905cc85fa7bc2fe36b7d4700b3ba",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1506,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dingtalk.com.png": "dingtalk.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "work.weixin.qq.com",
+      "name": "企业微信",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "work.weixin.qq.com.png",
+          "source": "assets/site-icons/work.weixin.qq.com.png",
+          "sha256": "69025ba6b79e2aed0d8e36ed73dadadb9daeaa170b4240ee5e841f399f80c2d4",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1.1034,
+          "bytes": 1991,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "work.weixin.qq.com.png": "work.weixin.qq.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "docs.qq.com",
+      "name": "腾讯文档",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "docs.qq.com.png",
+          "source": "assets/site-icons/docs.qq.com.png",
+          "sha256": "7df90d110b8b81580533acb9b9df56f86dabfbe8a06b6da3aa5535505631cfee",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1.1887,
+          "bytes": 1433,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "docs.qq.com.png": "docs.qq.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "shimo.im",
+      "name": "石墨文档",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "shimo.im.png",
+          "source": "assets/site-icons/shimo.im.png",
+          "sha256": "a6e084d670254a1169a87b7ae6a7de85faf0783b4db9d07c186f31f9dd2c0c5a",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 950,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "shimo.im.png": "shimo.im.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "yuque.com",
+      "name": "语雀",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 200×200；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "yuque.com.png",
+          "source": "assets/site-icons/yuque.com.png",
+          "sha256": "cb1822fdf416a9893e7d35cdf4a689bbf765b71b220bfd01c586b154b76db2a4",
+          "format": "png",
+          "width": 200,
+          "height": 200,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 6834,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "yuque.com.png": "yuque.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "trello.com",
+      "name": "Trello",
+      "cat": "study",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "trello.com.png",
+          "source": "assets/site-icons/trello.com.png",
+          "sha256": "4cc02e0fce58acbf0f3266ace10ecc12bd0efa3e1db277faf7b73179af2bce25",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 596,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/trello.svg": "trello.com.png",
+        "trello.com.png": "trello.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "slack.com",
+      "name": "Slack",
+      "cat": "study",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "slack.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/slack.svg",
+          "sha256": "62e556a75b94516fd8dcfa9c8ee4eae76268b4087ee927d91a5f2d3115d54118",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 968,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/slack.svg": "slack.com.svg",
+        "slack.com.png": "slack.com.svg",
+        "slack.com.svg": "slack.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "zoom.us",
+      "name": "Zoom",
+      "cat": "tools",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "zoom.us.svg",
+          "source": "assets/icons/dashboard-icons/svg/zoom.svg",
+          "sha256": "02a7a0b2028eb5ab7a9259ec0f9e59e8293244691b535aefdeb2b106023f760c",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 393,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/zoom.svg": "zoom.us.svg",
+        "simple-icons/icons/zoom.svg": "zoom.us.svg",
+        "zoom.us.png": "zoom.us.svg",
+        "zoom.us.svg": "zoom.us.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "wps.cn",
+      "name": "WPS",
+      "cat": "study",
+      "reason": "现有 wps.cn.png 为黑底白色圆圈 W，无法确认是经典 WPS 品牌，三个库无精确候选，暂留空。",
+      "icons": [],
+      "aliases": {
+        "wps.cn.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "chat.deepseek.com",
+      "name": "DeepSeek",
+      "cat": "ai",
+      "reason": "蓝色鲸鱼 #4D6BFE，匹配 DeepSeek。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "chat.deepseek.com.svg",
+          "source": "assets/icons/lobe-icons/deepseek-color.svg",
+          "sha256": "deba5f98a5c1796e20fcac3149bcd7eb8a32f0bdd04d048819400b1f28bd1439",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.3617,
+          "bytes": 2164,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "chat.deepseek.com-text.svg",
+          "source": "assets/icons/lobe-icons/deepseek-text.svg",
+          "sha256": "75756b7b6c6bc4f18ecfe82be78db6ead93b15474a89dabf1cfdbaef5bc6523b",
+          "format": "svg",
+          "width": 131.0,
+          "height": 24.0,
+          "aspect": 5.4583,
+          "inkAspect": 5.1667,
+          "bytes": 3993,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/deepseek-color.svg": "chat.deepseek.com.svg",
+        "lobe-icons/deepseek-text.svg": "chat.deepseek.com-text.svg",
+        "lobe-icons/deepseek.svg": "chat.deepseek.com.svg",
+        "dashboard-icons/svg/deepseek.svg": "chat.deepseek.com.svg",
+        "simple-icons/icons/deepseek.svg": "chat.deepseek.com.svg",
+        "chat.deepseek.com.svg": "chat.deepseek.com.svg",
+        "chat.deepseek.com-text.svg": "chat.deepseek.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "chatgpt.com",
+      "name": "ChatGPT",
+      "cat": "ai",
+      "reason": "按用户明确指定：主图使用 openai.svg，横版使用 openai-text.svg，保留原始字节。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "chatgpt.com.svg",
+          "source": "assets/icons/lobe-icons/openai.svg",
+          "sha256": "a595df6b423920c67a7f8f73c063e4bfb72d415948097b6cac063a2366bb5186",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1687,
+          "mono": true
+        },
+        {
+          "role": "wide",
+          "file": "chatgpt.com-text.svg",
+          "source": "assets/icons/lobe-icons/openai-text.svg",
+          "sha256": "fd61627c78d160b6391aaf72f29cf51547327d05ed19366c511d07578fc0099e",
+          "format": "svg",
+          "width": 86.0,
+          "height": 24.0,
+          "aspect": 3.5833,
+          "inkAspect": 3.6471,
+          "bytes": 1389,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/openai-text.svg": "chatgpt.com-text.svg",
+        "lobe-icons/openai.svg": "chatgpt.com.svg",
+        "dashboard-icons/svg/openai-light.svg": "chatgpt.com.svg",
+        "dashboard-icons/svg/openai.svg": "chatgpt.com.svg",
+        "dashboard-icons/svg/chatgpt.svg": "chatgpt.com.svg",
+        "chatgpt.com.svg": "chatgpt.com.svg",
+        "chatgpt.com-text.svg": "chatgpt.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "claude.ai",
+      "name": "Claude",
+      "cat": "ai",
+      "reason": "经典陶土橙 #D97757 星芒，匹配 Claude。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "claude.ai.svg",
+          "source": "assets/icons/lobe-icons/claude-color.svg",
+          "sha256": "a3101f3047a119aa11825ad9369510f0c472428c8c52d420e31bc62db44a8364",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1696,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "claude.ai-text.svg",
+          "source": "assets/icons/lobe-icons/claude-text.svg",
+          "sha256": "f882c1f1c9e735e1ebcb3bef76a622da4cb0e25738649d8b0deccbeaad069afa",
+          "format": "svg",
+          "width": 97.0,
+          "height": 24.0,
+          "aspect": 4.0417,
+          "inkAspect": 4.1333,
+          "bytes": 2488,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/claude-color.svg": "claude.ai.svg",
+        "lobe-icons/claude-text.svg": "claude.ai-text.svg",
+        "lobe-icons/claude.svg": "claude.ai.svg",
+        "simple-icons/icons/claude.svg": "claude.ai.svg",
+        "lobe-icons/anthropic-text.svg": "claude.ai-text.svg",
+        "lobe-icons/anthropic.svg": "claude.ai.svg",
+        "dashboard-icons/svg/anthropic-dark.svg": "claude.ai.svg",
+        "dashboard-icons/svg/anthropic-light.svg": "claude.ai.svg",
+        "dashboard-icons/svg/anthropic.svg": "claude.ai.svg",
+        "simple-icons/icons/anthropic.svg": "claude.ai.svg",
+        "claude.ai.svg": "claude.ai.svg",
+        "claude.ai-text.svg": "claude.ai-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "gemini.google.com",
+      "name": "Gemini",
+      "cat": "ai",
+      "reason": "四色渐变星芒，匹配 Gemini；不使用 Gemma 或 Gemini CLI。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "gemini.google.com.svg",
+          "source": "assets/icons/lobe-icons/gemini-color.svg",
+          "sha256": "8ab0a9bafec11f7e69bcb9fc4ffd8f1bc927d1ddcbbb6ff36dee5ae8b5a9d602",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2836,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "gemini.google.com-text.svg",
+          "source": "assets/icons/lobe-icons/gemini-text.svg",
+          "sha256": "d0d96b1c6def6990cab126243b11429b93598de1bd50576bba1b53f2ff496247",
+          "format": "svg",
+          "width": 98.0,
+          "height": 24.0,
+          "aspect": 4.0833,
+          "inkAspect": 3.7143,
+          "bytes": 2569,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/gemini-color.svg": "gemini.google.com.svg",
+        "lobe-icons/gemini-text.svg": "gemini.google.com-text.svg",
+        "lobe-icons/gemini.svg": "gemini.google.com.svg",
+        "gemini.google.com.svg": "gemini.google.com.svg",
+        "gemini.google.com-text.svg": "gemini.google.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "copilot.microsoft.com",
+      "name": "Microsoft Copilot",
+      "cat": "ai",
+      "reason": "微软 Copilot 彩色渐变丝带；不使用 GitHub Copilot。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "copilot.microsoft.com.svg",
+          "source": "assets/icons/lobe-icons/copilot-color.svg",
+          "sha256": "04f15d0556fbac10a4e0f82d1560610db8b33cd04780a4f24ad3b91c4abd278d",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.0667,
+          "bytes": 3569,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "copilot.microsoft.com-text.svg",
+          "source": "assets/icons/lobe-icons/copilot-text.svg",
+          "sha256": "f42dcff6f2df06f16ef43e86ad804d7f77827f43a9ec7f0bdbcf637caf0700c1",
+          "format": "svg",
+          "width": 73.0,
+          "height": 24.0,
+          "aspect": 3.0417,
+          "inkAspect": 3.1,
+          "bytes": 2683,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/copilot-color.svg": "copilot.microsoft.com.svg",
+        "lobe-icons/copilot-text.svg": "copilot.microsoft.com-text.svg",
+        "lobe-icons/copilot.svg": "copilot.microsoft.com.svg",
+        "copilot.microsoft.com.svg": "copilot.microsoft.com.svg",
+        "copilot.microsoft.com-text.svg": "copilot.microsoft.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "midjourney.com",
+      "name": "Midjourney",
+      "cat": "ai",
+      "reason": "帆船产品标，经典黑色单色本身即品牌表现。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "midjourney.com.svg",
+          "source": "assets/icons/lobe-icons/midjourney.svg",
+          "sha256": "e09640ccbf6f643b4624e540f198cd704a6bf3d75dc43b0938628caf4e98c30b",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1852,
+          "bytes": 4012,
+          "mono": true
+        },
+        {
+          "role": "wide",
+          "file": "midjourney.com-text.svg",
+          "source": "assets/icons/lobe-icons/midjourney-text.svg",
+          "sha256": "352f89078f90a7df48fa8f5967568fc0fdd2dd1abc3bb7b91880620de8f4b91e",
+          "format": "svg",
+          "width": 134.0,
+          "height": 24.0,
+          "aspect": 5.5833,
+          "inkAspect": 5.6364,
+          "bytes": 3816,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/midjourney-text.svg": "midjourney.com-text.svg",
+        "lobe-icons/midjourney.svg": "midjourney.com.svg",
+        "midjourney.com.svg": "midjourney.com.svg",
+        "midjourney.com-text.svg": "midjourney.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "perplexity.ai",
+      "name": "Perplexity",
+      "cat": "ai",
+      "reason": "青色 #22B8CD 线形产品标。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "perplexity.ai.svg",
+          "source": "assets/icons/lobe-icons/perplexity-color.svg",
+          "sha256": "8353f3ab20822f1a933224b0ea32cc39f0c32d5740f4af8c254b0f418e0a3a70",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.875,
+          "bytes": 603,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "perplexity.ai-text.svg",
+          "source": "assets/icons/lobe-icons/perplexity-text.svg",
+          "sha256": "1df8f4f2bdfc04823822b7274e83b06be159d882fe8bfbdf82e11a39f8c0a76f",
+          "format": "svg",
+          "width": 117.0,
+          "height": 24.0,
+          "aspect": 4.875,
+          "inkAspect": 4.7692,
+          "bytes": 3975,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/perplexity-color.svg": "perplexity.ai.svg",
+        "lobe-icons/perplexity-text.svg": "perplexity.ai-text.svg",
+        "lobe-icons/perplexity.svg": "perplexity.ai.svg",
+        "dashboard-icons/svg/perplexity-dark.svg": "perplexity.ai.svg",
+        "dashboard-icons/svg/perplexity-light.svg": "perplexity.ai.svg",
+        "dashboard-icons/svg/perplexity-wordmark-dark.svg": "perplexity.ai-text.svg",
+        "dashboard-icons/svg/perplexity-wordmark-light.svg": "perplexity.ai-text.svg",
+        "dashboard-icons/svg/perplexity.svg": "perplexity.ai.svg",
+        "simple-icons/icons/perplexity.svg": "perplexity.ai.svg",
+        "perplexity.ai.svg": "perplexity.ai.svg",
+        "perplexity.ai-text.svg": "perplexity.ai-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "name": "通义千问",
+      "cat": "ai",
+      "reason": "按白名单名称“通义千问”及 qwen 别名采用紫色 Qwen；不代表泛通义门户、百炼或阿里云。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "tongyi.aliyun.com.svg",
+          "source": "assets/icons/lobe-icons/qwen-color.svg",
+          "sha256": "77f5768c66d08ce1d3d14e73373975c1bc0454be88c81523ddd0ffd7e2974029",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2044,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "tongyi.aliyun.com-text.svg",
+          "source": "assets/icons/lobe-icons/qwen-text.svg",
+          "sha256": "f9aea2d7db247d1ea51b686a1d9267fdfb3ded08f883bee95152c2a878336a1a",
+          "format": "svg",
+          "width": 75.0,
+          "height": 24.0,
+          "aspect": 3.125,
+          "inkAspect": 3.1579,
+          "bytes": 2393,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/qwen-color.svg": "tongyi.aliyun.com.svg",
+        "lobe-icons/qwen-text.svg": "tongyi.aliyun.com-text.svg",
+        "lobe-icons/qwen.svg": "tongyi.aliyun.com.svg",
+        "dashboard-icons/svg/qwen.svg": "tongyi.aliyun.com.svg",
+        "simple-icons/icons/qwen.svg": "tongyi.aliyun.com.svg",
+        "tongyi.aliyun.com.svg": "tongyi.aliyun.com.svg",
+        "tongyi.aliyun.com-text.svg": "tongyi.aliyun.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "yiyan.baidu.com",
+      "name": "文心一言",
+      "cat": "ai",
+      "reason": "蓝色 Wenxin 文心产品图形，避开百度公司/百度云图标。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "yiyan.baidu.com.svg",
+          "source": "assets/icons/lobe-icons/wenxin-color.svg",
+          "sha256": "9fb88d8b6f7be470ddb07f0574ec276b08a35ba96d73ec5f2f3b6fc338da5cb6",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.9,
+          "bytes": 1509,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "yiyan.baidu.com-text.svg",
+          "source": "assets/icons/lobe-icons/wenxin-text.svg",
+          "sha256": "cb6c590285161ed4d5c1508d82ac0b8753b9114f4a7dc56f7055c48dd1afddc1",
+          "format": "svg",
+          "width": 47.0,
+          "height": 24.0,
+          "aspect": 1.9583,
+          "inkAspect": 2.0714,
+          "bytes": 1011,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/wenxin-color.svg": "yiyan.baidu.com.svg",
+        "lobe-icons/wenxin-text.svg": "yiyan.baidu.com-text.svg",
+        "lobe-icons/wenxin.svg": "yiyan.baidu.com.svg",
+        "yiyan.baidu.com.svg": "yiyan.baidu.com.svg",
+        "yiyan.baidu.com-text.svg": "yiyan.baidu.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "name": "Kimi",
+      "cat": "ai",
+      "reason": "经典黑底白 K 与蓝色圆点；Lobe 彩色版白字在浅色玻璃背景上不可读，改用自带深色底的精确 Kimi 图标。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "kimi.moonshot.cn.svg",
+          "source": "assets/icons/dashboard-icons/svg/kimi-ai.svg",
+          "sha256": "f94d6fd341757bf310346f52818b1ed995162c20f325e79625c5e48528a0ca47",
+          "format": "svg",
+          "width": 4225.03,
+          "height": 4225.03,
+          "aspect": 1.0,
+          "inkAspect": 1.0,
+          "bytes": 1956,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "kimi.moonshot.cn-text.svg",
+          "source": "assets/icons/lobe-icons/kimi-text.svg",
+          "sha256": "d5233dbde7cd3c9ae92ced85d6bf028b3c8f555609b47521b8bd7a075900348d",
+          "format": "svg",
+          "width": 64.0,
+          "height": 24.0,
+          "aspect": 2.6667,
+          "inkAspect": 3,
+          "bytes": 1270,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/kimi-color.svg": "kimi.moonshot.cn.svg",
+        "lobe-icons/kimi-text.svg": "kimi.moonshot.cn-text.svg",
+        "lobe-icons/kimi.svg": "kimi.moonshot.cn.svg",
+        "simple-icons/icons/kimi.svg": "kimi.moonshot.cn.svg",
+        "lobe-icons/moonshot-text.svg": "kimi.moonshot.cn-text.svg",
+        "lobe-icons/moonshot.svg": "kimi.moonshot.cn.svg",
+        "kimi.moonshot.cn.svg": "kimi.moonshot.cn.svg",
+        "kimi.moonshot.cn-text.svg": "kimi.moonshot.cn-text.svg",
+        "dashboard-icons/svg/kimi-ai.svg": "kimi.moonshot.cn.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "doubao.com",
+      "name": "豆包",
+      "cat": "ai",
+      "reason": "豆包专属彩色图形，避开 ByteDance/Coze。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "doubao.com.svg",
+          "source": "assets/icons/lobe-icons/doubao-color.svg",
+          "sha256": "3cd31ba03ae44b8c29561597a3b863809efecb13fcdfd08407a086df86a69b55",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.8906,
+          "bytes": 1153,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "doubao.com-text.svg",
+          "source": "assets/icons/lobe-icons/doubao-text.svg",
+          "sha256": "7d6894436d903ac572aa725798c49d42eff650aa32f1439532e5f5e6a9139d8f",
+          "format": "svg",
+          "width": 105.0,
+          "height": 24.0,
+          "aspect": 4.375,
+          "inkAspect": 4.7692,
+          "bytes": 2766,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/doubao-color.svg": "doubao.com.svg",
+        "lobe-icons/doubao-text.svg": "doubao.com-text.svg",
+        "lobe-icons/doubao.svg": "doubao.com.svg",
+        "doubao.com.svg": "doubao.com.svg",
+        "doubao.com-text.svg": "doubao.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "icourse163.org",
+      "name": "中国大学MOOC",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "icourse163.org.png",
+          "source": "assets/site-icons/icourse163.org.png",
+          "sha256": "dd1e1d78398cf21f28b1271da089c556e71ee20e23bcf8431e4a2bc0d85d574b",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1.2308,
+          "bytes": 1108,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "icourse163.org.png": "icourse163.org.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "open.163.com",
+      "name": "网易公开课",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "open.163.com.png",
+          "source": "assets/site-icons/open.163.com.png",
+          "sha256": "0310ba431deba9ac8607a72584e0c9e3db71a36ecab2b4e98d6207675c674eb8",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1970,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "open.163.com.png": "open.163.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "coursera.org",
+      "name": "Coursera",
+      "cat": "study",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "coursera.org.png",
+          "source": "assets/site-icons/coursera.org.png",
+          "sha256": "dbf38707899973debd8ae7084c4f123c496e92d2aeea05c96f03cb7365fb6bb0",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1465,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/coursera.svg": "coursera.org.png",
+        "coursera.org.png": "coursera.org.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "edx.org",
+      "name": "edX",
+      "cat": "study",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "edx.org.png",
+          "source": "assets/site-icons/edx.org.png",
+          "sha256": "ec8c3fdbe92093c2b3ad619aaacad409611b147337e95b9f301b8a2e3d6eca7b",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1.7778,
+          "bytes": 1417,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/edx.svg": "edx.org.png",
+        "edx.org.png": "edx.org.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "khanacademy.org",
+      "name": "Khan Academy",
+      "cat": "study",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "khanacademy.org.png",
+          "source": "assets/site-icons/khanacademy.org.png",
+          "sha256": "82ba7b5f478316f53c459aca3a353c8d730a09e84e222027a927c40f1f956d5f",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1342,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/khanacademy.svg": "khanacademy.org.png",
+        "khanacademy.org.png": "khanacademy.org.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "xuexi.cn",
+      "name": "学习强国",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 30×30；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "xuexi.cn.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "dedao.cn",
+      "name": "得到",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "dedao.cn.png",
+          "source": "assets/site-icons/dedao.cn.png",
+          "sha256": "16284c1542a140bb470c26247ecc8b20c3c6fc29d37bc82300d3c44d80dc45c4",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 15483,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dedao.cn.png": "dedao.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "xuetangx.com",
+      "name": "学堂在线",
+      "cat": "study",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "xuetangx.com.png",
+          "source": "assets/site-icons/xuetangx.com.png",
+          "sha256": "db0093e829ffed188de63dd9aaead7ea986e9fa399887eb51ed8eac087592834",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1335,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "xuetangx.com.png": "xuetangx.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "duolingo.com",
+      "name": "Duolingo",
+      "cat": "study",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 250 250。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "duolingo.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/duolingo.svg",
+          "sha256": "0d0ff645903fac97ef79d0fab4bc34798c29101bb9fd3a072c68075534fdfd9e",
+          "format": "svg",
+          "width": 250.0,
+          "height": 250.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 4164,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/duolingo.svg": "duolingo.com.svg",
+        "simple-icons/icons/duolingo.svg": "duolingo.com.svg",
+        "duolingo.com.png": "duolingo.com.svg",
+        "duolingo.com.svg": "duolingo.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "quizlet.com",
+      "name": "Quizlet",
+      "cat": "study",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 244 53，比例 4.604。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "quizlet.com.png",
+          "source": "assets/site-icons/quizlet.com.png",
+          "sha256": "f3b8f7022c0f42dd4619652c25a52571eb8eaa81c523e8daf9b783377a578d61",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1394,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "quizlet.com-text.svg",
+          "source": "assets/icons/dashboard-icons/svg/quizlet.svg",
+          "sha256": "772b784979beac3c78be3e84a4cc654d19a17ec0380a1226e16e2452561e2ed4",
+          "format": "svg",
+          "width": 244.0,
+          "height": 53.0,
+          "aspect": 4.6038,
+          "inkAspect": 4.5714,
+          "bytes": 2530,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/quizlet.svg": "quizlet.com-text.svg",
+        "simple-icons/icons/quizlet.svg": "quizlet.com.png",
+        "quizlet.com.png": "quizlet.com.png",
+        "quizlet.com-text.svg": "quizlet.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "pan.baidu.com",
+      "name": "百度网盘",
+      "cat": "tools",
+      "reason": "Existing exact-product favicon; no better verified local replacement.",
+      "icons": [
+        {
+          "role": "main",
+          "file": "pan.baidu.com.png",
+          "source": "assets/site-icons/pan.baidu.com.png",
+          "sha256": "c70ccf065250305fbe1ef990a304a987cd4a9dcba2ba242b03ef7db0681b7edf",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1658,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "pan.baidu.com.png": "pan.baidu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "alipan.com",
+      "name": "阿里云盘",
+      "cat": "tools",
+      "reason": "Existing exact-product favicon; no better verified local replacement.",
+      "icons": [
+        {
+          "role": "main",
+          "file": "alipan.com.jpg",
+          "source": "assets/site-icons/alipan.com.jpg",
+          "sha256": "2aee8cc3422df38a67c8bb8759cbc3f7cb03ac7c83b6a7dcd051c94263dba0ad",
+          "format": "jpeg",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2867,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "alipan.com.jpg": "alipan.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "amap.com",
+      "name": "高德地图",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "amap.com.png",
+          "source": "assets/site-icons/amap.com.png",
+          "sha256": "8571cf6c9490cd7476fc2bc328a355a24182d50b76bf54b13727de8634fafaf4",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1970,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "amap.com.png": "amap.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "map.baidu.com",
+      "name": "百度地图",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "map.baidu.com.png",
+          "source": "assets/site-icons/map.baidu.com.png",
+          "sha256": "f7166e3974a289153136e89213a54cbc994b1ab4c6ca736c04ae11bad7f34ec2",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2766,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "map.baidu.com.png": "map.baidu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "12306.cn",
+      "name": "12306",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "12306.cn.png",
+          "source": "assets/site-icons/12306.cn.png",
+          "sha256": "6edd9eac0e7bbd00003a3ffb76c872007ca5f6d6468f76cb5c0e86c00f775e73",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1.0185,
+          "bytes": 4111,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "12306.cn.png": "12306.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "ctrip.com",
+      "name": "携程",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "ctrip.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "meituan.com",
+      "name": "美团",
+      "cat": "tools",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "meituan.com.svg",
+          "source": "assets/icons/simple-icons/icons/meituan.svg",
+          "sha256": "851a1b8c8c050a609766cc7b64d3fd233b5838cecf638cecf30113f9e846817a",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1200,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/meituan.svg": "meituan.com.svg",
+        "meituan.com.png": "meituan.com.svg",
+        "meituan.com.svg": "meituan.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "dianping.com",
+      "name": "大众点评",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "dianping.com.png",
+          "source": "assets/site-icons/dianping.com.png",
+          "sha256": "04449939ed46b6680b58cb7e918720fb2ef264f2852b221456b7fd0d84634a4f",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2294,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dianping.com.png": "dianping.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "music.163.com",
+      "name": "网易云音乐",
+      "cat": "tools",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "music.163.com.png",
+          "source": "assets/site-icons/music.163.com.png",
+          "sha256": "d4c406cff6b61654b6aaf9c7ebb52b774d816a793429744a16db9f64d6b02592",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2004,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/neteasecloudmusic.svg": "music.163.com.png",
+        "music.163.com.png": "music.163.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "spotify.com",
+      "name": "Spotify",
+      "cat": "tools",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 226.733 226.733。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "spotify.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/spotify.svg",
+          "sha256": "686990a9a97c36746eebfc7cfd1100ef29e07d8f9ada229ab00e34d4298a3dcb",
+          "format": "svg",
+          "width": 226.733,
+          "height": 226.733,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1231,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/spotify-dark.svg": "spotify.com.svg",
+        "dashboard-icons/svg/spotify-light.svg": "spotify.com.svg",
+        "dashboard-icons/svg/spotify.svg": "spotify.com.svg",
+        "simple-icons/icons/spotify.svg": "spotify.com.svg",
+        "spotify.com.png": "spotify.com.svg",
+        "spotify.com.svg": "spotify.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "movie.douban.com",
+      "name": "豆瓣电影",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "movie.douban.com.png",
+          "source": "assets/site-icons/movie.douban.com.png",
+          "sha256": "a60fa33c3b4fc8389d49a303b37eac010ecf572ce3b7568bcf3ec83fc9d21f7b",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2358,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "movie.douban.com.png": "movie.douban.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "maoyan.com",
+      "name": "猫眼",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "maoyan.com.png",
+          "source": "assets/site-icons/maoyan.com.png",
+          "sha256": "9bdbf8eba5cf85546d8773b86ce75e395143aec13369166fccb1f6ebcea6e721",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 11985,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "maoyan.com.png": "maoyan.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "so.com",
+      "name": "360搜索",
+      "cat": "common",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 116×116；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "so.com.png",
+          "source": "assets/site-icons/so.com.png",
+          "sha256": "6c2b0a95db99260e8f1376e20f831cc2d957a3a5460a565a14d1999061a76139",
+          "format": "png",
+          "width": 116,
+          "height": 116,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1389,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "so.com.png": "so.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "sm.cn",
+      "name": "神马搜索",
+      "cat": "common",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "sm.cn.png",
+          "source": "assets/site-icons/sm.cn.png",
+          "sha256": "97e9c53befc0e27591051549ff25bc85f375c2d95dbc80cb1bd2fae62be24268",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1401,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "sm.cn.png": "sm.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "microsoft.com",
+      "name": "微软",
+      "cat": "common",
+      "reason": "精确微软四色四方格常规 SVG，viewBox=0 0 512 512。可选横版 viewBox=0 0 108 24，比例4.500；Lobe 源 title 误写 Azure，但实际路径为 Microsoft 字标（不是 Azure 云图形），需注意元数据错误。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "microsoft.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/microsoft.svg",
+          "sha256": "2e3fc3da6302a899939c1154f7f82d69266d6e55348163e8121129b07f46cd5c",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 387,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "microsoft.com-text.svg",
+          "source": "assets/icons/lobe-icons/microsoft-text.svg",
+          "sha256": "b748f7d258a441a4cd133bfd3d6b84c61e6d8a824b55e1dbfbd613c110c9895e",
+          "format": "svg",
+          "width": 108.0,
+          "height": 24.0,
+          "aspect": 4.5,
+          "inkAspect": 5.1667,
+          "bytes": 3681,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/microsoft-color.svg": "microsoft.com.svg",
+        "lobe-icons/microsoft-text.svg": "microsoft.com-text.svg",
+        "lobe-icons/microsoft.svg": "microsoft.com.svg",
+        "dashboard-icons/svg/microsoft.svg": "microsoft.com.svg",
+        "microsoft.com.svg": "microsoft.com.svg",
+        "microsoft.com-text.svg": "microsoft.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "apple.com",
+      "name": "Apple",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "apple.com.svg",
+          "source": "assets/icons/lobe-icons/apple.svg",
+          "sha256": "100637681febc38512bf8d43f7d5f79f2aa8caead15b256cd28b378b053fca69",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.8281,
+          "bytes": 729,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/apple-text.svg": "apple.com.svg",
+        "lobe-icons/apple.svg": "apple.com.svg",
+        "dashboard-icons/svg/apple-light.svg": "apple.com.svg",
+        "dashboard-icons/svg/apple.svg": "apple.com.svg",
+        "simple-icons/icons/apple.svg": "apple.com.svg",
+        "apple.com.svg": "apple.com.svg",
+        "apple.com-text.svg": "apple.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "huawei.com",
+      "name": "华为",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 120 24，比例 5.000。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "huawei.com.svg",
+          "source": "assets/icons/lobe-icons/huawei-color.svg",
+          "sha256": "ca9af4229ba3d538811cad7939b5f3f9edc87ec9448eae579506c659cd133d4a",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.3333,
+          "bytes": 1481,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "huawei.com-text.svg",
+          "source": "assets/icons/lobe-icons/huawei-text.svg",
+          "sha256": "27085f7e2706ce50b360549c65810e0b970bfde4f2056c539545d53c34c787af",
+          "format": "svg",
+          "width": 120.0,
+          "height": 24.0,
+          "aspect": 5.0,
+          "inkAspect": 5.6364,
+          "bytes": 863,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/huawei-color.svg": "huawei.com.svg",
+        "lobe-icons/huawei-text-cn.svg": "huawei.com-text.svg",
+        "lobe-icons/huawei-text.svg": "huawei.com-text.svg",
+        "lobe-icons/huawei.svg": "huawei.com.svg",
+        "dashboard-icons/svg/huawei.svg": "huawei.com.svg",
+        "simple-icons/icons/huawei.svg": "huawei.com.svg",
+        "huawei.com.svg": "huawei.com.svg",
+        "huawei.com-text.svg": "huawei.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "mi.com",
+      "name": "小米",
+      "cat": "common",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=-200.008 -199.727 512 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "mi.com.svg",
+          "source": "assets/icons/dashboard-icons/svg/xiaomi-global.svg",
+          "sha256": "9fb3df7fd72f7fa925cc6b10da843dc473a9f2074ffa39f0e98d0082512d270c",
+          "format": "svg",
+          "width": 512.0,
+          "height": 512.0,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1881,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/xiaomi.svg": "mi.com.svg",
+        "mi.com.png": "mi.com.svg",
+        "dashboard-icons/svg/xiaomi-global.svg": "mi.com.svg",
+        "mi.com.svg": "mi.com.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "163.com",
+      "name": "网易",
+      "cat": "common",
+      "reason": "现有 163.com.png 为带 NEWS 字样的网易新闻产品图标，不能直接认作网易门户经典标志；缺少精确候选。",
+      "icons": [],
+      "aliases": {
+        "163.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "tencent.com",
+      "name": "腾讯",
+      "cat": "common",
+      "reason": "方形腾讯主图标用于普通尺寸，经典蓝色腾讯公司字标仅用于横向尺寸。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "tencent.com.svg",
+          "source": "assets/icons/lobe-icons/tencent-color.svg",
+          "sha256": "7c370ad4b75e3f30d0fa7da71f90466a0ee95a887189479aa9df414079b50eb6",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.0339,
+          "bytes": 277,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "tencent.com-text.svg",
+          "source": "assets/icons/lobe-icons/tencent-brand-color.svg",
+          "sha256": "ea21e022f7f17d160595f55499854ee527c803edc69a9542973fef95477c7796",
+          "format": "svg",
+          "width": 153.0,
+          "height": 24.0,
+          "aspect": 6.375,
+          "inkAspect": 6.8889,
+          "bytes": 3748,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "lobe-icons/tencent-brand-color.svg": "tencent.com-text.svg",
+        "lobe-icons/tencent-brand.svg": "tencent.com-text.svg",
+        "lobe-icons/tencent-color.svg": "tencent.com.svg",
+        "lobe-icons/tencent-text-cn.svg": "tencent.com-text.svg",
+        "lobe-icons/tencent-text.svg": "tencent.com-text.svg",
+        "lobe-icons/tencent.svg": "tencent.com.svg",
+        "tencent.com.svg": "tencent.com.svg",
+        "tencent.com-text.svg": "tencent.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "sina.com.cn",
+      "name": "新浪",
+      "cat": "common",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "sina.com.cn.png",
+          "source": "assets/site-icons/sina.com.cn.png",
+          "sha256": "cb401b2a40ebaedaf48db979b3bbba6dd5498fdece043d2571a37d1dd3e06c19",
+          "format": "png",
+          "width": 114,
+          "height": 114,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 9077,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "sina.com.cn.png": "sina.com.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "sohu.com",
+      "name": "搜狐",
+      "cat": "common",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "sohu.com.png",
+          "source": "assets/site-icons/sohu.com.png",
+          "sha256": "174b657ecc92cb6734074b19bd0cf346fe729d65cf8191e7d59ece6412d58f22",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2113,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "sohu.com.png": "sohu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "caixin.com",
+      "name": "财新",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 120×120；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "caixin.com.png",
+          "source": "assets/site-icons/caixin.com.png",
+          "sha256": "1017f2d495ff3ee46d54025c79b91cd4dd4d20b69d385f1fc415d756b34abc33",
+          "format": "png",
+          "width": 120,
+          "height": 120,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 3679,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "caixin.com.png": "caixin.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "yicai.com",
+      "name": "第一财经",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "yicai.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "guancha.cn",
+      "name": "观察者网",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "guancha.cn.png",
+          "source": "assets/site-icons/guancha.cn.png",
+          "sha256": "af83fd418aa0156f42e0992e515b753765a27d5235b22c16cc44b01226c599b8",
+          "format": "png",
+          "width": 114,
+          "height": 114,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 5329,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "guancha.cn.png": "guancha.cn.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "zaobao.com.sg",
+      "name": "联合早报",
+      "cat": "news",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "zaobao.com.sg.png",
+          "source": "assets/site-icons/zaobao.com.sg.png",
+          "sha256": "c3f8f1cf113e5400e6d922af2b34f1a2a3c40394b1e010c1b86c7d2a880dafab",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2327,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "zaobao.com.sg.png": "zaobao.com.sg.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "y.qq.com",
+      "name": "QQ音乐",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "y.qq.com.png",
+          "source": "assets/site-icons/y.qq.com.png",
+          "sha256": "36abf999b856fd5166be6d8df6bfedd5c0e0ec39df4c2d550b995f303161f2c9",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1512,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/qq.svg": "y.qq.com.png",
+        "simple-icons/icons/qq.svg": "y.qq.com.png",
+        "y.qq.com.png": "y.qq.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "kugou.com",
+      "name": "酷狗音乐",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "kugou.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "ximalaya.com",
+      "name": "喜马拉雅",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "ximalaya.com.png",
+          "source": "assets/site-icons/ximalaya.com.png",
+          "sha256": "0fd7a429c3c8d65185b19de09d39cd69d7b9a2080ba8b7e67b3965f74bd8e5a9",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 985,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "ximalaya.com.png": "ximalaya.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "xiaoyuzhoufm.com",
+      "name": "小宇宙",
+      "cat": "media",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "xiaoyuzhoufm.com.png",
+          "source": "assets/site-icons/xiaoyuzhoufm.com.png",
+          "sha256": "cad095b3a9a8bc7a0b609e82a490cf403dff65eb030712f5e7f37d7ea8a7881e",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1.1875,
+          "bytes": 1859,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "xiaoyuzhoufm.com.png": "xiaoyuzhoufm.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "vimeo.com",
+      "name": "Vimeo",
+      "cat": "media",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。；保留已有≥64px的经典彩色favicon，避免换成无品牌色的单色轮廓。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "vimeo.com.png",
+          "source": "assets/site-icons/vimeo.com.png",
+          "sha256": "3699f4104367f1589ff36506d39e3e1c1ee4ad8749cf6ca75fcef026783cf101",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1584,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/vimeo.svg": "vimeo.com.png",
+        "vimeo.com.png": "vimeo.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "threads.net",
+      "name": "Threads",
+      "cat": "social",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=35.7 0 440.4 512。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "threads.net.svg",
+          "source": "assets/icons/dashboard-icons/svg/threads.svg",
+          "sha256": "619c277e7e5487bb45c22e6d4563fed6478db45ffe35b524d01d740e45de1f3f",
+          "format": "svg",
+          "width": 440.4,
+          "height": 512.0,
+          "aspect": 0.8602,
+          "inkAspect": 0.8594,
+          "bytes": 1143,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/threads-light.svg": "threads.net.svg",
+        "dashboard-icons/svg/threads.svg": "threads.net.svg",
+        "simple-icons/icons/threads.svg": "threads.net.svg",
+        "threads.net.png": "threads.net.svg",
+        "threads.net.svg": "threads.net.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "maimai.cn",
+      "name": "脉脉",
+      "cat": "social",
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "suning.com",
+      "name": "苏宁",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 40×40；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "suning.com.png",
+          "source": "assets/site-icons/suning.com.png",
+          "sha256": "144e83024a4e385747c0776cf894fe350ad5e0fe5709b05da5c175c61fd42676",
+          "format": "png",
+          "width": 40,
+          "height": 40,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2469,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "suning.com.png": "suning.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "vip.com",
+      "name": "唯品会",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "vip.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "dangdang.com",
+      "name": "当当",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。",
+      "icons": [],
+      "aliases": {
+        "dangdang.com.png": null
+      },
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "you.163.com",
+      "name": "网易严选",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "you.163.com.png",
+          "source": "assets/site-icons/you.163.com.png",
+          "sha256": "35fd22fac8c06adb28a670cb78e95af98fc6813724af9874e47a4adf28a140cb",
+          "format": "png",
+          "width": 114,
+          "height": 114,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 6927,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "you.163.com.png": "you.163.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "dewu.com",
+      "name": "得物",
+      "cat": "shopping",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "dewu.com.png",
+          "source": "assets/site-icons/dewu.com.png",
+          "sha256": "38323ca67798f33c3f20598a4575e7873230c28f3db7c40bbbc8415763d2c7b4",
+          "format": "png",
+          "width": 64,
+          "height": 64,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2280,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "dewu.com.png": "dewu.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "freshippo.com",
+      "name": "盒马",
+      "cat": "shopping",
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。",
+      "icons": [],
+      "aliases": {},
+      "status": "missing-exact-product"
+    },
+    {
+      "domain": "codepen.io",
+      "name": "CodePen",
+      "cat": "dev",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "codepen.io.png",
+          "source": "assets/site-icons/codepen.io.png",
+          "sha256": "a6e04aa3d94bdc424075de6f5b9cd736b29ea0f31d20832556081995fc2c7d6b",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1511,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "codepen.io.png": "codepen.io.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "cnblogs.com",
+      "name": "博客园",
+      "cat": "dev",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "cnblogs.com.png",
+          "source": "assets/site-icons/cnblogs.com.png",
+          "sha256": "e0b772bcda7e490d20491874989e9036092c0fbee59446f482ddac62812d6936",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2423,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "cnblogs.com.png": "cnblogs.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "iconify.design",
+      "name": "Iconify",
+      "cat": "design",
+      "reason": "优先选择精确的 Iconify 可缩放矢量；原 favicon 的房屋 i 轮廓与此相符，不据此认定为错误品牌。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "iconify.design.svg",
+          "source": "assets/icons/simple-icons/icons/iconify.svg",
+          "sha256": "dec5fadcccbbcf529fd25843ef1168bed3a863d006a19e97be56b170bb32aa3f",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.9062,
+          "bytes": 1284,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "simple-icons/icons/iconify.svg": "iconify.design.svg",
+        "iconify.design.png": "iconify.design.svg",
+        "iconify.design.svg": "iconify.design.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "gaoding.com",
+      "name": "稿定设计",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "gaoding.com.png",
+          "source": "assets/site-icons/gaoding.com.png",
+          "sha256": "5e3d16db1952e3d749d3c40c03d33fd5f9461126a35ac7e51976468251bc640d",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 1387,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "gaoding.com.png": "gaoding.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "chuangkit.com",
+      "name": "创客贴",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "chuangkit.com.png",
+          "source": "assets/site-icons/chuangkit.com.png",
+          "sha256": "cf79aa88c8790e85ff0a416f64906bf4ea35e527396654d626e471026f13f138",
+          "format": "png",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 0.9531,
+          "bytes": 1674,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "chuangkit.com.png": "chuangkit.com.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "uisdc.com",
+      "name": "优设",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "uisdc.com.jpg",
+          "source": "assets/site-icons/uisdc.com.jpg",
+          "sha256": "03e93ac37d94c976cb0de9ca37be08a5c6a5a1b0ab4fc951d59f4fb7db9e1f2f",
+          "format": "jpeg",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2667,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "uisdc.com.jpg": "uisdc.com.jpg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "lanhuapp.com",
+      "name": "蓝湖",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "lanhuapp.com.ico",
+          "source": "assets/site-icons/lanhuapp.com.ico",
+          "sha256": "d362b2ffd69ac23a6f4dd34a39d8d585bc6564a79814d1294ea4a22e974e05bc",
+          "format": "ico",
+          "width": 32,
+          "height": 32,
+          "aspect": 1.0,
+          "inkAspect": 1.0,
+          "bytes": 4286,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "lanhuapp.com.ico": "lanhuapp.com.ico"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "js.design",
+      "name": "即时设计",
+      "cat": "design",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "js.design.png",
+          "source": "assets/site-icons/js.design.png",
+          "sha256": "938c457550d2616151a27c8acbd858926bd6e0db06a6c13948458c0a47b60975",
+          "format": "png",
+          "width": 128,
+          "height": 128,
+          "aspect": 1.0,
+          "inkAspect": 1,
+          "bytes": 2810,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "js.design.png": "js.design.png"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "chatglm.cn",
+      "name": "智谱清言",
+      "cat": "ai",
+      "reason": "采用 Qingyan 清言专属蓝色产品标；现有站点图标对应 ChatGLM 模型品牌，建议替换。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "chatglm.cn.svg",
+          "source": "assets/icons/lobe-icons/qingyan-color.svg",
+          "sha256": "fc4c9dc628acbfdc18626fd04ae3192f049faf894ad2e342c84338f6ecfe7741",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.1111,
+          "bytes": 1379,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "chatglm.cn-text.svg",
+          "source": "assets/icons/lobe-icons/qingyan-text.svg",
+          "sha256": "a7227344bb85be1fbb09f11c3e3533f0b7e7801e847e638bd5fdce1b2a3a9c04",
+          "format": "svg",
+          "width": 86.0,
+          "height": 24.0,
+          "aspect": 3.5833,
+          "inkAspect": 3.875,
+          "bytes": 2790,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/chatglm-color.svg": "chatglm.cn.svg",
+        "lobe-icons/chatglm-text.svg": "chatglm.cn-text.svg",
+        "lobe-icons/chatglm.svg": "chatglm.cn.svg",
+        "lobe-icons/zhipu-color.svg": "chatglm.cn.svg",
+        "lobe-icons/zhipu-text.svg": "chatglm.cn-text.svg",
+        "lobe-icons/zhipu.svg": "chatglm.cn.svg",
+        "chatglm.cn.svg": "chatglm.cn.svg",
+        "chatglm.cn-text.svg": "chatglm.cn-text.svg",
+        "lobe-icons/qingyan-color.svg": "chatglm.cn.svg",
+        "lobe-icons/qingyan-text.svg": "chatglm.cn-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "yuanbao.tencent.com",
+      "name": "腾讯元宝",
+      "cat": "ai",
+      "reason": "元宝专属绿色图形，避开腾讯、混元及腾讯云。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "yuanbao.tencent.com.svg",
+          "source": "assets/icons/lobe-icons/yuanbao-color.svg",
+          "sha256": "522b9c3ee6f4136b3dd2f5e844a2273b6d599ae614329dbcaf96c74375b0fdd5",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.0323,
+          "bytes": 1110,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "yuanbao.tencent.com-text.svg",
+          "source": "assets/icons/lobe-icons/yuanbao-text.svg",
+          "sha256": "348b6e833a2606e29c5ece9ec49638fdef26997e2fe7692172e9930ed7e7610f",
+          "format": "svg",
+          "width": 92.0,
+          "height": 24.0,
+          "aspect": 3.8333,
+          "inkAspect": 4.1333,
+          "bytes": 3143,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/yuanbao-color.svg": "yuanbao.tencent.com.svg",
+        "lobe-icons/yuanbao-text.svg": "yuanbao.tencent.com-text.svg",
+        "lobe-icons/yuanbao.svg": "yuanbao.tencent.com.svg",
+        "yuanbao.tencent.com.svg": "yuanbao.tencent.com.svg",
+        "yuanbao.tencent.com-text.svg": "yuanbao.tencent.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "xinghuo.xfyun.cn",
+      "name": "讯飞星火",
+      "cat": "ai",
+      "reason": "讯飞星火专属蓝红产品图形；避开 iFlytek Cloud 和 Apache Spark。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "xinghuo.xfyun.cn.svg",
+          "source": "assets/icons/lobe-icons/spark-color.svg",
+          "sha256": "4068581452b808e4d9f8c5b43b42d324512d6801de26e57cf848125c28db85bc",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 0.8226,
+          "bytes": 882,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "xinghuo.xfyun.cn-text.svg",
+          "source": "assets/icons/lobe-icons/spark-text.svg",
+          "sha256": "8a4ce07f632b9c62d1a524776b45163119564240a0996ef5bc54aaaf63ec36d3",
+          "format": "svg",
+          "width": 93.0,
+          "height": 24.0,
+          "aspect": 3.875,
+          "inkAspect": 4.0667,
+          "bytes": 1375,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/spark-color.svg": "xinghuo.xfyun.cn.svg",
+        "lobe-icons/spark-text.svg": "xinghuo.xfyun.cn-text.svg",
+        "lobe-icons/spark.svg": "xinghuo.xfyun.cn.svg",
+        "dashboard-icons/svg/spark.svg": "xinghuo.xfyun.cn.svg",
+        "xinghuo.xfyun.cn.svg": "xinghuo.xfyun.cn.svg",
+        "xinghuo.xfyun.cn-text.svg": "xinghuo.xfyun.cn-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "mistral.ai",
+      "name": "Mistral",
+      "cat": "ai",
+      "reason": "经典橙红像素 M 产品/品牌标。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "mistral.ai.svg",
+          "source": "assets/icons/lobe-icons/mistral-color.svg",
+          "sha256": "722f74b289d95486b43662fe24fa883b333701296f618406cd0ed502299170b6",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.3913,
+          "bytes": 655,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "mistral.ai-text.svg",
+          "source": "assets/icons/lobe-icons/mistral-text.svg",
+          "sha256": "062ae336243badd51ca21763b30b722092cd265b7eefcb39df6b8641d883d60c",
+          "format": "svg",
+          "width": 134.0,
+          "height": 24.0,
+          "aspect": 5.5833,
+          "inkAspect": 5.1667,
+          "bytes": 2093,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/mistral-color.svg": "mistral.ai.svg",
+        "lobe-icons/mistral-text.svg": "mistral.ai-text.svg",
+        "lobe-icons/mistral.svg": "mistral.ai.svg",
+        "mistral.ai.svg": "mistral.ai.svg",
+        "mistral.ai-text.svg": "mistral.ai-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "aliyun.com",
+      "name": "阿里云",
+      "cat": "tools",
+      "reason": "经典阿里云橙色 #FF6A00 云括号；不使用 Alibaba 电商或阿里云盘。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "aliyun.com.svg",
+          "source": "assets/icons/lobe-icons/alibabacloud-color.svg",
+          "sha256": "73ea97baf919edb3d888a77cd45b21574e190a80124a59e199ea6953a28a959c",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.561,
+          "bytes": 656,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "aliyun.com-text.svg",
+          "source": "assets/icons/lobe-icons/alibabacloud-text-cn.svg",
+          "sha256": "333ab2c84661351bb6b8eaac7a218b9f5ca8629fe88ddf8c17c2538a2cc7dcf1",
+          "format": "svg",
+          "width": 60.0,
+          "height": 24.0,
+          "aspect": 2.5,
+          "inkAspect": 2.7727,
+          "bytes": 1144,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "dashboard-icons/svg/aliyun.svg": "aliyun.com.svg",
+        "aliyun.com.svg": "aliyun.com.svg",
+        "aliyun.com-text.svg": "aliyun.com-text.svg",
+        "lobe-icons/alibabacloud-color.svg": "aliyun.com.svg",
+        "lobe-icons/alibabacloud-text-cn.svg": "aliyun.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "name": "腾讯云",
+      "cat": "tools",
+      "reason": "腾讯云专属蓝色云标，避开腾讯公司及混元。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "cloud.tencent.com.svg",
+          "source": "assets/icons/lobe-icons/tencentcloud-color.svg",
+          "sha256": "f860dae064a3afd24970efd2bc5892f39438526bf52c3a9748f61fc05c1cfd58",
+          "format": "svg",
+          "width": 24.0,
+          "height": 24.0,
+          "aspect": 1.0,
+          "inkAspect": 1.3953,
+          "bytes": 2124,
+          "mono": false
+        },
+        {
+          "role": "wide",
+          "file": "cloud.tencent.com-text.svg",
+          "source": "assets/icons/lobe-icons/tencentcloud-text.svg",
+          "sha256": "ffa31b6d53d05957ff8145b07086c6b1a59f4b489a707adbc06628bcea74b503",
+          "format": "svg",
+          "width": 64.0,
+          "height": 24.0,
+          "aspect": 2.6667,
+          "inkAspect": 3.05,
+          "bytes": 3257,
+          "mono": true
+        }
+      ],
+      "aliases": {
+        "lobe-icons/tencentcloud-color.svg": "cloud.tencent.com.svg",
+        "lobe-icons/tencentcloud-text.svg": "cloud.tencent.com-text.svg",
+        "lobe-icons/tencentcloud.svg": "cloud.tencent.com.svg",
+        "cloud.tencent.com.svg": "cloud.tencent.com.svg",
+        "cloud.tencent.com-text.svg": "cloud.tencent.com-text.svg"
+      },
+      "status": "selected"
+    },
+    {
+      "domain": "youdao.com",
+      "name": "有道翻译",
+      "cat": "tools",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。",
+      "icons": [
+        {
+          "role": "main",
+          "file": "youdao.com.png",
+          "source": "assets/site-icons/youdao.com.png",
+          "sha256": "d34e94099aabc1d90fba5167a7718e6ab4fb866108f6149600c411290555f111",
+          "format": "png",
+          "width": 48,
+          "height": 48,
+          "aspect": 1.0,
+          "inkAspect": 0.7544,
+          "bytes": 1297,
+          "mono": false
+        }
+      ],
+      "aliases": {
+        "youdao.com.png": "youdao.com.png"
+      },
+      "status": "selected"
+    }
+  ],
+  "duplicateGroups": [
+    [
+      "assets/icons/dashboard-icons/svg/gmail.svg",
+      "assets/site-icons/mail.google.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/google-color.svg",
+      "assets/site-icons/google.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/bing-color.svg",
+      "assets/site-icons/bing.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/bing-text.svg",
+      "assets/site-icons/bing.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/baidu-brand-color.svg",
+      "assets/site-icons/baidu.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/baidu-color.svg",
+      "assets/site-icons/baidu.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/bilibili-color.svg",
+      "assets/site-icons/bilibili.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/bilibili-text.svg",
+      "assets/site-icons/bilibili.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/github-text.svg",
+      "assets/site-icons/github.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/github.svg",
+      "assets/site-icons/github.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/huggingface-color.svg",
+      "assets/site-icons/huggingface.co.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/huggingface-text.svg",
+      "assets/site-icons/huggingface.co-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/vercel-text.svg",
+      "assets/site-icons/vercel.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/vercel.svg",
+      "assets/site-icons/vercel.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/cloudflare-color.svg",
+      "assets/site-icons/cloudflare.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/cloudflare-text.svg",
+      "assets/site-icons/cloudflare.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/figma-color.svg",
+      "assets/site-icons/figma.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/figma-text.svg",
+      "assets/site-icons/figma.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/notion-text.svg",
+      "assets/site-icons/notion.so-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/notion.svg",
+      "assets/site-icons/notion.so.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/deepseek-color.svg",
+      "assets/site-icons/chat.deepseek.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/deepseek-text.svg",
+      "assets/site-icons/chat.deepseek.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/openai-text.svg",
+      "assets/site-icons/chatgpt.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/openai.svg",
+      "assets/site-icons/chatgpt.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/claude-color.svg",
+      "assets/site-icons/claude.ai.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/claude-text.svg",
+      "assets/site-icons/claude.ai-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/gemini-color.svg",
+      "assets/site-icons/gemini.google.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/gemini-text.svg",
+      "assets/site-icons/gemini.google.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/copilot-color.svg",
+      "assets/site-icons/copilot.microsoft.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/copilot-text.svg",
+      "assets/site-icons/copilot.microsoft.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/midjourney-text.svg",
+      "assets/site-icons/midjourney.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/midjourney.svg",
+      "assets/site-icons/midjourney.com.svg"
+    ],
+    [
+      "assets/icons/dashboard-icons/svg/perplexity.svg",
+      "assets/icons/lobe-icons/perplexity-color.svg",
+      "assets/site-icons/perplexity.ai.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/perplexity-text.svg",
+      "assets/site-icons/perplexity.ai-text.svg"
+    ],
+    [
+      "assets/icons/dashboard-icons/svg/perplexity-light.svg",
+      "assets/icons/lobe-icons/perplexity.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/qwen-color.svg",
+      "assets/site-icons/tongyi.aliyun.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/qwen-text.svg",
+      "assets/site-icons/tongyi.aliyun.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/wenxin-color.svg",
+      "assets/site-icons/yiyan.baidu.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/wenxin-text.svg",
+      "assets/site-icons/yiyan.baidu.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/kimi-text.svg",
+      "assets/site-icons/kimi.moonshot.cn-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/doubao-color.svg",
+      "assets/site-icons/doubao.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/doubao-text.svg",
+      "assets/site-icons/doubao.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/microsoft-text.svg",
+      "assets/site-icons/microsoft.com-text.svg"
+    ],
+    [
+      "assets/icons/dashboard-icons/svg/microsoft.svg",
+      "assets/site-icons/microsoft.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/apple.svg",
+      "assets/site-icons/apple.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/huawei-color.svg",
+      "assets/site-icons/huawei.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/huawei-text.svg",
+      "assets/site-icons/huawei.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/tencent-brand-color.svg",
+      "assets/site-icons/tencent.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/tencent-color.svg",
+      "assets/site-icons/tencent.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/yuanbao-color.svg",
+      "assets/site-icons/yuanbao.tencent.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/yuanbao-text.svg",
+      "assets/site-icons/yuanbao.tencent.com-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/spark-color.svg",
+      "assets/site-icons/xinghuo.xfyun.cn.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/spark-text.svg",
+      "assets/site-icons/xinghuo.xfyun.cn-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/mistral-color.svg",
+      "assets/site-icons/mistral.ai.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/mistral-text.svg",
+      "assets/site-icons/mistral.ai-text.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/tencentcloud-color.svg",
+      "assets/site-icons/cloud.tencent.com.svg"
+    ],
+    [
+      "assets/icons/lobe-icons/tencentcloud-text.svg",
+      "assets/site-icons/cloud.tencent.com-text.svg"
+    ]
+  ],
+  "shapeComparisons": [
+    {
+      "domain": "google.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/google-color.svg",
+      "b": "assets/icons/lobe-icons/google.svg"
+    },
+    {
+      "domain": "google.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/google.svg",
+      "b": "assets/site-icons/google.com.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/baidu-brand-color.svg",
+      "b": "assets/icons/lobe-icons/baidu-brand.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/baidu-brand.svg",
+      "b": "assets/site-icons/baidu.com-text.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/baidu-color.svg",
+      "b": "assets/icons/lobe-icons/baidu.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/baidu.svg",
+      "b": "assets/site-icons/baidu.com.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/baidu-light.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/baidu.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu-dark.svg",
+      "b": "assets/icons/simple-icons/icons/baidu.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/baidu.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu-light.svg",
+      "b": "assets/icons/simple-icons/icons/baidu.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/baidu.svg",
+      "b": "assets/icons/simple-icons/icons/baidu.svg"
+    },
+    {
+      "domain": "bilibili.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/bilibili-color.svg",
+      "b": "assets/icons/lobe-icons/bilibili.svg"
+    },
+    {
+      "domain": "bilibili.com",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/bilibili.svg",
+      "b": "assets/icons/simple-icons/icons/bilibili.svg"
+    },
+    {
+      "domain": "bilibili.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/bilibili.svg",
+      "b": "assets/site-icons/bilibili.com.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/wechat-light.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/wechat.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat-dark.svg",
+      "b": "assets/icons/simple-icons/icons/wechat.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/wechat.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat-light.svg",
+      "b": "assets/icons/simple-icons/icons/wechat.svg"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/wechat.svg",
+      "b": "assets/icons/simple-icons/icons/wechat.svg"
+    },
+    {
+      "domain": "x.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/x-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/x.svg"
+    },
+    {
+      "domain": "facebook.com",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/meta-brand-color.svg",
+      "b": "assets/icons/lobe-icons/meta-brand.svg"
+    },
+    {
+      "domain": "facebook.com",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/meta.svg",
+      "b": "assets/icons/simple-icons/icons/meta.svg"
+    },
+    {
+      "domain": "amazon.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/amazon-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/amazon.svg"
+    },
+    {
+      "domain": "1688.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/alibaba-brand-color.svg",
+      "b": "assets/icons/lobe-icons/alibaba-brand.svg"
+    },
+    {
+      "domain": "1688.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/alibaba-color.svg",
+      "b": "assets/icons/lobe-icons/alibaba.svg"
+    },
+    {
+      "domain": "github.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/github-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/github.svg"
+    },
+    {
+      "domain": "vercel.com",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/vercel.svg",
+      "b": "assets/icons/simple-icons/icons/vercel.svg"
+    },
+    {
+      "domain": "vercel.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/vercel-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/vercel.svg"
+    },
+    {
+      "domain": "vercel.com",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/simple-icons/icons/vercel.svg",
+      "b": "assets/site-icons/vercel.com.svg"
+    },
+    {
+      "domain": "cloudflare.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/cloudflare-color.svg",
+      "b": "assets/icons/lobe-icons/cloudflare.svg"
+    },
+    {
+      "domain": "cloudflare.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/cloudflare.svg",
+      "b": "assets/site-icons/cloudflare.com.svg"
+    },
+    {
+      "domain": "leetcode.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/leetcode-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/leetcode.svg"
+    },
+    {
+      "domain": "notion.so",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/notion.svg",
+      "b": "assets/icons/simple-icons/icons/notion.svg"
+    },
+    {
+      "domain": "notion.so",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/notion-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/notion.svg"
+    },
+    {
+      "domain": "notion.so",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/simple-icons/icons/notion.svg",
+      "b": "assets/site-icons/notion.so.svg"
+    },
+    {
+      "domain": "chat.deepseek.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/deepseek-color.svg",
+      "b": "assets/icons/lobe-icons/deepseek.svg"
+    },
+    {
+      "domain": "chat.deepseek.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/deepseek.svg",
+      "b": "assets/site-icons/chat.deepseek.com.svg"
+    },
+    {
+      "domain": "chatgpt.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/openai-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/openai.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/claude-color.svg",
+      "b": "assets/icons/lobe-icons/claude.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "near-shape-review-only",
+      "a": "assets/icons/lobe-icons/claude.svg",
+      "b": "assets/icons/simple-icons/icons/claude.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/claude.svg",
+      "b": "assets/site-icons/claude.ai.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/anthropic-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/anthropic-light.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/anthropic-dark.svg",
+      "b": "assets/icons/simple-icons/icons/anthropic.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/anthropic-light.svg",
+      "b": "assets/icons/simple-icons/icons/anthropic.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/perplexity-color.svg",
+      "b": "assets/icons/lobe-icons/perplexity.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/perplexity-color.svg",
+      "b": "assets/icons/dashboard-icons/svg/perplexity-light.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/perplexity.svg",
+      "b": "assets/icons/dashboard-icons/svg/perplexity.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/perplexity.svg",
+      "b": "assets/site-icons/perplexity.ai.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/perplexity-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/perplexity.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/perplexity-light.svg",
+      "b": "assets/site-icons/perplexity.ai.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/perplexity-wordmark-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/perplexity-wordmark-light.svg"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/qwen-color.svg",
+      "b": "assets/icons/lobe-icons/qwen.svg"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/qwen.svg",
+      "b": "assets/site-icons/tongyi.aliyun.com.svg"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/kimi-color.svg",
+      "b": "assets/icons/lobe-icons/kimi.svg"
+    },
+    {
+      "domain": "spotify.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/spotify-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/spotify-light.svg"
+    },
+    {
+      "domain": "spotify.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/spotify-dark.svg",
+      "b": "assets/icons/dashboard-icons/svg/spotify.svg"
+    },
+    {
+      "domain": "spotify.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/spotify-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/spotify.svg"
+    },
+    {
+      "domain": "microsoft.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/microsoft-color.svg",
+      "b": "assets/icons/lobe-icons/microsoft.svg"
+    },
+    {
+      "domain": "apple.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/apple-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/apple.svg"
+    },
+    {
+      "domain": "huawei.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/huawei-color.svg",
+      "b": "assets/icons/lobe-icons/huawei.svg"
+    },
+    {
+      "domain": "huawei.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/huawei.svg",
+      "b": "assets/site-icons/huawei.com.svg"
+    },
+    {
+      "domain": "tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencent-brand-color.svg",
+      "b": "assets/icons/lobe-icons/tencent-brand.svg"
+    },
+    {
+      "domain": "tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencent-brand.svg",
+      "b": "assets/site-icons/tencent.com-text.svg"
+    },
+    {
+      "domain": "tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencent-color.svg",
+      "b": "assets/icons/lobe-icons/tencent.svg"
+    },
+    {
+      "domain": "tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencent.svg",
+      "b": "assets/site-icons/tencent.com.svg"
+    },
+    {
+      "domain": "threads.net",
+      "kind": "same-geometry",
+      "a": "assets/icons/dashboard-icons/svg/threads-light.svg",
+      "b": "assets/icons/dashboard-icons/svg/threads.svg"
+    },
+    {
+      "domain": "chatglm.cn",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/zhipu-color.svg",
+      "b": "assets/icons/lobe-icons/zhipu.svg"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencentcloud-color.svg",
+      "b": "assets/icons/lobe-icons/tencentcloud.svg"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "kind": "same-geometry",
+      "a": "assets/icons/lobe-icons/tencentcloud.svg",
+      "b": "assets/site-icons/cloud.tencent.com.svg"
+    }
+  ],
+  "rejected": [
+    {
+      "source": "assets/icons/simple-icons/icons/douban.svg",
+      "reason": "Independent license requires separate review: custom"
+    },
+    {
+      "domain": "douban.com",
+      "source": "assets/icons/simple-icons/icons/douban.svg",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "jiemian.com",
+      "source": "assets/site-icons/jiemian.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "xuexi.cn",
+      "source": "assets/site-icons/xuexi.cn.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "ctrip.com",
+      "source": "assets/site-icons/ctrip.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "yicai.com",
+      "source": "assets/site-icons/yicai.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "kugou.com",
+      "source": "assets/site-icons/kugou.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "vip.com",
+      "source": "assets/site-icons/vip.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    },
+    {
+      "domain": "dangdang.com",
+      "source": "assets/site-icons/dangdang.com.png",
+      "reason": "Candidate failed type/safety/render/license validation"
+    }
+  ]
+}

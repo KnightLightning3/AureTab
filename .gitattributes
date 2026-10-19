@@ -1,0 +1,3 @@
+
+# Preserve vendored SVG bytes, including upstream indentation.
+assets/site-icons/*.svg -whitespace

@@ -1,0 +1,14 @@
+{
+  "package": "simple-icons",
+  "version": "16.35.0",
+  "tarball": "https://registry.npmjs.org/simple-icons/-/simple-icons-16.35.0.tgz",
+  "integrity": "sha512-TCfl/2+GTrx0nCo4pEWGvxhOb8c6NsqOU1OpwjtF4lwJAthB8IYVD0fuIMjLMg6JFuG1YBO0t1iETQqJLqkoJA==",
+  "sha256": "20ebead4f6bc93464812a5e260d19fc4d84772e5eeff69a6fbea263ca2441c5f",
+  "downloadedAt": "2026-10-19",
+  "svgCount": 3466,
+  "licenseMetadata": {
+    "total": 3466,
+    "withExplicitLicense": 224,
+    "withoutExplicitLicense": 3242
+  }
+}

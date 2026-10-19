@@ -1,3 +1,11 @@
+import { CURATED_ALIASES, CURATED_MONO_FILES, CURATED_WIDE_FILES } from './curatedIconMap.js';
+const curatedMonoFiles = new Set(CURATED_MONO_FILES);
+const curatedFileSet = new Set([
+  ...Object.values(CURATED_ALIASES).filter(file => typeof file === 'string'),
+  ...CURATED_MONO_FILES,
+  ...Object.keys(CURATED_WIDE_FILES),
+  ...Object.values(CURATED_WIDE_FILES),
+]);
 const LOCAL_ICON_NAME = /^[a-z0-9][a-z0-9.-]*\.(?:png|jpe?g|webp|ico|svg)$/i;
 
 /** Older catalog names whose downloaded favicon was replaced by a bundled SVG. */
@@ -72,16 +80,29 @@ export const MONO_ICON_FILES = new Set([
 ]);
 
 export function isMonoIconFile(value) {
-  return MONO_ICON_FILES.has(LEGACY_ICON_FILES[value] ?? value);
+  const file = resolveLocalIconFile(value);
+  if (curatedFileSet.has(file)) return curatedMonoFiles.has(file);
+  return MONO_ICON_FILES.has(file) ||
+    (typeof value === 'string' && value.startsWith('simple-icons/icons/')) ||
+    (typeof file === 'string' && /-text\.svg$/i.test(file));
 }
 
+/** Syntax validation stays permissive for importing older saved data. */
 export function isLocalIconFile(value) {
-  return typeof value === 'string' && value.length <= 120 && !value.includes('..') && LOCAL_ICON_NAME.test(value);
+  return typeof value === 'string' && value.length <= 180 && !value.includes('..') && (LOCAL_ICON_NAME.test(value) || /^(?:lobe-icons\/|dashboard-icons\/svg\/|simple-icons\/icons\/)[a-z0-9][a-z0-9.-]*\.svg$/i.test(value));
+}
+
+/** Resolve saved selections without ever exposing a source-library path. */
+export function resolveLocalIconFile(value) {
+  if (!isLocalIconFile(value)) return null;
+  const alias = Object.hasOwn(CURATED_ALIASES, value) ? CURATED_ALIASES[value] : value;
+  const file = Object.hasOwn(LEGACY_ICON_FILES, alias) ? LEGACY_ICON_FILES[alias] : alias;
+  return typeof file === 'string' && isLocalIconFile(file) && !file.includes('/') ? file : null;
 }
 
 export function localIconURL(value) {
-  const file = LEGACY_ICON_FILES[value] ?? value;
-  if (!isLocalIconFile(file)) return null;
+  const file = resolveLocalIconFile(value);
+  if (!file) return null;
   try {
     return chrome.runtime.getURL(`assets/site-icons/${file}`);
   } catch {
@@ -90,6 +111,8 @@ export function localIconURL(value) {
 }
 
 export function wideIconURL(mainFile) {
-  const wide = WIDE_ICON_FILES[LEGACY_ICON_FILES[mainFile] ?? mainFile];
+  const file = resolveLocalIconFile(mainFile);
+  if (!file) return null;
+  const wide = curatedFileSet.has(file) ? CURATED_WIDE_FILES[file] : WIDE_ICON_FILES[file];
   return wide ? localIconURL(wide) : null;
 }

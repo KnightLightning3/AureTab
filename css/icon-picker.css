@@ -1,0 +1,14 @@
+.icon-picker-field .icon-picker-section-title{font-size:12px;color:var(--muted);margin-top:6px}
+.icon-picker-field .icon-source-grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));max-height:300px;overflow:auto;padding:3px}
+.icon-picker-field .choice-label{overflow-wrap:anywhere;text-align:center;line-height:1.4}
+.icon-picker-field .icon-style-controls,.icon-picker-field .icon-background-controls{display:flex;flex-wrap:wrap;gap:8px;padding:3px}
+.icon-picker-field .icon-control,.icon-picker-field .icon-background-swatch{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:7px 10px;cursor:pointer;font:inherit;font-size:12px}
+.icon-picker-field [role=radio].selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.icon-picker-field [role=radio]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.icon-picker-field .icon-background-swatch{display:flex;align-items:center;gap:6px}
+.icon-picker-field .icon-swatch-color{display:block;width:22px;height:22px;border-radius:6px;border:1px solid var(--line);background:var(--icon-bg)}
+.icon-picker-field .icon-choice{min-width:0}
+.icon-picker-field .choice-preview img{max-width:100%;max-height:100%}
+@media(max-width:480px){.icon-picker-field .icon-picker-head{align-items:flex-start;flex-direction:column}.icon-picker-field .icon-picker-actions{justify-content:flex-start}}
+
+.choice-preview.text{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}

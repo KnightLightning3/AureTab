@@ -1,3 +1,5 @@
+import { engines } from '../search/engines.js';
+import { ICON_BACKGROUNDS } from '../grid/iconBackground.js';
 import { DEFAULT_PREFS } from '../storage/DataStore.js';
 import { isLocalIconFile } from '../grid/siteIcon.js';
 import { GROUP_ICON_IDS, DEFAULT_GROUP_ICON } from '../ui/groupIcon.js';
@@ -18,7 +20,7 @@ export function validatePrefs(value) {
   const legacyTheme = { taupe: 'glass', midnight: 'aurora' };
   const theme = value.theme === undefined ? 'glass' : (legacyTheme[value.theme] ?? value.theme);
   return {
-    engine: pick(value.engine, ['google', 'bing', 'sogou'], 'google'), minimal: value.minimal, layout: pick(value.layout, ['golden', 'center'], 'golden'),
+    engine: pick(value.engine, Object.keys(engines), 'google'), minimal: value.minimal, layout: pick(value.layout, ['golden', 'center'], 'golden'),
     clock24: flag(value.clock24, true, '时间制式'), showDate: flag(value.showDate, true, '显示日期'), showLabels: flag(value.showLabels, true, '显示图标名称'),
     dateFormat: pick(value.dateFormat, ['yyyy-mm-dd', 'mm-dd'], 'yyyy-mm-dd'),
     theme: pick(theme, ['aurora', 'glass', 'frost', 'cyber', 'espresso'], 'glass'),
@@ -42,7 +44,7 @@ export function validateData(value) {
     const sites = group.sites.map(site => {
       if (!object(site)) fail('站点'); const siteId = string(site.id, 100, '站点 ID');
       if (siteIds.has(siteId)) fail('站点 ID 重复'); siteIds.add(siteId);
-      const text = string(site.text, 12, '文字图标'); if (Array.from(text).length > 3) fail('文字图标应为 1 至 3 个字符');
+      const text = string(site.text, Infinity, '文字图标');
       const item = { id: siteId, title: string(site.title, 120, '站点标题'), url: safeURL(string(site.url, 4096, '站点地址')), size: choice(site.size, ['1x1', '2x1', '1x2', '2x2'], '站点尺寸'), text };
       if (site.iconId !== undefined) {
         const iconId = string(site.iconId, 100, '图片 ID');
@@ -51,6 +53,7 @@ export function validateData(value) {
       }
       if (site.iconFile !== undefined) { if (!isLocalIconFile(site.iconFile)) fail('本地图标文件名'); item.iconFile = site.iconFile; }
       if (site.iconWide !== undefined) { if (!isLocalIconFile(site.iconWide)) fail('本地图标文件名'); item.iconWide = site.iconWide; }
+      if (site.iconBackground !== undefined) item.iconBackground = choice(site.iconBackground, ICON_BACKGROUNDS.map(option => option.value), '图标背景');
       if (site.iconStyle !== undefined) item.iconStyle = choice(site.iconStyle, ['color', 'glyph'], '图标样式');
       if (site.useText !== undefined) { if (typeof site.useText !== 'boolean') fail('文字图标开关'); item.useText = site.useText; }
       return item;

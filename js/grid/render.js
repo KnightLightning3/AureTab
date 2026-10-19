@@ -1,3 +1,5 @@
+import { displayIconText } from './textIcon.js';
+import { applyIconBackground } from './iconBackground.js';
 import { faviconSources } from './favicon.js';
 import { localIconURL, wideIconURL, isMonoIconFile } from './siteIcon.js';
 import { showClassifiedIcon } from './iconKind.js';
@@ -154,11 +156,12 @@ export function renderGrid(group, store, onAdd) {
     const iconStyle = site.iconStyle === 'glyph' ? 'glyph' : 'color';
     // A wide tile shows the wordmark when the site explicitly provides one.
     const wideIcon = !site.useText && !site.iconId && site.size === '2x1'
-      ? (site.iconWide ? localIconURL(site.iconWide) : wideIconURL(site.iconFile)) : null;
+      ? (wideIconURL(site.iconFile) || (site.iconWide && localIconURL(site.iconWide) !== localIconURL(site.iconFile) ? localIconURL(site.iconWide) : null)) : null;
     const localIcon = !site.useText ? localIconURL(site.iconFile) : null;
-    const icon = document.createElement('span'); icon.className = `site-icon ${site.iconId || !site.useText ? iconStyle : 'text'}`; icon.textContent = site.text;
-    if (wideIcon) { icon.dataset.wide = 'true'; icon.dataset.mono = 'true'; }
+    const icon = document.createElement('span'); icon.className = `site-icon ${site.iconId || !site.useText ? iconStyle : 'text'}`; icon.textContent = displayIconText(site.text, site.size);
+    if (wideIcon) { icon.dataset.wide = 'true'; if (isMonoIconFile(wideIcon.split('/').pop())) icon.dataset.mono = 'true'; }
     else if (isMonoIconFile(site.iconFile)) icon.dataset.mono = 'true';
+    applyIconBackground(icon, site.iconBackground);
     const title = document.createElement('span'); title.className = 'site-title'; title.textContent = site.title; link.append(icon, title); grid.append(link);
     if (!site.useText) {
       const options = { manual: site.iconStyle, store };
@@ -184,7 +187,9 @@ export function renderGrid(group, store, onAdd) {
       };
       // Only visible (or nearly visible) tiles request icons. A successful load is
       // cached by iconKind, so returning to this group does not request it again.
-      const start = () => enqueue(load);
+      const start = () => enqueue(async () => {
+        try { await load(); } finally { applyIconBackground(icon, site.iconBackground); }
+      });
       const observed = observer();
       if (observed) { starters.set(link, start); observed.observe(link); }
       else start();

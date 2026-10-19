@@ -1,4 +1,4 @@
-/** @typedef {{id:string,title:string,url:string,size:'1x1'|'2x1'|'1x2'|'2x2',text:string,iconId?:string,iconFile?:string,iconStyle?:'color'|'glyph'}} Site */
+/** @typedef {{id:string,title:string,url:string,size:'1x1'|'2x1'|'1x2'|'2x2',text:string,iconId?:string,iconFile?:string,iconWide?:string,iconStyle?:'color'|'glyph',iconBackground?:string,useText?:boolean}} Site */
 /** @typedef {{id:string,name:string,sites:Site[]}} Group */
 /** @typedef {{schemaVersion:1,revision:number,groups:Group[],settings:{blur:string,overlay:string,radius:string}}} AppData */
 export class DataStore {

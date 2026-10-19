@@ -1,0 +1,468 @@
+{
+  "gmail": {
+    "base": "svg",
+    "aliases": [
+      "google-mail",
+      "webmail-service"
+    ],
+    "categories": [
+      "Email-Providers"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "duckduckgo": {
+    "base": "svg",
+    "aliases": [
+      "privacy-search-engine",
+      "private-search"
+    ],
+    "categories": [
+      "Search-Engines"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "youtube": {
+    "base": "svg",
+    "aliases": [
+      "video-sharing-site",
+      "google-video"
+    ],
+    "categories": [
+      "Video-Streaming"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "netflix": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "twitch": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "weibo": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2025-12-29T10:35:37.048Z",
+      "author": {
+        "id": "qnf6scp5rf6zflm",
+        "name": "freeqrcodegenerator"
+      }
+    }
+  },
+  "wechat": {
+    "base": "svg",
+    "aliases": [
+      "weixin"
+    ],
+    "categories": [
+      "social"
+    ],
+    "update": {
+      "timestamp": "2026-05-01T19:52:01.764Z",
+      "author": {
+        "id": "65iz5jsxx5jc2yw",
+        "name": "browser-agent-robot"
+      }
+    },
+    "colors": {
+      "light": "wechat-light",
+      "dark": "wechat-dark"
+    }
+  },
+  "x": {
+    "base": "png",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2026-06-11T07:54:35.395Z",
+      "author": {
+        "id": "uggppv0e0cqy1wu",
+        "name": "Randy"
+      }
+    }
+  },
+  "facebook": {
+    "base": "svg",
+    "aliases": [
+      "social-network",
+      "meta-platform"
+    ],
+    "categories": [
+      "Social-Media"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "instagram": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "reddit": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "discord": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "telegram": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2022-12-07T15:02:08Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "linkedin": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "pinterest": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "amazon": {
+    "base": "svg",
+    "aliases": [
+      "online-marketplace",
+      "shopping-website"
+    ],
+    "categories": [
+      "E-commerce-Platforms"
+    ],
+    "update": {
+      "timestamp": "2024-10-20T17:24:03Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    },
+    "colors": {
+      "dark": "amazon",
+      "light": "amazon-light"
+    }
+  },
+  "gitlab": {
+    "base": "svg",
+    "aliases": [
+      "Code Hosting"
+    ],
+    "categories": [
+      "Version-Control-Systems",
+      "Developer-Tools",
+      "DevOps"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "npm": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [
+      "Development"
+    ],
+    "update": {
+      "timestamp": "2025-07-07T17:24:01.483454",
+      "author": {
+        "id": 63781622,
+        "login": "Meierschlumpf"
+      }
+    }
+  },
+  "docker": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2022-08-16T17:22:56Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "netlify": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "hacker-news": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2024-10-20T17:24:03Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "leetcode": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [
+      "Development"
+    ],
+    "update": {
+      "timestamp": "2025-10-15T20:06:08.978810",
+      "author": {
+        "id": 121769213,
+        "login": "avichaltomar15"
+      }
+    },
+    "colors": {
+      "light": "leetcode",
+      "dark": "leetcode-dark"
+    }
+  },
+  "behance": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2025-12-29T10:33:04.645Z",
+      "author": {
+        "id": "qnf6scp5rf6zflm",
+        "name": "freeqrcodegenerator"
+      }
+    }
+  },
+  "slack": {
+    "base": "svg",
+    "aliases": [
+      "Team Communication"
+    ],
+    "categories": [
+      "Communication",
+      "Office-Suites"
+    ],
+    "update": {
+      "timestamp": "2023-04-13T13:56:18Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "zoom": {
+    "base": "svg",
+    "aliases": [
+      "Video Conferencing"
+    ],
+    "categories": [
+      "Communication",
+      "Office-Suites"
+    ],
+    "update": {
+      "timestamp": "2024-01-28T15:27:56Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "kimi-ai": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2025-09-12T21:00:17.293199",
+      "author": {
+        "id": 173324028,
+        "login": "MyOnwForest"
+      }
+    }
+  },
+  "duolingo": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [
+      "other"
+    ],
+    "update": {
+      "timestamp": "2026-01-19T10:41:56.518Z",
+      "author": {
+        "id": 97221303,
+        "login": "HattaPauzi"
+      }
+    }
+  },
+  "quizlet": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2025-10-23T17:00:00.257858",
+      "author": {
+        "id": 208478076,
+        "login": "Dakpanbaviaan"
+      }
+    }
+  },
+  "spotify": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [
+      "media"
+    ],
+    "update": {
+      "timestamp": "2026-08-11T13:47:45.996Z",
+      "author": {
+        "id": 6827059,
+        "login": "NoahStephens"
+      }
+    },
+    "colors": {
+      "light": "spotify-light",
+      "dark": "spotify-dark"
+    },
+    "wordmark": {
+      "light": "spotify-wordmark-light",
+      "dark": "spotify-wordmark-dark"
+    }
+  },
+  "microsoft": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2023-04-13T20:27:58Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    }
+  },
+  "xiaomi-global": {
+    "base": "svg",
+    "aliases": [
+      "mi-global",
+      "redmi-global"
+    ],
+    "categories": [
+      "Organization"
+    ],
+    "update": {
+      "timestamp": "2025-03-24T19:31:15.329045",
+      "author": {
+        "id": 48109134,
+        "login": "jdcool00"
+      }
+    }
+  },
+  "threads": {
+    "base": "svg",
+    "aliases": [],
+    "categories": [],
+    "update": {
+      "timestamp": "2024-10-20T17:24:03Z",
+      "author": {
+        "id": 71191962,
+        "name": "walkxcode"
+      }
+    },
+    "colors": {
+      "dark": "threads",
+      "light": "threads-light"
+    }
+  }
+}

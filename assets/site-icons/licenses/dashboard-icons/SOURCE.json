@@ -1,0 +1,98 @@
+{
+  "repository": "https://github.com/homarr-labs/dashboard-icons",
+  "commit": "6d31345986eba2067a63eb41c1a5a87d4e8e850a",
+  "downloadMethod": "Official Git repository: shallow, blob-filtered clone and sparse checkout of svg plus root metadata/legal files",
+  "downloadedAt": "2026-10-19",
+  "svgCount": 3650,
+  "formats": [
+    "svg"
+  ],
+  "gitBlobHashesVerified": true,
+  "svgParseIssues": [
+    {
+      "file": "svg/hd-icons-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/tyepcho-wordmark-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wispr-flow-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/claude-ai-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/spotify-wordmark-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/borg-ui-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/claude-ai-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wispr-flow-wordmark-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/owlrelay-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/eleven-labs-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wispr-flow-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/rapid7-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/spotify-wordmark-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wikimedia-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wikimedia-dark.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    },
+    {
+      "file": "svg/wispr-flow-wordmark-light.svg",
+      "actualFormat": "PNG",
+      "error": "not well-formed (invalid token): line 1, column 0"
+    }
+  ],
+  "websiteTerms": "https://dashboardicons.com/terms",
+  "upstreamNoticeFilePresent": false,
+  "fileCount": 3651,
+  "validSvgCount": 3634,
+  "otherFileCount": 1
+}

@@ -1,0 +1,929 @@
+{
+  "recommendations": [
+    {
+      "domain": "mail.google.com",
+      "main": "assets/icons/dashboard-icons/svg/gmail.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "mail.qq.com",
+      "main": null,
+      "reason": "未找到精确 QQ 邮箱图标；现有 mail.qq.com.svg 与 dashboard qq.svg 是 QQ 企鹅，属于另一产品，不替代。"
+    },
+    {
+      "domain": "mail.163.com",
+      "main": null,
+      "reason": "三个库及现有资源均无精确网易163邮箱图标；不以网易门户或网易云音乐代替。"
+    },
+    {
+      "domain": "google.com",
+      "main": "assets/icons/lobe-icons/google-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 77 24，比例 3.208。",
+      "wide": "assets/icons/lobe-icons/google-brand-color.svg"
+    },
+    {
+      "domain": "bing.com",
+      "main": "assets/icons/lobe-icons/bing-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 44 24，比例 1.833。",
+      "wide": "assets/icons/lobe-icons/bing-text.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "main": "assets/icons/lobe-icons/baidu-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 72 24，比例 3.000。",
+      "wide": "assets/icons/lobe-icons/baidu-brand-color.svg"
+    },
+    {
+      "domain": "sogou.com",
+      "main": "assets/icons/simple-icons/icons/sogou.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "duckduckgo.com",
+      "main": "assets/icons/dashboard-icons/svg/duckduckgo.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "quark.cn",
+      "main": "assets/site-icons/quark.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "bilibili.com",
+      "main": "assets/icons/lobe-icons/bilibili-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 52 24，比例 2.167。",
+      "wide": "assets/icons/lobe-icons/bilibili-text.svg"
+    },
+    {
+      "domain": "iqiyi.com",
+      "main": "assets/site-icons/iqiyi.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "v.qq.com",
+      "main": "assets/site-icons/v.qq.com.jpg",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "youku.com",
+      "main": "assets/site-icons/youku.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "mgtv.com",
+      "main": "assets/site-icons/mgtv.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "ixigua.com",
+      "main": "assets/site-icons/ixigua.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "youtube.com",
+      "main": "assets/icons/dashboard-icons/svg/youtube.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 76.8 512 358.4。"
+    },
+    {
+      "domain": "netflix.com",
+      "main": "assets/icons/dashboard-icons/svg/netflix.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=114.86 -0.13 282.24 512.28。"
+    },
+    {
+      "domain": "twitch.tv",
+      "main": "assets/icons/dashboard-icons/svg/twitch.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=31.28 -0.01 449.33 512。"
+    },
+    {
+      "domain": "douyin.com",
+      "main": "assets/site-icons/douyin.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "kuaishou.com",
+      "main": "assets/icons/simple-icons/icons/kuaishou.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "miguvideo.com",
+      "main": null,
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。"
+    },
+    {
+      "domain": "yangshipin.cn",
+      "main": "assets/site-icons/yangshipin.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "weibo.com",
+      "main": "assets/icons/dashboard-icons/svg/weibo.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 1080 1080。"
+    },
+    {
+      "domain": "zhihu.com",
+      "main": "assets/icons/simple-icons/icons/zhihu.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "douban.com",
+      "main": "assets/icons/simple-icons/icons/douban.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "xiaohongshu.com",
+      "main": "assets/icons/simple-icons/icons/xiaohongshu.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "weixin.qq.com",
+      "main": "assets/icons/dashboard-icons/svg/wechat.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "x.com",
+      "main": "assets/icons/dashboard-icons/svg/x.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "facebook.com",
+      "main": "assets/icons/dashboard-icons/svg/facebook.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "instagram.com",
+      "main": "assets/icons/dashboard-icons/svg/instagram.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "reddit.com",
+      "main": "assets/icons/dashboard-icons/svg/reddit.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "discord.com",
+      "main": "assets/icons/dashboard-icons/svg/discord.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0.02 57.8 511.92 396.3。"
+    },
+    {
+      "domain": "telegram.org",
+      "main": "assets/icons/dashboard-icons/svg/telegram.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "linkedin.com",
+      "main": "assets/icons/dashboard-icons/svg/linkedin.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "pinterest.com",
+      "main": "assets/icons/dashboard-icons/svg/pinterest.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "tieba.baidu.com",
+      "main": "assets/site-icons/tieba.baidu.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "thepaper.cn",
+      "main": "assets/site-icons/thepaper.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "news.cn",
+      "main": "assets/site-icons/news.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "people.com.cn",
+      "main": null,
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。"
+    },
+    {
+      "domain": "cctv.com",
+      "main": "assets/site-icons/cctv.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "36kr.com",
+      "main": null,
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。"
+    },
+    {
+      "domain": "sspai.com",
+      "main": "assets/site-icons/sspai.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "huxiu.com",
+      "main": "assets/site-icons/huxiu.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 100×100；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "jiemian.com",
+      "main": "assets/site-icons/jiemian.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "bbc.com",
+      "main": "assets/site-icons/bbc.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "nytimes.com",
+      "main": "assets/site-icons/nytimes.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "taobao.com",
+      "main": "assets/icons/simple-icons/icons/taobao.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "tmall.com",
+      "main": null,
+      "reason": "现有 tmall.com.jpg 实际为橙色“淘”字淘宝图标；未找到精确天猫候选。"
+    },
+    {
+      "domain": "jd.com",
+      "main": "assets/site-icons/jd.com.ico",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 96×96；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "pinduoduo.com",
+      "main": "assets/site-icons/pinduoduo.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "amazon.com",
+      "main": "assets/icons/dashboard-icons/svg/amazon.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "ebay.com",
+      "main": "assets/icons/simple-icons/icons/ebay.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "goofish.com",
+      "main": "assets/site-icons/goofish.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "1688.com",
+      "main": "assets/site-icons/1688.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "github.com",
+      "main": "assets/icons/lobe-icons/github.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 78 24，比例 3.250。",
+      "wide": "assets/icons/lobe-icons/github-text.svg"
+    },
+    {
+      "domain": "gitlab.com",
+      "main": "assets/icons/dashboard-icons/svg/gitlab.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=93.97 97.52 192.05 184.99。"
+    },
+    {
+      "domain": "gitee.com",
+      "main": "assets/icons/simple-icons/icons/gitee.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "stackoverflow.com",
+      "main": "assets/icons/simple-icons/icons/stackoverflow.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "developer.mozilla.org",
+      "main": "assets/icons/simple-icons/icons/mdnwebdocs.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "npmjs.com",
+      "main": "assets/icons/dashboard-icons/svg/npm.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 18 7。 可选横版 viewBox=0 0 18 7，比例 2.571。",
+      "wide": "assets/icons/dashboard-icons/svg/npm.svg"
+    },
+    {
+      "domain": "pypi.org",
+      "main": "assets/icons/simple-icons/icons/pypi.svg",
+      "reason": "优先选择精确 PyPI 可缩放矢量；不因立方体外形认定原 favicon 品牌错误。"
+    },
+    {
+      "domain": "hub.docker.com",
+      "main": "assets/icons/dashboard-icons/svg/docker.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=-0.07 71.3 511.97 369.5。"
+    },
+    {
+      "domain": "juejin.cn",
+      "main": "assets/icons/simple-icons/icons/juejin.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "csdn.net",
+      "main": "assets/icons/simple-icons/icons/csdn.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "v2ex.com",
+      "main": "assets/icons/simple-icons/icons/v2ex.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "news.ycombinator.com",
+      "main": "assets/icons/dashboard-icons/svg/hacker-news.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "leetcode.com",
+      "main": "assets/icons/dashboard-icons/svg/leetcode.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 94 110.92。"
+    },
+    {
+      "domain": "codesandbox.io",
+      "main": "assets/icons/simple-icons/icons/codesandbox.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "figma.com",
+      "main": "assets/icons/lobe-icons/figma-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 70 24，比例 2.917。",
+      "wide": "assets/icons/lobe-icons/figma-text.svg"
+    },
+    {
+      "domain": "dribbble.com",
+      "main": "assets/icons/simple-icons/icons/dribbble.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "behance.net",
+      "main": "assets/icons/dashboard-icons/svg/behance.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 1080 1080。"
+    },
+    {
+      "domain": "canva.com",
+      "main": "assets/site-icons/canva.com.jpg",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "zcool.com.cn",
+      "main": "assets/icons/simple-icons/icons/zcool.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "huaban.com",
+      "main": "assets/site-icons/huaban.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "unsplash.com",
+      "main": "assets/icons/simple-icons/icons/unsplash.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "pexels.com",
+      "main": "assets/icons/simple-icons/icons/pexels.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "notion.so",
+      "main": "assets/icons/lobe-icons/notion.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 87 24，比例 3.625。",
+      "wide": "assets/icons/lobe-icons/notion-text.svg"
+    },
+    {
+      "domain": "feishu.cn",
+      "main": "assets/site-icons/feishu.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "dingtalk.com",
+      "main": "assets/site-icons/dingtalk.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "work.weixin.qq.com",
+      "main": "assets/site-icons/work.weixin.qq.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "docs.qq.com",
+      "main": "assets/site-icons/docs.qq.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "shimo.im",
+      "main": "assets/site-icons/shimo.im.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "yuque.com",
+      "main": "assets/site-icons/yuque.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 200×200；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "trello.com",
+      "main": "assets/icons/simple-icons/icons/trello.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "slack.com",
+      "main": "assets/icons/dashboard-icons/svg/slack.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "zoom.us",
+      "main": "assets/icons/dashboard-icons/svg/zoom.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 512 512。"
+    },
+    {
+      "domain": "wps.cn",
+      "main": null,
+      "reason": "现有 wps.cn.png 为黑底白色圆圈 W，无法确认是经典 WPS 品牌，三个库无精确候选，暂留空。"
+    },
+    {
+      "domain": "icourse163.org",
+      "main": "assets/site-icons/icourse163.org.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "open.163.com",
+      "main": "assets/site-icons/open.163.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "coursera.org",
+      "main": "assets/icons/simple-icons/icons/coursera.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "edx.org",
+      "main": "assets/icons/simple-icons/icons/edx.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "khanacademy.org",
+      "main": "assets/icons/simple-icons/icons/khanacademy.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "xuexi.cn",
+      "main": "assets/site-icons/xuexi.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 30×30；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "dedao.cn",
+      "main": "assets/site-icons/dedao.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "xuetangx.com",
+      "main": "assets/site-icons/xuetangx.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "duolingo.com",
+      "main": "assets/icons/dashboard-icons/svg/duolingo.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 250 250。"
+    },
+    {
+      "domain": "quizlet.com",
+      "main": "assets/icons/simple-icons/icons/quizlet.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 244 53，比例 4.604。",
+      "wide": "assets/icons/dashboard-icons/svg/quizlet.svg"
+    },
+    {
+      "domain": "amap.com",
+      "main": "assets/site-icons/amap.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "map.baidu.com",
+      "main": "assets/site-icons/map.baidu.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "12306.cn",
+      "main": "assets/site-icons/12306.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "ctrip.com",
+      "main": "assets/site-icons/ctrip.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "meituan.com",
+      "main": "assets/icons/simple-icons/icons/meituan.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "dianping.com",
+      "main": "assets/site-icons/dianping.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "music.163.com",
+      "main": "assets/icons/simple-icons/icons/neteasecloudmusic.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "spotify.com",
+      "main": "assets/icons/dashboard-icons/svg/spotify.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 226.733 226.733。"
+    },
+    {
+      "domain": "movie.douban.com",
+      "main": "assets/site-icons/movie.douban.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "maoyan.com",
+      "main": "assets/site-icons/maoyan.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "so.com",
+      "main": "assets/site-icons/so.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 116×116；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "sm.cn",
+      "main": "assets/site-icons/sm.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "microsoft.com",
+      "main": "assets/icons/dashboard-icons/svg/microsoft.svg",
+      "reason": "精确微软四色四方格常规 SVG，viewBox=0 0 512 512。可选横版 viewBox=0 0 108 24，比例4.500；Lobe 源 title 误写 Azure，但实际路径为 Microsoft 字标（不是 Azure 云图形），需注意元数据错误。",
+      "wide": "assets/icons/lobe-icons/microsoft-text.svg"
+    },
+    {
+      "domain": "apple.com",
+      "main": "assets/icons/lobe-icons/apple.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "huawei.com",
+      "main": "assets/icons/lobe-icons/huawei-color.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=0 0 24 24。 可选横版 viewBox=0 0 120 24，比例 5.000。",
+      "wide": "assets/icons/lobe-icons/huawei-text.svg"
+    },
+    {
+      "domain": "mi.com",
+      "main": "assets/icons/dashboard-icons/svg/xiaomi-global.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=-200.008 -199.727 512 512。"
+    },
+    {
+      "domain": "163.com",
+      "main": null,
+      "reason": "现有 163.com.png 为带 NEWS 字样的网易新闻产品图标，不能直接认作网易门户经典标志；缺少精确候选。"
+    },
+    {
+      "domain": "tencent.com",
+      "main": "assets/icons/lobe-icons/tencent-color.svg",
+      "reason": "方形腾讯主图标用于普通尺寸，经典蓝色腾讯公司字标仅用于横向尺寸。",
+      "wide": "assets/icons/lobe-icons/tencent-brand-color.svg"
+    },
+    {
+      "domain": "sina.com.cn",
+      "main": "assets/site-icons/sina.com.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "sohu.com",
+      "main": "assets/site-icons/sohu.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "caixin.com",
+      "main": "assets/site-icons/caixin.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 120×120；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "yicai.com",
+      "main": "assets/site-icons/yicai.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "guancha.cn",
+      "main": "assets/site-icons/guancha.cn.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "zaobao.com.sg",
+      "main": "assets/site-icons/zaobao.com.sg.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "y.qq.com",
+      "main": "assets/site-icons/y.qq.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "kugou.com",
+      "main": "assets/site-icons/kugou.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "ximalaya.com",
+      "main": "assets/site-icons/ximalaya.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "xiaoyuzhoufm.com",
+      "main": "assets/site-icons/xiaoyuzhoufm.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "vimeo.com",
+      "main": "assets/icons/simple-icons/icons/vimeo.svg",
+      "reason": "精确品牌 SVG；使用标准单色品牌轮廓；无更合适的本地常规彩色 SVG。 viewBox=0 0 24 24。"
+    },
+    {
+      "domain": "threads.net",
+      "main": "assets/icons/dashboard-icons/svg/threads.svg",
+      "reason": "精确品牌 SVG；优先常规彩色款，排除浅色/深色异色与装饰变体。 viewBox=35.7 0 440.4 512。"
+    },
+    {
+      "domain": "maimai.cn",
+      "main": null,
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。"
+    },
+    {
+      "domain": "suning.com",
+      "main": "assets/site-icons/suning.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 40×40；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "vip.com",
+      "main": "assets/site-icons/vip.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "dangdang.com",
+      "main": "assets/site-icons/dangdang.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 16×16；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "you.163.com",
+      "main": "assets/site-icons/you.163.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 114×114；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "dewu.com",
+      "main": "assets/site-icons/dewu.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 64×64；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "freshippo.com",
+      "main": null,
+      "reason": "三个本地库与现有 site-icons 未找到精确品牌资源；缺图，不借用同公司其他产品。"
+    },
+    {
+      "domain": "codepen.io",
+      "main": "assets/site-icons/codepen.io.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "cnblogs.com",
+      "main": "assets/site-icons/cnblogs.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "iconify.design",
+      "main": "assets/icons/simple-icons/icons/iconify.svg",
+      "reason": "优先选择精确的 Iconify 可缩放矢量；原 favicon 的房屋 i 轮廓与此相符，不据此认定为错误品牌。"
+    },
+    {
+      "domain": "gaoding.com",
+      "main": "assets/site-icons/gaoding.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "chuangkit.com",
+      "main": "assets/site-icons/chuangkit.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "uisdc.com",
+      "main": "assets/site-icons/uisdc.com.jpg",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "lanhuapp.com",
+      "main": "assets/site-icons/lanhuapp.com.ico",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 32×32；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "js.design",
+      "main": "assets/site-icons/js.design.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 128×128；不放大冒充高分辨率。"
+    },
+    {
+      "domain": "youdao.com",
+      "main": "assets/site-icons/youdao.com.png",
+      "reason": "保留现有精确站点 favicon；三个库未发现更合适的精确产品 SVG。实际图像尺寸 48×48；不放大冒充高分辨率。"
+    }
+  ],
+  "exclusions": [
+    {
+      "domain": "huggingface.co",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "vercel.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "netlify.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "cloudflare.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "chat.deepseek.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "chatgpt.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "claude.ai",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "gemini.google.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "copilot.microsoft.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "midjourney.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "perplexity.ai",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "yiyan.baidu.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "doubao.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "pan.baidu.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "alipan.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "chatglm.cn",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "yuanbao.tencent.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "xinghuo.xfyun.cn",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "mistral.ai",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "aliyun.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "reason": "范围外：AI / Hugging Face / 云平台或网盘，由对应审查负责。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/hd-icons-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/tyepcho-wordmark-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wispr-flow-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/claude-ai-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/spotify-wordmark-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/borg-ui-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/claude-ai-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wispr-flow-wordmark-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/owlrelay-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/eleven-labs-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wispr-flow-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/rapid7-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/spotify-wordmark-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wikimedia-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wikimedia-dark.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/wispr-flow-wordmark-light.svg",
+      "reason": "排除：扩展名 .svg 但实际头为 PNG, 无有效 SVG/viewBox。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/qq.svg",
+      "reason": "QQ 企鹅不是 QQ 邮箱、QQ音乐或腾讯视频专用图标。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/github-kawaii.svg",
+      "reason": "装饰变体，即使比例>=1.8也不属于经典横版。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/figma-kawaii.svg",
+      "reason": "装饰变体，不作为经典横版。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/ebay.svg",
+      "reason": "有效 SVG 但没有 viewBox；不满足本次 wide 的 viewBox 比例硬条件。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/pypi-wordmark-light.svg",
+      "reason": "viewBox 比例约1.333，小于1.8，不作为 wide。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/lark.svg",
+      "reason": "Lark 国际产品品牌，不能直接替代中国飞书精确品牌。"
+    },
+    {
+      "path": "assets/icons/dashboard-icons/svg/tiktok.svg",
+      "reason": "TikTok 不直接替代抖音，保留抖音现有 favicon。"
+    },
+    {
+      "path": "assets/icons/lobe-icons/alibaba-brand-color.svg",
+      "reason": "阿里巴巴集团不直接替代1688。"
+    },
+    {
+      "path": "assets/site-icons/apple.com-text.svg",
+      "reason": "比例通过不代表必需采用：Apple 优先经典苹果图形，不额外推荐文字款。"
+    },
+    {
+      "path": "assets/icons/lobe-icons/microsoft-color.svg",
+      "reason": "title 误标 Azure，图形虽为微软四色格，main 优先采用无此元数据歧义的 Dashboard microsoft.svg。"
+    }
+  ]
+}

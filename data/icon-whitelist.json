@@ -1,0 +1,1536 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "scope": "Existing site market; no automatic inclusion from source libraries",
+    "mainPerProduct": 1,
+    "widePerProduct": 1,
+    "wideMinAspect": 1.8,
+    "preferred": "True vector, classic official colors, exact product identity",
+    "excludedExamples": [
+      "7-zip.org"
+    ]
+  },
+  "sites": [
+    {
+      "domain": "mail.google.com",
+      "name": "Gmail",
+      "cat": "common",
+      "brandKeys": [
+        "gmail"
+      ],
+      "fallback": "mail.google.com.svg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "mail.qq.com",
+      "name": "QQ邮箱",
+      "cat": "common",
+      "brandKeys": [
+        "qq"
+      ],
+      "fallback": "mail.qq.com.svg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "mail.163.com",
+      "name": "网易163邮箱",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "google.com",
+      "name": "Google",
+      "cat": "common",
+      "brandKeys": [
+        "google"
+      ],
+      "fallback": "google.com.svg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "bing.com",
+      "name": "Bing",
+      "cat": "common",
+      "brandKeys": [
+        "bing"
+      ],
+      "fallback": "bing.com.svg",
+      "fallbackWide": "bing.com-text.svg"
+    },
+    {
+      "domain": "baidu.com",
+      "name": "百度",
+      "cat": "common",
+      "brandKeys": [
+        "baidu"
+      ],
+      "fallback": "baidu.com.svg",
+      "fallbackWide": "baidu.com-text.svg"
+    },
+    {
+      "domain": "sogou.com",
+      "name": "搜狗",
+      "cat": "common",
+      "brandKeys": [
+        "sogou"
+      ],
+      "fallback": "sogou.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "duckduckgo.com",
+      "name": "DuckDuckGo",
+      "cat": "common",
+      "brandKeys": [
+        "duckduckgo"
+      ],
+      "fallback": "duckduckgo.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "quark.cn",
+      "name": "夸克",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "quark.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "bilibili.com",
+      "name": "哔哩哔哩",
+      "cat": "media",
+      "brandKeys": [
+        "bilibili"
+      ],
+      "fallback": "bilibili.com.svg",
+      "fallbackWide": "bilibili.com-text.svg"
+    },
+    {
+      "domain": "iqiyi.com",
+      "name": "爱奇艺",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "iqiyi.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "v.qq.com",
+      "name": "腾讯视频",
+      "cat": "media",
+      "brandKeys": [
+        "v"
+      ],
+      "fallback": "v.qq.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "youku.com",
+      "name": "优酷",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "youku.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "mgtv.com",
+      "name": "芒果TV",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "mgtv.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "ixigua.com",
+      "name": "西瓜视频",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "ixigua.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "youtube.com",
+      "name": "YouTube",
+      "cat": "media",
+      "brandKeys": [
+        "youtube"
+      ],
+      "fallback": "youtube.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "netflix.com",
+      "name": "Netflix",
+      "cat": "media",
+      "brandKeys": [
+        "netflix"
+      ],
+      "fallback": "netflix.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "twitch.tv",
+      "name": "Twitch",
+      "cat": "media",
+      "brandKeys": [
+        "twitch"
+      ],
+      "fallback": "twitch.tv.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "douyin.com",
+      "name": "抖音",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "douyin.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "kuaishou.com",
+      "name": "快手",
+      "cat": "media",
+      "brandKeys": [
+        "kuaishou"
+      ],
+      "fallback": "kuaishou.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "miguvideo.com",
+      "name": "咪咕视频",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "yangshipin.cn",
+      "name": "央视频",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "yangshipin.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "weibo.com",
+      "name": "微博",
+      "cat": "social",
+      "brandKeys": [
+        "weibo"
+      ],
+      "fallback": "weibo.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "zhihu.com",
+      "name": "知乎",
+      "cat": "social",
+      "brandKeys": [
+        "zhihu"
+      ],
+      "fallback": "zhihu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "douban.com",
+      "name": "豆瓣",
+      "cat": "social",
+      "brandKeys": [
+        "douban"
+      ],
+      "fallback": "douban.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "xiaohongshu.com",
+      "name": "小红书",
+      "cat": "social",
+      "brandKeys": [
+        "xiaohongshu"
+      ],
+      "fallback": "xiaohongshu.com.ico",
+      "fallbackWide": null
+    },
+    {
+      "domain": "weixin.qq.com",
+      "name": "微信",
+      "cat": "social",
+      "brandKeys": [
+        "wechat"
+      ],
+      "fallback": "weixin.qq.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "x.com",
+      "name": "X",
+      "cat": "social",
+      "brandKeys": [
+        "x",
+        "twitter"
+      ],
+      "fallback": "x.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "facebook.com",
+      "name": "Facebook",
+      "cat": "social",
+      "brandKeys": [
+        "facebook",
+        "meta"
+      ],
+      "fallback": "facebook.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "instagram.com",
+      "name": "Instagram",
+      "cat": "social",
+      "brandKeys": [
+        "instagram"
+      ],
+      "fallback": "instagram.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "reddit.com",
+      "name": "Reddit",
+      "cat": "social",
+      "brandKeys": [
+        "reddit"
+      ],
+      "fallback": "reddit.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "discord.com",
+      "name": "Discord",
+      "cat": "social",
+      "brandKeys": [
+        "discord"
+      ],
+      "fallback": "discord.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "telegram.org",
+      "name": "Telegram",
+      "cat": "social",
+      "brandKeys": [
+        "telegram"
+      ],
+      "fallback": "telegram.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "linkedin.com",
+      "name": "LinkedIn",
+      "cat": "social",
+      "brandKeys": [
+        "linkedin"
+      ],
+      "fallback": "linkedin.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "pinterest.com",
+      "name": "Pinterest",
+      "cat": "social",
+      "brandKeys": [
+        "pinterest"
+      ],
+      "fallback": "pinterest.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "tieba.baidu.com",
+      "name": "百度贴吧",
+      "cat": "social",
+      "brandKeys": [],
+      "fallback": "tieba.baidu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "thepaper.cn",
+      "name": "澎湃新闻",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "thepaper.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "news.cn",
+      "name": "新华网",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "news.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "people.com.cn",
+      "name": "人民网",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "cctv.com",
+      "name": "央视网",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "cctv.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "36kr.com",
+      "name": "36氪",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "sspai.com",
+      "name": "少数派",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "sspai.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "huxiu.com",
+      "name": "虎嗅",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "huxiu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "jiemian.com",
+      "name": "界面新闻",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "jiemian.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "bbc.com",
+      "name": "BBC",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "bbc.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "nytimes.com",
+      "name": "纽约时报",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "nytimes.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "taobao.com",
+      "name": "淘宝",
+      "cat": "shopping",
+      "brandKeys": [
+        "taobao"
+      ],
+      "fallback": "taobao.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "tmall.com",
+      "name": "天猫",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "tmall.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "jd.com",
+      "name": "京东",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "jd.com.ico",
+      "fallbackWide": null
+    },
+    {
+      "domain": "pinduoduo.com",
+      "name": "拼多多",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "pinduoduo.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "amazon.com",
+      "name": "Amazon",
+      "cat": "shopping",
+      "brandKeys": [
+        "amazon"
+      ],
+      "fallback": "amazon.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "ebay.com",
+      "name": "eBay",
+      "cat": "shopping",
+      "brandKeys": [
+        "ebay"
+      ],
+      "fallback": "ebay.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "goofish.com",
+      "name": "闲鱼",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "goofish.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "1688.com",
+      "name": "1688",
+      "cat": "shopping",
+      "brandKeys": [
+        "alibaba"
+      ],
+      "fallback": "1688.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "github.com",
+      "name": "GitHub",
+      "cat": "dev",
+      "brandKeys": [
+        "github"
+      ],
+      "fallback": "github.com.svg",
+      "fallbackWide": "github.com-text.svg"
+    },
+    {
+      "domain": "gitlab.com",
+      "name": "GitLab",
+      "cat": "dev",
+      "brandKeys": [
+        "gitlab"
+      ],
+      "fallback": "gitlab.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "gitee.com",
+      "name": "Gitee",
+      "cat": "dev",
+      "brandKeys": [
+        "gitee"
+      ],
+      "fallback": "gitee.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "stackoverflow.com",
+      "name": "Stack Overflow",
+      "cat": "dev",
+      "brandKeys": [
+        "stackoverflow"
+      ],
+      "fallback": "stackoverflow.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "developer.mozilla.org",
+      "name": "MDN",
+      "cat": "dev",
+      "brandKeys": [
+        "mozilla"
+      ],
+      "fallback": "developer.mozilla.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "npmjs.com",
+      "name": "npm",
+      "cat": "dev",
+      "brandKeys": [
+        "npm"
+      ],
+      "fallback": "npmjs.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "pypi.org",
+      "name": "PyPI",
+      "cat": "dev",
+      "brandKeys": [
+        "pypi",
+        "python"
+      ],
+      "fallback": "pypi.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "hub.docker.com",
+      "name": "Docker Hub",
+      "cat": "dev",
+      "brandKeys": [
+        "docker"
+      ],
+      "fallback": "hub.docker.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "huggingface.co",
+      "name": "Hugging Face",
+      "cat": "dev",
+      "brandKeys": [
+        "huggingface"
+      ],
+      "fallback": "huggingface.co.svg",
+      "fallbackWide": "huggingface.co-text.svg"
+    },
+    {
+      "domain": "vercel.com",
+      "name": "Vercel",
+      "cat": "dev",
+      "brandKeys": [
+        "vercel"
+      ],
+      "fallback": "vercel.com.svg",
+      "fallbackWide": "vercel.com-text.svg"
+    },
+    {
+      "domain": "netlify.com",
+      "name": "Netlify",
+      "cat": "dev",
+      "brandKeys": [
+        "netlify"
+      ],
+      "fallback": "netlify.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "cloudflare.com",
+      "name": "Cloudflare",
+      "cat": "dev",
+      "brandKeys": [
+        "cloudflare"
+      ],
+      "fallback": "cloudflare.com.svg",
+      "fallbackWide": "cloudflare.com-text.svg"
+    },
+    {
+      "domain": "juejin.cn",
+      "name": "掘金",
+      "cat": "dev",
+      "brandKeys": [
+        "juejin"
+      ],
+      "fallback": "juejin.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "csdn.net",
+      "name": "CSDN",
+      "cat": "dev",
+      "brandKeys": [
+        "csdn"
+      ],
+      "fallback": "csdn.net.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "v2ex.com",
+      "name": "V2EX",
+      "cat": "dev",
+      "brandKeys": [
+        "v2ex"
+      ],
+      "fallback": "v2ex.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "news.ycombinator.com",
+      "name": "Hacker News",
+      "cat": "dev",
+      "brandKeys": [
+        "hackernews"
+      ],
+      "fallback": "news.ycombinator.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "leetcode.com",
+      "name": "LeetCode",
+      "cat": "dev",
+      "brandKeys": [
+        "leetcode"
+      ],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "codesandbox.io",
+      "name": "CodeSandbox",
+      "cat": "dev",
+      "brandKeys": [
+        "codesandbox"
+      ],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "figma.com",
+      "name": "Figma",
+      "cat": "design",
+      "brandKeys": [
+        "figma"
+      ],
+      "fallback": "figma.com.svg",
+      "fallbackWide": "figma.com-text.svg"
+    },
+    {
+      "domain": "dribbble.com",
+      "name": "Dribbble",
+      "cat": "design",
+      "brandKeys": [
+        "dribbble"
+      ],
+      "fallback": "dribbble.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "behance.net",
+      "name": "Behance",
+      "cat": "design",
+      "brandKeys": [
+        "behance"
+      ],
+      "fallback": "behance.net.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "canva.com",
+      "name": "Canva",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "canva.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "zcool.com.cn",
+      "name": "站酷",
+      "cat": "design",
+      "brandKeys": [
+        "zcool"
+      ],
+      "fallback": "zcool.com.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "huaban.com",
+      "name": "花瓣",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "huaban.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "unsplash.com",
+      "name": "Unsplash",
+      "cat": "design",
+      "brandKeys": [
+        "unsplash"
+      ],
+      "fallback": "unsplash.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "pexels.com",
+      "name": "Pexels",
+      "cat": "design",
+      "brandKeys": [
+        "pexels"
+      ],
+      "fallback": "pexels.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "notion.so",
+      "name": "Notion",
+      "cat": "study",
+      "brandKeys": [
+        "notion"
+      ],
+      "fallback": "notion.so.svg",
+      "fallbackWide": "notion.so-text.svg"
+    },
+    {
+      "domain": "feishu.cn",
+      "name": "飞书",
+      "cat": "study",
+      "brandKeys": [
+        "lark"
+      ],
+      "fallback": "feishu.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "dingtalk.com",
+      "name": "钉钉",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "dingtalk.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "work.weixin.qq.com",
+      "name": "企业微信",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "work.weixin.qq.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "docs.qq.com",
+      "name": "腾讯文档",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "docs.qq.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "shimo.im",
+      "name": "石墨文档",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "shimo.im.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "yuque.com",
+      "name": "语雀",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "yuque.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "trello.com",
+      "name": "Trello",
+      "cat": "study",
+      "brandKeys": [
+        "trello"
+      ],
+      "fallback": "trello.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "slack.com",
+      "name": "Slack",
+      "cat": "study",
+      "brandKeys": [
+        "slack"
+      ],
+      "fallback": "slack.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "zoom.us",
+      "name": "Zoom",
+      "cat": "tools",
+      "brandKeys": [
+        "zoom"
+      ],
+      "fallback": "zoom.us.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "wps.cn",
+      "name": "WPS",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "wps.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "chat.deepseek.com",
+      "name": "DeepSeek",
+      "cat": "ai",
+      "brandKeys": [
+        "deepseek"
+      ],
+      "fallback": "chat.deepseek.com.svg",
+      "fallbackWide": "chat.deepseek.com-text.svg"
+    },
+    {
+      "domain": "chatgpt.com",
+      "name": "ChatGPT",
+      "cat": "ai",
+      "brandKeys": [
+        "openai",
+        "chatgpt"
+      ],
+      "fallback": "chatgpt.com.svg",
+      "fallbackWide": "chatgpt.com-text.svg"
+    },
+    {
+      "domain": "claude.ai",
+      "name": "Claude",
+      "cat": "ai",
+      "brandKeys": [
+        "claude",
+        "anthropic"
+      ],
+      "fallback": "claude.ai.svg",
+      "fallbackWide": "claude.ai-text.svg"
+    },
+    {
+      "domain": "gemini.google.com",
+      "name": "Gemini",
+      "cat": "ai",
+      "brandKeys": [
+        "gemini"
+      ],
+      "fallback": "gemini.google.com.svg",
+      "fallbackWide": "gemini.google.com-text.svg"
+    },
+    {
+      "domain": "copilot.microsoft.com",
+      "name": "Microsoft Copilot",
+      "cat": "ai",
+      "brandKeys": [
+        "copilot"
+      ],
+      "fallback": "copilot.microsoft.com.svg",
+      "fallbackWide": "copilot.microsoft.com-text.svg"
+    },
+    {
+      "domain": "midjourney.com",
+      "name": "Midjourney",
+      "cat": "ai",
+      "brandKeys": [
+        "midjourney"
+      ],
+      "fallback": "midjourney.com.svg",
+      "fallbackWide": "midjourney.com-text.svg"
+    },
+    {
+      "domain": "perplexity.ai",
+      "name": "Perplexity",
+      "cat": "ai",
+      "brandKeys": [
+        "perplexity"
+      ],
+      "fallback": "perplexity.ai.svg",
+      "fallbackWide": "perplexity.ai-text.svg"
+    },
+    {
+      "domain": "tongyi.aliyun.com",
+      "name": "通义千问",
+      "cat": "ai",
+      "brandKeys": [
+        "qwen"
+      ],
+      "fallback": "tongyi.aliyun.com.svg",
+      "fallbackWide": "tongyi.aliyun.com-text.svg"
+    },
+    {
+      "domain": "yiyan.baidu.com",
+      "name": "文心一言",
+      "cat": "ai",
+      "brandKeys": [
+        "wenxin"
+      ],
+      "fallback": "yiyan.baidu.com.svg",
+      "fallbackWide": "yiyan.baidu.com-text.svg"
+    },
+    {
+      "domain": "kimi.moonshot.cn",
+      "name": "Kimi",
+      "cat": "ai",
+      "brandKeys": [
+        "kimi",
+        "moonshot"
+      ],
+      "fallback": "kimi.moonshot.cn.svg",
+      "fallbackWide": "kimi.moonshot.cn-text.svg"
+    },
+    {
+      "domain": "doubao.com",
+      "name": "豆包",
+      "cat": "ai",
+      "brandKeys": [
+        "doubao"
+      ],
+      "fallback": "doubao.com.svg",
+      "fallbackWide": "doubao.com-text.svg"
+    },
+    {
+      "domain": "icourse163.org",
+      "name": "中国大学MOOC",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "icourse163.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "open.163.com",
+      "name": "网易公开课",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "open.163.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "coursera.org",
+      "name": "Coursera",
+      "cat": "study",
+      "brandKeys": [
+        "coursera"
+      ],
+      "fallback": "coursera.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "edx.org",
+      "name": "edX",
+      "cat": "study",
+      "brandKeys": [
+        "edx"
+      ],
+      "fallback": "edx.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "khanacademy.org",
+      "name": "Khan Academy",
+      "cat": "study",
+      "brandKeys": [
+        "khanacademy"
+      ],
+      "fallback": "khanacademy.org.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "xuexi.cn",
+      "name": "学习强国",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "xuexi.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "dedao.cn",
+      "name": "得到",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "dedao.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "xuetangx.com",
+      "name": "学堂在线",
+      "cat": "study",
+      "brandKeys": [],
+      "fallback": "xuetangx.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "duolingo.com",
+      "name": "Duolingo",
+      "cat": "study",
+      "brandKeys": [
+        "duolingo"
+      ],
+      "fallback": "duolingo.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "quizlet.com",
+      "name": "Quizlet",
+      "cat": "study",
+      "brandKeys": [
+        "quizlet"
+      ],
+      "fallback": "quizlet.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "pan.baidu.com",
+      "name": "百度网盘",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "pan.baidu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "alipan.com",
+      "name": "阿里云盘",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "alipan.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "amap.com",
+      "name": "高德地图",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "amap.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "map.baidu.com",
+      "name": "百度地图",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "map.baidu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "12306.cn",
+      "name": "12306",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "12306.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "ctrip.com",
+      "name": "携程",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "ctrip.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "meituan.com",
+      "name": "美团",
+      "cat": "tools",
+      "brandKeys": [
+        "meituan"
+      ],
+      "fallback": "meituan.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "dianping.com",
+      "name": "大众点评",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "dianping.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "music.163.com",
+      "name": "网易云音乐",
+      "cat": "tools",
+      "brandKeys": [
+        "neteasecloudmusic"
+      ],
+      "fallback": "music.163.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "spotify.com",
+      "name": "Spotify",
+      "cat": "tools",
+      "brandKeys": [
+        "spotify"
+      ],
+      "fallback": "spotify.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "movie.douban.com",
+      "name": "豆瓣电影",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "movie.douban.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "maoyan.com",
+      "name": "猫眼",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "maoyan.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "so.com",
+      "name": "360搜索",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "so.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "sm.cn",
+      "name": "神马搜索",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "sm.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "microsoft.com",
+      "name": "微软",
+      "cat": "common",
+      "brandKeys": [
+        "microsoft"
+      ],
+      "fallback": "microsoft.com.svg",
+      "fallbackWide": "microsoft.com-text.svg"
+    },
+    {
+      "domain": "apple.com",
+      "name": "Apple",
+      "cat": "common",
+      "brandKeys": [
+        "apple"
+      ],
+      "fallback": "apple.com.svg",
+      "fallbackWide": "apple.com-text.svg"
+    },
+    {
+      "domain": "huawei.com",
+      "name": "华为",
+      "cat": "common",
+      "brandKeys": [
+        "huawei"
+      ],
+      "fallback": "huawei.com.svg",
+      "fallbackWide": "huawei.com-text.svg"
+    },
+    {
+      "domain": "mi.com",
+      "name": "小米",
+      "cat": "common",
+      "brandKeys": [
+        "xiaomi"
+      ],
+      "fallback": "mi.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "163.com",
+      "name": "网易",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "163.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "tencent.com",
+      "name": "腾讯",
+      "cat": "common",
+      "brandKeys": [
+        "tencent"
+      ],
+      "fallback": "tencent.com.svg",
+      "fallbackWide": "tencent.com-text.svg"
+    },
+    {
+      "domain": "sina.com.cn",
+      "name": "新浪",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "sina.com.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "sohu.com",
+      "name": "搜狐",
+      "cat": "common",
+      "brandKeys": [],
+      "fallback": "sohu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "caixin.com",
+      "name": "财新",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "caixin.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "yicai.com",
+      "name": "第一财经",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "yicai.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "guancha.cn",
+      "name": "观察者网",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "guancha.cn.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "zaobao.com.sg",
+      "name": "联合早报",
+      "cat": "news",
+      "brandKeys": [],
+      "fallback": "zaobao.com.sg.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "y.qq.com",
+      "name": "QQ音乐",
+      "cat": "media",
+      "brandKeys": [
+        "qq"
+      ],
+      "fallback": "y.qq.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "kugou.com",
+      "name": "酷狗音乐",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "kugou.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "ximalaya.com",
+      "name": "喜马拉雅",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "ximalaya.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "xiaoyuzhoufm.com",
+      "name": "小宇宙",
+      "cat": "media",
+      "brandKeys": [],
+      "fallback": "xiaoyuzhoufm.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "vimeo.com",
+      "name": "Vimeo",
+      "cat": "media",
+      "brandKeys": [
+        "vimeo"
+      ],
+      "fallback": "vimeo.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "threads.net",
+      "name": "Threads",
+      "cat": "social",
+      "brandKeys": [
+        "threads"
+      ],
+      "fallback": "threads.net.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "maimai.cn",
+      "name": "脉脉",
+      "cat": "social",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "suning.com",
+      "name": "苏宁",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "suning.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "vip.com",
+      "name": "唯品会",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "vip.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "dangdang.com",
+      "name": "当当",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "dangdang.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "you.163.com",
+      "name": "网易严选",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "you.163.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "dewu.com",
+      "name": "得物",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": "dewu.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "freshippo.com",
+      "name": "盒马",
+      "cat": "shopping",
+      "brandKeys": [],
+      "fallback": null,
+      "fallbackWide": null
+    },
+    {
+      "domain": "codepen.io",
+      "name": "CodePen",
+      "cat": "dev",
+      "brandKeys": [],
+      "fallback": "codepen.io.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "cnblogs.com",
+      "name": "博客园",
+      "cat": "dev",
+      "brandKeys": [],
+      "fallback": "cnblogs.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "iconify.design",
+      "name": "Iconify",
+      "cat": "design",
+      "brandKeys": [
+        "iconify"
+      ],
+      "fallback": "iconify.design.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "gaoding.com",
+      "name": "稿定设计",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "gaoding.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "chuangkit.com",
+      "name": "创客贴",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "chuangkit.com.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "uisdc.com",
+      "name": "优设",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "uisdc.com.jpg",
+      "fallbackWide": null
+    },
+    {
+      "domain": "lanhuapp.com",
+      "name": "蓝湖",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "lanhuapp.com.ico",
+      "fallbackWide": null
+    },
+    {
+      "domain": "js.design",
+      "name": "即时设计",
+      "cat": "design",
+      "brandKeys": [],
+      "fallback": "js.design.png",
+      "fallbackWide": null
+    },
+    {
+      "domain": "chatglm.cn",
+      "name": "智谱清言",
+      "cat": "ai",
+      "brandKeys": [
+        "chatglm",
+        "zhipu"
+      ],
+      "fallback": "chatglm.cn.svg",
+      "fallbackWide": "chatglm.cn-text.svg"
+    },
+    {
+      "domain": "yuanbao.tencent.com",
+      "name": "腾讯元宝",
+      "cat": "ai",
+      "brandKeys": [
+        "yuanbao"
+      ],
+      "fallback": "yuanbao.tencent.com.svg",
+      "fallbackWide": "yuanbao.tencent.com-text.svg"
+    },
+    {
+      "domain": "xinghuo.xfyun.cn",
+      "name": "讯飞星火",
+      "cat": "ai",
+      "brandKeys": [
+        "spark"
+      ],
+      "fallback": "xinghuo.xfyun.cn.svg",
+      "fallbackWide": "xinghuo.xfyun.cn-text.svg"
+    },
+    {
+      "domain": "mistral.ai",
+      "name": "Mistral",
+      "cat": "ai",
+      "brandKeys": [
+        "mistral"
+      ],
+      "fallback": "mistral.ai.svg",
+      "fallbackWide": "mistral.ai-text.svg"
+    },
+    {
+      "domain": "aliyun.com",
+      "name": "阿里云",
+      "cat": "tools",
+      "brandKeys": [
+        "aliyun"
+      ],
+      "fallback": "aliyun.com.svg",
+      "fallbackWide": "aliyun.com-text.svg"
+    },
+    {
+      "domain": "cloud.tencent.com",
+      "name": "腾讯云",
+      "cat": "tools",
+      "brandKeys": [
+        "tencentcloud"
+      ],
+      "fallback": "cloud.tencent.com.svg",
+      "fallbackWide": "cloud.tencent.com-text.svg"
+    },
+    {
+      "domain": "youdao.com",
+      "name": "有道翻译",
+      "cat": "tools",
+      "brandKeys": [],
+      "fallback": "youdao.com.png",
+      "fallbackWide": null
+    }
+  ]
+}

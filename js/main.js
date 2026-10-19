@@ -1,3 +1,4 @@
+import { resolveIconSelection } from './ui/iconSelection.js';
 import { LocalDataStore, loadPrefs, savePrefs } from './storage/LocalDataStore.js';
 import { assetStore } from './storage/idb.js';
 import { LocalWallpaperProvider, renderWallpaper, compressImage } from './wallpaper/Local.js';
@@ -6,7 +7,7 @@ import { imageSearchAdapters, imageFromDrop, copyAndOpenImage } from './search/i
 import { renderGroups, renderGrid, pruneGridCache } from './grid/render.js';
 import { loadClassifiedIcon } from './grid/iconKind.js';
 import { localIconURL } from './grid/siteIcon.js';
-import { bindGridLayout } from './ui/groupNavigation.js';
+import { bindGridLayout, bindGroupWheel } from './ui/groupNavigation.js';
 import { bindDragSort, bindGroupDragSort, moveSite, moveGroup } from './grid/dragSort.js';
 import { bindContextMenu } from './ui/contextMenu.js';
 import { $, toast, report, bindDialogClose, editDialog } from './ui/dialogs.js';
@@ -144,7 +145,7 @@ async function addSite(id, prefill = {}, editor = editDialog) {
   const fields = [
     { name: 'title', label: '网站名称', value: site?.title ?? prefill.title ?? '', required: true, maxLength: 120 },
     { name: 'url', label: '网址（HTTP / HTTPS）', value: site?.url ?? prefill.url ?? 'https://', required: true },
-    { name: 'text', label: '文字图标（1 至 3 个字符）', value: site?.text ?? '', maxLength: 6 },
+    { name: 'text', label: '文字图标（不限长度，非横版最多显示3个字符）', value: site?.text ?? '' },
     { name: 'size', label: '尺寸', value: site?.size ?? '1x1', options: [['1x1', '1 × 1'], ['2x1', '2 × 1 横向'], ['1x2', '1 × 2 纵向'], ['2x2', '2 × 2']] },
     { name: 'icon', label: '上传自定义图标（可选）', type: 'file', accept: 'image/*' },
   ];
@@ -156,7 +157,6 @@ async function addSite(id, prefill = {}, editor = editDialog) {
     const rawUrl = values.get('url').trim();
     safeURL(/^[a-z][a-z0-9+.-]*:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
     const text = values.get('text').trim() || Array.from(title).slice(0, 2).join('');
-    if (Array.from(text).length > 3) throw new Error('文字图标最多 3 个字符');
   };
   const values = await editor(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => {
     const originalHost = site ? new URL(site.url).hostname : '';
@@ -167,19 +167,14 @@ async function addSite(id, prefill = {}, editor = editDialog) {
   const rawUrl = values.get('url').trim();
   const url = safeURL(/^[a-z][a-z0-9+.-]*:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
   const text = values.get('text').trim() || Array.from(title).slice(0, 2).join('');
-  if (Array.from(text).length > 3) throw new Error('文字图标最多 3 个字符');
-  const choice = values.get('iconChoice') || (site?.iconId ? 'custom' : site?.useText ? 'text' : site?.iconStyle || 'auto');
-  const nextHost = new URL(url).hostname;
-  const localFile = values.get('iconLocal') || '';
-  const localDomain = values.get('iconLocalDomain') || '';
-  const localMatches = localFile && localDomain && (nextHost === localDomain || nextHost.endsWith('.' + localDomain));
-  const next = { id: site?.id ?? crypto.randomUUID(), title, url, text, size: values.get('size') };
-  if (localMatches) { next.iconFile = localFile; const localWide = values.get('iconWide') || ''; if (localWide) next.iconWide = localWide; }
-  const file = values.get('icon'); let uploadedBlob;
-  if (file?.size) { next.iconId = `icon:${crypto.randomUUID()}`; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; uploadedBlob = await compressImage(file, 256, { preserveAlpha: true }); await assetStore.put(next.iconId, uploadedBlob); }
-  else if (choice !== 'text' && !localMatches && site?.iconId && values.get('removeIcon') !== 'remove') { next.iconId = site.iconId; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; else if (choice === 'custom' && site.iconStyle) next.iconStyle = site.iconStyle; }
-  else if (choice === 'text') next.useText = true;
-  else { next.useText = false; if (choice === 'color' || choice === 'glyph') next.iconStyle = choice; }
+  const selection = resolveIconSelection(values, site, url);
+  const next = { id: site?.id ?? crypto.randomUUID(), title, url, text, size: values.get('size'), ...selection.properties };
+  let uploadedBlob;
+  if (selection.upload) {
+    next.iconId = `icon:${crypto.randomUUID()}`;
+    uploadedBlob = await compressImage(selection.upload, 256, { preserveAlpha: true });
+    await assetStore.put(next.iconId, uploadedBlob);
+  }
   // Classify newly acquired artwork before saving; later renders read its kind/v marker.
   if (!next.useText) {
     const source = next.iconId || localIconURL(next.iconFile);
@@ -226,7 +221,7 @@ function switchMinimal() {
   const before = content.getBoundingClientRect();
   // Capture the chrome before the layout swap so an entering fade can keep it
   // visually in place after the minimal layout removes it from flow.
-  const chrome = [document.querySelector('.topbar'), document.querySelector('.collection')]
+  const chrome = [document.querySelector('.collection')]
     .filter(Boolean)
     .map(element => ({ element, rect: element.getBoundingClientRect(), display: getComputedStyle(element).display, style: element.getAttribute('style') }));
   const restore = () => {
@@ -371,7 +366,7 @@ async function start() {
       next.focus(); next.click();
     });
   });
-  on('#export-data', 'click', async () => { const backup = await buildBackup(data, prefs, assetStore, $('#include-assets').checked); download(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }), `easy-tab-${new Date().toISOString().slice(0, 10)}.json`); });
+  on('#export-data', 'click', async () => { const backup = await buildBackup(data, prefs, assetStore, $('#include-assets').checked); download(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }), `auretab-${new Date().toISOString().slice(0, 10)}.json`); });
   on('#import-open', 'click', () => $('#import-file').click());
   on('#import-file', 'change', async event => {
     const file = event.target.files[0]; event.target.value = ''; if (!file) return; if (file.size > 120 * 1024 * 1024) throw new Error('备份文件不能超过 120MB');
@@ -395,6 +390,18 @@ async function start() {
     commitData(draft => moveGroup(draft, groupId, before)).catch(report);
   });
   bindGridLayout($('.collection'));
+  bindGroupWheel(document, {
+    viewport: $('.grid-viewport'),
+    enabled: target => !prefs.minimal && !document.body.classList.contains('settings-open')
+      && !document.querySelector('dialog[open]') && $('#engine-menu').hidden && $('#context-menu').hidden
+      && !target?.closest?.('input,textarea,select,[contenteditable],dialog,#settings-panel,#sidebar,#engine-menu,#context-menu'),
+    current: () => active,
+    move: direction => {
+      const index = data.groups.findIndex(group => group.id === active);
+      const next = data.groups[index + direction];
+      if (next) selectGroup(next.id, direction);
+    }
+  });
   // Global group shortcut: Up/Down anywhere except while typing or in another surface.
   document.addEventListener('keydown', event => {
     if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
@@ -462,7 +469,7 @@ async function start() {
   on('#fallback-download', 'click', () => {
     if (!fallbackBlob) return;
     const ext = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/gif': 'gif' }[fallbackBlob.type] || 'img';
-    download(fallbackBlob, `easy-tab-search-image.${ext}`);
+    download(fallbackBlob, `auretab-search-image.${ext}`);
   });
   store.onExternalChange(next => run(async () => {
     // Our own write fires the same event; skip the redundant full render.

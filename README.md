@@ -1,6 +1,8 @@
-# Easy Tab · 极简新标签页
+# AureTab · 简约标签页
 
-按《极简新标签页 技术规格说明书 v2》实现的 Chrome Manifest V3 首版，原生 HTML / CSS / ES Modules，无运行时依赖、无构建步骤。
+正式名称为 **AureTab · 简约标签页**，英文品牌名为 **AureTab**。作者：**KL**；[GitHub 仓库](https://github.com/KnightLightning3/AureTab)，当前发布版本 **v0.1**。名称呼应黄金分割与和谐比例，强调简约、有序的起始页体验。
+
+按《AureTab · 简约标签页 技术规格说明书 v2》实现的 Chrome Manifest V3 首版，原生 HTML / CSS / ES Modules，无运行时依赖、无构建步骤。
 
 ## 安装
 
@@ -24,7 +26,7 @@
 - 自定义右键菜单与边缘防溢出；输入框保留原生菜单。
 - 本地壁纸按原图存入 IndexedDB，不做缩放或重编码；设置面板建议选择小于 20MB 的图片。先呈现默认背景再淡入大图。
 - 固定模糊、遮罩、圆角、两种版心预设、五套可点选全局色彩主题（暗夜极光 / 纯粹极简白 / 极简玻璃白 / 深邃蓝 / 温润米咖）；窄窗分组抽屉。
-- 极简模式只淡出顶栏与站点区，搜索内容保持原尺寸平滑移到视口中心；分组标签长按约 300ms 后可拖动排序；全屏 ↑ / ↓ 切换分组，输入搜索框或打开设置 / 菜单 / 弹窗时不生效。
+- 极简模式淡出站点区，右上角极简与设置按钮保持可用，搜索内容保持原尺寸平滑移到视口中心；分组标签长按约 300ms 后可拖动排序；全屏 ↑ / ↓ 切换分组，输入搜索框或打开设置 / 菜单 / 弹窗时不生效。
 - JSON 导出可选内嵌图片，导入先校验再覆盖或合并；合并重新分配 ID，保留当前设置和壁纸。
 - DataStore、WallpaperProvider 接口，BingWallpaperProvider 空壳；同步 / 每日壁纸选项禁用且可见。
 
@@ -34,9 +36,9 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 100ms 骨架与网格可用是性能目标，尚未完成真实 Chrome 新标签环境的性能验收。搜索框会调用 `focus()`，地址栏是否交出焦点由 Chrome 决定。
 
-内置站点清单当前 162 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。别名必须唯一；当前已移除 `tb`、`db`、`so`、`dd` 等歧义短别名。选择器图标来自随包发布的本地文件，发布包中 155 个站点有图标（7 个缺图站点显示名称首字）；其中 30 个品牌改用 LobeHub SVG（已入库），其余 favicon PNG/JPG 仍单独打包、未纳入 Git。
+内置站点清单当前 166 条、10 个分类，域名来自人工整理，尚未逐一联网核验。清单随扩展版本发布，不做自动联网更新；增删前需人工核对域名、分类、别名和本地图标文件，详细规则见 docs/SITES_LIST.md。别名必须唯一；当前已移除 `tb`、`db`、`so`、`dd` 等歧义短别名。选择器图标来自随包发布的精选本地文件：149 个站点有合格主图，32 个有横版，17 个暂用文字占位。图标与许可资料统一随插件封装，不依赖被 Git 忽略的原始资源库。
 
-未替换的本地图标取自各站点公开的 favicon；少数站点只提供 16 / 32px 源图，放大到选择器尺寸后可能偏软。需要更高清的版本时，应在发布前替换 `assets/site-icons/` 中对应文件，而不是恢复运行时抓取。30 个品牌使用 `assets/icons/lobe-icons/` 的矢量图标，暗色主题下单色标识会自动反转为浅色。
+选图优先精确产品、经典色与清晰矢量；现有彩色 favicon 仍在适合时保留。低于渲染器 32px 要求的原图不放大冒充高清。单色图标按主题或自定义背景调整对比度。详细来源、待补清单和筛选工具见 docs/ICON_CURATION.md。
 
 ## 第三方图标许可
 
@@ -44,31 +46,29 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 界面使用 `favorite`、`stadia_controller`、`home`、`code_xml` 和 `shopping_cart_checkout`；目录另含 `design_services`、`diversity_3`、`smart_display` 三个预留图标。这些图标的许可独立于项目自身代码，不适用于其他目录中的站点 Logo 或 favicon。再分发时须遵守上游许可证，保留适用的版权及许可声明；若修改图标文件，应注明修改。
 
-`assets/icons/lobe-icons/` 来自 [LobeHub Icons](https://github.com/lobehub/lobe-icons) 的 npm 包 `@lobehub/icons-static-svg` 1.95.1，采用 MIT 许可；来源、版本与完整性信息见该目录的 `SOURCE.json`，许可见 `LICENSE`。`assets/site-icons/` 中 30 个受替换品牌的 SVG 由这些文件复制而来。品牌 Logo 的商标权属于对应权利人，MIT 许可不等同于品牌授权。
-
 ### Lobe Icons
 
 `assets/icons/lobe-icons/` 中的 AI / LLM 品牌 SVG 图标来自 [Lobe Icons](https://github.com/lobehub/lobe-icons)，使用官方静态包 `@lobehub/icons-static-svg` 1.95.1，采用 MIT 许可证，版权归属 `Copyright (c) 2023 LobeHub`。
 
-完整版权及许可声明保存在 [LICENSE](assets/icons/lobe-icons/LICENSE)，来源、版本和下载完整性信息见 [SOURCE.json](assets/icons/lobe-icons/SOURCE.json)。素材未经修改；复制或再分发时须保留版权及许可声明。品牌 Logo 的商标权属于对应权利人，MIT 许可不等同于品牌授权。
+完整版权及许可声明保存在 [LICENSE](assets/site-icons/licenses/lobe-icons/LICENSE)，来源、版本和下载完整性信息见 [SOURCE.json](assets/site-icons/licenses/lobe-icons/SOURCE.json)。素材未经修改；复制或再分发时须保留版权及许可声明。品牌 Logo 的商标权属于对应权利人，MIT 许可不等同于品牌授权。
 
 ### Dashboard Icons
 
-`assets/icons/dashboard-icons/` 来自 [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons)，项目采用 Apache License 2.0，版权声明为 `Copyright (c) 2024 Bjorn Lammers, Meier Lukas, Thomas Camlong and Homarr Labs`。通过官方仓库固定提交的归档下载，未逐图请求网站；素材保持原样。完整许可、上游说明和元数据随目录保存，固定提交及校验值见 `SOURCE.json`。
+`assets/icons/dashboard-icons/` 来自 [homarr-labs/dashboard-icons](https://github.com/homarr-labs/dashboard-icons)，项目采用 Apache License 2.0，版权声明为 `Copyright (c) 2024 Bjorn Lammers, Meier Lukas, Thomas Camlong and Homarr Labs`。通过官方仓库浅克隆和稀疏检出，批量获取固定提交的完整 SVG 目录，未逐图请求网站；素材保持原样（不含 PNG/WebP）。精选副本的完整许可、固定提交及校验记录已复制到 `assets/site-icons/licenses/dashboard-icons/`。
 
 再分发须提供许可证、保留适用声明；修改文件须注明修改，并保留上游适用的 NOTICE（如有）。[网站条款](https://dashboardicons.com/terms) 明确第三方图标可能有独立版权、许可、署名及品牌要求，仓库 Apache 2.0 不覆盖或替代这些要求，也不授予品牌商标权。
 
 ### Simple Icons
 
-`assets/icons/simple-icons/` 来自 [Simple Icons](https://github.com/simple-icons/simple-icons) 官方 npm 包 `simple-icons` 16.35.0，采用单个发布包下载，SVG 未修改。集合采用 CC0 1.0，但**并非所有单个品牌图标均为 CC0**。完整集合许可见 `LICENSE.md`，上游免责声明见 `DISCLAIMER.md`，每个图标已知的许可、品牌规范及来源见 `data/simple-icons.json`；版本与完整性信息见 `SOURCE.json`。
+`assets/icons/simple-icons/` 来自 [Simple Icons](https://github.com/simple-icons/simple-icons) 官方 npm 包 `simple-icons` 16.35.0，采用单个发布包下载，SVG 未修改。集合采用 CC0 1.0，但**并非所有单个品牌图标均为 CC0**。实际封装许可、免责声明、已选图标的独立许可/品牌规范/来源及版本信息见 `assets/site-icons/licenses/simple-icons/`。
 
-使用和再分发具体图标时须核对其独立许可、署名与品牌规范。缺少单图许可字段不表示不存在限制；CC0 不授予商标权。本次仅归档素材及已知许可信息，尚未逐一核验各品牌外部条款，也未接入界面。
+使用和再分发具体图标时须核对其独立许可、署名与品牌规范。缺少单图许可字段不表示不存在限制；CC0 不授予商标权。按已知许可分组的文件索引见 `assets/icons/simple-icons/LICENSE-INDEX.json`，其中包含非商业、禁止演绎、相同方式共享及自定义条款等类型。精选副本已接入界面，未逐一核验各品牌最新的外部条款。
 
 ## 数据与开发
 
 - `chrome.storage.local`: `appData` 存 `schemaVersion: 1`、`revision`（多标签冲突检测）、分组、有序站点、外观；`devicePrefs` 存引擎、极简、版心。
-- IndexedDB easy-tab-assets / blobs：保存 wallpaper 与 icon:<uuid> Blob；选择器图标改为本地文件，不再使用 icon-cache。壁纸压缩写入超时会回退保存原始文件。
-- 站点选择器清单 data/sites.json：纯文本 categories + sites，不含任何 Logo、图片或 base64；分类 id 唯一，每类 12–20 条，总数不超过 200。
+- IndexedDB easy-tab-assets / blobs（沿用早期数据库名以兼容已有壁纸与图标）：保存 wallpaper 与 icon:<uuid> Blob；选择器图标改为本地文件，不再使用 icon-cache。壁纸压缩写入超时会回退保存原始文件。
+- 站点选择器清单 data/sites.json：纯文本 categories + sites，不含任何 Logo、图片或 base64；分类 id 唯一，每类 12–24 条，总数不超过 200。
 - 备份封装 `version: 1`、`data`、`prefs`、`assets`。导入禁止非 HTTP(S) 站点地址，禁用 SVG 资产，解码图片后才写入；上限 200 组、10000 站点、120MB JSON。
 - 备份可能含私人网址与图片，建议自行保管；不上传云端。
 - 清单外站点或用户主动点“请求图标”时，会依次尝试 Google 与 DuckDuckGo 的公开 favicon 服务，再回退 Chrome 本地接口；离线或失败时使用文字图标。通过选择器新增的清单内站点默认不发起这些请求。
@@ -81,7 +81,21 @@ Google 已在用户 Chrome 抓到官方上传请求，但本机跨站复现返�
 
 默认按四条边中点的 2×2 像素平均 alpha（严格大于 200）判断：四边均实心时铺满，否则保留镂空留白。分类使用 32×32 画布，缓存保存 Blob、kind、v: 2 和原图尺寸；旧版缓存从 Blob 重新分类，任一边不足 32px 回退文字。手动“实心铺满 / 镂空 / 文字”优先，上传图标保留 PNG 透明度；未设置 iconStyle 代表自动，已有手动样式保留。缓存独立于备份所引用的图片，不新增扩展权限。
 
-桌面两种版心共用 min(61.8vw, 1200px) 容器、145px 侧栏和38px列间距，时钟、搜索行和标签网格在同一主列；搜索行含圆形按钮，与网格共用左右边界。居中均分外侧留白，黄金左留白为剩余空间的0.382；窄窗仍使用原抽屉。书签在限高容器内优先滚动，滚轮只滚动网格，不切换分组。分组通过点击侧栏、长按拖动排序，以及全屏 ↑ / ↓ 快捷键切换（输入搜索框或打开设置、菜单、弹窗时快捷键不接管，不首尾循环）。已浏览分组保留 DOM，图片分类和解码结果在页面内复用；编辑、排序、导入等数据变化会更新相关组视图。
+桌面两种版心由搜索与图标主区独立定位：主区宽度为 min(61.803398875vw, 1000px)，紧凑桌面另预留两侧空间；112–128px 分组栏位于主区左侧，间距24px，不参与主区比例计算。时钟、搜索框和图标共用主列，搜索框与首尾图标保持对齐。对称模式居中主区；黄金模式按主区外侧留白1∶1.618定位，紧凑窗口优先保证分组栏可见。极简开关位于右上角设置旁，窄屏沿用分组抽屉。书签在限高容器内优先滚动，滚轮优先滚动网格；到顶向上、到底向下或无需滚动时，约50ms后切换相邻分组，同一段惯性滚动最多切换一次。分组通过点击侧栏、长按拖动排序，以及全屏 ↑ / ↓ 快捷键切换（输入搜索框或打开设置、菜单、弹窗时快捷键不接管，不首尾循环）。已浏览分组保留 DOM，图片分类和解码结果在页面内复用；编辑、排序、导入等数据变化会更新相关组视图。
 
 
 搜索框相机按钮直接打开当前引擎的官方图搜页面；拖入网页图片时优先提取实际图片地址，仍走“复制图片并打开图搜”，到官方页面相机入口粘贴。Google 官方上传成功、跨站直传复现返回 403；三家自动直传仍未启用。剪贴板失败可保存上传，网页图片因 CORS 读取失败可先保存再打开图搜页面。修复记录见 docs/IMAGE_SEARCH.md。
+
+
+图标编辑器现将本地版本／上传／文字／远程来源与显示样式分开：匹配站点的精选主图与合格横版列出，实心铺满和镂空为独立可选项。背景默认沿用玻璃效果，可选固定色板（含纯黑、纯白），随站点数据保存及备份。图标库匹配索引可通过 `python3 scripts/build-icon-variants.py` 离线更新，详见 docs/SITES_LIST.md。站点市场新增 DeepSeek、Gmail、QQ 邮箱及网易 163 邮箱。
+
+
+### 精选图标与封装
+
+原始三库仅用于开发审查，运行时只调用 `assets/site-icons/` 中精选的 180 个图片文件（149 个站点主图、32 个横版，字节重复共用文件）。选择器不再列出同产品的重复颜色版本；横版自动用于 `2×1`。17 个缺少精确或合格素材的站点保留文字占位。
+
+白名单、筛选工具、逐图来源和质量报告见 [图标精选报告](docs/ICON_CURATION.md)。许可与来源资料已复制到 `assets/site-icons/licenses/`，不依赖 Git 忽略的原始库。`npm run icons:refresh` 重建精选索引；`npm run package` 生成不含原始库的插件 ZIP。
+
+搜索引擎支持 Google、百度、Bing、搜狗；百度相机入口打开官方桌面识图页面。黄金重心以搜索与图标主区为基准，左右外侧留白目标为1∶1.618，宽屏主区上限1000px，完整实测见 [黄金重心检查](docs/layout/GOLDEN_RATIO_CHECK.md)。
+
+分组文字使用随主题调整的阴影，搜索框获得焦点时保持原有边框。

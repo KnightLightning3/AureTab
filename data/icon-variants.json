@@ -1,0 +1,1720 @@
+{
+  "schemaVersion": 1,
+  "domains": {
+    "mail.google.com": [
+      "mailgooglecom"
+    ],
+    "mail.qq.com": [
+      "mailqqcom"
+    ],
+    "mail.163.com": [
+      "mail163com"
+    ],
+    "google.com": [
+      "googlecom"
+    ],
+    "bing.com": [
+      "bingcom"
+    ],
+    "baidu.com": [
+      "baiducom"
+    ],
+    "sogou.com": [
+      "sogoucom"
+    ],
+    "duckduckgo.com": [
+      "duckduckgocom"
+    ],
+    "quark.cn": [
+      "quarkcn"
+    ],
+    "bilibili.com": [
+      "bilibilicom"
+    ],
+    "iqiyi.com": [
+      "iqiyicom"
+    ],
+    "v.qq.com": [
+      "vqqcom"
+    ],
+    "youku.com": [
+      "youkucom"
+    ],
+    "mgtv.com": [
+      "mgtvcom"
+    ],
+    "ixigua.com": [
+      "ixiguacom"
+    ],
+    "youtube.com": [
+      "youtubecom"
+    ],
+    "netflix.com": [
+      "netflixcom"
+    ],
+    "twitch.tv": [
+      "twitchtv"
+    ],
+    "douyin.com": [
+      "douyincom"
+    ],
+    "kuaishou.com": [
+      "kuaishoucom"
+    ],
+    "miguvideo.com": [
+      "miguvideocom"
+    ],
+    "yangshipin.cn": [
+      "yangshipincn"
+    ],
+    "weibo.com": [
+      "weibocom"
+    ],
+    "zhihu.com": [
+      "zhihucom"
+    ],
+    "douban.com": [
+      "doubancom"
+    ],
+    "xiaohongshu.com": [
+      "xiaohongshucom"
+    ],
+    "weixin.qq.com": [
+      "weixinqqcom"
+    ],
+    "x.com": [
+      "xcom"
+    ],
+    "facebook.com": [
+      "facebookcom"
+    ],
+    "instagram.com": [
+      "instagramcom"
+    ],
+    "reddit.com": [
+      "redditcom"
+    ],
+    "discord.com": [
+      "discordcom"
+    ],
+    "telegram.org": [
+      "telegramorg"
+    ],
+    "linkedin.com": [
+      "linkedincom"
+    ],
+    "pinterest.com": [
+      "pinterestcom"
+    ],
+    "tieba.baidu.com": [
+      "tiebabaiducom"
+    ],
+    "thepaper.cn": [
+      "thepapercn"
+    ],
+    "news.cn": [
+      "newscn"
+    ],
+    "people.com.cn": [
+      "peoplecomcn"
+    ],
+    "cctv.com": [
+      "cctvcom"
+    ],
+    "36kr.com": [
+      "36krcom"
+    ],
+    "sspai.com": [
+      "sspaicom"
+    ],
+    "huxiu.com": [
+      "huxiucom"
+    ],
+    "jiemian.com": [
+      "jiemiancom"
+    ],
+    "bbc.com": [
+      "bbccom"
+    ],
+    "nytimes.com": [
+      "nytimescom"
+    ],
+    "taobao.com": [
+      "taobaocom"
+    ],
+    "tmall.com": [
+      "tmallcom"
+    ],
+    "jd.com": [
+      "jdcom"
+    ],
+    "pinduoduo.com": [
+      "pinduoduocom"
+    ],
+    "amazon.com": [
+      "amazoncom"
+    ],
+    "ebay.com": [
+      "ebaycom"
+    ],
+    "goofish.com": [
+      "goofishcom"
+    ],
+    "1688.com": [
+      "1688com"
+    ],
+    "github.com": [
+      "githubcom"
+    ],
+    "gitlab.com": [
+      "gitlabcom"
+    ],
+    "gitee.com": [
+      "giteecom"
+    ],
+    "stackoverflow.com": [
+      "stackoverflowcom"
+    ],
+    "developer.mozilla.org": [
+      "developermozillaorg"
+    ],
+    "npmjs.com": [
+      "npmjscom"
+    ],
+    "pypi.org": [
+      "pypiorg"
+    ],
+    "hub.docker.com": [
+      "hubdockercom"
+    ],
+    "huggingface.co": [
+      "huggingfaceco"
+    ],
+    "vercel.com": [
+      "vercelcom"
+    ],
+    "netlify.com": [
+      "netlifycom"
+    ],
+    "cloudflare.com": [
+      "cloudflarecom"
+    ],
+    "juejin.cn": [
+      "juejincn"
+    ],
+    "csdn.net": [
+      "csdnnet"
+    ],
+    "v2ex.com": [
+      "v2excom"
+    ],
+    "news.ycombinator.com": [
+      "newsycombinatorcom"
+    ],
+    "leetcode.com": [
+      "leetcodecom"
+    ],
+    "codesandbox.io": [
+      "codesandboxio"
+    ],
+    "figma.com": [
+      "figmacom"
+    ],
+    "dribbble.com": [
+      "dribbblecom"
+    ],
+    "behance.net": [
+      "behancenet"
+    ],
+    "canva.com": [
+      "canvacom"
+    ],
+    "zcool.com.cn": [
+      "zcoolcomcn"
+    ],
+    "huaban.com": [
+      "huabancom"
+    ],
+    "unsplash.com": [
+      "unsplashcom"
+    ],
+    "pexels.com": [
+      "pexelscom"
+    ],
+    "notion.so": [
+      "notionso"
+    ],
+    "feishu.cn": [
+      "feishucn"
+    ],
+    "dingtalk.com": [
+      "dingtalkcom"
+    ],
+    "work.weixin.qq.com": [
+      "workweixinqqcom"
+    ],
+    "docs.qq.com": [
+      "docsqqcom"
+    ],
+    "shimo.im": [
+      "shimoim"
+    ],
+    "yuque.com": [
+      "yuquecom"
+    ],
+    "trello.com": [
+      "trellocom"
+    ],
+    "slack.com": [
+      "slackcom"
+    ],
+    "zoom.us": [
+      "zoomus"
+    ],
+    "wps.cn": [
+      "wpscn"
+    ],
+    "chat.deepseek.com": [
+      "chatdeepseekcom"
+    ],
+    "chatgpt.com": [
+      "chatgptcom"
+    ],
+    "claude.ai": [
+      "claudeai"
+    ],
+    "gemini.google.com": [
+      "geminigooglecom"
+    ],
+    "copilot.microsoft.com": [
+      "copilotmicrosoftcom"
+    ],
+    "midjourney.com": [
+      "midjourneycom"
+    ],
+    "perplexity.ai": [
+      "perplexityai"
+    ],
+    "tongyi.aliyun.com": [
+      "tongyialiyuncom"
+    ],
+    "yiyan.baidu.com": [
+      "yiyanbaiducom"
+    ],
+    "kimi.moonshot.cn": [
+      "kimimoonshotcn"
+    ],
+    "doubao.com": [
+      "doubaocom"
+    ],
+    "icourse163.org": [
+      "icourse163org"
+    ],
+    "open.163.com": [
+      "open163com"
+    ],
+    "coursera.org": [
+      "courseraorg"
+    ],
+    "edx.org": [
+      "edxorg"
+    ],
+    "khanacademy.org": [
+      "khanacademyorg"
+    ],
+    "xuexi.cn": [
+      "xuexicn"
+    ],
+    "dedao.cn": [
+      "dedaocn"
+    ],
+    "xuetangx.com": [
+      "xuetangxcom"
+    ],
+    "duolingo.com": [
+      "duolingocom"
+    ],
+    "quizlet.com": [
+      "quizletcom"
+    ],
+    "pan.baidu.com": [
+      "panbaiducom"
+    ],
+    "alipan.com": [
+      "alipancom"
+    ],
+    "amap.com": [
+      "amapcom"
+    ],
+    "map.baidu.com": [
+      "mapbaiducom"
+    ],
+    "12306.cn": [
+      "12306cn"
+    ],
+    "ctrip.com": [
+      "ctripcom"
+    ],
+    "meituan.com": [
+      "meituancom"
+    ],
+    "dianping.com": [
+      "dianpingcom"
+    ],
+    "music.163.com": [
+      "music163com"
+    ],
+    "spotify.com": [
+      "spotifycom"
+    ],
+    "movie.douban.com": [
+      "moviedoubancom"
+    ],
+    "maoyan.com": [
+      "maoyancom"
+    ],
+    "so.com": [
+      "socom"
+    ],
+    "sm.cn": [
+      "smcn"
+    ],
+    "microsoft.com": [
+      "microsoftcom"
+    ],
+    "apple.com": [
+      "applecom"
+    ],
+    "huawei.com": [
+      "huaweicom"
+    ],
+    "mi.com": [
+      "micom"
+    ],
+    "163.com": [
+      "163com"
+    ],
+    "tencent.com": [
+      "tencentcom"
+    ],
+    "sina.com.cn": [
+      "sinacomcn"
+    ],
+    "sohu.com": [
+      "sohucom"
+    ],
+    "caixin.com": [
+      "caixincom"
+    ],
+    "yicai.com": [
+      "yicaicom"
+    ],
+    "guancha.cn": [
+      "guanchacn"
+    ],
+    "zaobao.com.sg": [
+      "zaobaocomsg"
+    ],
+    "y.qq.com": [
+      "yqqcom"
+    ],
+    "kugou.com": [
+      "kugoucom"
+    ],
+    "ximalaya.com": [
+      "ximalayacom"
+    ],
+    "xiaoyuzhoufm.com": [
+      "xiaoyuzhoufmcom"
+    ],
+    "vimeo.com": [
+      "vimeocom"
+    ],
+    "threads.net": [
+      "threadsnet"
+    ],
+    "maimai.cn": [
+      "maimaicn"
+    ],
+    "suning.com": [
+      "suningcom"
+    ],
+    "vip.com": [
+      "vipcom"
+    ],
+    "dangdang.com": [
+      "dangdangcom"
+    ],
+    "you.163.com": [
+      "you163com"
+    ],
+    "dewu.com": [
+      "dewucom"
+    ],
+    "freshippo.com": [
+      "freshippocom"
+    ],
+    "codepen.io": [
+      "codepenio"
+    ],
+    "cnblogs.com": [
+      "cnblogscom"
+    ],
+    "iconify.design": [
+      "iconifydesign"
+    ],
+    "gaoding.com": [
+      "gaodingcom"
+    ],
+    "chuangkit.com": [
+      "chuangkitcom"
+    ],
+    "uisdc.com": [
+      "uisdccom"
+    ],
+    "lanhuapp.com": [
+      "lanhuappcom"
+    ],
+    "js.design": [
+      "jsdesign"
+    ],
+    "chatglm.cn": [
+      "chatglmcn"
+    ],
+    "yuanbao.tencent.com": [
+      "yuanbaotencentcom"
+    ],
+    "xinghuo.xfyun.cn": [
+      "xinghuoxfyuncn"
+    ],
+    "mistral.ai": [
+      "mistralai"
+    ],
+    "aliyun.com": [
+      "aliyuncom"
+    ],
+    "cloud.tencent.com": [
+      "cloudtencentcom"
+    ],
+    "youdao.com": [
+      "youdaocom"
+    ]
+  },
+  "brands": {
+    "mailgooglecom": [
+      {
+        "file": "mail.google.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "mailqqcom": [],
+    "mail163com": [],
+    "googlecom": [
+      {
+        "file": "google.com-text.svg",
+        "label": "横版标识",
+        "mono": false
+      },
+      {
+        "file": "google.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "bingcom": [
+      {
+        "file": "bing.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "bing.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "baiducom": [
+      {
+        "file": "baidu.com-text.svg",
+        "label": "横版标识",
+        "mono": false
+      },
+      {
+        "file": "baidu.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "sogoucom": [
+      {
+        "file": "sogou.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "duckduckgocom": [
+      {
+        "file": "duckduckgo.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "quarkcn": [
+      {
+        "file": "quark.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "bilibilicom": [
+      {
+        "file": "bilibili.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "bilibili.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "iqiyicom": [
+      {
+        "file": "iqiyi.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "vqqcom": [
+      {
+        "file": "v.qq.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "youkucom": [
+      {
+        "file": "youku.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "mgtvcom": [
+      {
+        "file": "mgtv.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "ixiguacom": [
+      {
+        "file": "ixigua.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "youtubecom": [
+      {
+        "file": "youtube.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "netflixcom": [
+      {
+        "file": "netflix.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "twitchtv": [
+      {
+        "file": "twitch.tv.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "douyincom": [
+      {
+        "file": "douyin.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "kuaishoucom": [
+      {
+        "file": "kuaishou.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "miguvideocom": [],
+    "yangshipincn": [
+      {
+        "file": "yangshipin.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "weibocom": [
+      {
+        "file": "weibo.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "zhihucom": [
+      {
+        "file": "zhihu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "doubancom": [
+      {
+        "file": "douban.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xiaohongshucom": [
+      {
+        "file": "xiaohongshu.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "weixinqqcom": [
+      {
+        "file": "weixin.qq.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xcom": [
+      {
+        "file": "x.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "facebookcom": [
+      {
+        "file": "facebook.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "instagramcom": [
+      {
+        "file": "instagram.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "redditcom": [
+      {
+        "file": "reddit.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "discordcom": [
+      {
+        "file": "discord.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "telegramorg": [
+      {
+        "file": "telegram.org.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "linkedincom": [
+      {
+        "file": "linkedin.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "pinterestcom": [
+      {
+        "file": "pinterest.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "tiebabaiducom": [
+      {
+        "file": "tieba.baidu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "thepapercn": [
+      {
+        "file": "thepaper.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "newscn": [
+      {
+        "file": "news.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "peoplecomcn": [],
+    "cctvcom": [
+      {
+        "file": "cctv.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "36krcom": [],
+    "sspaicom": [
+      {
+        "file": "sspai.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "huxiucom": [
+      {
+        "file": "huxiu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "jiemiancom": [],
+    "bbccom": [
+      {
+        "file": "bbc.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "nytimescom": [
+      {
+        "file": "nytimes.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "taobaocom": [
+      {
+        "file": "taobao.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "tmallcom": [],
+    "jdcom": [
+      {
+        "file": "jd.com.ico",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "pinduoduocom": [
+      {
+        "file": "pinduoduo.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "amazoncom": [
+      {
+        "file": "amazon.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "ebaycom": [
+      {
+        "file": "ebay.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "goofishcom": [
+      {
+        "file": "goofish.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "1688com": [
+      {
+        "file": "1688.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "githubcom": [
+      {
+        "file": "github.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "github.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "gitlabcom": [
+      {
+        "file": "gitlab.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "giteecom": [
+      {
+        "file": "gitee.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "stackoverflowcom": [
+      {
+        "file": "stackoverflow.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "developermozillaorg": [
+      {
+        "file": "developer.mozilla.org.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "npmjscom": [
+      {
+        "file": "npmjs.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "pypiorg": [
+      {
+        "file": "pypi.org.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "hubdockercom": [
+      {
+        "file": "hub.docker.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "huggingfaceco": [
+      {
+        "file": "huggingface.co-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "huggingface.co.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "vercelcom": [
+      {
+        "file": "vercel.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "vercel.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "netlifycom": [
+      {
+        "file": "netlify.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "cloudflarecom": [
+      {
+        "file": "cloudflare.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "cloudflare.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "juejincn": [
+      {
+        "file": "juejin.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "csdnnet": [
+      {
+        "file": "csdn.net.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "v2excom": [
+      {
+        "file": "v2ex.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "newsycombinatorcom": [
+      {
+        "file": "news.ycombinator.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "leetcodecom": [
+      {
+        "file": "leetcode.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "codesandboxio": [
+      {
+        "file": "codesandbox.io.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "figmacom": [
+      {
+        "file": "figma.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "figma.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "dribbblecom": [
+      {
+        "file": "dribbble.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "behancenet": [
+      {
+        "file": "behance.net.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "canvacom": [
+      {
+        "file": "canva.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "zcoolcomcn": [
+      {
+        "file": "zcool.com.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "huabancom": [
+      {
+        "file": "huaban.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "unsplashcom": [
+      {
+        "file": "unsplash.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "pexelscom": [
+      {
+        "file": "pexels.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "notionso": [
+      {
+        "file": "notion.so-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "notion.so.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "feishucn": [
+      {
+        "file": "feishu.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "dingtalkcom": [
+      {
+        "file": "dingtalk.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "workweixinqqcom": [
+      {
+        "file": "work.weixin.qq.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "docsqqcom": [
+      {
+        "file": "docs.qq.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "shimoim": [
+      {
+        "file": "shimo.im.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "yuquecom": [
+      {
+        "file": "yuque.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "trellocom": [
+      {
+        "file": "trello.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "slackcom": [
+      {
+        "file": "slack.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "zoomus": [
+      {
+        "file": "zoom.us.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "wpscn": [],
+    "chatdeepseekcom": [
+      {
+        "file": "chat.deepseek.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "chat.deepseek.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "chatgptcom": [
+      {
+        "file": "chatgpt.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "chatgpt.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "claudeai": [
+      {
+        "file": "claude.ai-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "claude.ai.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "geminigooglecom": [
+      {
+        "file": "gemini.google.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "gemini.google.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "copilotmicrosoftcom": [
+      {
+        "file": "copilot.microsoft.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "copilot.microsoft.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "midjourneycom": [
+      {
+        "file": "midjourney.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "midjourney.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "perplexityai": [
+      {
+        "file": "perplexity.ai-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "perplexity.ai.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "tongyialiyuncom": [
+      {
+        "file": "tongyi.aliyun.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "tongyi.aliyun.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "yiyanbaiducom": [
+      {
+        "file": "yiyan.baidu.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "yiyan.baidu.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "kimimoonshotcn": [
+      {
+        "file": "kimi.moonshot.cn-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "kimi.moonshot.cn.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "doubaocom": [
+      {
+        "file": "doubao.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "doubao.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "icourse163org": [
+      {
+        "file": "icourse163.org.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "open163com": [
+      {
+        "file": "open.163.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "courseraorg": [
+      {
+        "file": "coursera.org.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "edxorg": [
+      {
+        "file": "edx.org.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "khanacademyorg": [
+      {
+        "file": "khanacademy.org.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xuexicn": [],
+    "dedaocn": [
+      {
+        "file": "dedao.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xuetangxcom": [
+      {
+        "file": "xuetangx.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "duolingocom": [
+      {
+        "file": "duolingo.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "quizletcom": [
+      {
+        "file": "quizlet.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "quizlet.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "panbaiducom": [
+      {
+        "file": "pan.baidu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "alipancom": [
+      {
+        "file": "alipan.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "amapcom": [
+      {
+        "file": "amap.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "mapbaiducom": [
+      {
+        "file": "map.baidu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "12306cn": [
+      {
+        "file": "12306.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "ctripcom": [],
+    "meituancom": [
+      {
+        "file": "meituan.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "dianpingcom": [
+      {
+        "file": "dianping.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "music163com": [
+      {
+        "file": "music.163.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "spotifycom": [
+      {
+        "file": "spotify.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "moviedoubancom": [
+      {
+        "file": "movie.douban.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "maoyancom": [
+      {
+        "file": "maoyan.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "socom": [
+      {
+        "file": "so.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "smcn": [
+      {
+        "file": "sm.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "microsoftcom": [
+      {
+        "file": "microsoft.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "microsoft.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "applecom": [
+      {
+        "file": "apple.com.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "huaweicom": [
+      {
+        "file": "huawei.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "huawei.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "micom": [
+      {
+        "file": "mi.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "163com": [],
+    "tencentcom": [
+      {
+        "file": "tencent.com-text.svg",
+        "label": "横版标识",
+        "mono": false
+      },
+      {
+        "file": "tencent.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "sinacomcn": [
+      {
+        "file": "sina.com.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "sohucom": [
+      {
+        "file": "sohu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "caixincom": [
+      {
+        "file": "caixin.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "yicaicom": [],
+    "guanchacn": [
+      {
+        "file": "guancha.cn.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "zaobaocomsg": [
+      {
+        "file": "zaobao.com.sg.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "yqqcom": [
+      {
+        "file": "y.qq.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "kugoucom": [],
+    "ximalayacom": [
+      {
+        "file": "ximalaya.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xiaoyuzhoufmcom": [
+      {
+        "file": "xiaoyuzhoufm.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "vimeocom": [
+      {
+        "file": "vimeo.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "threadsnet": [
+      {
+        "file": "threads.net.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "maimaicn": [],
+    "suningcom": [
+      {
+        "file": "suning.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "vipcom": [],
+    "dangdangcom": [],
+    "you163com": [
+      {
+        "file": "you.163.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "dewucom": [
+      {
+        "file": "dewu.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "freshippocom": [],
+    "codepenio": [
+      {
+        "file": "codepen.io.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "cnblogscom": [
+      {
+        "file": "cnblogs.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "iconifydesign": [
+      {
+        "file": "iconify.design.svg",
+        "label": "经典图标",
+        "mono": true
+      }
+    ],
+    "gaodingcom": [
+      {
+        "file": "gaoding.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "chuangkitcom": [
+      {
+        "file": "chuangkit.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "uisdccom": [
+      {
+        "file": "uisdc.com.jpg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "lanhuappcom": [
+      {
+        "file": "lanhuapp.com.ico",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "jsdesign": [
+      {
+        "file": "js.design.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "chatglmcn": [
+      {
+        "file": "chatglm.cn-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "chatglm.cn.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "yuanbaotencentcom": [
+      {
+        "file": "yuanbao.tencent.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "yuanbao.tencent.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "xinghuoxfyuncn": [
+      {
+        "file": "xinghuo.xfyun.cn-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "xinghuo.xfyun.cn.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "mistralai": [
+      {
+        "file": "mistral.ai-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "mistral.ai.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "aliyuncom": [
+      {
+        "file": "aliyun.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "aliyun.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "cloudtencentcom": [
+      {
+        "file": "cloud.tencent.com-text.svg",
+        "label": "横版标识",
+        "mono": true
+      },
+      {
+        "file": "cloud.tencent.com.svg",
+        "label": "经典图标",
+        "mono": false
+      }
+    ],
+    "youdaocom": [
+      {
+        "file": "youdao.com.png",
+        "label": "经典图标",
+        "mono": false
+      }
+    ]
+  }
+}

@@ -34,6 +34,16 @@ function clearWallpaper() {
 /** Renders the current wallpaper: none, a bundled builtin, or the uploaded blob. */
 export async function renderWallpaper(provider, selection = 'none') {
   const stamp = ++generation;
+  const scene = document.querySelector('#character-wallpaper');
+  if (scene) {
+    scene.hidden = selection !== 'deepseek';
+    if (selection !== 'deepseek') scene.querySelector('img').removeAttribute('src');
+  }
+  if (selection === 'deepseek' && scene) {
+    clearWallpaper();
+    scene.querySelector('img').src = builtinWallpaperURL(selection);
+    return;
+  }
   if (selection === 'none') { clearWallpaper(); return; }
   if (selection !== 'custom') {
     if (currentURL) { URL.revokeObjectURL(currentURL); currentURL = undefined; }
