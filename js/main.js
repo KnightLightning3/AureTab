@@ -51,9 +51,11 @@ function selectGroup(id, direction) {
   const grid = $('#grid');
   for (const animation of grid.getAnimations()) animation.cancel();
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Transform only: an opacity animation on the grid disables the glass plate's
+    // backdrop-filter in Chrome until the animation ends.
     grid.animate([
-      { transform: `translateY(${movement * 28}px)`, opacity: 0 },
-      { transform: 'translateY(0)', opacity: 1 }
+      { transform: `translateY(${movement * 28}px)` },
+      { transform: 'translateY(0)' }
     ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
   }
 }
