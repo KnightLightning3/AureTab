@@ -59,6 +59,8 @@ Chrome 官方明确：只在设备上处理或保存用户数据，也需要披�
 
 这里是内容清单，尚未作为正式隐私政策发布。可将正式政策托管到公开的 GitHub Pages 等页面，再填入两家后台；不要使用未上线或需要登录的 URL。
 
+正式政策页面已生成：[`docs/privacy.html`](privacy.html)。启用 GitHub Pages 后应发布到 `https://knightlightning3.github.io/AureTab/privacy.html`；该地址在 Pages 生效前不能填入商店后台。启用方式：仓库 Settings → Pages → Build and deployment → Source 选择 “Deploy from a branch”，分支选 `main`、目录选 `/docs`。发布后用未登录的浏览器窗口确认页面公开可见。
+
 ## 上架前剩余待办
 
 - [x] 原创品牌 Logo、扩展多尺寸图标、标签页 favicon 和打包接入。

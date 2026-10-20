@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AureTab 隐私政策</title>
+<meta name="description" content="AureTab 新标签页扩展的隐私政策：本地保存哪些数据、哪些请求会发往第三方，以及如何删除数据。">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #16181d;
+    --muted: #5b616e;
+    --line: #e3e6eb;
+    --accent: #2563eb;
+    --accent-soft: #eaf0ff;
+    --warn-soft: #fff7e6;
+    --warn-line: #f0d9a8;
+    --code-bg: #f1f3f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101216;
+      --surface: #171a20;
+      --ink: #e8eaf0;
+      --muted: #9ba2b2;
+      --line: #2a2f38;
+      --accent: #7aa2ff;
+      --accent-soft: #1a2338;
+      --warn-soft: #2a2417;
+      --warn-line: #4a3f24;
+      --code-bg: #1e222a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  main { max-width: 820px; margin: 0 auto; padding: 48px 24px 72px; }
+  header { margin-bottom: 32px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; letter-spacing: .04em; }
+  .brand-mark { width: 22px; height: 22px; border-radius: 7px; background: linear-gradient(135deg, #5b8cff, #2f5ce0); box-shadow: 0 2px 6px rgba(47, 92, 224, .35); }
+  h1 { margin: 14px 0 8px; font-size: clamp(28px, 5vw, 38px); line-height: 1.25; letter-spacing: -.01em; }
+  .dates { margin: 0; color: var(--muted); font-size: 14px; }
+  .summary {
+    margin: 28px 0 8px; padding: 20px 22px; border: 1px solid var(--line);
+    border-radius: 14px; background: var(--surface);
+  }
+  .summary h2 { margin: 0 0 10px; font-size: 16px; letter-spacing: .01em; }
+  .summary ul { margin: 0; padding-left: 20px; }
+  .summary li + li { margin-top: 6px; }
+  nav.toc { margin: 22px 0 40px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  nav.toc strong { display: block; margin-bottom: 6px; font-size: 14px; color: var(--muted); }
+  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 36px; font-size: 14px; }
+  nav.toc li { break-inside: avoid; margin: 3px 0; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  section { margin-top: 40px; }
+  h2 { margin: 0 0 12px; font-size: 22px; line-height: 1.35; }
+  h3 { margin: 24px 0 8px; font-size: 17px; }
+  p { margin: 10px 0; }
+  ul, ol { padding-left: 22px; }
+  li + li { margin-top: 6px; }
+  .callout {
+    margin: 18px 0; padding: 14px 18px; border: 1px solid var(--warn-line);
+    border-radius: 12px; background: var(--warn-soft); font-size: 15px;
+  }
+  code {
+    padding: 1px 6px; border-radius: 6px; background: var(--code-bg);
+    font: 0.9em/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    word-break: break-word;
+  }
+  .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; background: var(--accent-soft); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }
+  footer p { margin: 6px 0; }
+  @media (max-width: 620px) {
+    main { padding: 32px 18px 56px; }
+    nav.toc ol { columns: 1; }
+  }
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #444; --line: #ccc; }
+    body { font-size: 12pt; }
+    nav.toc { display: none; }
+    a { color: #000; text-decoration: underline; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>AureTab · 简约标签页</span></div>
+    <h1>隐私政策</h1>
+    <p class="dates">最后更新：2026 年 10 月 21 日 · 生效日期：2026 年 10 月 21 日</p>
+  </header>
+
+  <div class="summary">
+    <h2>摘要</h2>
+    <ul>
+      <li>AureTab 不要求注册账号，不收集姓名、邮箱、电话等身份信息。</li>
+      <li>开发者不运营用于接收用户数据的服务器，扩展不提供云同步。</li>
+      <li>站点、分组、设置、壁纸和上传的图标保存在你的浏览器本地。</li>
+      <li>搜索关键词会发送给你选择的搜索引擎；获取站点图标时会请求 Google 或 DuckDuckGo；读取远程图片链接时会访问对应网站。</li>
+      <li>不出售用户数据，不用于广告、用户画像或信用评估。</li>
+    </ul>
+  </div>
+
+  <nav class="toc" aria-label="目录">
+    <strong>目录</strong>
+    <ol>
+      <li><a href="#scope">适用范围与维护者</a></li>
+      <li><a href="#local">保存在本地的数据</a></li>
+      <li><a href="#third-party">会离开设备的数据</a></li>
+      <li><a href="#sharing">共享、出售与用途限制</a></li>
+      <li><a href="#retention">保留期限与删除方式</a></li>
+      <li><a href="#permissions">扩展权限说明</a></li>
+      <li><a href="#children">儿童隐私</a></li>
+      <li><a href="#security">安全</a></li>
+      <li><a href="#changes">政策更新</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ol>
+  </nav>
+
+  <section id="scope">
+    <h2>1. 适用范围与维护者</h2>
+    <p>AureTab（简称“本扩展”）是一款由个人开发者 KL 维护的 Chrome / Edge 新标签页扩展。本政策说明本扩展如何处理你的信息，适用于本扩展的 Chrome 与 Edge 版本以及本页面。</p>
+    <p>本扩展替换浏览器的新标签页，提供搜索、分组站点、自定义外观、本地壁纸和本地数据备份功能。它不是浏览器本身，也不会更改你的默认搜索引擎设置。</p>
+  </section>
+
+  <section id="local">
+    <h2>2. 保存在本地的数据</h2>
+    <p>以下数据仅保存在你当前设备的浏览器中，不会由开发者接收：</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>数据</th><th>保存位置</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>站点名称、网址、所属分组、排序和图标设置</td>
+            <td><code>chrome.storage.local</code> 中的 <code>appData</code></td>
+            <td>在新标签页网格中显示你的站点</td>
+          </tr>
+          <tr>
+            <td>主题、布局、搜索引擎、壁纸选择等偏好</td>
+            <td><code>chrome.storage.local</code> 中的 <code>devicePrefs</code></td>
+            <td>恢复外观与行为设置</td>
+          </tr>
+          <tr>
+            <td>你上传的壁纸、自定义图标及其缩略图</td>
+            <td>扩展的 IndexedDB 数据库（<code>easy-tab-assets</code>）</td>
+            <td>显示壁纸和图标，并供备份使用</td>
+          </tr>
+          <tr>
+            <td>你主动导出的备份文件</td>
+            <td>由你选择保存位置的 JSON 文件</td>
+            <td>迁移或恢复你的配置</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>扩展没有账号系统，也没有开发者服务器。开发者无法查看、读取或恢复上述本地数据。</p>
+  </section>
+
+  <section id="third-party">
+    <h2>3. 会离开设备的数据</h2>
+    <p>为了显示网页内容或完成你主动发起的操作，扩展会让浏览器向第三方服务发出请求。这些请求会包含目标网址以及常规网络信息（例如 IP 地址、User-Agent、请求时间），具体取决于相应服务的实现。</p>
+
+    <h3>3.1 站点图标</h3>
+    <p>对于没有随安装包提供、也没有本地缓存的图标，扩展会尝试 Chrome 提供的 favicon 接口，以及 Google 和 DuckDuckGo 的图标服务。使用远程图标服务时，站点域名会作为请求参数发送给 <a href="https://www.google.com/s2/favicons" rel="noopener noreferrer">Google favicon 服务</a>或 <a href="https://icons.duckduckgo.com/" rel="noopener noreferrer">DuckDuckGo 图标服务</a>。在新标签页显示图标或打开图标选择器预览时，都可能触发这类请求。</p>
+    <p>扩展本身不读取、不保存你的 IP 地址或设备定位；但上述服务的运营方会像处理普通网页请求一样收到这些信息，并可能据此推断大致地区。相关处理受其各自的隐私政策约束。</p>
+
+    <h3>3.2 搜索</h3>
+    <p>当你提交搜索时，扩展会把关键词拼接到你所选搜索引擎的网址并在新标签页打开。当前可选 Google、百度、Bing 和搜狗。关键词及常规网络信息会发送给对应搜索引擎，由其按照自身隐私政策处理。</p>
+
+    <h3>3.3 图片链接与以图搜图</h3>
+    <ul>
+      <li>当你拖入或粘贴图片链接时，扩展会从该网址直接下载图片用于后续操作；该网址所在网站会收到你的 IP 地址等常规请求信息。</li>
+      <li>使用以图搜图时，扩展会把图片写入系统剪贴板，并打开你选择的搜索引擎的官方识图页面。扩展当前不会自动上传图片；你在第三方页面粘贴并上传后，图片由该第三方处理。扩展不读取剪贴板中的其他内容。</li>
+    </ul>
+
+    <h3>3.4 打开站点</h3>
+    <p>点击站点卡片会打开对应网址，这属于你主动发起的正常浏览行为，相应网站会收到常规网络请求信息。</p>
+
+    <h3>3.5 扩展不使用的服务</h3>
+    <p>本扩展不包含广告 SDK、统计分析、崩溃上报、远程配置或开发者运营的同步服务，也不会为上述目的向第三方传输数据。</p>
+  </section>
+
+  <section id="sharing">
+    <h2>4. 共享、出售与用途限制</h2>
+    <p>开发者不出售、出租或交易用户数据，也不会将用户数据用于广告投放、用户画像、信用评估或贷款目的。</p>
+    <p>除第 3 节所述、为完成扩展功能而由浏览器发出的请求外，扩展不会向开发者或任何其他方传输你的数据。</p>
+    <p>本扩展对用户数据的处理遵守 <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data" rel="noopener noreferrer">Chrome Web Store 用户数据政策</a>，包括其中的 Limited Use（有限使用）要求：仅为实现扩展单一用途所必需的目的使用数据，不将数据用于无关目的，也不将其转移给不相关的第三方。</p>
+  </section>
+
+  <section id="retention">
+    <h2>5. 保留期限与删除方式</h2>
+    <p>本地数据会一直保留，直到你主动删除或卸载扩展。</p>
+    <ul>
+      <li><strong>删除单个项目：</strong>在扩展界面删除站点、分组、自定义图标或壁纸。</li>
+      <li><strong>清除全部数据：</strong>打开 <code>chrome://extensions</code>（Edge 为 <code>edge://extensions</code>），移除 AureTab。浏览器会删除该扩展的本地存储和 IndexedDB 数据。</li>
+      <li><strong>删除备份：</strong>导出的 JSON 文件由你保管，请自行删除。</li>
+    </ul>
+    <div class="callout">
+      删除图标或壁纸后，扩展会尝试回收不再被引用的图片数据。浏览器底层存储的物理清除时间由 Chrome 或 Edge 管理，扩展无法保证立即擦除。已经发送给第三方服务的请求记录不由开发者控制，需按照相应服务的政策处理。
+    </div>
+  </section>
+
+  <section id="permissions">
+    <h2>6. 扩展权限说明</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>权限</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td><code>storage</code></td><td>在本机保存站点、分组、偏好和备份所需的数据。</td></tr>
+          <tr><td><code>favicon</code></td><td>通过浏览器提供的 favicon 接口读取你添加站点的图标，用于新标签页网格展示。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>本扩展不申请访问所有网站的权限，不读取你的标签页列表、浏览历史、书签、下载记录、密码或剪贴板内容。</p>
+  </section>
+
+  <section id="children">
+    <h2>7. 儿童隐私</h2>
+    <p>本扩展不面向 13 岁以下儿童，也不会有意收集儿童的个人信息。由于扩展没有账号系统，也不向开发者传输数据，开发者不会持有儿童的个人数据。</p>
+  </section>
+
+  <section id="security">
+    <h2>8. 安全</h2>
+    <p>你的配置保存在浏览器提供的本地存储中，开发者无法远程访问。请妥善保管导出的备份文件，因为其中可能包含你的站点网址、名称和图片。若你在共用设备上使用本扩展，请在离开前清除扩展数据或使用独立的浏览器配置文件。</p>
+  </section>
+
+  <section id="changes">
+    <h2>9. 政策更新</h2>
+    <p>如果扩展的数据处理方式发生变化，开发者会更新本页面并修改页面顶部的日期。涉及重大变化时，还会在扩展的商店说明或发布说明中提示。继续使用更新后的扩展，即表示你接受更新后的政策。</p>
+  </section>
+
+  <section id="contact">
+    <h2>10. 联系我们</h2>
+    <p>如对本政策或数据处理有任何疑问，可以通过以下方式联系维护者：</p>
+    <ul>
+      <li>邮箱：<a href="mailto:abcda@mail.ustc.edu.cn">abcda@mail.ustc.edu.cn</a></li>
+      <li>GitHub Issues：<a href="https://github.com/KnightLightning3/AureTab/issues" rel="noopener noreferrer">KnightLightning3/AureTab</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>AureTab · 简约标签页</p>
+    <p>本页面为 AureTab 的正式隐私政策，可通过 <a href="https://knightlightning3.github.io/AureTab/privacy.html">https://knightlightning3.github.io/AureTab/privacy.html</a> 公开访问。</p>
+    <p>相关链接：<a href="https://developer.chrome.com/docs/webstore/program-policies/user-data" rel="noopener noreferrer">Chrome Web Store 用户数据政策</a> · <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google 隐私政策</a> · <a href="https://duckduckgo.com/privacy" rel="noopener noreferrer">DuckDuckGo 隐私政策</a></p>
+  </footer>
+</main>
+</body>
+</html>
