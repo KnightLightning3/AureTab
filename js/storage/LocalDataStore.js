@@ -1,12 +1,27 @@
 import { DataStore, createDefaultData, DEFAULT_PREFS } from './DataStore.js';
+import { withWriteLock } from './writeLock.js';
 import { validateData, validatePrefs } from '../io/schema.js';
 export class LocalDataStore extends DataStore {
-  async load() {
+  async load({ locked = false } = {}) {
     const { appData } = await chrome.storage.local.get('appData');
     if (appData) return validateData(appData);
-    const data = validateData(createDefaultData()); await this.save(data); return data;
+    const initialize = async () => {
+      // A second new tab may have initialized storage while we waited.
+      const { appData: current } = await chrome.storage.local.get('appData');
+      if (current) return validateData(current);
+      const data = validateData(createDefaultData());
+      await this.save(data); return data;
+    };
+    return locked ? initialize() : withWriteLock(initialize);
   }
-  async save(data) { await chrome.storage.local.set({ appData: validateData(data) }); }
+  // Writers must hold withWriteLock (including initialization).
+  async save(data) { await this.saveSnapshot(data); }
+  async saveSnapshot(data, prefs, extra = {}) {
+    await chrome.storage.local.set({
+      ...extra, appData: validateData(data), assetsChangedAt: Date.now(),
+      ...(prefs ? { devicePrefs: validatePrefs(prefs) } : {}),
+    });
+  }
   onExternalChange(callback) {
     const listener = (changes, area) => {
       if (area !== 'local' || !changes.appData) return;

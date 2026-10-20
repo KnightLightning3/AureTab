@@ -3,10 +3,7 @@ import { LocalDataStore, loadPrefs, savePrefs } from './storage/LocalDataStore.j
 import { assetStore } from './storage/idb.js';
 import { LocalWallpaperProvider, renderWallpaper, compressImage } from './wallpaper/Local.js';
 import { engines, searchURL } from './search/engines.js';
-import { imageSearchAdapters, imageFromDrop, copyAndOpenImage } from './search/imageSearch.js';
 import { renderGroups, renderGrid, pruneGridCache } from './grid/render.js';
-import { loadClassifiedIcon } from './grid/iconKind.js';
-import { localIconURL } from './grid/siteIcon.js';
 import { bindGridLayout, bindGroupWheel } from './ui/groupNavigation.js';
 import { bindDragSort, bindGroupDragSort, moveSite, moveGroup } from './grid/dragSort.js';
 import { bindContextMenu } from './ui/contextMenu.js';
@@ -15,11 +12,21 @@ import { applySettings } from './ui/settings.js';
 import { startClock } from './ui/clock.js';
 import { mountIconPicker } from './ui/iconPicker.js';
 import { mountGroupIconPicker, DEFAULT_GROUP_ICON } from './ui/groupIcon.js';
-import { buildBackup, download, parseBackup, planImport, dataURLToBlob } from './io/exportImport.js';
-import { safeURL, validateData } from './io/schema.js';
+import { buildBackup, download, parseBackup } from './io/exportImport.js';
+import { createStateController } from './app/state.js';
+import { createAssetCollector } from './storage/assetLifecycle.js';
+import { importBackupData } from './io/importService.js';
+import { saveWallpaper } from './wallpaper/saveWallpaper.js';
+import { bindSettingsControls } from './ui/settingsController.js';
+import { bindImageSearch } from './ui/imageSearchController.js';
+import { safeURL } from './io/schema.js';
 
 const store = new LocalDataStore(); const wallpaper = new LocalWallpaperProvider();
-let data, prefs, active, pendingBackup, fallbackBlob, fallbackEngine, settingsReturnFocus, customThumbURL;
+const state = createStateController({ store, readPrefs: loadPrefs, writePrefs: savePrefs });
+const collector = createAssetCollector({ store, assets: assetStore,
+  readChangedAt: async () => (await chrome.storage.local.get('assetsChangedAt')).assetsChangedAt ?? 0 });
+const scheduleAssetGC = () => collector.schedule();
+let data, prefs, active, pendingBackup, settingsReturnFocus, customThumbURL;
 let queue = Promise.resolve();
 const run = action => { const result = queue.then(action); queue = result.catch(() => {}); return result; };
 const on = (selector, event, action) => $(selector).addEventListener(event, e => { try { Promise.resolve(action(e)).catch(report); } catch (error) { report(error); } });
@@ -82,49 +89,17 @@ function openEngineMenu() {
   menu.style.left = `${Math.max(6, Math.min(rect.left, innerWidth - box.width - 6))}px`; menu.style.top = `${top}px`;
   (menu.querySelector('[aria-checked="true"]') ?? menu.firstElementChild)?.focus({ preventScroll: true });
 }
-/** Read-modify-write with a revision check, so another tab's save is never
- * silently overwritten. Returns without saving when the mutation is a no-op. */
 async function commitData(mutate) {
   return run(async () => {
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const base = await store.load().catch(() => data);
-      const draft = structuredClone(base);
-      if (await mutate(draft) === false) return;
-      draft.revision = (base.revision ?? 0) + 1;
-      const valid = validateData(draft);
-      const latest = await store.load().catch(() => null);
-      if (latest && (latest.revision ?? 0) !== (base.revision ?? 0)) continue;
-      await store.save(valid); data = valid; render(); scheduleAssetGC(); return;
-    }
-    throw new Error('数据正在被其他标签页修改，请重试');
+    data = await state.updateData(mutate);
+    render(); scheduleAssetGC();
   });
 }
 async function change(action) { return commitData(async draft => { await action(draft); return true; }); }
-const ASSET_GC_DELAY = 10 * 60 * 1000;
-let assetGCTimer;
-/** Delete uploaded icons no longer referenced by the saved data, but only after
- * ten quiet minutes and only if the data did not change during the scan. */
-function scheduleAssetGC() {
-  clearTimeout(assetGCTimer);
-  assetGCTimer = setTimeout(() => {
-    run(async () => {
-      const snapshot = await store.load().catch(() => null);
-      if (!snapshot) return;
-      const live = new Set(snapshot.groups.flatMap(group => group.sites.map(site => site.iconId).filter(Boolean)));
-      const keys = await assetStore.keys();
-      const orphans = keys.filter(key => typeof key === 'string' && key.startsWith('icon:') && !live.has(key));
-      if (!orphans.length) return;
-      const latest = await store.load().catch(() => null);
-      if (!latest || JSON.stringify(latest) !== JSON.stringify(snapshot)) return;
-      for (const key of orphans) await assetStore.delete(key).catch(() => {});
-    }).catch(() => {});
-  }, ASSET_GC_DELAY);
-}
 function changePrefs(action) {
   return run(async () => {
-    const next = await loadPrefs().catch(() => ({ ...prefs }));
-    action(next);
-    await savePrefs(next); prefs = next; applySettings(data, prefs); updateEngine();
+    prefs = await state.updatePrefs(action);
+    applySettings(data, prefs); updateEngine();
   });
 }
 /** Pref mutators share the save queue so a slower write cannot clobber a newer one. */
@@ -156,7 +131,6 @@ async function addSite(id, prefill = {}, editor = editDialog) {
     if (!title) throw new Error('请填写网站名称');
     const rawUrl = values.get('url').trim();
     safeURL(/^[a-z][a-z0-9+.-]*:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
-    const text = values.get('text').trim() || Array.from(title).slice(0, 2).join('');
   };
   const values = await editor(site ? '编辑图标' : '添加图标', fields, ({ form, container }) => {
     const originalHost = site ? new URL(site.url).hostname : '';
@@ -173,16 +147,18 @@ async function addSite(id, prefill = {}, editor = editDialog) {
   if (selection.upload) {
     next.iconId = `icon:${crypto.randomUUID()}`;
     uploadedBlob = await compressImage(selection.upload, 256, { preserveAlpha: true });
-    await assetStore.put(next.iconId, uploadedBlob);
   }
-  // Classify newly acquired artwork before saving; later renders read its kind/v marker.
-  if (!next.useText) {
-    const source = next.iconId || localIconURL(next.iconFile);
-    if (source) {
-      try { await loadClassifiedIcon(source, assetStore, uploadedBlob); } catch {}
-    }
-  }
-  await change(draft => { const target = draft.groups.find(item => item.id === group.id); if (!target) throw new Error('分组已被删除，请重试'); if (id) { const index = target.sites.findIndex(item => item.id === id); if (index < 0) throw new Error('图标已被删除'); target.sites[index] = next; } else target.sites.push(next); });
+  await change(async draft => {
+    const target = draft.groups.find(item => item.id === group.id);
+    if (!target) throw new Error('分组已被删除，请重试');
+    if (id) {
+      const index = target.sites.findIndex(item => item.id === id);
+      if (index < 0) throw new Error('图标已被删除');
+      target.sites[index] = next;
+    } else target.sites.push(next);
+    // Publish the blob and its reference under one lock, excluding GC.
+    if (uploadedBlob) await assetStore.put(next.iconId, uploadedBlob);
+  });
 }
 async function chooseNewSite() {
   const { openSiteSelector } = await import('./ui/siteSelector.js');
@@ -261,9 +237,6 @@ function switchMinimal() {
   }).finally(() => { minimalSwitching = false; });
   finish().catch(report);
 }
-function openFallback(blob, engine, reason) {
-  fallbackBlob = blob; fallbackEngine = engine; $('#fallback-message').textContent = reason; $('#fallback-copy').disabled = !blob; $('#fallback-download').disabled = !blob; if (!$('#fallback-dialog').open) $('#fallback-dialog').showModal();
-}
 async function importBackup(mode) {
   if (!pendingBackup) return;
   const buttons = [$('#import-merge'), $('#import-replace')];
@@ -271,23 +244,27 @@ async function importBackup(mode) {
   try {
     await run(async () => {
       if (!pendingBackup) return; // A double click queued a second (now empty) import.
-      const plan = planImport(data, pendingBackup, mode);
-      const imported = validateData({ ...plan.data, revision: (data.revision ?? 0) + 1 });
-      const oldWallpaper = await wallpaper.getCurrent();
-      const decoded = plan.assets.map(asset => [asset.id, dataURLToBlob(asset.data)]);
-      // Decode before any writes. Imported SVG/HTML and malformed image data never render.
-      for (const [, blob] of decoded) { const bitmap = await createImageBitmap(blob); bitmap.close(); }
-      await assetStore.putMany(decoded);
-      try {
-        if (mode === 'replace' && !plan.assets.some(asset => asset.id === 'wallpaper')) await wallpaper.clear();
-        await chrome.storage.local.set(mode === 'replace' ? { appData: imported, devicePrefs: plan.prefs } : { appData: imported });
-      } catch (error) { if (mode === 'replace') { if (oldWallpaper) await assetStore.put('wallpaper', oldWallpaper); else await wallpaper.clear(); } throw error; }
-      data = imported; if (mode === 'replace') prefs = plan.prefs;
+      const result = await importBackupData({ backup: pendingBackup, mode, state, store, assets: assetStore });
+      data = result.data;
+      // Merge leaves preferences alone; re-read in case another tab changed them.
+      prefs = result.prefs ?? await loadPrefs();
       pendingBackup = null; $('#import-dialog').close(); render(); await renderWallpaper(wallpaper, prefs.wallpaper); updateWallpaperThumb().catch(() => {}); scheduleAssetGC(); toast('导入完成');
     });
   } finally {
     for (const button of buttons) button.disabled = false;
   }
+}
+async function uploadWallpaper(event) {
+  const file = event.target.files[0]; if (!file) return;
+  try {
+    await run(async () => {
+      prefs = await saveWallpaper({ file, state, wallpaper, assets: assetStore, readPrefs: loadPrefs,
+        write: patch => chrome.storage.local.set(patch) });
+      applySettings(data, prefs);
+    });
+    await renderWallpaper(wallpaper, 'custom');
+    await updateWallpaperThumb(); toast('壁纸已保存');
+  } finally { event.target.value = ''; }
 }
 async function start() {
   [data, prefs] = await Promise.all([store.load(), loadPrefs()]); active = data.groups[0]?.id; bindDialogClose(); render();
@@ -318,54 +295,8 @@ async function start() {
     if (document.body.classList.contains('settings-open')) closeSettings(); else drawer(false);
   });
   on('#add-group', 'click', () => addGroup()); on('#settings-open', 'click', openSettings);
-  on('#settings-close', 'click', closeSettings); on('#settings-backdrop', 'click', closeSettings);
-  $('#settings-panel').addEventListener('keydown', event => {
-    if (event.key !== 'Tab') return;
-    const items = [...$('#settings-panel').querySelectorAll('button, select, input')].filter(item => !item.disabled && item.getClientRects().length);
-    if (!items.length) return;
-    const first = items[0], last = items[items.length - 1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-  });
-  document.querySelectorAll('[data-setting]').forEach(select => select.addEventListener('change', () => {
-    // Capture the value now; the queued save may run after the control was reset.
-    const key = select.dataset.setting, value = select.value;
-    (key === 'layout' ? changePrefs(next => { next.layout = value; }) : change(draft => { draft.settings[key] = value; })).catch(report);
-  }));
-  document.querySelectorAll('[data-pref]').forEach(input => input.addEventListener('change', () => {
-    const key = input.dataset.pref, value = input.type === 'checkbox' ? input.checked : input.value;
-    changePrefs(next => { next[key] = value; }).catch(report);
-  }));
-  const themeChoices = [...document.querySelectorAll('[data-theme-choice]')];
-  themeChoices.forEach((button, index) => {
-    button.addEventListener('click', () => applyPrefs(next => { next.theme = button.dataset.themeChoice; }).catch(report));
-    button.addEventListener('keydown', event => {
-      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
-      event.preventDefault();
-      const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-      const next = themeChoices[(index + direction + themeChoices.length) % themeChoices.length];
-      next.focus(); next.click();
-    });
-  });
-  on('#wallpaper-input', 'change', async event => {
-    const file = event.target.files[0]; if (!file) return;
-    try { await wallpaper.set(file); await changePrefs(next => { next.wallpaper = 'custom'; }); await renderWallpaper(wallpaper, 'custom'); await updateWallpaperThumb(); toast('壁纸已保存'); } finally { event.target.value = ''; }
-  });
-  const wallpaperChoices = [...document.querySelectorAll('[data-wallpaper]')];
-  wallpaperChoices.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      const choice = button.dataset.wallpaper;
-      if (choice === 'custom') { $('#wallpaper-input').click(); return; }
-      changePrefs(next => { next.wallpaper = choice; }).then(() => renderWallpaper(wallpaper, choice)).catch(report);
-    });
-    button.addEventListener('keydown', event => {
-      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
-      event.preventDefault();
-      const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-      const next = wallpaperChoices[(index + direction + wallpaperChoices.length) % wallpaperChoices.length];
-      next.focus(); next.click();
-    });
-  });
+  bindSettingsControls({ on, closeSettings, changePrefs, change, uploadWallpaper,
+    selectWallpaper: choice => changePrefs(next => { next.wallpaper = choice; }).then(() => renderWallpaper(wallpaper, choice)) });
   on('#export-data', 'click', async () => { const backup = await buildBackup(data, prefs, assetStore, $('#include-assets').checked); download(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }), `auretab-${new Date().toISOString().slice(0, 10)}.json`); });
   on('#import-open', 'click', () => $('#import-file').click());
   on('#import-file', 'change', async event => {
@@ -417,70 +348,17 @@ async function start() {
     event.preventDefault();
     selectGroup(next.id, direction);
   });
-  let dragDepth = 0, imageRequest = 0;
-  const resetImageDrag = () => { dragDepth = 0; $('#search-form').classList.remove('drag-over'); };
-  const prepareImageSearch = async (load, engine) => {
-    const request = ++imageRequest;
-    try {
-      const blob = await load;
-      if (request !== imageRequest) return;
-      if (imageSearchAdapters[engine].verified) {
-        try {
-          await imageSearchAdapters[engine].submit(blob);
-          openFallback(blob, engine, '已提交图片。若没有出现识图结果，可复制图片到官方页面继续。');
-        } catch { openFallback(blob, engine, '图片未能自动上传。请复制图片，在官方图搜页面粘贴。'); }
-      } else openFallback(blob, engine, `已准备好图片。点击“复制图片并打开图搜”，在 ${engines[engine].name} 页面的相机入口粘贴（⌘V / Ctrl+V）。`);
-    } catch (error) {
-      if (request !== imageRequest) return;
-      if (error.message.startsWith('仅支持') || error.message.includes('10MB') || error.message.includes('为空')) report(error);
-      else openFallback(null, engine, '网页图片无法读取，可能受到跨域或网络限制。请先保存图片，再打开官方图搜页面上传。');
-    }
-  };
-  on('#image-search-open', 'click', () => {
-    const tab = window.open(engines[prefs.engine].images, '_blank'); if (tab) tab.opener = null;
-    else toast('新页面被拦截，请允许此页面打开新标签页后重试');
-  });
-  $('#search-form').addEventListener('dragenter', event => { if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return; event.preventDefault(); dragDepth++; $('#search-form').classList.add('drag-over'); });
-  $('#search-form').addEventListener('dragover', event => { if (!event.dataTransfer.types.includes('application/x-easy-tab-site')) { event.preventDefault(); event.dataTransfer.dropEffect = 'copy'; } });
-  $('#search-form').addEventListener('dragleave', () => { if (--dragDepth <= 0) resetImageDrag(); });
-  $('#search-form').addEventListener('drop', event => {
-    if (event.dataTransfer.types.includes('application/x-easy-tab-site')) return;
-    event.preventDefault(); resetImageDrag();
-    // Read transfer contents immediately, before the browser protects the dropped data.
-    prepareImageSearch(imageFromDrop(event.dataTransfer), prefs.engine);
-  });
-  window.addEventListener('blur', resetImageDrag);
-  document.addEventListener('dragend', resetImageDrag);
-  const openOfficialImages = () => {
-    const tab = window.open(engines[fallbackEngine].images, '_blank'); if (tab) tab.opener = null;
-    return tab;
-  };
-  on('#fallback-open', 'click', () => { if (!openOfficialImages()) toast('新页面被拦截，请允许此页面打开新标签页后重试'); });
-  on('#fallback-copy', 'click', async () => {
-    const button = $('#fallback-copy'); if (!fallbackBlob || button.disabled) return;
-    button.disabled = true;
-    try {
-      const { opened } = await copyAndOpenImage(fallbackBlob, fallbackEngine, openOfficialImages);
-      if (!opened) $('#fallback-message').textContent = '图片已复制，但新页面被拦截。请点击“打开图搜页面”，在相机入口粘贴（⌘V / Ctrl+V）。';
-      else { $('#fallback-dialog').close(); toast('图片已复制，请在官方图搜页面的相机入口粘贴（⌘V / Ctrl+V）'); }
-    } catch (error) { $('#fallback-message').textContent = `${error.message || '图片复制失败'}。可保存图片后在官方图搜页面上传。`; }
-    finally { button.disabled = !fallbackBlob; }
-  });
-  on('#fallback-download', 'click', () => {
-    if (!fallbackBlob) return;
-    const ext = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/webp': 'webp', 'image/gif': 'gif' }[fallbackBlob.type] || 'img';
-    download(fallbackBlob, `auretab-search-image.${ext}`);
-  });
+  bindImageSearch({ on, getEngine: () => prefs.engine });
   store.onExternalChange(next => run(async () => {
     // Our own write fires the same event; skip the redundant full render.
     if (JSON.stringify(next) === JSON.stringify(data)) return;
-    data = next; render();
+    data = await store.load(); render(); scheduleAssetGC();
   }).catch(report));
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== 'local' || !changes.devicePrefs) return;
+    if (area !== 'local' || (!changes.devicePrefs && !changes.wallpaperRevision)) return;
     run(async () => {
       const next = await loadPrefs();
-      if (JSON.stringify(next) === JSON.stringify(prefs)) return;
+      if (!changes.wallpaperRevision && JSON.stringify(next) === JSON.stringify(prefs)) return;
       prefs = next; applySettings(data, prefs); updateEngine();
       await renderWallpaper(wallpaper, prefs.wallpaper);
     }).catch(report);

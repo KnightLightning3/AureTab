@@ -286,3 +286,45 @@ test('display reuses decoded templates for detached containers, retries decode a
   assert.deepEqual(new Set(revoked), new Set(['blob:fixture-1', 'blob:fixture-2', 'blob:fixture-3', 'blob:fixture-4']));
   assert.equal(revoked.length, 4);
 });
+
+test('shared decoded URLs survive one owner release, then release on last owner and can reload', async t => {
+  const { releaseIcon } = await import('../js/grid/iconKind.js');
+  let created = 0; const revoked = [];
+  t.mock.method(URL, 'createObjectURL', () => `blob:owned-${++created}`);
+  t.mock.method(URL, 'revokeObjectURL', url => revoked.push(url));
+  mockGlobal(t, 'document', { createElement() { return { async decode() {}, cloneNode() { return { src: this.src }; } }; } });
+  const store = memoryStore({ blob: new Blob(['icon']), kind: 'glyph', v: 2 });
+  const container = () => ({ dataset: {}, replaceChildren() {} });
+  const a = container(), b = container();
+  await showClassifiedIcon(a, 'same', { store }); await showClassifiedIcon(b, 'same', { store });
+  releaseIcon(a); assert.deepEqual(revoked, []);
+  releaseIcon(b); assert.deepEqual(revoked, ['blob:owned-1']);
+  await showClassifiedIcon(a, 'same', { store }); assert.equal(created, 2);
+  releaseIcon(a); assert.equal(revoked.length, 2);
+});
+test('retired containers cannot be repopulated by an in-flight image decode', async t => {
+  const { releaseIcon } = await import('../js/grid/iconKind.js');
+  let finish, entered, writes = 0; const revoked = [];
+  const decoding = new Promise(resolve => { entered = resolve; });
+  t.mock.method(URL, 'createObjectURL', () => 'blob:pending'); t.mock.method(URL, 'revokeObjectURL', url => revoked.push(url));
+  mockGlobal(t, 'document', { createElement() { return {
+    decode() { entered(); return new Promise(resolve => { finish = resolve; }); }, cloneNode() { return {}; },
+  }; } });
+  const store = memoryStore({ blob: new Blob(['icon']), kind: 'glyph', v: 2 });
+  const node = { dataset: {}, replaceChildren() { writes++; } };
+  const pending = showClassifiedIcon(node, 'pending', { store });
+  await decoding; releaseIcon(node); finish();
+  assert.equal(await pending, false); assert.equal(writes, 0); assert.deepEqual(revoked, ['blob:pending']);
+});
+test('image requests time out and clear handlers so the queue can continue', async t => {
+  const { loadImageElement } = await import('../js/grid/iconKind.js'); let image;
+  mockGlobal(t, 'document', { createElement() { image = {}; return image; } });
+  await assert.rejects(loadImageElement('https://example.com/hung.png', 32, 5), /超时/);
+  assert.equal(image.src, ''); assert.equal(image.onload, null); assert.equal(image.onerror, null);
+});
+test('temporary upload previews are not persisted', async t => {
+  const store = memoryStore();
+  mockGlobal(t, 'createImageBitmap', async () => ({ width: 16, height: 16, close() {} }));
+  await loadClassifiedIcon('icon:preview:test', store, new Blob(['preview']));
+  assert.equal(store.puts, 0);
+});

@@ -1,6 +1,6 @@
 import { displayIconText } from '../grid/textIcon.js';
 import { faviconSources } from '../grid/favicon.js';
-import { showClassifiedIcon } from '../grid/iconKind.js';
+import { showClassifiedIcon, releaseIconTree } from '../grid/iconKind.js';
 import { localIconURL, isMonoIconFile, resolveLocalIconFile } from '../grid/siteIcon.js';
 import { findLocalIconVariants } from '../grid/localIconVariants.js';
 import { ICON_BACKGROUNDS, applyIconBackground } from '../grid/iconBackground.js';
@@ -52,6 +52,7 @@ export function mountIconPicker(container, form, site, options = {}) {
   let style = ['color', 'glyph'].includes(site?.iconStyle) ? site.iconStyle : '';
   let background = site?.iconBackground || 'glass';
   let variants = local ? [{ file: local, label: '当前本地图标' }] : [];
+  let disposed = false;
   let remoteURL = '', discovery = 0, upload = null, uploadKey = '';
   const sampleText = () => displayIconText(form.elements.text?.value.trim() || form.elements.title?.value.trim() || 'A', form.elements.size?.value);
   const parsedURL = () => {
@@ -76,7 +77,8 @@ export function mountIconPicker(container, form, site, options = {}) {
   };
   const ensureTabStop = node => { if (!node.querySelector('[tabindex="0"]')) node.querySelector('[role=radio]')?.setAttribute('tabindex', '0'); };
   const render = () => {
-    sync(); sources.replaceChildren(); styles.replaceChildren(); backgrounds.replaceChildren();
+    if (disposed) return;
+    sync(); releaseIconTree(sources); sources.replaceChildren(); styles.replaceChildren(); backgrounds.replaceChildren();
     const card = (label, active, select, file, blob, remote, mono) => {
       const button = radio(sources, label, active, select, 'icon-choice');
       const preview = make('span', 'choice-preview', sampleText());
@@ -87,7 +89,7 @@ export function mountIconPicker(container, form, site, options = {}) {
       const urls = remote ? faviconSources(remote, style || undefined) : [blob ? file : localIconURL(file) || file];
       (async () => {
         for (const url of urls) {
-          if (!preview.isConnected) return;
+          if (disposed || !preview.isConnected) return;
           try { if (await showClassifiedIcon(preview, url, { manual: style || undefined, ...(blob ? { blob } : {}) })) { applyIconBackground(preview, background); return; } } catch { /* Try next remote source. */ }
         }
       })();
@@ -165,5 +167,5 @@ export function mountIconPicker(container, form, site, options = {}) {
     make('div', 'icon-picker-section-title', '显示样式（可选）'), styles,
     make('div', 'icon-picker-section-title', '图标背景'), backgrounds, status, ...Object.values(hidden));
   container.append(field); render(); void discover();
-  return { request: () => request.click(), setLocal };
+  return { request: () => request.click(), setLocal, dispose() { disposed = true; discovery++; releaseIconTree(field); } };
 }

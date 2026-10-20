@@ -1,6 +1,6 @@
 import { searchSites } from '../search/siteIndex.js';
 import { mountEditorFields } from './dialogs.js';
-import { showClassifiedIcon } from '../grid/iconKind.js';
+import { showClassifiedIcon, releaseIconTree } from '../grid/iconKind.js';
 // Namespace import keeps this dynamically loaded module usable in a tab that
 // still holds an older siteIcon.js instance (e.g. before the extension reload).
 import * as siteIcon from '../grid/siteIcon.js';
@@ -61,7 +61,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
   };
   let categories = [], sites = [], activeCategory = '', dataLoaded = false, closed = false, resolveClosed;
   const closedPromise = new Promise(resolve => { resolveClosed = resolve; });
-  const close = () => { if (closed) return; closed = true; clearTimeout(searchTimer); dialog.close(); dialog.remove(); if (returnFocus?.isConnected) returnFocus.focus(); resolveClosed(result); };
+  const close = () => { if (closed) return; closed = true; clearTimeout(searchTimer); dialog.close(); picker?.dispose?.(); releaseIconTree(dialog); dialog.remove(); if (returnFocus?.isConnected) returnFocus.focus(); resolveClosed(result); };
   const choose = site => {
     if (customForm) {
       customForm.elements.title.value = site.name; customForm.elements.url.value = `https://${site.domain}/`;
@@ -94,7 +94,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
     if (!dataLoaded) { hint.hidden = false; hint.textContent = '正在加载站点清单…'; return; }
     const query = search.value.trim();
     const list = query ? searchSites(sites, query, 24) : sites.filter(site => site.cat === activeCategory);
-    grid.replaceChildren();
+    releaseIconTree(grid); grid.replaceChildren();
     if (!list.length) { hint.hidden = false; hint.textContent = query ? '未找到，可直接输入网址' : '暂无站点'; }
     else hint.hidden = true;
     for (const site of list) {
@@ -147,7 +147,7 @@ export function openSiteSelector({ onSelect, onCustom, fields, customize, valida
   });
   dialog.addEventListener('keydown', event => { if (event.key === 'Escape') { event.preventDefault(); close(); } });
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
-  dialog.addEventListener('close', () => { if (!closed) { closed = true; dialog.remove(); if (returnFocus?.isConnected) returnFocus.focus(); } resolveClosed(result); });
+  dialog.addEventListener('close', () => { if (!closed) { closed = true; picker?.dispose?.(); releaseIconTree(dialog); dialog.remove(); if (returnFocus?.isConnected) returnFocus.focus(); } resolveClosed(result); });
   closeButton.onclick = close;
 
   loadData().then(data => {

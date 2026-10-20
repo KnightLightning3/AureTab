@@ -2,23 +2,11 @@ import { displayIconText } from './textIcon.js';
 import { applyIconBackground } from './iconBackground.js';
 import { faviconSources } from './favicon.js';
 import { localIconURL, wideIconURL, isMonoIconFile } from './siteIcon.js';
-import { showClassifiedIcon } from './iconKind.js';
+import { createLoadQueue } from './loadQueue.js';
+import { showClassifiedIcon, releaseIconTree } from './iconKind.js';
 import { groupIconElement } from '../ui/groupIcon.js';
 
-// Limit concurrent icon decodes/downloads; the queue drains across group switches.
-const ICON_CONCURRENCY = 4;
-let activeLoads = 0;
-const loadQueue = [];
-function enqueue(task) {
-  const run = () => {
-    activeLoads++;
-    Promise.resolve().then(task).catch(() => {}).finally(() => {
-      activeLoads--;
-      loadQueue.shift()?.();
-    });
-  };
-  if (activeLoads < ICON_CONCURRENCY) run(); else loadQueue.push(run);
-}
+const iconLoads = createLoadQueue(4);
 
 const starters = new WeakMap();
 let iconObserver;
@@ -97,10 +85,22 @@ function replaceGridNodes(root, plate, nodes) {
 }
 
 const groupViews = new Map();
+const GROUP_CACHE_LIMIT = 3;
+let currentView;
+function activate(view, key) {
+  if (currentView && currentView !== view) currentView.visible = false;
+  currentView = view; view.visible = true;
+  groupViews.delete(key); groupViews.set(key, view);
+  while (groupViews.size > GROUP_CACHE_LIMIT) {
+    const oldest = groupViews.keys().next().value;
+    retire(groupViews.get(oldest)); groupViews.delete(oldest);
+  }
+}
 /** A cached group that is gone (or replaced) must not keep loading or observing. */
 function retire(view) {
   if (!view) return;
   view.active = false;
+  for (const node of view.nodes) releaseIconTree(node);
   for (const node of view.nodes) { starters.delete(node); iconObserver?.unobserve(node); }
 }
 export function pruneGridCache(groups) {
@@ -134,21 +134,23 @@ export function renderGrid(group, store, onAdd) {
   const signature = JSON.stringify(group?.sites ?? []);
   const cached = groupViews.get(key);
   if (cached?.signature === signature) {
+    activate(cached, key);
+    for (const resume of cached.resume) resume();
     const plate = plateFor(root);
     if (root.dataset.group !== key || root.children[1] !== cached.nodes[0]) replaceGridNodes(root, plate, cached.nodes);
     if (root.dataset.group !== key) root.dataset.group = key;
-    observeGlass(root); applyGlassMask(); return;
+    observeGlass(root); return;
   }
   if (cached) retire(cached);
   const grid = document.createDocumentFragment();
-  const view = { signature, nodes: [], active: true };
+  const view = { signature, nodes: [], active: true, visible: true, resume: [] };
+  activate(view, key);
   const commit = () => {
     view.nodes = [...grid.childNodes]; groupViews.set(key, view);
     const plate = plateFor(root);
     replaceGridNodes(root, plate, view.nodes); if (root.dataset.group !== key) root.dataset.group = key;
     observeGlass(root);
-    // Measure the new tiles now so the glass is correct on the very next paint.
-    applyGlassMask();
+    // The scheduled frame measures once after DOM and settings updates.
   };
   if (!group?.sites.length) { const empty = document.createElement('div'); empty.className = 'empty-state'; const button = document.createElement('button'); button.textContent = '＋ 添加第一个图标'; button.onclick = onAdd; empty.append(button); grid.append(empty); commit(); return; }
   for (const site of group.sites) {
@@ -166,33 +168,50 @@ export function renderGrid(group, store, onAdd) {
     if (!site.useText) {
       const options = { manual: site.iconStyle, store };
       const load = async () => {
-        if (!view.active) return;
+        if (!view.active || !view.visible) return;
         // Every source is best-effort: a missing blob, unreadable bundled file or
         // <32px image must fall through to the next source, not end the chain.
         try {
           // The classifier reads icon:<id> from the store and caches the result.
           if (site.iconId && await showClassifiedIcon(icon, site.iconId, options)) return;
         } catch {}
+        if (!view.active || !view.visible) return;
         if (wideIcon) {
           try { if (await showClassifiedIcon(icon, wideIcon, { manual: 'glyph', store })) return; } catch {}
           delete icon.dataset.wide;
           if (isMonoIconFile(site.iconFile)) icon.dataset.mono = 'true'; else delete icon.dataset.mono;
         }
+        if (!view.active || !view.visible) return;
         if (localIcon) {
           try { if (await showClassifiedIcon(icon, localIcon, options)) return; } catch {}
         }
         for (const source of faviconSources(site.url, iconStyle)) {
+          if (!view.active || !view.visible) return;
           try { if (await showClassifiedIcon(icon, source, options)) return; } catch {}
         }
       };
       // Only visible (or nearly visible) tiles request icons. A successful load is
       // cached by iconKind, so returning to this group does not request it again.
-      const start = () => enqueue(async () => {
-        try { await load(); } finally { applyIconBackground(icon, site.iconBackground); }
-      });
-      const observed = observer();
-      if (observed) { starters.set(link, start); observed.observe(link); }
-      else start();
+      let queued = false, loaded = false;
+      const observe = () => {
+        if (loaded || queued || !view.active) return;
+        const observed = observer();
+        if (observed) { starters.set(link, start); observed.observe(link); }
+        else if (view.visible) start();
+      };
+      const start = () => {
+        if (queued || loaded) return;
+        queued = true;
+        iconLoads.add(async () => {
+          try { await load(); loaded = view.active && view.visible; }
+          finally {
+            queued = false; applyIconBackground(icon, site.iconBackground);
+            if (!loaded && view.active) observe();
+          }
+        }, () => view.active && view.visible, () => { queued = false; observe(); });
+      };
+      view.resume.push(observe);
+      observe();
     }
   }
   if (group.sites.length) {

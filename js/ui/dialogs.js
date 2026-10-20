@@ -1,3 +1,4 @@
+import { releaseIconTree } from '../grid/iconKind.js';
 export const $ = selector => document.querySelector(selector);
 let toastTimer;
 export function toast(message) { $('#toast').textContent = message; $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('#toast').hidden = true; }, 2000); }
@@ -5,14 +6,15 @@ export function report(error) { console.error(error); toast(error.message || 'æ“
 export function bindDialogClose() { document.querySelectorAll('dialog [data-close]').forEach(button => button.onclick = () => button.closest('dialog').close()); }
 /** DOM-only fields: no imported string is interpreted as HTML. */
 export function editDialog(title, fields, customize, validate) {
-  const dialog = $('#editor-dialog'); $('#editor-title').textContent = title; const container = $('#editor-fields'); container.replaceChildren();
+  const dialog = $('#editor-dialog'); $('#editor-title').textContent = title; const container = $('#editor-fields'); releaseIconTree(container); container.replaceChildren();
   dialog.querySelector('.dialog-error')?.remove();
   mountEditorFields(container, fields);
-  if (customize) customize({ dialog, form: $('#editor-form'), container });
+  let picker;
+  if (customize) picker = customize({ dialog, form: $('#editor-form'), container });
   dialog.showModal();
   return new Promise(resolve => {
     const form = $('#editor-form'); let settled = false;
-    const finish = value => { if (settled) return; settled = true; form.removeEventListener('submit', submit); dialog.removeEventListener('close', onClose); resolve(value); };
+    const finish = value => { if (settled) return; settled = true; picker?.dispose?.(); releaseIconTree(container); form.removeEventListener('submit', submit); dialog.removeEventListener('close', onClose); resolve(value); };
     const submit = event => {
       event.preventDefault();
       const data = new FormData(form);

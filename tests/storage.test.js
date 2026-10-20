@@ -2,7 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { LocalDataStore } from '../js/storage/LocalDataStore.js';
 
-function chromeMock(initial = {}) {
+function chromeMock(initial = {}, t) {
+  const navigatorDescriptor = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
+  let queue = Promise.resolve();
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { locks: {
+    request(_name, action) { const result = queue.then(action); queue = result.catch(() => {}); return result; }
+  } } });
+  t.after(() => { if (navigatorDescriptor) Object.defineProperty(globalThis, 'navigator', navigatorDescriptor); else delete globalThis.navigator; });
   const store = { ...initial };
   let listener;
   globalThis.chrome = {
@@ -21,7 +27,7 @@ const flush = () => new Promise(resolve => setTimeout(resolve, 0));
 
 test('external changes are validated and a deleted document reloads defaults', async t => {
   const original = globalThis.chrome;
-  const mock = chromeMock({ appData: data });
+  const mock = chromeMock({ appData: data }, t);
   t.after(() => { globalThis.chrome = original; });
   const store = new LocalDataStore();
   const seen = [];
@@ -37,7 +43,7 @@ test('external changes are validated and a deleted document reloads defaults', a
 });
 test('unrelated storage areas are ignored', async t => {
   const original = globalThis.chrome;
-  const mock = chromeMock({ appData: data });
+  const mock = chromeMock({ appData: data }, t);
   t.after(() => { globalThis.chrome = original; });
   const store = new LocalDataStore();
   const seen = [];
@@ -45,4 +51,12 @@ test('unrelated storage areas are ignored', async t => {
   mock.emit({ appData: { newValue: { ...data, revision: 9 } } }, 'sync');
   await flush();
   assert.deepEqual(seen, []);
+});
+
+
+test('simultaneous first loads initialize one shared group', async t => {
+  const original = globalThis.chrome;
+  chromeMock({}, t); t.after(() => { globalThis.chrome = original; });
+  const [first, second] = await Promise.all([new LocalDataStore().load(), new LocalDataStore().load()]);
+  assert.equal(first.groups[0].id, second.groups[0].id);
 });

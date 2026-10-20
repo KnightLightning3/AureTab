@@ -1,4 +1,5 @@
 import { assetStore } from '../storage/idb.js';
+import { withWriteLock } from '../storage/writeLock.js';
 
 export const ICON_CLASSIFIER = Object.freeze({ v: 2, size: 32, sampleSize: 2, alphaThreshold: 200 });
 
@@ -31,15 +32,20 @@ export async function classifyBlob(blob) {
 /** Loads a cross-origin or _favicon URL as a plain image; fetch() would require
  * host_permissions (cross-origin) or is unsupported (the _favicon endpoint).
  * Tiny default placeholders (e.g. a 16px globe) are rejected so callers fall through. */
-function loadImageElement(source, minSize = 32) {
+export function loadImageElement(source, minSize = 32, timeout = 8000) {
   return new Promise((resolve, reject) => {
     const image = document.createElement('img'); image.alt = ''; image.draggable = false;
+    const timer = setTimeout(() => {
+      image.onload = image.onerror = null;
+      image.src = ''; reject(new Error('图标加载超时'));
+    }, timeout);
+    const finish = (settle, value) => { clearTimeout(timer); image.onload = image.onerror = null; settle(value); };
     image.onload = () => {
       // Vector icons declare a nominal 1em size; their intrinsic pixel size is irrelevant.
-      if (!minSize || (image.naturalWidth >= minSize && image.naturalHeight >= minSize)) resolve(image);
-      else reject(new Error('图标过小'));
+      if (!minSize || (image.naturalWidth >= minSize && image.naturalHeight >= minSize)) finish(resolve, image);
+      else finish(reject, new Error('图标过小'));
     };
-    image.onerror = () => reject(new Error('图标加载失败'));
+    image.onerror = () => finish(reject, new Error('图标加载失败'));
     image.src = source;
   });
 }
@@ -77,12 +83,20 @@ export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
         blob = await store.get(source).catch(() => null);
         if (!blob) throw new Error('图标加载失败');
       }
-      const fetched = blob ?? await fetch(source).then(response => {
+      const fetched = blob ?? await fetch(source, { signal: AbortSignal.timeout(8000) }).then(response => {
         if (!response.ok) throw new Error('图标加载失败');
         return response.blob();
       });
       const record = { blob: fetched, ...await classifyBlob(fetched) };
-      await store.put(key, record).catch(() => {});
+      if (!source.startsWith('icon:preview:')) {
+        const persist = async () => {
+          // A decode begun before deletion must not resurrect an orphan cache
+          // after GC. Original uploads and GC use this same lock.
+          if (source.startsWith('icon:') && store === assetStore && !await store.get(source)) return;
+          await store.put(key, record);
+        };
+        await (source.startsWith('icon:') && store === assetStore ? withWriteLock(persist) : persist()).catch(() => {});
+      }
       return record;
     })();
     entries.set(key, request);
@@ -93,39 +107,45 @@ export function loadClassifiedIcon(source, store = assetStore, suppliedBlob) {
 
 let decodedImages = new WeakMap();
 const objectURLs = new Set();
+const owners = new WeakMap();
+const generations = new WeakMap();
 let cleanupRegistered = false;
-function decodedImage(record) {
-  if (record.image) return Promise.resolve(record.image);
-  let request = decodedImages.get(record);
-  if (!request) {
+function releaseDecoded(entry) {
+  if (--entry.refs > 0) return;
+  if (entry.url) { URL.revokeObjectURL(entry.url); objectURLs.delete(entry.url); }
+  decodedImages.delete(entry.record);
+}
+export function releaseIcon(container) {
+  generations.set(container, (generations.get(container) ?? 0) + 1);
+  const entry = owners.get(container);
+  if (entry) { owners.delete(container); releaseDecoded(entry); }
+}
+export function releaseIconTree(root) {
+  releaseIcon(root);
+  for (const node of root.querySelectorAll('.site-icon, .choice-preview')) releaseIcon(node);
+}
+function acquireDecoded(record) {
+  let entry = decodedImages.get(record);
+  if (!entry) {
     if (!cleanupRegistered && typeof window !== 'undefined') {
       window.addEventListener('pagehide', event => {
-        // A page restored from the back/forward cache still owns its images.
         if (event.persisted) return;
         for (const url of objectURLs) URL.revokeObjectURL(url);
-        objectURLs.clear();
-        decodedImages = new WeakMap();
+        objectURLs.clear(); decodedImages = new WeakMap();
       });
       cleanupRegistered = true;
     }
-    request = (async () => {
-      const url = URL.createObjectURL(record.blob);
-      objectURLs.add(url);
-      try {
-        const image = document.createElement('img'); image.alt = ''; image.draggable = false;
-        image.src = url;
-        await image.decode();
-        return image;
-      } catch (error) {
-        objectURLs.delete(url);
-        URL.revokeObjectURL(url);
-        throw error;
-      }
+    entry = { record, refs: 0 };
+    entry.promise = (async () => {
+      if (record.image) return record.image;
+      entry.url = URL.createObjectURL(record.blob); objectURLs.add(entry.url);
+      const image = document.createElement('img'); image.alt = ''; image.draggable = false;
+      image.src = entry.url; await image.decode(); return image;
     })();
-    decodedImages.set(record, request);
-    request.catch(() => { if (decodedImages.get(record) === request) decodedImages.delete(record); });
+    decodedImages.set(record, entry);
   }
-  return request;
+  entry.refs++;
+  return entry;
 }
 
 export function iconKind(kind, manual) {
@@ -135,12 +155,21 @@ export function iconKind(kind, manual) {
 
 /** One rendering path for bundled icons, favicon fallbacks, and custom uploads. */
 export async function showClassifiedIcon(container, source, { manual, blob, store = assetStore } = {}) {
+  const stamp = (generations.get(container) ?? 0) + 1;
+  generations.set(container, stamp);
   const record = await loadClassifiedIcon(source, store, blob);
+  if (generations.get(container) !== stamp) return false;
   const kind = iconKind(record.kind, manual);
   if (kind === 'text') return false;
-  const template = await decodedImage(record);
-  // The renderer owns container lifetime, including detached/prepared groups.
-  container.dataset.kind = kind;
-  container.replaceChildren(template.cloneNode(true));
-  return true;
+  const entry = acquireDecoded(record);
+  try {
+    const template = await entry.promise;
+    if (generations.get(container) !== stamp) { releaseDecoded(entry); return false; }
+    const previous = owners.get(container);
+    owners.set(container, entry);
+    if (previous) releaseDecoded(previous);
+    container.dataset.kind = kind;
+    container.replaceChildren(template.cloneNode(true));
+    return true;
+  } catch (error) { releaseDecoded(entry); throw error; }
 }
