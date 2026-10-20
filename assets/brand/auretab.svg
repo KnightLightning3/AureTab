@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>AureTab</title>
+  <rect x="16" y="16" width="96" height="96" rx="24" fill="#18283B"/>
+  <polygon points="37,88 58,39 70,39 91,88 78,88 73,76 55,76 50,88" fill="#EBC482"/>
+  <polygon points="59,65 69,65 64,52" fill="#18283B"/>
+</svg>

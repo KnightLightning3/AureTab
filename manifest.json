@@ -4,6 +4,12 @@
   "version": "0.1",
   "description": "轻量、离线优先的新标签页：搜索、分组站点、本地壁纸与数据备份。",
   "minimum_chrome_version": "103",
+  "icons": {
+    "16": "assets/brand/icon-16.png",
+    "32": "assets/brand/icon-32.png",
+    "48": "assets/brand/icon-48.png",
+    "128": "assets/brand/icon-128.png"
+  },
   "permissions": ["storage", "favicon"],
   "chrome_url_overrides": { "newtab": "newtab.html" },
   "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'" }
