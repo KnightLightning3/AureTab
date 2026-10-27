@@ -48,12 +48,13 @@ function applyGlassMask() {
   const fixedRadius = circular ? 0 : parseFloat(radius) || 0;
   const rootRect = root.getBoundingClientRect();
   const rects = [];
-  for (const icon of root.querySelectorAll('.site-icon')) {
+  for (const icon of root.querySelectorAll('.site-icon, .empty-state')) {
     const rect = icon.getBoundingClientRect();
     if (!rect.width || !rect.height) continue;
     const x = rect.left - rootRect.left, y = rect.top - rootRect.top;
-    const rx = circular ? rect.width / 2 : Math.min(fixedRadius, rect.width / 2);
-    const ry = circular ? rect.height / 2 : Math.min(fixedRadius, rect.height / 2);
+    const empty = icon.classList.contains('empty-state');
+    const rx = empty ? 16 : circular ? rect.width / 2 : Math.min(fixedRadius, rect.width / 2);
+    const ry = empty ? 16 : circular ? rect.height / 2 : Math.min(fixedRadius, rect.height / 2);
     rects.push(`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${rect.width.toFixed(1)}" height="${rect.height.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="#fff"/>`);
   }
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">${rects.join('')}</svg>`;
@@ -113,7 +114,7 @@ export function renderGroups(groups, active, onSelect) {
   const buttons = groups.map(group => {
     const button = existing.get(group.id) ?? document.createElement('button');
     button.className = `group-button${group.id === active ? ' active' : ''}`;
-    button.dataset.group = group.id; button.draggable = false; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
+    button.dataset.group = group.id; button.draggable = true; button.setAttribute('aria-current', group.id === active ? 'true' : 'false');
     // Rebuild only when the icon or label actually changed; a selection change is just a class toggle.
     if (button.dataset.icon !== (group.icon ?? '') || button.querySelector('.group-name')?.textContent !== group.name) {
       button.replaceChildren();

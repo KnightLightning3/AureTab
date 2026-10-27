@@ -4,7 +4,8 @@ import { bindGroupDragSort } from '../js/grid/dragSort.js';
 
 function setup() {
   const handlers = new Map(), docHandlers = new Map();
-  const element = { dataset: { group: 'a' }, draggable: false, classList: { add() {}, remove() {} } };
+  const classes = new Set();
+  const element = { dataset: { group: 'a' }, draggable: true, classList: { add(value) { classes.add(value); }, remove(value) { classes.delete(value); }, contains(value) { return classes.has(value); } } };
   const container = {
     addEventListener(type, handler) { handlers.set(type, handler); },
     querySelectorAll() { return [element]; },
@@ -17,27 +18,28 @@ function setup() {
 }
 const withTarget = target => ({ preventDefault() {}, target: { closest: selector => selector === '[data-group]' ? target : null } });
 
-test('group drag is armed only after a long press and reports the drop target', t => {
-  t.mock.timers.enable({ apis: ['setTimeout'] });
+test('group drag starts immediately and stays available after dropping', t => {
   const f = setup(); t.after(f.restore);
-  f.handlers.get('pointerdown')({ button: 0, clientX: 10, clientY: 10, target: { closest: () => f.element } });
-  assert.equal(f.element.draggable, false);
-  t.mock.timers.tick(299); assert.equal(f.element.draggable, false);
-  t.mock.timers.tick(1); assert.equal(f.element.draggable, true);
   const transfer = { setData(type, value) { assert.equal(type, 'application/x-easy-tab-group'); this.value = value; } };
   f.handlers.get('dragstart')({ target: { closest: () => f.element }, dataTransfer: transfer });
   assert.equal(transfer.value, 'a');
+  assert.equal(transfer.effectAllowed, 'move');
+  assert.equal(f.element.classList.contains('dragging'), true);
   f.handlers.get('drop')(withTarget({ dataset: { group: 'b' } }));
   assert.deepEqual(f.drops, [['a', 'b']]);
-  assert.equal(f.element.draggable, true, 'dragend resets the state later');
   f.docHandlers.get('dragend')();
-  assert.equal(f.element.draggable, false);
+  assert.equal(f.element.draggable, true);
+  assert.equal(f.element.classList.contains('dragging'), false);
+  f.handlers.get('dragstart')({ target: { closest: () => f.element }, dataTransfer: transfer });
+  f.handlers.get('drop')(withTarget(null));
+  assert.deepEqual(f.drops, [['a', 'b'], ['a', null]]);
 });
-test('moving before the long-press threshold cancels the drag', t => {
-  t.mock.timers.enable({ apis: ['setTimeout'] });
+test('unrelated drops and drops after dragend do not reorder groups', t => {
   const f = setup(); t.after(f.restore);
-  f.handlers.get('pointerdown')({ button: 0, clientX: 0, clientY: 0, target: { closest: () => f.element } });
-  f.handlers.get('pointermove')({ clientX: 20, clientY: 0 });
-  t.mock.timers.tick(300);
-  assert.equal(f.element.draggable, false);
+  f.handlers.get('drop')(withTarget({ dataset: { group: 'b' } }));
+  assert.deepEqual(f.drops, []);
+  f.handlers.get('dragstart')({ target: { closest: () => f.element }, dataTransfer: { setData() {} } });
+  f.docHandlers.get('dragend')();
+  f.handlers.get('drop')(withTarget({ dataset: { group: 'b' } }));
+  assert.deepEqual(f.drops, []);
 });
